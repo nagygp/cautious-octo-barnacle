@@ -1,0 +1,11 @@
+import RequestProject.Kasami.Basic
+import RequestProject.Kasami.Trace
+import RequestProject.Kasami.AdditiveCharacter
+import RequestProject.Kasami.WalshHadamard
+import RequestProject.Kasami.AlmostBent
+import RequestProject.Kasami.KasamiExponent
+import RequestProject.Kasami.KasamiFunction
+import RequestProject.Kasami.DifferenceSet
+import RequestProject.Kasami.TripleCount
+import RequestProject.Kasami.KasamiP3
+import RequestProject.Kasami.FourthMoment
