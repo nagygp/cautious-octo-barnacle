@@ -1,0 +1,1121 @@
+Here are the first five pages of the document in text format:
+
+---
+
+---
+
+## INFORMATION AND CONTROL 18, 369-394 (1971)
+
+# The Weight Enumerators for Several Classes of Subcodes of the 2nd Order Binary Reed-Muller Codes*
+
+**T. KASAMI**
+
+Department of Information Engineering, Osaka University, Toyonaka, Osaka, Japan
+
+---
+
+In this paper explicit formulas for the weight enumerators for several classes of subcodes of the 2nd-order binary Reed-Muller codes are derived. A large set of the codes are shown to have the same weight enumerators. The classes of codes studied in this paper contain the (0, 2)th-order Euclidean Geometry codes and the codes studied by Berlekamp as subclasses.
+
+---
+
+## INTRODUCTION
+
+Recently, a theorem was proved by Berlekamp (1970) which asserts that all sufficiently low weight codewords in certain supercodes of the $(m - 3)$rd-order Reed-Muller code must also be in the $(m - 3)$rd-order Reed-Muller code. **Theorem 1** is a simple generalization of Berlekamp’s theorem, **Theorem 2** is a generalization of Berlekamp-Sloane theorem (1969), and **Theorem A1** is an extension of the results by Berlekamp and Sloane (1970). These new results, in conjunction with previously known results, enable us to derive formulas for the weight enumerators for several classes of subcodes of the 2nd-order Reed-Muller codes. Theorems 3 and 4 show that a large set of the codes have the same weight enumerators. The classes of codes studied here contain the $(0,2)$th-order Euclidean Geometry codes and the codes studied by Berlekamp (1970) as subclasses.
+
+---
+
+## 1. DEFINITIONS AND THEOREMS ON WEIGHT RESTRICTION
+
+Let $\alpha$ be an element of order $n$ in $GF(q^{m})$, where $q$ is a power of a prime $p$. Cyclic codes of length $n$ over $GF(q)$ will be considered.
+
+Let
+$$
+v(X) = c_{1}X^{u_{1}} + c_{2}X^{u_{2}} + \dots + c_{t}X^{u_{t}},
+$$
+where $0 \leqslant u_{1} < u_{2} < \dots < u_{t} < n$, $c_{i} \neq 0$ and $c_{i} \in GF(q)$ with $1 \leqslant i \leqslant t$.
+
+Let
+$$
+R = \{e \mid v(\alpha^e) = 0\}
+$$
+and
+$$
+f(X) = \prod_{i=1}^{t} (X - \alpha^{u_i}).
+$$
+
+---
+### LEMMA 1.
+Let $\bar{R}$ be the subspace spanned by $\{X^e \mid e \in R\}$ of the residue classes modulo $f(X)$ over $GF(q^m)$. Then, for any $e \notin R$,
+$$
+X^e \notin \bar{R}.
+$$
+
+**Proof.**
+Suppose that
+$$
+X^e \equiv \sum_{j \in R} b_j X^j \bmod f(X),
+$$
+where $b_j \in GF(q^m)$. Then, for $1 \leqslant i \leqslant t$,
+$$
+\alpha^{e u_i} = \sum_{j \in R} b_j \alpha^{j u_i}.
+$$
+Hence,
+$$
+v(\alpha^e) = \sum_{i=1}^{t} c_i \alpha^{e u_i} = \sum_{i=1}^{t} \sum_{j \in R} c_i b_j \alpha^{j u_i} = \sum_{j \in R} b_j v(\alpha^j) = 0.
+$$
+That is, $e \in R$.
+
+---
+### LEMMA 2.
+Let $a$ and $A$ be positive integers, and let
+$$
+0 \leqslant w_1 < w_2 < \cdots < w_s < n.
+$$
+Then,
+1. There are $b_1, \ldots, b_s$ in $GF(q^m)$ such that
+$$
+X^A \equiv \sum_{i=1}^{s} b_i X^{A p^{a_i}} \bmod f_0(X)
+$$
+or
+$$
+X^A \equiv b_1 + \sum_{i=2}^{s} b_i X^{A p^{a(i-1)}} \bmod f_0(X),
+$$
+2. There are $b_1, \ldots, b_s$ in $GF(q^m)$ such that
+$$
+X^{A p^{a s}} \equiv \sum_{i=1}^{s} b_i X^{A p^{a(i-1)}} \bmod f_0(X)
+$$
+or
+$$
+X^{A p^{a(i-1)}} \equiv b_1 + \sum_{i=2}^{s} b_i X^{A p^{a(i-2)}} \bmod f_0(X),
+$$
+where $f_0(X) = (X - \alpha^{w_1}) \cdots (X - \alpha^{w_s})$.
+
+**Proof.**
+$X^A, X^{A p^a}, \ldots, X^{A p^{a_1}}$ cannot be linearly independent in the residue classes modulo $f_0(X)$. Hence, there exist $b_1', \ldots, b_s'$ in $GF(q^m)$ such that
+$$
+\sum_{i=1}^{s} b_i' X^{A p^{a_i}} \equiv 0 \bmod f_0(X),
+$$
+where $b_i' \neq 0$ and $0 \leqslant l < s$.
+
+Here are pages 6–10 of the document in text format:
+
+---
+
+---
+
+### THEOREM 1.
+Suppose that
+$$
+A_0 + \sum_{i=1}^{l} A_{i t_i} \notin R
+$$
+and that except for
+$$
+j_0 = \bar{j}_0, \quad j_1 = t_1, \ldots, j_l = t_l,
+$$
+we have
+$$
+\sum_{i=0}^{l} A_{i j_i} \in R \quad \text{with} \quad 0 \leqslant j_i \leqslant t_i.
+$$
+Then,
+$$
+t > \sum_{i=0}^{l} t_i.
+$$
+
+**Proof.**
+Assume that
+$$
+t \leqslant \sum_{i=0}^{l} t_i.
+$$
+Then, by **Lemma 2**, there exist $b_{ij}$'s in $GF(q^m)$ such that
+$$
+X^{A_0} \equiv \sum_{j=0}^{t_0} b_{0j} X^{A_{0j}} \bmod (X - \alpha^{u_{01}}) \cdots (X - \alpha^{u_{0t_0}}),
+$$
+$$
+X^{A_{i t_i}} \equiv \sum_{j=0}^{t_i - 1} b_{ij} X^{A_{i j}} \bmod (X - \alpha^{u_{i1}}) \cdots (X - \alpha^{u_{i t_i}}) \quad \text{for} \quad 1 \leqslant i \leqslant l,
+$$
+where $b_{0j} = 0$ and
+$$
+\{u_{ij} \mid 0 \leqslant i \leqslant l, 1 \leqslant j \leqslant t_i\} = \{u_i \mid 1 \leqslant i \leqslant t\}.
+$$
+Hence,
+$$
+\left(X^{A_0} - \sum_{j=0}^{t_0} b_{0j} X^{A_{0j}}\right) \prod_{i=1}^{l} \left(X^{A_{i t_i}} - \sum_{j=0}^{t_i - 1} b_{ij} X^{A_{i j}}\right) \equiv 0 \bmod f(X).
+$$
+Thus, the residue class
+$$
+X^{A_0 + \sum_{i=1}^{l} A_{i t_i}}
+$$
+is a linear sum of residue classes
+$$
+X^{\sum_{i=0}^{l} A_{i j_i}}
+$$
+with
+$$
+0 \leqslant j_0 \leqslant t_0, \quad 0 \leqslant j_1 \leqslant t_1, \ldots, 0 \leqslant j_l \leqslant t_l
+$$
+except for
+$$
+j_0 = \bar{j}_0, \quad j_1 = t_1, \ldots, j_l = t_l.
+$$
+From **Lemma 1**, it follows that
+$$
+A_0 + \sum_{i=1}^{l} A_{i t_i} \in R.
+$$
+This is a contradiction. Consequently,
+$$
+t > \sum_{i=0}^{l} t_i.
+$$
+
+---
+### Remark 1.
+Let $t_0 = 0$, $t_i = 1$, $A_{00} = 1$, $A_{i0} = 0$, and $A_{i1} = 1$ for $1 \leqslant i \leqslant l$. Then, we have the BCH bound.
+
+### Remark 2.
+Let $C$ be a binary cyclic code of length $2^m - 1$ whose generator polynomial is $g(X)$, and let $\alpha$ be a primitive element of $GF(2^m)$. Suppose that $g(X)$'s roots include $\alpha^e$ for all $e$ in the set
+$$
+1 + 2^{b + a}, 1 + 2^{b + 2a}, \dots, 1 + 2^{b + u a},
+$$
+where $a$ is a positive integer relatively prime to $m$, $b$ is a nonnegative integer, and $u$ is a positive integer less than $m$.
+
+1. If $v \in C$ is a codeword of weight $\leqslant u$, then $v$ is also a codeword in the $(m - 3)$rd-order cyclic Reed-Muller code of length $2^m - 1$.
+2. If $g(\alpha) = 0$, $u$ is even (or odd) and $v \in C$ is a codeword of weight $\leqslant u + 2$ (or $u + 1$), then $v$ is also a codeword in the $(m - 3)$rd-order cyclic Reed-Muller code of length $2^m - 1$.
+
+The proof is similar to the one of **Corollary 1**. **Remark 2** is a strengthened form of Berlekamp's Theorem (Berlekamp, 1970). In (2) of **Remark 2**, let either $a = 1$, $b = m - t + 1$, $u = 2t - 1$ or $a = 1$, $b = s$, $u = 2t - 1$. Then, we have Berlekamp's Theorem. His assumption that $C$ is invariant under the translational group is removed. For even $u$, this remark gives a stronger result.
+
+---
+
+Let $(a, b)$ denote the greatest common divisor of integers $a$ and $b$. Let
+$$
+u_1(m, j) = \left\lfloor \frac{m}{2(m, j)} \right\rfloor + 1,
+$$
+and if $m/(m, j)$ is odd, let
+$$
+u_2(m, j) = u_1(m, j)
+$$
+and if $m/(m, j)$ is even, let
+$$
+u_2(m, j) = \left\lceil \frac{m}{4(m, j)} \right\rceil.
+$$
+
+For $1 \leqslant j \leqslant m/2$ and $1 \leqslant u \leqslant u_1(m, j)$, let $\mathcal{B}_j^{(u)}$ be the cyclic code of length $2^m - 1$ whose generator polynomial is
+$$
+g(X) = \prod_{i=0}^{u-1} M^{(1+2^{ij})}(X),
+$$
+where $M^{(i)}(X)$ is the minimal polynomial of $\alpha^i$ and $\alpha$ is a primitive element in $GF(2^m)$.
+
+For $1 \leqslant j \leqslant m/2$ and $2 \leqslant u \leqslant u_2(m, j) + 1$, let $\mathcal{D}_j^{(u)}$ be the cyclic code of length $2^m - 1$ whose generator polynomial is
+$$
+g(X) = M^{(1)}(X) \prod_{i=0}^{u-2} M^{(1+2^{j(2i+1)})}(X).
+$$
+
+For $1 \leqslant j \leqslant m/2$ and $1 \leqslant u \leqslant u_2(m, j)$, let $\mathcal{F}_j^{(u)}$ be the cyclic code of length $2^m - 1$ whose generator polynomial is
+$$
+g(X) = \prod_{i=0}^{u-1} M^{(1+2^{j(2i+1)})}(X).
+$$
+
+For even $m$, $1 \leqslant j \leqslant m/2$ and $1 \leqslant u \leqslant \lceil m/(2(m, j)) \rceil$, let $\mathcal{H}_j^{(u)}$ be the cyclic code of length $2^m - 1$ whose generator polynomial is
+$$
+g(X) = M^{(1)}(X) \prod_{i=0}^{u-1} M^{(1+2^{m/2 - ij})}(X).
+$$
+
+For even $m$, $1 \leqslant j \leqslant m/2$ and $1 \leqslant u \leqslant \lfloor m/(2(m, j)) \rfloor$, let $\mathcal{J}_j^{(u)}$ be the cyclic code of length $2^m - 1$ whose generator polynomial is
+$$
+g(X) = \prod_{i=0}^{u-1} M^{(1+2^{m/2 - ij})}(X).
+$$
+
+The duals of $\mathcal{B}_j^{(u)}$, $\mathcal{D}_j^{(u)}$, $\mathcal{F}_j^{(u)}$, $\mathcal{H}_j^{(u)}$, and $\mathcal{J}_j^{(u)}$ will be denoted by $\mathcal{A}_j^{(u)}$, $\mathcal{C}_j^{(u)}$, $\mathcal{E}_j^{(u)}$, $\mathcal{G}_j^{(u)}$, and $\mathcal{I}_j^{(u)}$, respectively.
+
+
+Here are pages 11–15 of the document in text format:
+
+---
+
+---
+
+The duals of the even parts of $\mathcal{B}_j^{(u)}$, $\mathcal{D}_j^{(u)}$, $\mathcal{F}_j^{(u)}$, $\mathcal{H}_j^{(u)}$, and $\mathcal{J}_j^{(u)}$ will be denoted by $\bar{\mathcal{A}}_j^{(u)}$, $\bar{\mathcal{C}}_j^{(u)}$, $\bar{\mathcal{E}}_j^{(u)}$, $\bar{\mathcal{G}}_j^{(u)}$, and $\bar{\mathcal{I}}_j^{(u)}$, respectively.
+
+For even $m$, $\mathcal{A}_2^{(m/2+1)}$ is the $(0, 2)$th-order Euclidean Geometry codes (Weldon, 1967; Berlekamp, 1968).
+
+---
+### COROLLARY 1.
+
+1. If $v \in \mathcal{B}_j^{(u)}$ is a codeword of weight $\leqslant 2u$, then $v$ is also a codeword in $\mathcal{B}_{(m,j)}^{(u_1(m,j))}$.
+2. If $(m, j) = (m, 2j)$, and if $v \in \mathcal{D}_j^{(u)} \cup \mathcal{F}_j^{(u)}$ is a codeword of weight $\leqslant 2u$, then $v$ is also a codeword in $\mathcal{B}_{(m,j)}^{(u_1(m,j))}$.
+3. If $(m, j) \neq (m, 2j)$, and if $v \in \mathcal{H}_j^{(u)}$ (or $\mathcal{J}_j^{(u)}$) is a codeword of weight $\leqslant 2u$ (or $2u - 1$), then $v$ is also a codeword in $\mathcal{B}_{(m,j)}^{(u_1(m,j))}$.
+4. If $(m, j) \neq (m, 2j)$, and if $v \in \mathcal{D}_j^{(u)}$ (or $\mathcal{F}_j^{(u)}$) is a codeword of weight $\leqslant 2u$, then $v$ is also a codeword in $\mathcal{D}_{(m,j)}^{(u_2(m,j)+1)}$ (or $\mathcal{F}_{(m,j)}^{(u_2(m,j))}$).
+5. If $m$ is even and $(m, j) = (m, 2j)$, and if $v \in \mathcal{H}_j^{(u)}$ (or $\mathcal{J}_j^{(u)}$) is a codeword of weight $\leqslant 2u$ (or $2u - 1$), then $v$ is also a codeword in $\mathcal{D}_{(m,j)/2}^{(u_1(m,j)+1)}$ (or $\mathcal{F}_{(m,j)/2}^{(u_1(m,j))}$).
+
+**Proof.**
+By definition, $\mathcal{D}_j^{(u)}$ has $\alpha^{1+2^j}, \alpha^{1+2^{3j}}, \ldots, \alpha^{1+2^{(2u-3)j}}$ as roots of the generator polynomial. Hence,
+$$
+\alpha^{2^{m-j}(1+2^j)} = \alpha^{1+2^{m-j}}, \quad \alpha^{2^{m-3j}(1+2^{3j})} = \alpha^{1+2^{m-3j}}, \ldots, \quad \alpha^{2^{m-(2u-3)j}(1+2^{(2u-3)j})} = \alpha^{1+2^{m-(2u-3)j}}
+$$
+are also roots of the generator polynomial. Let $v(X)$ be the polynomial corresponding to codeword $v$. Suppose that $v(\alpha^{1+2^{j(2i+1)}}) = 0$ for all $i$ with $0 \leqslant i \leqslant m$. It is shown easily that if $(m, j) = (m, 2j)$, then
+$$
+\{j(2i+1) \mid 0 \leqslant i < m\} = \{(m, j)i \mid 0 \leqslant i < m\}
+$$
+and otherwise,
+$$
+\{j(2i + 1) \mid 0 \leqslant i < m\} = \{(m,j)(2i + 1) \mid 0 \leqslant i < m\}.
+$$
+Hence, if $(m,j) = (m,2j)$, then $v \in \mathcal{B}_{(m,j)}^{(u_1(m,j))}$ and otherwise, $v \in \mathcal{D}_{(m,j)}^{(u_2(m,j) + 1)}$.
+
+Suppose that there is an $i_0 \geqslant u - 1$ such that $v(\alpha^{1 + 2^{j(2i + 1)}}) = 0$ for $0 \leqslant i < i_0$, and $v(\alpha^{1 + 2^{j(2i_0 + 1)}}) \neq 0$. If the weight of $v$ is even, then let $p = 2$, $l = 1$, $t_0 = 1$, $A_{00} = 0$, $A_{01} = 1$, $t_1 = u + i_0$, $A_{10} = 0$, $A_1 = 2^{m - (2u - 3)j}$, and $a_1 = 2j$. Then, **Theorem 1** guarantees that the weight of $v$ is greater than $t_0 + t_1 = 1 + i_0 + u \geqslant 2u$. If the weight of $v$ is odd, then let $p = 2$, $l = 1$, $t_0 = 0$, $A_{00} = 1$, $t_1 = u + i_0$, $A_{10} = 0$, $A_1 = 2^{m - (2u - 3)j}$, and $a_1 = 2j$. By **Theorem 1**, the weight of $v$ is greater than $2u - 1$. Thus, (2) of this corollary holds for $\mathcal{D}_j^{(u)}$. Similarly, the other cases can be proved.
+
+---
+
+Let $W_2(i)$ denote the sum of the coefficients of the radix-$2$ form of $i$. For positive integers $t$ and $j$, let
+$$
+K(t,j) = \{i > 0 \mid W_2(i) > t\} \cup \{i \mid W_2(i) = t \text{ and } i \geqslant 2^{t + 2}\} \cup \{i \mid i = 2^{t + 2} - 2^h - 2^{h - l_j} - 1, \text{ where } h \text{ and } l \text{ are positive integers such that } lj < h < t + 2\}.
+$$
+Let $\alpha$ be a primitive element of $GF(2^m)$.
+
+---
+### THEOREM 2.
+Let $j$ be a positive integer which divides $m - r + 2$. If $w < 2^{m - r + 1} - 2$ with $2 \leqslant r \leqslant m - 2$ and if the roots of the generator polynomial of a binary cyclic code $C$ of length $2^m - 1$ include all $\alpha^i$ for which
+$$
+1 \leqslant i \leqslant 2w
+$$
+and
+$$
+i \notin K(m - r, j),
+$$
+then the extended code of $C$ contains no codewords of weight $w$ unless $w = 2^{m - r + 1} - 2^{l_j - 1}$ for some $l$ with $1 \leqslant l \leqslant (m - r + 2)/j$.
+
+The proof of this theorem is stated in **Appendix II**.
+
+---
+### COROLLARY 2.
+
+1. If $v \in \mathcal{G}_j^{(u)} \cup \mathcal{I}_j^{(u)}$, where $m/(m, j)$ is even or $v \in \mathcal{A}_j^{(u)} \cup \mathcal{C}_j^{(u)} \cup \mathcal{E}_j^{(u)}$, then the weight of $v$ is of the form
+$$
+2^{m - 1} + \epsilon 2^{i - 1},
+$$
+where $m/2 \leqslant i \leqslant m$, $i$ is divisible by $(m, j)$ and $\epsilon$ is either 0, 1, or $-1$.
+
+2. If $v \in \mathcal{A}_j^{(u)}$ and $v \neq 0$, then
+$$
+i \leqslant m/2 + (u - 1)j.
+$$
+
+3. If $v \in \mathcal{C}_j^{(u)}$ and $v \neq 0$, then
+$$
+i \leqslant m/2 + (2u - 3)j.
+$$
+
+4. If $v \in \mathcal{E}_j^{(u)}$ and $v \neq 0$, then
+$$
+i \leqslant m/2 + (2u - 1)j.
+$$
+
+5. If $v \in \mathcal{G}_j^{(u)} \cup \mathcal{I}_j^{(u)}$, $v \neq 0$, and $m/(m, j)$ is even, then
+$$
+i \leqslant m/2 + (u - 1)j.
+$$
+
+**Proof.**
+(1) Since $\mathcal{A}_j^{(u)}$, $\mathcal{C}_j^{(u)}$, $\mathcal{E}_j^{(u)}$, $\mathcal{G}_j^{(u)}$, and $\mathcal{I}_j^{(u)}$ are subcodes of the second-order cyclic Reed–Muller code, the weight $w$ must be of the form
+$$
+2^{m-1} + \epsilon 2^{i-1},
+$$
+where $m/2 \leqslant i \leqslant m$ and $\epsilon$ is either 0, 1, or $-1$ (Kasami, 1967).
+
+Here are pages 16–20 of the document in text format:
+
+---
+
+---
+
+If $w < 2^{m-1}$ with $m \geqslant 5$, then $w < 2^{m-1} - 2$. By **Theorem 2**, $i$ is divisible by $(m, j)$. If $m \leqslant 4$ and $w = 2^{m-1} \pm 2$, then $i$ is divisible by $(m, j)$. Assume that $w = 2^{m-1} + 2^{i-1}$, with $i > 2$ and $i$ is not divisible by $(m, j)$. Then, since $\bar{\mathcal{A}}_j^{(u)}$, $\bar{\mathcal{C}}_j^{(u)}$, $\bar{\mathcal{E}}_j^{(u)}$, $\bar{\mathcal{G}}_j^{(u)}$, and $\bar{\mathcal{I}}_j^{(u)}$ contain the all-one vector, the extended codes of $\bar{\mathcal{A}}_j^{(u)}$, $\bar{\mathcal{C}}_j^{(u)}$, $\bar{\mathcal{E}}_j^{(u)}$, $\bar{\mathcal{G}}_j^{(u)}$, and $\bar{\mathcal{I}}_j^{(u)}$ contain a codeword of weight $2^{m-1} - 2^{i-1}$. This contradicts **Theorem 2**. (This part also follows immediately from **Lemma A1**.)
+
+(2) Since $\mathcal{A}_j^{(u)}$ is a subcode of the dual of the $1 + 2^{(u-1)j-1}$ error-correcting BCH code, the Carlitz–Uchiyama bound (Berlekamp, 1970) guarantees that its minimum weight $d$ is bounded by
+$$
+d \geqslant 2^{m-1} - 2^{m/2 + (u - 1)j - 1}.
+$$
+That is, if $v \in \mathcal{A}_j^{(u)}$, then
+$$
+i \leqslant m/2 + (u - 1)j.
+$$
+Similarly, (3) and (4) can be proved.
+
+(5) The BCH bound guarantees that the minimum weight $d$ of $\mathcal{G}_j^{(u)}$ or $\mathcal{I}_j^{(u)}$ is bounded by
+$$
+d \geqslant 2^{m-1} - 2^{m/2 + (u - 1)j - 1}.
+$$
+This implies part (5), if $m/(m, j)$ is even.
+
+---
+For nonprimitive cases, the following corollary holds:
+
+---
+### COROLLARY 3.
+Let $m$ be even, let $1 \leqslant j_1 \leqslant m/2$, and let $j = (m, j_1)$.
+
+1. If $v \in \mathcal{E}_{j_1}^{(u)}$, $v \neq 0$, and $m/j$ is even, then the weight of $v$ is of the form
+$$
+2^{m-1} - (-1)^i 2^{m/2 + ij - 1}, \quad \text{with} \quad 0 \leqslant i \leqslant (2u - 1)j_1/j.
+$$
+
+2. If $v \in \mathcal{I}_{j_1}^{(u)}$, $v \neq 0$ and $m/j$ is odd, then the weight of $v$ is of the form
+$$
+2^{m-1} - (-1)^i 2^{m/2 + ij/2 - 1}, \quad \text{with} \quad 0 \leqslant i \leqslant (2u - 2)j_1/j.
+$$
+
+**Proof.**
+(1) $\mathcal{E}_{j_1}^{(u)}$ is a subcode of $\mathcal{E}_j^{(u_2(m,j))}$. Since $m/j$ is even, $2^m - 1$ is divisible by $2^j + 1$. Hence, the order of $\alpha^{1+2^j}$ is $(2^m - 1)/(2^j + 1)$. Since $2^{j(2i+1)} + 1$ is divisible by $2^j + 1$, a codeword of $\mathcal{E}_j^{(u_2(m,j))}$ is derived from a codeword of a code of length $(2^m - 1)/(2^j + 1)$ by repeating $(2^j + 1)$-times. Hence, the weight of a codeword of $\mathcal{E}_j^{(u_2(m,j))}$ is divisible by $2^j + 1$. Thus, by **Corollary 2**, part 4, the weight $w$ of a nonzero codeword of $\mathcal{E}_{j_1}^{(u)}$ is either
+$$
+w = 2^{m-1} - 2^{i-1},
+$$
+where $m/2 \leqslant i \leqslant m/2 + (2u - 1)j_1$ and $(m - i)/j$ is even, or
+$$
+w = 2^{m-1} + 2^{i-1},
+$$
+where $m/2 \leqslant i \leqslant m/2 + (2u - 1)j_1$ and $(m - i)/j$ is odd. Since $m$ is divisible by $2j$, $w$ is of the form
+$$
+2^{m-1} - (-1)^i 2^{m/2 + ij - 1}, \quad \text{with} \quad 0 \leqslant i \leqslant (2u - 1)j_1/j.
+$$
+
+(2) Since $m$ is even and $m/j$ is odd, $j$ must be even. By definition, $\mathcal{I}_j^{(u)}$ is a subcode of $\mathcal{E}_{j/2}^{(u_2(m,j/2))}$. From the proof of part (1), $w$ is of the form
+$$
+w = 2^{m-1} - (-1)^i 2^{m/2 + ij/2 - 1},
+$$
+where $0 \leqslant i \leqslant m/j$. By the BCH bound (1) for $\mathcal{I}_j^{(u)}$,
+$$
+0 \leqslant i \leqslant 2(u - 1)j_1/j.
+$$
+
+---
+## 2. SOME THEOREMS ON WEIGHT DISTRIBUTION
+
+In this section, a large subset of the codes defined in Section 1 are shown to have the same weight enumerators.
+
+Let $C$ and $C'$ be $q$-ary linear codes of the same length $n$ and the same dimension $k$, and let $C_d$ and $C_{d'}$ be the duals of $C$ and $C'$, respectively. Let $A_w$ and $A_{w'}$ denote the number of codewords of weight $w$ in $C$ and $C'$, and let $B_w$ and $B_{w'}$ denote the number of codewords of weight $w$ in $C_d$ and $C_{d'}$, respectively.
+
+---
+### LEMMA 3.
+Let $0 < w_1 < \dots < w_{2u} < n$. Suppose that $A_w = 0$ for either $0 < w < w_1$ or $w_{2u} < w < n$, and that $A_{w'} = A_w$ unless either $0 < w < w_1$, $w_{2u} < w < n$ or $w = w_i$ with $1 \leqslant i \leqslant 2u$. If $B_w = B_{w'}$ for $0 \leqslant w \leqslant 2u$, then $A_w = A_{w'}$ for all $w$.
+
+**Proof.**
+If $w_1 = 1$ and $w_{2u} = n - 1$, then this lemma follows directly from the Pless Theorem (Pless, 1963).
+
+
+Here are the remaining pages (21–40) of the document in text format, split into sections for clarity:
+
+---
+
+---
+
+Assume that $w_{2u} < n - 1$. (In case that $w_1 > 1$, almost the same argument holds.) Let $w_{2u + 1} = w_{2u} + 1 < n$. By the Pless power-moment identities (Pless, 1963; Berlekamp, 1968) for $C$ and $C'$, we have that for $t \geqslant 0$,
+$$
+\sum_{w_1 \leqslant w \leqslant w_{2u + 1}} w^t A_w = q^k \sum_{t = 0}^{t} B_t F_t^{(i)}(n) - \Delta_t - n^t A_n, \quad (2)
+$$
+$$
+\sum_{w_1 \leqslant w \leqslant w_{2u + 1}} w^t A_{w'} + \sum_{w = 1}^{w_1 - 1} w^t A_{w'} + \sum_{w > w_{2u + 1}}^{n - 1} w^t A_{w'} = q^k \sum_{t = 0}^{t} B_1' F_t^{(i)}(n) - \Delta_t - n^t A_{n'}, \quad (3)
+$$
+where $\Delta_0 = 1$, $\Delta_t = 0$ for $t \geqslant 1$ and $F_t^{(i)}(n)$ is dependent only on $i, t, q$, and $n$. Then, we have that for $0 \leqslant t \leqslant 2u$,
+$$
+\sum_{i = 1}^{2u + 1} w_i^t (A_{w_i}' - A_{w_i}) + \sum_{w = 1}^{w_1 - 1} w^t A_{w'} + \sum_{w > w_{2u + 1}}^{n - 1} w^t A_{w'} = 0.
+$$
+Let $\delta_0, \ldots, \delta_{2u}$ be the elements of the last row of the inverse matrix of
+$$
+\left[ \begin{array}{cccc}
+1 & 1 & \cdots & 1 \\
+w_1 & w_2 & & w_{2u + 1} \\
+w_1^2 & w_2^2 & & w_{2u + 1}^2 \\
+\vdots & \vdots & & \vdots \\
+(w_1)^{2u} & \cdot & & (w_{2u + 1})^{2u}
+\end{array} \right].
+$$
+Then,
+$$
+\sum_{t = 0}^{2u} \delta_t \left[ \sum_{i = 1}^{2u + 1} w_i^t (A_{w_i}' - A_{w_i}) + \sum_{w = 1}^{w_1 - 1} w^t A_{w'} + \sum_{w > w_{2u + 1}}^{n - 1} w^t A_{w'} \right] = A_{w_{2u + 1}}' + \sum_{w = 1}^{w_1 - 1} A_{w'} \sum_{t = 0}^{2u} \delta_t w^t + \sum_{w > w_{2u + 1}}^{n - 1} A_{w'} \sum_{t = 0}^{2u} \delta_t w^t = 0.
+$$
+From the known property of the Vandermonde determinant,
+$$
+\sum_{t=0}^{2u} \delta_t w^t > 0, \quad \text{for} \quad w < w_1 \quad \text{or} \quad w > w_{2u}.
+$$
+Hence, we have
+$$
+A_w' = 0 \quad \text{for} \quad 0 < w < w_1 \quad \text{or} \quad w_{2u} < w < n.
+$$
+Thus, by (2) and (3) we have **Lemma 3**.
+
+---
+Now, we have the following theorem:
+
+---
+### THEOREM 3.
+Let $j$ be a factor of $m$ such that $m/j$ is odd and $m \neq j$. For any positive integers $j_1, j_2$, and $j_3$ such that $(m, j_1) = (m, j_2) = (m, j_3) = j$, $\mathcal{A}_{j_1}^{(u)}$, $\mathcal{C}_{j_2}^{(u)}$, and $\mathcal{E}_{j_3}^{(u)}$ (or $\mathcal{B}_{j_1}^{(u)}$, $\mathcal{D}_{j_2}^{(u)}$, and $\mathcal{F}_{j_3}^{(u)}$) have the same weight enumerators as $\mathcal{A}_j^{(u)}$ (or $\mathcal{B}_j^{(u)}$), where $1 \leqslant u \leqslant u_1(m, j)$.
+
+**Proof.**
+Since $\mathcal{A}_{j_1}^{(u)}$, $\mathcal{C}_{j_2}^{(u)}$, and $\mathcal{E}_{j_3}^{(u)}$ are subcodes of $\mathcal{A}_j^{(u_1(m,j))}$, there is no codeword of weight $w$ unless $w$ is of the form
+$$
+w = 2^{m-1} + \epsilon 2^{i-1}, \tag{4}
+$$
+where $\epsilon = 0$ or $\pm 1$, $m/2 \leqslant i \leqslant m$, and $i$ is divisible by $j$ (**Corollary 2**, part (1)).
+
+By **Corollary 2**, part (2), there is no codeword of weight $w$ in $\mathcal{A}_j^{(u)}$ unless $w = 0$, $2^{m-1}$, or some number of the form $w = 2^{m-1} \pm 2^{i-1}$ with $m/2 \leqslant i \leqslant m/2 + (u - 1)j$ and $i \equiv 0 \pmod{j}$. Since $m$ is not divisible by $2j$, $w$ is either 0, $2^{m-1}$, or
+$$
+2^{m-1} \pm 2^{(m-j)/2 + ij - 1} \quad \text{with} \quad 1 \leqslant i \leqslant u - 1. \tag{5}
+$$
+By the assumption, $(m, j_1) = (m, j_2) = (m, j_3) = j = (m, 2j) = (m, 2j_2) = (m, 2j_3)$. Since $\mathcal{B}_j^{(u)}$, $\mathcal{B}_{j_1}^{(u)}$, $\mathcal{D}_{j_2}^{(u)}$, and $\mathcal{F}_{j_3}^{(u)}$ are supercodes of $\mathcal{B}_j^{(u_1(m,j))}$, **Corollary 1**, parts (1) and (2) imply that $\mathcal{B}_j^{(u)}$, $\mathcal{B}_{j_1}^{(u)}$, $\mathcal{D}_{j_2}^{(u)}$, and $\mathcal{F}_{j_3}^{(u)}$ have the same number of codewords of weight $w$ for $0 \leqslant w \leqslant 2u$. Consequently, this theorem follows from **Lemma 3**.
+
+---
+### Remark 3.
+Consider $\mathcal{E}_j^{(2)}$, where $m/(m, j)$ is odd. Then $\alpha^{1+2^{2j}} = \alpha^{(1+2^j)(1-2^j+2^{2j})}$, and $\alpha^{1+2^j}$ and $\alpha^{1+2^{2j}}$ are primitive elements of $GF(2^m)$. **Theorem 3** and weight restriction (5) imply that the cross-correlation between two maximal linear shift register sequences with recurrent polynomials $M^{(1)}(X)$ and $M^{(1-2^j+2^{2j})}(X)$ is a three-valued correlation. This was first proved by Welch (1969) by a different approach.
+
+---
+### THEOREM 4.
+Let $1 \leqslant j_1 \leqslant m/2$ and let $j = (m, j_1)$. For $1 \leqslant u \leqslant u_2(m, j)$, $\mathcal{E}_{j_1}^{(u)}$ and $\mathcal{E}_j^{(u)}$ (or $\mathcal{F}_{j_1}^{(u)}$ and $\mathcal{F}_j^{(u)}$) have the same weight enumerators.
+
+**Proof.**
+If $m/j$ is odd, then this theorem is covered by **Theorem 3**. Suppose that $m/j$ is even. By **Corollary 3**, part (1), the weight of a nonzero codeword in $\mathcal{E}_j^{(u)}$ (or $\mathcal{E}_{j_1}^{(u)}$) is of the form
+$$
+2^{m-1} - (-1)^i 2^{m/2 + ij - 1},
+$$
+where $0 \leqslant i \leqslant 2u - 1$ (or $0 \leqslant i \leqslant (2u - 1)j_1/j$). **Corollary 1**, part (4) shows that $\mathcal{F}_j^{(u)}$ and $\mathcal{F}_{j_1}^{(u)}$ have the same number of codewords of weight $w$ for $0 \leqslant w \leqslant 2u$. Thus, **Theorem 4** follows from **Lemma 3**.
+
+---
+We use a version of the theorem due to McEliece (1970). Let $C$ be a binary cyclic code of length $n = 2^m - 1$ whose check polynomial's roots are $\{\alpha^i \mid i \in Q\}$. Let $S_0, S_1, \ldots, S_{n-1}$ be elements of $GF(2^m)$ such that
+$$
+S_i = 0, \quad \text{unless } i \in Q, \tag{6}
+$$
+$$
+S_{2i} = S_i^2, \tag{7}
+$$
+where suffices are to be taken as modulo $n$.
+
+---
+### THEOREM (McEliece).
+Suppose that for all $\nu < l$ and for all $S_0, S_1, \ldots, S_{n-1}$ satisfying conditions (6) and (7),
+$$
+\sum_{i_1 + i_2 + \cdots + i_\nu = 0} S_{i_1} S_{i_2} \cdots S_{i_\nu} = 0.
+$$
+Then, the weight of a codeword of $C$ is divisible by $2^{l-1}$, and the number of codewords of $C$ whose weight is divisible by $2^l$ is equal to the number of $n$-tuples $(S_0, \ldots, S_{n-1})$ which satisfy the following condition besides (6) and (7):
+$$
+\sum_{i_1 + i_2 + \cdots + i_l = 0 \pmod{n}} S_{i_1} S_{i_2} \cdots S_{i_l} = 0.
+$$
+
+Let $l$ have the same meaning as in the McEliece Theorem, and let $Q'$ be the set of those $i$'s in $Q$ for which there exist $i_2, \ldots, i_l$ in $Q$ such that
+$$
+i + i_2 + \cdots + i_l \equiv 0 \bmod 2^m - 1.
+$$
+Let $C'$ be a cyclic code of length $2^m - 1$ whose check polynomial's roots are $\{\alpha^i \mid i \in Q'\}$. Then, the following simple corollary holds:
+
+---
+### COROLLARY 4.
+$C$ and $C'$ have the same ratio of the number of codewords whose weight is divisible by $2^l$ to the total number of codewords.
+
+For example, if $m$ is even, then $\mathcal{G}_j^{(u)}$ and $\mathcal{I}_j^{(u)}$ have the same ratio of the number of codewords with weight $2^{m-1} \pm 2^{m/2 - 1}$ to the total number of codewords.
+
+There are some questions. For $j_1$ and $j_2$ such that $(m, j_1) = (m, j_2)$ and $m / (m, j_1)$ is even, do $\mathcal{A}_{j_1}^{(u)}$ and $\mathcal{A}_{j_2}^{(u)}$ (or $\mathcal{G}_{j_1}^{(u)}$ and $\mathcal{G}_{j_2}^{(u)}$, or $\mathcal{I}_{j_1}^{(u)}$ and $\mathcal{I}_{j_2}^{(u)}$) have the same weight distribution? Are the codes stated in **Theorems 3** or **4** isomorphic to each other under some permutation of the coordinates?
+
+Very little is known on the weight structure of subcodes of the 3rd or higher-order Reed-Muller code (or supercodes of the $(m - 4)$th or lower-order Reed-Muller code). The following remark on the minimum weight codewords is a strengthened version of **Theorem 11** in (Kasami-Lin-Peterson, 1968a).
+
+---
+### Remark 4.
+Let $C$ be a $p$-ary cyclic code of length $p^{ms} - 1$ with generator polynomial $g(X)$, let $\beta$ be a primitive element of $GF(p^{ms})$, and let $1 \leqslant c < m$. If $g(\beta^i) = 0$ for every $i$ such that
+$$
+0 < i < 2 (p^{(m - c)s} - 1),
+$$
+$$
+W_{p^s}(i) < (m - c)(p^s - 1),
+$$
+then any codeword of minimum weight $p^{(m - c)s} - 1$ is a scalar multiple of the incidence vector of an $(m - c)$-flat through the origin in $EG(m, p^s)$.
+
+This remark is proved by showing that the reciprocal of the locator polynomial of a codeword of weight $p^{(m - c)s} - 1$ is an affine polynomial.
+
+---
+---
+## 3. WEIGHT ENUMERATORS
+
+In this section, weight enumerator formulas will be derived for $\mathcal{E}_j^{(u)}$ with all possible $u$ and $j$, for $\mathcal{A}_j^{(u)}$ and $\mathcal{C}_j^{(u)}$ with odd $m / (m,j)$, for $\mathcal{A}_j^{(u)}$ and $\mathcal{G}_j^{(u)}$, where $m$ is divisible by $j$ and $m / j$ is even, and for $\mathcal{I}_j^{(u)}$, where $m$ is divisible by $j$. By **Theorems 3** and **4**, we assume without loss of generality that $m$ is divisible by $j$. Weight enumerator formulas for $\mathcal{A}_1^{(u)}$ and $\mathcal{C}_1^{(u)}$ with odd $m$ and for $\mathcal{A}_1^{(u)}$ and $\mathcal{G}_1^{(u)}$ with even $m$ were derived by Berlekamp (1970). Except for these two cases, the following results are new.
+
+---
+### 3.1 Weight Enumerators for $\mathcal{A}_j^{(u)}$, $\mathcal{C}_j^{(u)}$, and $\mathcal{E}_j^{(u)}$ with Odd $m/j$
+
+Let $j$ be a factor of $m$ such that $m/j$ is an odd integer greater than 1. By **Theorem 3**, $\mathcal{A}_j^{(u)}$, $\mathcal{C}_j^{(u)}$, and $\mathcal{E}_j^{(u)}$ have the same weight enumerators. Formulas for weight enumerators for $\mathcal{A}_j^{(u)}$ with $1 \leqslant u \leqslant u_1(m,j)$ will be derived below. $A_w^{(u)}$ and $B_w^{(u)}$ will denote the number of codewords of weight $w$ in $\vec{\mathcal{A}}_j^{(u)}$ and $\mathcal{B}_j^{(u)}$, respectively. $\mathcal{A}_j^{(u)}$ is the even part of $\vec{\mathcal{A}}_j^{(u)}$.
+
+Here are the next 5 pages (continuing from **Section 3.1** on weight enumerators for \(\mathcal{A}_j^{(u)}\), \(\mathcal{C}_j^{(u)}\), and \(\mathcal{E}_j^{(u)}\) with odd \(m/j\)):
+
+---
+
+---
+
+Since \(\vec{\mathcal{A}}_j^{(u)}\) is invariant under the affine group of permutations, the following equation due to Prange holds (Berlekamp, 1968):
+\[
+A_{2i - 1}^{(u)} = A_{2^m - 2i}^{(u)} = \frac{2i \cdot A_{2i}^{(u)}}{2^m - 2i}. \tag{8}
+\]
+Hence, it is sufficient to find \(A_{2i}^{(u)} + A_{2^m - 2i}^{(u)}\). For \(1 \leqslant i \leqslant u - 1\), let
+\[
+a_i^{(u)} = 2^{-mu} \left( A_{2^{m-1} - 2^{(m-j)/2 + ij - 1}}^{(u)} + A_{2^{m-1} + 2^{(m-j)/2 + ij - 1}}^{(u)} \right). \tag{9}
+\]
+(Refer to (5).)
+
+By the Pless translated power moment identities with center \(2^{m-1}\) (Pless, 1963; Berlekamp, 1968), we have that for \(1 \leqslant u < u_1(m, j)\) and \(t \geqslant 1\),
+\[
+2^{2mt - mu} + \sum_{i=1}^{u} 2^{(m + 2ij - j)t} a_i^{(u)} = \sum_{i=0}^{2t} B_i^{(u)} F_{2i}^{(t)}(2^m - 1), \tag{10}
+\]
+\[
+2^{2mt - m(u + 1)} + \sum_{i=1}^{u} 2^{(m + 2ij - j)t} a_i^{(u + 1)} = \sum_{i=0}^{2t} B_i^{(u + 1)} F_{2i}^{(t)}(2^m - 1). \tag{11}
+\]
+
+By **Corollary 1**, \(B_i^{(u)} = B_i^{(u + 1)}\) for \(0 \leqslant i \leqslant 2u\). Hence, for \(1 \leqslant t \leqslant u\) we have
+\[
+\sum_{i=1}^{u} 2^{2ijt} \left( a_i^{(u + 1)} - a_i^{(u)} \right) = 2^{(m + j)t - mu} (1 - 2^{-m}). \tag{12}
+\]
+
+By solving simultaneous equations above and using the formula for the Vandermonde determinant, we have
+\[
+a_i^{(u + 1)} - a_i^{(u)} = 2^{-mu - (2i - 1)j} (2^m - 1) \prod_{t=1}^{i-1} \frac{(2^{m + j} - 2^{2tj})}{(2^{2ij} - 2^{2tj})} \prod_{t=i+1}^{u} \frac{(2^{m + j} - 2^{2tj})}{(2^{2ij} - 2^{2tj})}.
+\]
+This can be rewritten as:
+\[
+= (-1)^{u - i} 2^{-mu - (2i - 1)j + (u - i + 1)(u - i)j} (2^m - 1)
+\times \prod_{t=1}^{i-1} \frac{1 - 2^{m + j - 2jt}}{1 - 2^{2jt}} \prod_{t=1}^{u - i} \frac{1 - 2^{m - (2i + 2t - 1)j}}{1 - 2^{2jt}}.
+\]
+
+For the convenience of notation, let
+\[
+\left[ \begin{array}{c} l \\ h \end{array} \right]_j = \prod_{t=1}^{h} \frac{1 - 2^{2j(l + 1 - t)}}{1 - 2^{2jt}}, \quad \text{for} \quad h > 0,
+\]
+\[
+= 1, \quad \text{for} \quad h = 0,
+\]
+where \(2l\) and \(h\) are nonnegative integers. Then, for \(0 \leqslant h < u_1(m,j) - i\),
+\[
+a_i^{(i + h + 1)} - a_i^{(i + h)} = (-1)^h 2^{-mi - (2i - 1)j - (m - (h + 1)j)h} (2^m - 1) \left[ \begin{array}{c} (m - j)/(2j) \\ i - 1 \end{array} \right]_j \left[ \begin{array}{c} (m - j)/(2j) - i \\ h \end{array} \right]_j. \tag{13}
+\]
+
+Since \(a_i^{(i)} = 0\), we have
+\[
+2^{m(i + 1)} a_i^{(i + 1)} = 2^{m - (2i - 1)j} (2^m - 1) \left[ \begin{array}{c} (m - j)/(2j) \\ i - 1 \end{array} \right]_j. \tag{14}
+\]
+
+For \(j = 1\), this formula was derived by Berlekamp (1970) in a different way. By (13), we have that for \(1 \leqslant i \leqslant u_1(m,j)\) and \(0 \leqslant h < u_1(m,j) - i\),
+\[
+a_i^{(i + h + 1)} = 2^{-mi - (2i - 1)j} (2^m - 1) \left[ \begin{array}{c} (m - j)/(2j) \\ i - 1 \end{array} \right]_j
+\times \left( 1 + \sum_{t=1}^{h} (-2)^{-mt} 2^{t(t + 1)j} \left[ \begin{array}{c} (m - j)/(2j) - i \\ t \end{array} \right]_j \right). \tag{15}
+\]
+
+A compact form of the last factor of (15) is unknown except for \(u = u_1(m,j)\) (refer to **Theorem A1**).
+
+---
+---
+### 3.2 Weight Enumerators for Nonprimitive Cases
+
+Let \(j\) be a factor of \(m\) such that \(m/j \equiv 2 \mod 4\). \(E_w^{(u)}\), \(F_w^{(u)}\), \(I_w^{(u)}\), and \(J_w^{(u)}\) will denote the number of codewords of weight \(w\) in \(\mathcal{E}_j^{(u)}\), \(\mathcal{F}_j^{(u)}\), \(\mathcal{I}_{2j}^{(u)}\), and \(\mathcal{J}_{2j}^{(u)}\), respectively.
+
+Referring to **Corollary 3**, let
+\[
+a_i^{(u)} = 2^{-k} E_{2^{m-1} - (-1)^i 2^{m/2 + ij - 1}}
+\]
+for \(1 \leqslant u \leqslant \lfloor m/(4j) \rfloor\) and \(0 \leqslant i \leqslant 2u - 1\), where \(k = mu\) for \(1 \leqslant u < \lfloor m/(4j) \rfloor\) and \(k = m(u - 1/2)\) for \(u = \lfloor m/(4j) \rfloor\), and let
+\[
+b_i^{(u)} = 2^{-m(u - 1/2)} I_{2^{m-1} - (-1)^i 2^{m/2 + ij - 1}}
+\]
+for \(1 \leqslant u \leqslant \lfloor m/(4j) \rfloor\) and \(0 \leqslant i \leqslant 2u - 2\).
+
+From **Corollary 1**, parts (4) and (5), it follows that
+\[
+F_w^{(u)} = J_w^{(u)} \quad \text{for} \quad 0 \leqslant w \leqslant 2u - 1.
+\]
+
+Use the Pless translated power moment identities with center \(2^{m-1}\). Then, for \(1 \leqslant u < m/(4j)\),
+\[
+\sum_{i=0}^{2u} (-2)^{ijt} (b_i^{(u+1)} - a_i^{(u)}) = 2^{mt/2 - m(u + 1/2)} (2^{m/2} - 1) \quad \text{for} \quad 0 \leqslant t \leqslant 2u, \tag{16}
+\]
+\[
+\sum_{i=0}^{2u} (-2)^{ijt} (b_i^{(u+1)} - b_i^{(u)}) = 2^{mt/2 - m(u + 1/2)} (2^m - 1) \quad \text{for} \quad 0 \leqslant t \leqslant 2u - 1, \tag{17}
+\]
+where \(a_{2u}^{(u)} = b_{2u}^{(u)} = b_{2u-1}^{(u)} = 0\).
+
+By solving (16), \(b_i^{(u+1)} - a_i^{(u)}\) can be found. Since \(a_{2u}^{(u)} = 0\), \(b_{2u}^{(u+1)}\) can be found. Substitute this value for \(b_{2u}^{(u+1)}\) in (17), and solve (17). By a similar method to the one used in **Section 3.1**, each \(b_i^{(u)}\) can be found. Then, \(a_i^{(u)}\) with \(1 \leqslant u < m/(4j)\) can be determined. For \(u = \lfloor m/(4j) \rfloor\), \(a_i^{(u)} = b_i^{(u)}\) by definition. Thus, formulas for \(a_i^{(u)}\) and \(b_i^{(u)}\) can be derived.
+
+---
+---
+### 3.3 Weight Enumerators for \(\mathcal{A}_j^{(u)}\) and \(\mathcal{G}_j^{(u)}\) with Even \(m/j\)
+
+Let \(j\) be a factor of \(m\) such that \(m/j\) is even. \(A_w^{(u)}\) and \(G_w^{(u)}\) will denote the number of codewords of weight \(w\) in \(\bar{\mathcal{A}}_j^{(u)}\) and \(\bar{\mathcal{G}}_j^{(u)}\), respectively. Refer to **Corollary 2**, parts (2) and (5).
+
+
+Here are the next 5 pages (continuing from **Section 3.3** on weight enumerators for \(\mathcal{A}_j^{(u)}\) and \(\mathcal{G}_j^{(u)}\) with even \(m/j\)):
+
+---
+
+---
+
+For \(1 \leq u \leq m/(2j)\) and \(0 \leq i \leq u\), let
+\[
+a_i^{(u)} = 2^{-mu} \left( A_{2^{m-1} - 2^{m/2 + ij - 1}}^{(u)} + A_{2^{m-1} + 2^{m/2 + ij - 1}}^{(u)} \right),
+\]
+\[
+b_i^{(u)} = 2^{-m(u + 1/2)} \left( G_{2^{m-1} - 2^{m/2 + ij - 1}}^{(u)} + G_{2^{m-1} + 2^{m/2 + ij - 1}}^{(u)} \right).
+\]
+
+By definition, \(a_i^{(1 + m/(2j))} = b_i^{(m/(2j))}\). Let \(a_i = a_i^{(1 + m/(2j))}\). Then, the following equations are derived by a similar method to the one used for (12):
+
+\[
+\sum_{i=0}^{u-2} 2^{2ijt} \left( a_i^{(u)} - a_i^{(u-1)} \right) = 2^{mt - mu} (2^m - 1) - 2^{2(u-1)jt} a_{u-1}^{(u)}
+\]
+for \(2 \leq u \leq m/(2j)\) and \(1 \leq t < u\),
+
+\[
+\sum_{i=0}^{u-1} 2^{2ijt} \left( b_i^{(u)} - a_i^{(u)} \right) = 2^{mt - m(u + 1/2)} (2^{m/2} - 1)
+\]
+for \(1 \leq u \leq m/(2j)\) and \(1 \leq t \leq u\),
+
+\[
+\sum_{i=0}^{u-1} 2^{2ijt} \left( a_i^{(u)} - a_i \right) = -2^{mt - mu} + \sum_{i=u}^{m/(2j)} 2^{2ijt} a_i
+\]
+for \(1 \leq u \leq m/(2j)\) and \(1 \leq t \leq u\).
+
+We first derive a formula for \(a_{u-1}^{(u)}\) from (20) and **Theorem A1**. Then, a formula for \(a_i^{(u)}\) will be derived by using the formula for \(a_{u-1}^{(u)}\) and (18). By solving Eq. (20), we have
+
+\[
+a_i^{(u)} - a_i = (-1)^{u-i} 2^{-2ij/2 + m(1-u) + (u-i)(u-i-1)j/2}
+\begin{bmatrix}
+m/(2j) \\
+i
+\end{bmatrix}_j
+\begin{bmatrix}
+m/(2j) - 1 - i \\
+u - 1 - i
+\end{bmatrix}_j
++ (-1)^{u-1-i} 2^{-2ij/2 + (u-i)(u-i-1)j/2} \sum_{t=u}^{m/(2j)} 2^{2jt}
+\begin{bmatrix}
+t \\
+i
+\end{bmatrix}_j
+\begin{bmatrix}
+t - 1 - i \\
+u - 1 - i
+\end{bmatrix}_j a_t.
+\tag{21}
+\]
+
+For \(i = u - 1\),
+
+\[
+a_{u-1}^{(u)} = -2^{-(m+2j)(u-1)} \begin{bmatrix}
+m/(2j) \\
+u-1
+\end{bmatrix}_j + 2^{m-2(u-1)j} \sum_{t=0}^{m/(2j)-u} 2^{-2jt} \begin{bmatrix}
+m/(2j) - t \\
+u-1
+\end{bmatrix}_j a_{m/(2j)-t}.
+\]
+
+From **Theorem A1** in **Appendix I**,
+
+\[
+2^{m(m+j)/(2j)} a_{m/(2j)-t} = 2^{t(t+1)j/2} (-1)^t \begin{bmatrix}
+m/(2j) \\
+t
+\end{bmatrix}_j
+\begin{bmatrix}
+(m-j)/(2j) \\
+t
+\end{bmatrix}_j [t]_j,
+\tag{22}
+\]
+where \([t]_j = \prod_{i=1}^t (1 - 2^{2ij})\) if \(t > 0\) and \([0]_j = 1\). Hence,
+
+\[
+2^{m-2(u-1)j} \sum_{t=0}^{m/(2j)-u} 2^{-2jt} \begin{bmatrix}
+m/(2j) - t \\
+u-1
+\end{bmatrix}_j a_{m/(2j)-t}
+= 2^{m - 2(u-1)j + m(m+j)/(2j)} \sum_{t=0}^{m/(2j)-u} (-1)^t 2^{t(t-1)j/2}
+\begin{bmatrix}
+m/(2j) - t \\
+u-1
+\end{bmatrix}_j
+\begin{bmatrix}
+m/(2j) \\
+t
+\end{bmatrix}_j
+\begin{bmatrix}
+(m-j)/(2j) \\
+t
+\end{bmatrix}_j [t]_j.
+\]
+
+By an identity due to Berlekamp (1970), this equals
+
+\[
+2^{-(m+j)(u-1)} \begin{bmatrix}
+m/(2j) \\
+u-1
+\end{bmatrix}_j.
+\]
+
+Thus, we have
+
+\[
+a_{u-1}^{(u)} = 2^{-(m+2j)(u-1)} (2^{j(u-1)} - 1) \begin{bmatrix}
+m/(2j) \\
+u-1
+\end{bmatrix}_j.
+\tag{23}
+\]
+
+For \(j = 1\), this formula was derived by Berlekamp (1970).
+
+Here are the next 5 pages (continuing from **Section 3.3**):
+
+---
+
+---
+
+By solving (18),
+\[
+a_i^{(i+h+1)} - a_i^{(i+h)} = (-1)^h 2^{-(m+2j)i - (m-(h+1)j)h} \left( - (2^m - 1) \begin{bmatrix} m/(2j) \\ i \end{bmatrix}_j \begin{bmatrix} m/(2j) - i - 1 \\ h - 1 \end{bmatrix}_j + (2^{(i+h)j} - 1) \begin{bmatrix} i + h \\ i \end{bmatrix}_j \begin{bmatrix} m/(2j) \\ i + h \end{bmatrix}_j \right)
+\]
+\[
+= (-1)^h 2^{-(m+2j)i - (m-(h+1)j)h} \begin{bmatrix} m/(2j) \\ i \end{bmatrix}_j \begin{bmatrix} m/(2j) - i - 1 \\ h - 1 \end{bmatrix}_j \left( \frac{(2^{m-2ij} - 1)(2^{(i+h)j} - 1)}{2^{2hj} - 1} - (2^m - 1) \right).
+\]
+
+Hence, for \(1 \leq h \leq m/(2j) - i\) and \(0 \leq i < m/(2j)\),
+\[
+a_i^{(i+h)} = 2^{-(m+2j)i} \begin{bmatrix} m/(2j) \\ i \end{bmatrix}_j \left( 2^{ij} - 1 + \sum_{t=1}^{h-1} (-1)^t 2^{-(m-(t+1)j)t} \begin{bmatrix} m/(2j) - i - 1 \\ t - 1 \end{bmatrix}_j \left( \frac{(2^{m-2ij} - 1)(2^{(i+t)j} - 1)}{(2^{2jt} - 1)} - 2^m + 1 \right) \right).
+\tag{24}
+\]
+
+By (19), we have
+\[
+b_i^{(i+h)} - a_i^{(i+h)} = (-1)^{h+1} 2^{-(m+2j)i + m/2 - (m-(h+1)j)h} (2^{m/2} - 1) \begin{bmatrix} m/(2j) \\ i \end{bmatrix}_j \begin{bmatrix} m/(2j) - i - 1 \\ h - 1 \end{bmatrix}_j,
+\]
+for \(1 \leq h \leq m/(2j) - i\) and \(0 \leq i < m/(2j)\). \tag{25}
+
+A formula for \(b_i^{(i+h)}\) follows from (24) and (25).
+
+---
+---
+### 3.4 Weight Enumerators for \(\mathcal{I}_j^{(u)}\) with Even \(m/j\)
+
+Suppose that \(m/j\) is even. By **Corollary 2**, part (5), the weight of a codeword in \(\mathcal{G}_1^{(u)} \cup \mathcal{I}_1^{(u)}\) is of the form
+\[
+2^{m-1} + \epsilon 2^{m/2 + \epsilon j - 1},
+\]
+where \(\epsilon\) is either 0, 1, or \(-1\) and \(0 \leq i \leq u - 1\). Let \(G_w\) (or \(I_w\)) denote the number of codewords of \(\mathcal{G}_j^{(u)}\) (or \(\mathcal{I}_j^{(u)}\)) of weight \(w\), and for \(0 \leq i \leq u - 1\) let
+\[
+a_i = 2^{-mu - m/2} (G_{2^{m-1} + 2^{m/2 + ij - 1}} + G_{2^{m-1} - 2^{m/2 + ij - 1}}),
+\]
+\[
+a_i' = 2^{-mu - m/2} (G_{2^{m-1} + 2^{m/2 + ij - 1}} - G_{2^{m-1} - 2^{m/2 + ij - 1}}),
+\]
+\[
+b_i = 2^{-mu + m/2} (I_{2^{m-1} + 2^{m/2 + ij - 1}} + I_{2^{m-1} - 2^{m/2 + ij - 1}}),
+\]
+\[
+b_i' = 2^{-mu + m/2} (I_{2^{m-1} + 2^{m/2 + ij - 1}} - I_{2^{m-1} - 2^{m/2 + ij - 1}}).
+\]
+
+By **Corollary 1**, part (3), the dual codes of \(\mathcal{G}_j^{(u)}\) and \(\mathcal{I}_j^{(u)}\) have the same number of codewords of weight \(w\) for \(0 \leq w \leq 2u - 1\).
+
+Here are the next 5 pages (continuing from **Section 3.4** on weight enumerators for \(\mathcal{I}_j^{(u)}\) with even \(m/j\)):
+
+---
+
+---
+
+Hence, by subtracting the Pless translated power moment identities with center \(2^{m-1}\) for \(\mathcal{I}_j^{(u)}\) from those for \(\mathcal{G}_j^{(u)}\), we have that
+\[
+2^{2ml - mu} (2^{-m/2} - 2^{m/2}) + \sum_{i=0}^{u-1} 2^{(m+2ij)t} (a_i - b_i) = 0,
+\]
+for \(1 \leq t \leq u - 1\),
+
+\[
+-2^{2ml + m - mu} (2^{-m/2} - 2^{m/2}) + \sum_{i=0}^{u-1} 2^{(m/2 + ij)(2t+1)} (a_i' - b_i') = 0,
+\]
+for \(0 \leq t \leq u - 1\).
+
+By **Corollary 4**, we have
+\[
+a_0 = b_0.
+\]
+
+Since the coefficient matrices are nonsingular, \(a_i - b_i\) and \(a_i' - b_i'\) are determined uniquely by the linear equations above. Since \(a_i\) is found in **Section 3.3** and \(a_i'\) is derived from \(a_i\) by using the Prange symmetry relation, \(b_i\) and \(b_i'\) can be found.
+
+---
+---
+## APPENDIX I: WEIGHT ENUMERATORS FOR \(\mathcal{A}_j^{(u_1(m,j))}\)
+
+\(\mathcal{A}_1^{(u_1(m,1))}\) is the even part of the 2nd-order cyclic Reed-Muller codes, and for even \(m\), \(\mathcal{A}_2^{(u_1(m,2))}\) is the \((0,2)\)th-order Euclidean Geometry codes. **Theorem A1** is an extension of the results by Berlekamp and Sloane (1970).
+
+Let \(j\) be a factor of \(m\) and \(j \neq m\). Let \(m/j = \bar{m}\). By definition, \(\alpha^h\) is a root of the generator polynomial of \(\mathcal{B}_j^{(u_1(m,j))}\) if and only if
+\[
+\min_{0 \leq i < j} W_{2^j}(j2^i) < 3.
+\]
+
+This implies that \(\mathcal{B}_j^{(u_1(m,j))}\) is a polynomial code, that is, the binary subfield subcode of \((\bar{m}(2^j - 1) - 3)\)rd-order generalized Reed-Muller code of length \(2^m - 1\) over \(GF(2^j)\) (Kasami-Lin-Peterson, 1968b). Therefore, the extended code of \(\mathcal{A}_j^{(u_1(m,j))}\), denoted by \(\mathcal{A}_j\), can be characterized as follows.
+
+Let \(P_{\bar{m}}\) be the set of polynomials of variables \(X_1, \ldots, X_{\bar{m}}\) of degree less than 3 over \(GF(2^j)\). For \(f(X_1, \ldots, X_{\bar{m}}) \in P_{\bar{m}}\), let \(v(f)\) be the binary vector of length \(2^m\) whose first component is \(f(0, \ldots, 0)\) and whose \(i\)-th component with \(1 \leq i < 2^m\) is \(f(a_{i1}, a_{i2}, \ldots, a_{i\bar{m}})\), where \(\beta^{i-1} = \sum_{h=1}^{\bar{m}} a_{ih} \beta^{h-1}\) with \(a_{ih} \in GF(2^j)\) and \(\beta\) is a primitive element of \(GF((2^j)^{\bar{m}})\).
+
+For \(f \in P_{\bar{m}}\), \(v(f)\) is orthogonal to every codeword of the extended code of \(\mathcal{B}_j^{(u_1(m,j))}\) (Kasami-Lin-Peterson, 1968b). Hence \(v(\text{Tr}(f))\) is orthogonal to every codeword of the extended code of \(\mathcal{B}_j^{(u_1(m,j))}\), where \(\text{Tr}(f) = f + f^2 + \dots + f^{2^{j-1}}\). That is,
+\[
+\mathcal{A}_j \supseteq \{v(\text{Tr}(f)) \mid f \in P_{\bar{m}}\}.
+\]
+
+Let \(\bar{P}_{\bar{m}}\) be the set of those polynomials in \(P_{\bar{m}}\) which are of the form
+\[
+c_0 + \sum_i c_i X_i + \sum_{i < h} c_{ih} X_i X_h,
+\]
+where \(c_0 \in GF(2)\), \(c_i \in GF(2^j)\), and \(c_{ih} \in GF(2^j)\).
+
+Here are the next 5 pages (continuing from **Appendix I**):
+
+---
+
+---
+
+Since \(\text{Tr}(cX^2) = \text{Tr}(c'X)\) with \(c = c'^2\) and \(\text{Tr}(c) \in GF(2)\) for \(c \in GF(2^j)\),
+\[
+\{v(\text{Tr}(f)) \mid f \in P_{\bar{m}}\} = \{v(\text{Tr}(f)) \mid f \in \bar{P}_{\bar{m}}\}.
+\]
+
+If \(f_1 \in \bar{P}_{\bar{m}}\), \(f_2 \in \bar{P}_{\bar{m}}\) and \(f_1 \neq f_2\), then \(\text{Tr}(f_1) \neq \text{Tr}(f_2)\) and, therefore, \(v(\text{Tr}(f_1)) \neq v(\text{Tr}(f_2))\). Since the dimension of \(\{v(\text{Tr}(f)) \mid f \in \bar{P}_{\bar{m}}\}\) is \(1 + \bar{m}(\bar{m} + 1)j/2\), we have
+\[
+\mathcal{A}_j = \{v(\text{Tr}(f)) \mid f \in \bar{P}_{\bar{m}}\}.
+\]
+
+Let \(Y_i = b_{i0} + \sum_{h=1}^{\bar{m}} b_{ih} X_h\) with \(1 \leq i \leq m/j\) and \(b_{ih} \in GF(2^j)\) be an invertible affine transformation. For \(f \in P_{\bar{m}}\), let \(g = f(Y_1, Y_2, \ldots, Y_{\bar{m}}) \in P_{\bar{m}}\), and \(v(\text{Tr}(g))\) has the same weight as \(v(\text{Tr}(f))\).
+
+It follows from **Corollary 16.351** (Berlekamp, 1968) that any polynomial in \(P_{\bar{m}}\) can be reduced by an invertible affine transformation of its variables and by substituting \(X_i\) and \(\text{Tr}(c_0)\) for \(X_i^2\) and the constant term \(c_0\), respectively, to one of the canonical forms:
+
+\[
+X_1 X_2 + X_3 X_4 + \dots + X_{2i-1} X_{2i}, \quad 0 \leq i \leq \bar{m}/2, \tag{A1}
+\]
+\[
+X_1 X_2 + X_3 X_4 + \dots + X_{2i-1} X_{2i} + X_{2i+1}, \quad 0 \leq i < \bar{m}/2, \tag{A2}
+\]
+\[
+X_1 X_2 + X_3 X_4 + \dots + X_{2i-1} X_{2i} + 1, \quad 0 \leq i \leq \bar{m}/2. \tag{A3}
+\]
+
+Let \(P_{\bar{m},i}^{(1)}\), \(P_{\bar{m},i}^{(2)}\), and \(P_{\bar{m},i}^{(3)}\) denote the sets of those polynomials in \(\bar{P}_{\bar{m}}\) which can be reduced to the forms **(A1)**, **(A2)**, and **(A3)**, respectively, by an invertible affine transformation of its variables and by substituting \(X_i\) for \(X_i^2\) and \(\text{Tr}(c_0)\) for a constant term \(c_0\).
+
+---
+### LEMMA A1.
+The weight of
+\[
+v(\text{Tr}(f)) =
+\begin{cases}
+2^{\bar{m}j - 1} - 2^{\bar{m}j - ij - 1} & \text{for } f \in P_{\bar{m},i}^{(1)}, \\
+2^{\bar{m}j - 1} & \text{for } f \in P_{\bar{m},i}^{(2)}, \\
+2^{\bar{m}j - 1} + 2^{\bar{m}j - ij - 1} & \text{for } f \in P_{\bar{m},i}^{(3)}.
+\end{cases}
+\]
+
+**Proof.**
+By induction on \(i\), this lemma will be proved. The number of \((X_1, X_2)\) such that \(\text{Tr}(X_1 X_2) = 1\) (or 0) with \(X_1 \in GF(2^j)\) and \(X_2 \in GF(2^j)\) is \(2^{j-1}(2^j - 1)\) (or \(2^{2j-1} + 2^{j-1}\)).
+
+
+Here are the next 5 pages (continuing from **Lemma A1** in **Appendix I**):
+
+---
+
+---
+
+By the induction hypothesis, the number of \((X_3, X_4, \ldots, X_{\bar{m}})\) such that
+\[
+\text{Tr}(X_3 X_4 + \cdots + X_{2i-1} X_{2i}) = 1 \quad (\text{or } 0)
+\]
+is
+\[
+2^{\bar{m}j - 2j - 1} - 2^{\bar{m}j - j - ij - 1} \quad (\text{or } 2^{\bar{m}j - 2j - 1} + 2^{\bar{m}j - j - ij - 1}).
+\]
+
+Since
+\[
+\text{Tr}(X_1 X_2 + X_3 X_4 + \cdots + X_{2i-1} X_{2i}) = \text{Tr}(X_1 X_2) + \text{Tr}(X_3 X_4 + \cdots + X_{2i-1} X_{2i}),
+\]
+the number of \((X_1, \ldots, X_{\bar{m}})\) such that
+\[
+\text{Tr}(X_1 X_2 + \cdots + X_{2i-1} X_{2i}) = 1
+\]
+is
+\[
+(2^{2j-1} - 2^{j-1})(2^{\bar{m}j - 2j - 1} + 2^{\bar{m}j - j - ij - 1}) + (2^{2j-1} + 2^{j-1})(2^{\bar{m}j - 2j - 1} - 2^{\bar{m}j - j - ij - 1}) = 2^{\bar{m}j - 1} - 2^{\bar{m}j - ij - 1}.
+\]
+
+The other cases can be proved similarly.
+
+Now let
+\[
+f = X_1 X_2 + \cdots + X_{2i-1} X_{2i} + c_0 + c_1 X_1 + \cdots + c_{\bar{m}} X_{\bar{m}},
+\]
+where \(c_0 \in GF(2)\) and \(c_h \in GF(2^j)\). Then, \(f \in P_{\bar{m},i}^{(1)}\) (or \(P_{\bar{m},i}^{(3)}\)) if and only if \(c_h = 0\) for \(2i < h \leq \bar{m}\) and
+\[
+\text{Tr}(c_0 + c_1 c_2 + \cdots + c_{2i-1} c_{2i}) = 0 \quad (\text{or } 1),
+\]
+and \(f \in P_{\bar{m},i}^{(2)}\) if and only if \(c_h \neq 0\) for some \(h\) with \(2i < h \leq \bar{m}\).
+
+In case that \(f_1 - f_2\) is a polynomial of degree less than 2, then let \(f_1 \sim f_2\). Relation "\(\sim\)" is a congruence relation. For each \(f_1 \in P_{\bar{m},i}^{(1)}\), there are \(2^{2ij}\) \(f_2\)'s in \(P_{\bar{m},i}^{(1)}\) such that \(f_1 \sim f_2\). By relation "\(\sim\)", \(P_{\bar{m},i}^{(1)}\) is partitioned into \(|P_{\bar{m},i}^{(1)}| \cdot 2^{-2ij}\) blocks, where \(|S|\) denotes the number of elements in set \(S\). Let \(|P_{\bar{m},i}^{(1)}| = 0\) for \(i > \bar{m}/2\).
+
+For each \(f \in P_{\bar{m},i}^{(2)}\), there is exactly one block whose members have relation "\(\sim\)" with \(f\). For a representative \(f\) of each block, there are \(2^{2ij+1}(2^{\bar{m}j - 2ij} - 1)\) polynomials in \(P_{\bar{m},i}^{(2)}\) which have relation "\(\sim\)" with \(f\). Consequently, we have that
+\[
+|P_{\bar{m},i}^{(2)}| = 2(2^{\bar{m}j - 2ij} - 1) |P_{\bar{m},i}^{(1)}|. \tag{A4}
+\]
+
+Obviously,
+\[
+|P_{\bar{m},i}^{(1)}| = |P_{\bar{m},i}^{(3)}|. \tag{A5}
+\]
+
+Let \(f \in P_{\bar{m} + 1, i}^{(1)}\), and let
+\[
+f = f_0 + X_{\bar{m} + 1} f_1,
+\]
+where \(f_0 \in \bar{P}_{\bar{m}}\) and \(f_1 \in \bar{P}_{\bar{m}}\) are independent of \(X_{\bar{m} + 1}\).
+
+Here are the next 5 pages (continuing from **Appendix I**):
+
+---
+
+---
+
+If \(f = f_0 + X_{\bar{m}+1} f_1\), \(f' = f_0' + X_{\bar{m}+1} f_1'\) and \(f_0 \neq f_0'\), then \(f \neq f'\). We proceed to count the number of polynomials in \(P_{\bar{m}+1,i}^{(1)}\).
+
+Without loss of generality, let
+\[
+f = f_0 + f_1 X_{\bar{m}+1} = c_0 + X_1 X_2 + \cdots + X_{2h-1} X_{2h} + c_1 X_{2h+1} + \left( b_0 + b_1 X_1 + \cdots + b_{\bar{m}} X_{\bar{m}} \right) X_{\bar{m}+1},
+\]
+where \(c_0 \in GF(2)\), \(c_1 \in GF(2)\), \(c_0 c_1 = 0\), \(b_i \in GF(2^j)\), \(0 \leq h \leq \bar{m}/2\), and if \(c_1 = 1\), then \(2h + 1 \leq \bar{m}\).
+
+For a fixed \(f_0 \in \bar{P}_{\bar{m}}\), different choices of \(b_0, b_1, \ldots, b_{\bar{m}}\) give different \(f\)'s in \(\bar{P}_{\bar{m}+1}\).
+
+(1) Suppose that \(c_1 = 0\). If \(b_l \neq 0\) for some \(l\) with \(2h < l \leq \bar{m}\), then \(f \in P_{\bar{m}+1,i}^{(1)} \cup P_{\bar{m}+1,i}^{(2)}\) if and only if \(h = i - 1\). The number of these cases is
+\[
+2^{(2i-1)j + 1} (2^{\bar{m}j - 2(i-1)j} - 1) |P_{\bar{m},i-1}^{(1)}|. \tag{A6}
+\]
+
+If \(b_l = 0\) for every \(l\) with \(2h < l \leq \bar{m}\), then
+\[
+f = (X_1 + b_2 X_{\bar{m}+1})(X_2 + b_1 X_{\bar{m}+1}) + \cdots + (X_{2h-1} + b_{2h} X_{\bar{m}+1})(X_{2h} + b_{2h-1} X_{\bar{m}+1}) + (b_1 b_2 + \cdots + b_{2h-1} b_{2h}) X_{\bar{m}+1}^2 + b_0 X_{\bar{m}+1} + c_0.
+\]
+
+Replace \(X_{\bar{m}+1}^2\) by \(X_{\bar{m}+1}\). Then, \(f \in P_{\bar{m}+1,i}^{(1)} \cup P_{\bar{m}+1,i}^{(2)}\) if and only if \(h = i\) and \(b_0 + b_1 b_2 + \cdots + b_{2h-1} b_{2h} = 0\). The number of these cases is
+\[
+2^{2ij + 1} |P_{\bar{m},i}^{(1)}|. \tag{A7}
+\]
+
+(2) Suppose that \(c_1 = 1\). If \(b_l \neq 0\) for some \(l\) with \(2h + 1 < l \leq \bar{m}\), then \(f \in P_{\bar{m}+1,h+1}^{(2)}\) and \(f \notin P_{\bar{m}+1,i}^{(1)} \cup P_{\bar{m}+1,i}^{(2)}\). If \(b_l = 0\) for every \(l\) with \(2h < l \leq \bar{m}\), then \(f \in P_{\bar{m}+1,h}^{(2)}\) and \(f \notin P_{\bar{m}+1,i}^{(1)} \cup P_{\bar{m}+1,i}^{(2)}\).
+
+If \(b_l = 0\) for \(2h + 1 < l \leq \bar{m}\) and \(b_{2h+1} \neq 0\), then
+\[
+f = (X_1 + b_2 X_{\bar{m}+1})(X_2 + b_1 X_{\bar{m}+1}) + \cdots + (X_{2h-1} + b_{2h} X_{\bar{m}+1})(X_{2h} + b_{2h-1} X_{\bar{m}+1}) + (b_1 b_2 + \cdots + b_{2h-1} b_{2h}) X_{\bar{m}+1}^2 + X_{2h+1} + (b_0 + b_{2h+1} X_{2h+1}) X_{\bar{m}+1}.
+\]
+
+Replace \(X_{\bar{m}+1}^2\) by \(X_{\bar{m}+1}\) and use
+\[
+b_{2h+1} X_{2h+1} X_{\bar{m}+1} + X_{2h+1} + (b_0 + b_1 b_2 + \cdots + b_{2h-1} b_{2h}) X_{\bar{m}+1} = (b_{2h+1} X_{2h+1} + b_0 + b_1 b_2 + \cdots + b_{2h-1} b_{2h})(X_{\bar{m}+1} + b_{2h+1}^{-1}) + b_{2h+1}^{-1}(b_0 + b_1 b_2 + \cdots + b_{2h-1} b_{2h}).
+\]
+
+Then, \(f \in P_{\bar{m}+1,i}^{(1)} \cup P_{\bar{m}+1,i}^{(3)}\) if and only if \(h = i - 1\). The number of these cases is
+\[
+2^{(2i-1)j + 1} (2^j - 1) |P_{\bar{m},i-1}^{(2)}| = 2^{(2i-1)j + 1} (2^j - 1) (2^{\bar{m}j/2 - (i-1)j} - 1) |P_{\bar{m},i-1}^{(1)}|. \tag{A8}
+\]
+
+By **(A5)-(A8)**, we have
+\[
+|P_{\bar{m}+1,i}^{(1)}| = 2^{2ij} |P_{\bar{m},i}^{(1)}| + 2^{2ij} (2^{\bar{m}j/2 - (i-1)j} - 1) |P_{\bar{m},i-1}^{(1)}|. \tag{A9}
+\]
+
+Based on the document structure, there are **approximately 10 more pages** remaining (from the current position in Appendix I to the end of the paper, including Appendix II, Acknowledgments, and References).
+
+Here are the **next 5 pages** (continuing from **Equation A9** in **Appendix I**):
+
+---
+
+---
+
+Now, we have the following theorem:
+
+---
+### THEOREM A1.
+1. \(|P_{\bar{m},0}^{(1)}| = 1\);
+2. For \(0 < i \leq \bar{m}/2\),
+\[
+|P_{\bar{m},i}^{(1)}| = 2^{i(i+1)j/2} \prod_{t=0}^{2i-1} \left( 2^{(\bar{m}-t)j/2} - 1 \right) \Bigg/ \prod_{t=1}^{i} \left( 2^{2jt} - 1 \right).
+\]
+
+**Proof.**
+Obviously, \(|P_{\bar{m},0}^{(1)}| = 1\). By **(A9)**,
+\[
+|P_{2,1}^{(1)}| = 2^{2j} (2^j - 1).
+\]
+Thus, **Theorem A1** holds for \(\bar{m} = 2\). Assume that the theorem holds for \(\bar{m} \leq l\). Consider the case of \(\bar{m} = l + 1\).
+
+If \(2i \leq l\), then it follows from **(A9)** that
+\[
+|P_{l+1,i}^{(1)}| = 2^{i(i+1)j/2} \left( \prod_{t=1}^{2i-1} \left( 2^{(l+1-t)j/2} - 1 \right) \Bigg/ \prod_{t=1}^{i} \left( 2^{2jt} - 1 \right) \right)
+\times \left\{ 2^{2ij/2} \left( 2^{(l-2i+1)j/2} - 1 \right) + 2^{2ij/2} - 1 \right\}
+= 2^{i(i+1)j/2} \left( \prod_{t=0}^{2i-1} \left( 2^{(l+1-t)j/2} - 1 \right) \Bigg/ \prod_{t=1}^{i} \left( 2^{2jt} - 1 \right) \right).
+\]
+
+If \(2i = l + 1\), then from **(A9)**, we have
+\[
+|P_{l+1,i}^{(1)}| = 2^{i(i+1)j/2} \left( \prod_{t=0}^{2i-3} \left( 2^{(l-t)j/2} - 1 \right) \Bigg/ \prod_{t=1}^{i-1} \left( 2^{2jt} - 1 \right) \right) \left( 2^{(l-2i+2)j/2} - 1 \right)
+= 2^{i(i+1)j/2} \left( \prod_{t=0}^{2i-1} \left( 2^{(l+1-t)j/2} - 1 \right) \Bigg/ \prod_{t=1}^{i} \left( 2^{2jt} - 1 \right) \right).
+\]
+
+Since
+\[
+|P_{\bar{m},i}^{(1)}| = A_{2^{m-1} - 2^{m-ij-1}}^{(u_1(m,j))} + A_{2^{m-1} + 2^{m-ij-1}}^{(u_1(m,j))},
+\]
+formula **(22)** follows from **Theorem A1**.
+
+---
+---
+## APPENDIX II: PROOF OF THEOREM 2
+
+We follow the proof by Berlekamp-Sloane (1969) and use the same notations as those in Berlekamp-Sloane (1969) except for \(P^{(n)}\). In this proof, \(P^{(n)}\) will denote a power series of the form
+\[
+P^{(n)} = \sum_{k \in K(n,j)} a_k z^k,
+\]
+where \(j\) divides \(n + 2\).
+
+Your PDF file containing Appendix II and the subsequent sections of the document is ready.
+
+[file-tag: reed_muller_codes_appendix_ii.txt]
+
+### Text Content:
+
+**APPENDIX II: PROOF OF THEOREM 2**
+
+[cite_start]We follow the proof by Berlekamp-Sloane (1969) and use the same notations as those in Berlekamp-Sloane (1969) except for $P^{(n)}$[cite: 303]. In this proof, $P^{(n)}$ will denote a power series of the form
+
+$$P^{(n)} = \sum_{k \in K(n,j)} a_k z^k$$
+
+[cite_start]where $j$ divides $n+2$[cite: 304]. For $P^{(n)}$ in this meaning, Lemma 1 of Berlekamp-Sloane (1969) still holds, which is proved as follows:
+
+[cite_start]If $k_{\pi+1} \le 2^{n+1} - 2^{n-\pi} - 1$ with $0 \le \pi \le n$ is in $K(n, j)$, then $k_{\pi+1}$ is of the form $2^{n+2} - 2^h - 2^{h-lj} - 1$[cite: 304]. Hence, $\pi+1$ is divisible by $j$. Suppose that $L \le \sum_{v=0}^{\pi+1} 2^v \sum_{i=0}^{t_v} A_i \le M$. (We use $t_v$ instead of $k_v$ in (16) [cite_start]of Berlekamp-Sloane (1969).) In order to prove the new version of Lemma 1, it is sufficient to consider the case in which $\sum_{v=0}^{\pi+1} 2^v \sum_{i=0}^{t_v} A_i$ is $2^\pi + 4$[cite: 305]. [cite_start]For this case, since $2^{n+2} - \sum_{i=0}^{t_\pi} A_i - 1 \in K(n, j)$ and the weight of $\sum_{v=0}^\pi 2^v \sum_{i=0}^{t_v} A_i$ is 2, $2^\pi \sum_{i=0}^{t_\pi} A_i$ is of the form $2^{\rho_v} + 2^{\tau_v}$ where $0 \le \tau_v < \rho_v \le n + 2 + \pi$ and $\rho_v - \tau_v$ is divisible by $j$[cite: 306].
+
+Since the weight of $\sum_{v=0}^{\pi+1} 2^v \sum_{i=0}^{t_v} A_i$ is $2\pi + 4$, $\rho_v$ and $\tau_v$ with $0 \le v \le \pi+1$ are all different. [cite_start]On the other hand, $\sum_{v=0}^{\pi+1} 2^v \sum_{i=0}^{t_v} A_i$ is of the form $2^\rho + 2^\tau + \sum_{i=n+1-\pi}^{n+2+\pi} 2^i$ when $0 \le \tau < \rho \le n-\pi$[cite: 306, 307]. [cite_start]Then, the set of $2\pi + 4$ distinct numbers $\{\rho_0, \dots, \rho_{\pi+1}, \tau_0, \dots, \tau_{\pi+1}\}$ is identical with $\{\tau, \rho, n+1-\pi, n+2-\pi, \dots, n+2+\pi\}$[cite: 308].
+
+Consider polynomial over $GF(2)$,
+$$f(X) = \sum_{v} (X^{\rho_v} + X^{\tau_v}) = X^\rho + X^\tau + \sum_{i=n+1-\pi}^{n+1} X^i (X^{\pi+1} + 1)$$
+[cite_start]Since $X^{\rho_v} + X^{\tau_v} = X^{\tau_v} (X^{\rho_v-\tau_v} + 1) \equiv 0 \pmod{X^j + 1, 2}$ and $X^{\pi+1} + 1 \equiv 0 \pmod{X^j + 1, 2}$, $X^\rho + X^\tau = X^\tau (X^{\rho-\tau} + 1) \equiv 0 \pmod{X^j + 1, 2}$[cite: 309].
+
+Hence, $\rho - \tau$ is divisible by $j$. Since $(n - \pi - 1) + 2$ is divisible by $j$, the modified version of Lemma 1 holds. [cite_start]Now, the proof of this theorem proceeds in the same way as the one by Berlekamp and Sloane, which holds still for $w \le 2^{\mu+1} - 4$[cite: 310]. By induction, $n_1+2$ and $\pi_1+1$ are divisible by $j$ and $\theta_1 - 1 \in K(n_1, j)$. [cite_start]It is concluded that $w = 2^{m-r+1} - 2^{n_1-\pi_1+1} = 2^{m-r+1} - 2^{n_1+2-(\pi_1+1)-1}$[cite: 310].
+
+**ACKNOWLEDGMENT**
+[cite_start]The author would like to thank Dr. E. R. Berlekamp and Dr. R. J. McEliece for suggesting a possibility of applications of the McEliece Theorem, and Dr. S. Lin for his helpful discussions[cite: 311].
+
+[cite_start]RECEIVED: July 27, 1970 [cite: 312]
+
+**REFERENCES**
+* [cite_start]BERLEKAMP, E. R. (1968), "Algebraic Coding Theory," McGraw-Hill, New York[cite: 312].
+* BERLEKAMP, E. R. (1970), The weight enumerators for certain subcodes of the 2nd order binary Reed-Muller code, *Inform. [cite_start]Control* (to appear)[cite: 313, 314].
+* BERLEKAMP, E. R. AND SLOANE, N. J. A. (1969), Restrictions on weight distribution of Reed-Muller codes, *Inform. [cite_start]Control* 14, 442-456[cite: 314, 315].
+* BERLEKAMP, E. R. AND SLOANE, N. J. A. (1970), The weight enumerator of second order Reed-Muller codes, *IEEE Trans. Inform. [cite_start]Theory* IT-16, 745-751[cite: 315, 316].
+* [cite_start]KASAMI, T. (1967-1969), "Weight Distributions of Bose-Chaudhuri-Hocquenghem Codes," *Combinatorial Mathematics and Its Applications*, 335-357, edited by R. C. Bose and T. A. Dowling[cite: 316].
+* KASAMI, T., LIN, S., AND PETERSON, W. W. (1968a), New generalizations of the Reed Muller codes. I: Primitive codes, *IEEE Trans. Inform. [cite_start]Theory* IT-14, 189-198[cite: 317, 318].
+* KASAMI, T., LIN, S., AND PETERSON, W. W. (1968b), Polynomial codes, *IEEE Trans. Inform. [cite_start]Theory* IT-14, 807-814[cite: 319].
+* [cite_start]MCELIECE, R. J. (1970), private communication[cite: 320].
+* [cite_start]WELCH, L. R. (1969), "Trace Mappings in Finite Fields and Shift Register Cross Correlation Properties," Electrical Engineering Department Report, University of Southern California[cite: 320].
+* WELDON, E. J., JR. (1967-1969)[cite_start], "Euclidean Geometry Codes," *Combinatorial Mathematics and Its applications*, 337-387, edited by R. C. Bose and T. A. Dowling[cite: 321].
+* PETERSON, W. W. and WELDON, E. J., JR. (1971)[cite_start], "Error Correcting Codes," Second ed., John Wiley, New York[cite: 322].
+* PLESS, V. (1963), Power moment identities on weight distributions in error correcting codes, *Inform. [cite_start]Control.* 6, 147-152[cite: 323].
