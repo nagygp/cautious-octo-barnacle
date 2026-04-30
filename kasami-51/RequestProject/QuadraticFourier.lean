@@ -20,21 +20,27 @@ section IntSquareRoot
 
 /-! ### Integer square-root lemma for powers of two -/
 
-/-- Auxiliary: if `W.natAbs = k` then `W = k` or `W = -k`. -/
+/-
+Auxiliary: if `W.natAbs = k` then `W = k` or `W = -k`.
+-/
 lemma int_eq_or_neg_of_natAbs_eq (W : ℤ) (k : ℕ) (h : W.natAbs = k) :
     W = (k : ℤ) ∨ W = -(k : ℤ) := by
-  sorry
+  exact Int.natAbs_eq_iff.mp h
 
-/-- Auxiliary: if `a ^ 2 = b ^ 2` for natural numbers then `a = b`. -/
+/-
+Auxiliary: if `a ^ 2 = b ^ 2` for natural numbers then `a = b`.
+-/
 lemma nat_sq_inj (a b : ℕ) (h : a ^ 2 = b ^ 2) : a = b := by
-  sorry
+  simpa using h
 
-/-- Auxiliary: `W.natAbs ^ 2 = (2 ^ k) ^ 2 → W.natAbs = 2 ^ k`,
-    obtained by lifting `W ^ 2 = 2 ^ (2 * k)` through `Int.natAbs_sq`. -/
+/-
+Auxiliary: `W.natAbs ^ 2 = (2 ^ k) ^ 2 → W.natAbs = 2 ^ k`,
+    obtained by lifting `W ^ 2 = 2 ^ (2 * k)` through `Int.natAbs_sq`.
+-/
 lemma natAbs_eq_of_sq_eq_pow (W : ℤ) (k : ℕ)
     (hW : W ^ 2 = (2 : ℤ) ^ (2 * k)) :
     W.natAbs = 2 ^ k := by
-  sorry
+  apply_fun Int.natAbs at hW ; simp_all +decide [ pow_mul' ]
 
 /-- **Key lemma**: If `W ^ 2 = 2 ^ (n + 1)` and `n` is odd, then
     `W = 2 ^ ((n + 1) / 2)` or `W = -(2 ^ ((n + 1) / 2))`. -/
