@@ -1,16 +1,3 @@
-### 5.2 Classes of APN Binomials Over 𝔽_{2^{3k}} and 𝔽_{2^{4k}}
-
-Let *s, k, p* be positive integers such that gcd(*k, p*) = gcd(*s, pk*) = 1, and *i = sk* mod *p*, *t = p - i*, *n = pk*. In this section we prove that the function
-
-**F(x) = x^{2^i+1} + wx^{2^{ik}+2^{2k+s}}** (5.1)
-
-is APN on 𝔽_{2^n} when *p* = 3, 4 (under some conditions on the element *w* ∈ 𝔽_{2^n}^* and we also show that, most probably, other values of parameter *p* do not define classes of APN functions.
-
----
-#### APN Binomials Over 𝔽_{2^{3k}}
-
-The following theorem introduces a large class of quadratic binomial APN functions for *n* divisible by 3.
-
 **Theorem 23** [[14]](#) Let *s* and *k* be positive integers with gcd(*s, 3k*) = 1, and *t* ∈ {1, 2}, *i* = 3 - *t*, *n* = 3*k*. Furthermore let
 
 *d* = 2^{ik} + 2^{2k+s} - (2^s + 1),
@@ -103,55 +90,3 @@ Consequently, it is sufficient to show, that if *P(a) = 0* then *a* is a (2ᵏ +
 **a = ((a + 1 / c + 1))²ˢ⁺¹ c²ˢ⁺¹ ((b + 1 / a + 1)) a = ((a + 1 / c + 1) c)²ᵏ⁺²ˢ⁺¹**
 
 as can be easily seen by dividing this equality by *a*, simplifying it by (*a* + 1), and then expanding it, using that *c* = 1/*ab*. Note that the right hand side is always a (2ᵏ + 2ˢ + 1)-th power. This proves the theorem.
-
----
-From **Theorem 23** we get the following corollary as a special case.
-
-**Corollary 16** [[14]](#) Let *s* and *k* be positive integers such that gcd(*k*, 3) = gcd(*s*, 3*k*) = 1, and *i* = *sk* mod 3, *t* = 3 - *i*, *n* = 3*k, and *w* ∈ 𝔽₂ⁿ have the order 2²ᵏ + 2ᵏ + 1. Then the function
-
-**F(x) = x²ⁱ⁺¹ + wx²ⁱᵏ⁺²ⁱᵏ⁺ˢ**
-
-is APN on 𝔽₂ⁿ (and is AB when *n* is odd).
-
-**Proof** We only have to verify that in this case the greatest common divisors
-
-*g₁* = gcd(2ⁿ - 1, 2ᵏ⁺ˢ + 2ˢ + 1 - 2ᵏ(2ˢ - 1)(*i* - 1))
-*g₂* = gcd(2ᵏ - 1, 2ᵏ⁺ˢ + 2ˢ + 1 - 2ᵏ(2ˢ - 1)(*i* - 1))
-
-are not equal. Obviously *g₂* is always coprime with 7 and it can be easily checked that *g₁* is always divisible by 7. Indeed, for instance, if *k* mod 3 = *s* mod 3 = 1 then *i* = 1 and *k* = 3*k′ + 1, *s* = 3*s′ + 1 for some *k′*, *s′*, and we get
-
-*g₁* = 2ᵏ⁺ˢ + 2ˢ + 1 = 4(2³ᵏ′⁺ˢ′ - 1) + 2(2³ˢ′ - 1) + 7.
-
-The next proposition shows that the functions from **Corollary 16** are permutations if *k* is odd. Moreover computer investigations show that most probably, if *k* is odd their inverses have algebraic degree (3*k* + 1)/2.
-
-**Proposition 19** [[14]](#) The APN functions of **Corollary 16** are bijective if and only if *k* is odd.
-
-
-### Sketch of Proof
-
-If *k* is even then, since gcd(*s*, 3*k*) = 1, *s* must be odd and therefore 2ˢ + 1 is divisible by 3 as well as 2ⁱᵏ + 2²ᵏ⁺ˢ = 2ⁱᵏ(1 + 2^(ⁱ⁻¹)ᵏ⁺ˢ). We have *F(x) = F(γx)* for every *γ* ∈ 𝔽₄*.
-
-To prove that *F* is bijective when *k* is odd, we use the same steps as in the proof of **Theorem 23**. Assume *i* = 1 (the proof for the case *i* = 2 is similar). We have to show that the equation *F(x) + F(x + v) = 0* does not have a non zero solution *v* for any *x*. Doing the same computations as in the proof of **Theorem 23** we have this time to look at the following system of equations
-
----
-f₁ = a(*z* + y²ˢ + 1) + x²ˢ + x + 1 = 0
-f₂ = b(*x* + z²ˢ + 1) + y²ˢ + y + 1 = 0
-f₃ = (1 / ab)(y + x²ˢ + 1) + z²ˢ + z + 1 = 0.
-
----
-Now, doing the same elimination of *y* and *z* as before, we end up with
-
-**P(a)²ˢ(x²ˢ + x + 1) = 0,**
-
-where *P* is as in the proof of **Theorem 23**. By taking the power 2ˢ of x²ˢ + x + 1 = 0 and substituting x²ˢ = x + 1 we get x²²ˢ = x which is equivalent to x ∈ 𝔽₂ʲ where *j* = gcd(2*s*, 3*k*). If *k* is odd then *j* = 1 and the only possible solutions could be 0 or 1 but they obviously do not satisfy x²ˢ + x + 1 = 0.
-
----
-### Remark 13
-
-1. The APN binomials of **Corollary 16** have been generalized to APN trinomials in [[5]](#). Let *v* ∈ 𝔽₂ᵏ and the function *F* be as in **Corollary 16** with *i* = 1, *w* = α²ᵏ⁻¹ (where α is primitive in 𝔽₂³ᵏ), then the function *F(x) + α²ᵏ vx²ᵏ⁺ˢ⁺²ˢ* is also APN (it is a particular case of functions (8–10) in Table 2.6). In [[7]](#) these trinomials were extended to the family of quadrinomials corresponding to cases (8–10) in Table 2.6 of known APN polynomials. Note that **Theorem 23** covers a larger class of APN functions than the one of **Corollary 16** as can be seen by checking the conditions on the greatest common divisors for small values of *k* and *s*, that is, APN quadrinomials (8–10) of Table 2.6 do not cover all the functions of **Theorem 23**.
-
-2. Since for *n* odd the functions of **Corollary 16** are AB then it completely determines their Walsh spectrum. It is shown in [[6]](#) that for *n* even these functions have the same Walsh spectrum as Gold functions, that is, {0, ±2ⁿ/², ±2⁽ⁿ⁺²⁾/²}. In [[4]](#) it is proven that the quadrinomials (8–10) have the same property.
-
-3. It is further proven in [[8]](#) that when relaxing conditions of gcd(*s*, 3*k*) = 1 to gcd(*s*, 3*k*) = *r* with *k/r* odd, the binomials of **Corollary 16** are still permutations whose derivatives are 2ʳ-to-1 mappings. It is left as a problem to prove that the APN quadrinomials (8–10) have the same properties as the binomials when relaxing the conditions.
-
-4. Since every quadratic AB permutation taking 0 value at 0 is crooked then the AB binomials of **Theorem 23** (and **Corollary 16**) are crooked. This binomials and the well-known Gold AB functions are the only known families of crooked functions.
