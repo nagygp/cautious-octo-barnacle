@@ -1,0 +1,17 @@
+name = "RequestProject"
+defaultTargets = ["k71_a", "k71_b"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.28.0"
+
+[[lean_lib]]
+name = "k71_a"
+roots = ["k71_a"]
+globs = ["k71_a.+"]
+
+[[lean_lib]]
+name = "k71_b"
+roots = ["k71_b"]
+globs = ["k71_b.+"]
