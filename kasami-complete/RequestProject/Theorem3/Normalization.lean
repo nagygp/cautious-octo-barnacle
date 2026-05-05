@@ -12,8 +12,6 @@
   where y = x · u⁻¹.
 
   This file isolates the substitution step and proves the kernel isomorphism.
-  The cardinality bound on the kernel is left as `sorry` — it will be filled
-  in once the factorization machinery (Factorization.lean) is available.
 
   Reference: Bracken–Byrne–Markin–McGuire, "Fourier Spectra of Binomial APN
   Functions", Theorem 3.
