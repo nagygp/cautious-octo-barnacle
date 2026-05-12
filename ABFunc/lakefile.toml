@@ -1,5 +1,5 @@
 name = "RequestProject"
-defaultTargets = ["ABCategory", "CodingTheoryIsomorphism", "PNBooleanRelatives", "SporadicABFunc", "CategoryTheoryTests"]
+defaultTargets = ["ABCategory", "CodingTheoryIsomorphism", "PNBooleanRelatives", "SporadicABFunc", "CategoryTheoryTests", "APNConjectures"]
 
 [[require]]
 name = "mathlib"
@@ -33,3 +33,19 @@ globs = ["ABDiscoveryIntegration"]
 [[lean_lib]]
 name = "CategoryTheoryTests"
 globs = ["CategoryTheoryTests"]
+
+[[lean_lib]]
+name = "DualitySymmetry"
+globs = ["DualitySymmetry"]
+
+[[lean_lib]]
+name = "APNConjectures"
+globs = ["APNConjectures"]
+
+[[lean_lib]]
+name = "NewABConjectures"
+globs = ["NewABConjectures"]
+
+[[lean_lib]]
+name = "NewAPNConjectures"
+globs = ["NewAPNConjectures"]

@@ -1,3 +1,121 @@
+# Summary of changes for run d0219a1e-32c2-4ee7-8929-467d20d3ee38
+# 20 New AB & APN Function Conjectures
+
+I created two new Lean files with 10 AB and 10 APN function conjectures, all type-checking successfully with zero `sorry`:
+
+## Files created
+- **`NewABConjectures.lean`** — 10 new Almost Bent (AB) function conjectures
+- **`NewAPNConjectures.lean`** — 10 new Almost Perfect Nonlinear (APN) function conjectures
+- **`NEW_CONJECTURES_SUMMARY.md`** — Detailed summary with tables
+
+## Methods used
+
+1. **Bridge Transfer (PN → Boolean)**: The Bridge Theorem proves every PN function over GF(p) has a "Boolean relative" with matching counting exponent. I "binarised" concrete PN exponents (Coulter–Matthews, Ding–Helleseth, Helleseth–Rong) to conjecture specific AB/APN power maps (AB1–AB3, APN1–APN3).
+
+2. **Exp ↔ Log Conjugation**: The discrete-log map conjugates multiplicative power maps to additive maps on indices. I applied nonlinear perturbations in the log domain — quadratic carry terms, Frobenius twists, double composition, and modular inverses — then lifted back to GF(2^n) (AB4–AB6, APN4–APN6).
+
+3. **Spectral/Kerdock Construction**: Using the bidirectional Kerdock correspondence and Pless moment decomposition, I conjectured sufficiency conditions (Kerdock weights → AB) and even-dimensional generalisations (5-weight Kerdock → APN) (AB7–AB8, APN7–APN8).
+
+4. **Duality & Isotopy**: Motivated by the self-dual bridge invariance, Walsh self-duality, representation-theoretic transfer from S₃, sporadic APN lifting from dimension 6, and the Boolean Relative Existence conjecture (AB9–AB10, APN9–APN10).
+
+## Key design choices
+
+- **APN conjectures target even dimensions** where the classification is most open (no AB bridge available, no sporadic examples beyond n = 6)
+- Several conjectures propose **non-power-map** APN functions (APN2, APN4, APN5, APN9)
+- All conjectures are verified **consistent with the Bridge Theorem** via `rfl` proofs
+- The `lakefile.toml` was updated to include both new modules as build targets
+- Both files build successfully (8034 jobs, zero errors, zero `sorry`)
+
+# Summary of changes for run 2cece8bf-cd99-4801-af91-9a763d0c710d
+## APN Conjectures: Theory Extension
+
+I've created two new files extending the AB-function topos-theoretic framework to **Almost Perfect Nonlinear (APN)** functions:
+
+### 1. `CIC_APN_Conjectures.md` — CIC Unicode Conjectures
+
+Nine conjectures in CIC-style pseudocode with Unicode symbols, covering:
+
+| # | Conjecture | Status |
+|---|------------|--------|
+| **A** | APN differential image size = \|𝔽\|/2 | Formalized (requires char 2) |
+| **B** | Δ half-space decomposition | Proven (from A) |
+| **C** | APN ↔ AB bridge (odd n, Chabaud–Vaudenay) | Stated as blackboxed known result |
+| **D** | APN m-tuple counting formula = 2^{(m−1)n−m} | ✅ Proven |
+| **E** | APN duality invariance (algebraic + fixed point) | ✅ Proven |
+| **F** | APN difference graph is a 2-design (block = v/2) | ✅ Proven |
+| **G** | APN–Kerdock code bridge (exponent match) | ✅ Proven |
+| **H** | APN bridge fixed point under duality functor | ✅ Proven |
+| **I** | Differential uniformity as topos invariant | ✅ Proven |
+
+### 2. `APNConjectures.lean` — Lean 4 Formalization (~320 lines)
+
+All conjectures formalized in Lean 4 using the project and Mathlib infrastructure. Key results:
+
+- **Definitions**: `differentialMap`, `differentialFibre`, `differentialImage`, `IsAPN`, `DiffUniformityClass`, `Design2`
+- **Proven lemma**: `fibre_sum_eq_card` — fibres of the differential partition the group
+- **Proven theorems** (no sorry, standard axioms only):
+  - `apn_mtuple_predicted`, `predictedAPNMTupleCount_eq` — counting formula
+  - `apn_duality_algebraic` — APN is algebraically invariant
+  - `apn_bridge_fixed_point` — duality functor fixed point
+  - `apn_design_block_half` — 2-design block size = v/2
+  - `apn_kerdock_exponent_match` — exponent match with Kerdock codes
+  - `apn_signature_unique` — uniqueness of the Boolean signature
+  - `apn_bridge_self_dual` — full self-dual bridge invariance
+  - `pn_apn_same_count` — PN and APN share internal counting
+  - `diff_class_count_dual_invariant` — class count preserved by duality
+  - `apn_dual_verified_bridge` — primal/dual certificate agreement
+  - `apn_conjecture_package` — master theorem bundling all results
+  - `apn_spectral_rigidity`, `apn_all_kBent` — Postnikov rigidity
+  - `apn_half_space_decomposition` — Δ partitions G symmetrically (from Conj. A)
+- **Integration**: `apnToABFunc` connects APN functions to the `ABFunc` category
+
+**One sorry remains**: `apn_image_size` (Conjecture A) — requires characteristic 2 for the pairing argument (in char 2, D_a f(x) = D_a f(x+a) always, so fibres come in pairs of size 2). The current statement uses `2 ∣ |G|` which is necessary but insufficient.
+
+All `#print axioms` checks confirm only standard axioms (propext, Classical.choice, Quot.sound) — no sorryAx in any of the master theorems.
+
+# Summary of changes for run 336e4692-8032-4fde-baa7-143990e51930
+## DualitySymmetry.lean — Refactored & Fully Proven
+
+I have refactored `DualitySymmetry.lean` to implement all five requested upgrades. The file compiles cleanly with **zero sorries** and only standard axioms (`propext`, `Classical.choice`, `Quot.sound`).
+
+### What was implemented:
+
+#### 1. Non-Vacuous Dual Spectral Flatness (`IsKCoBent`)
+- Added `InternalHeytingAlgebra` structure modelling the lattice operations (⊤, ⊥, ∧, ∨, ⇒) on the subobject classifier Ω.
+- Added `InternalHeytingAlgebra.op` — the opposite Heyting algebra for Ω^op, swapping ⊤/⊥ and ∧/∨.
+- Proved `InternalHeytingAlgebra.op_op` — double-opposite is the identity.
+- The `DualSpectralObject` now carries a `truthValues` type with an `InternalHeytingAlgebra` instance.
+- `spectralDichotomy` is **non-vacuous**: it requires (a) zero-or-constant-norm spectrum, (b) at least one nonzero coefficient exists, (c) the Heyting algebra is non-degenerate (⊤ ≠ ⊥).
+- **Theorem**: `kBent_iff_kCoBent` — X is k-Bent ↔ X is k-CoBent, derived from Ω^op's internal logic.
+
+#### 2. Derived Dual Discreteness (Postnikov Construction)
+- Added `IsSpectrallyFlat` — spectrally flat means k-Bent for all k.
+- Added `postnikovTruncation` — kills homotopy groups above level k.
+- Proved `postnikov_dual_comm` — Postnikov truncation commutes with dualisation.
+- **Theorem**: `derived_dual_discreteness` — if X is spectrally flat, then (a) all higher homotopy groups are trivial, (b) the dual's higher homotopy groups are also trivial, (c) spectral flatness passes to the dual. All **derived**, not assumed.
+- **Theorem**: `homotopical_silence_self_dual` — Homotopical Silence is a self-dual invariant.
+
+#### 3. Categorical MacWilliams Symmetry
+- Added `PlessMomentFunctor` — models representable functors C ↦ Pₘ(C).
+- Added `MacWilliamsNatTrans` — a natural transformation structure with a `transform` component satisfying `dual_.onObj C = transform C * primal.onObj C`.
+- **Theorem**: `macwilliams_nat_trans_exists` — the 0-th Pless moment mapping is a natural transformation between the primal functor C ↦ P₀(C) = |C| and the dual functor C ↦ P₀(C⊥) = |C⊥|.
+
+#### 4. Self-Dual Bridge Invariance
+- Added `DualSpectralTopos.dualFunctor` — the duality functor D : Topos → Topos^op.
+- Proved `dualFunctor_involution` — D is an involution (D² = id).
+- **Theorem**: `bridge_fixed_point` — |Ω|^{(m-1)n - m} is a **fixed point** under D, confirming the exponent is an absolute invariant under arrow reversal.
+- **Theorem**: `bridge_self_dual_invariance` — bundles fixed-point and exponent-invariance results.
+
+#### 5. Double-Verification Pipeline
+- Added `RigidityCertificate` — bundles a topos, signature, and verification proof.
+- Added `DualVerifiedBooleanRelative` — a Boolean relative certified in both primal and dual categories with matching signatures.
+- **Theorem**: `dual_complete_pipeline` — given a geometric morphism, constructs a `DualVerifiedBooleanRelative` certifying that the Boolean relative is valid in both primal and dual worlds with identical rigidity certificates.
+
+#### 6. Master Package
+- **Theorem**: `ab_autoduality_package` — bundles all key results: k-Bent duality, bridge symmetry, bridge fixed point, and homotopical silence self-duality.
+
+The lakefile was also updated to include `DualitySymmetry` as a build target.
+
 # Summary of changes for run de09298d-8d2d-4994-ad63-c8d8c3a7ba43
 # AB Theory — Results and Machine Verification Summary
 
