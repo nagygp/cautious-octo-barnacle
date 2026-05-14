@@ -210,8 +210,8 @@ theorem commutatorMTupleCount_comm (G : Type*) [CommGroup G]
     intro v; apply List.prod_eq_one
     simp only [List.mem_ofFn, forall_exists_index]
     exact fun _ j h => h ▸ grpCommutator_eq_one_of_comm _ _
-  simp only [hall, Finset.filter_true_of_mem (fun x _ => hall x)]
-  simp [Fintype.card_fin]
+  simp only [hall]
+  simp
 
 /-- The commutator m-tuple count for the trivial group is 1. -/
 theorem commutatorMTupleCount_trivial (m : ℕ) :

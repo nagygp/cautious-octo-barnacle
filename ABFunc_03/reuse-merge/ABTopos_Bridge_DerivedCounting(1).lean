@@ -133,7 +133,7 @@ def pValuedDerivedTopos (p n : ℕ) (hp : Nat.Prime p) : DerivedSpectralTopos wh
     formula. The proof requires showing the bijection between free
     choices of m-1 elements and the constrained m-tuples. -/
 theorem genuine_bridge_boolean (n m : ℕ) (hm : m ≥ 1)
-    (_hn : n ≥ 1) :
+    (hn : n ≥ 1) :
     computeKernelCount (α := Fin n → ZMod 2) m =
     (booleanDerivedTopos n).predictedCount m + (2 ^ n) ^ (m - 1) -
     (booleanDerivedTopos n).predictedCount m := by

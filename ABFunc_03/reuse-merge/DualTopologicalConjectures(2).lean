@@ -29,6 +29,8 @@
   - Cohérence locale (bloc-32) : CV moyen = 0.59, min = 0.33, max = 3.03
 -/
 import Mathlib
+import HomotopySpectral
+import DualitySymmetry
 
 open Finset BigOperators
 

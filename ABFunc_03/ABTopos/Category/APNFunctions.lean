@@ -177,9 +177,9 @@ from 𝐀𝐏𝐍 to the AB category (from `ABCategory.lean`).
 
     This is the categorical lift of the Chabaud–Vaudenay bridge. -/
 def forgetful_APN_to_AB_functor_exists : Prop :=
-  ∀ (G : Type) [inst1 : AddCommGroup G] [inst2 : Fintype G] [inst3 : DecidableEq G]
+  ∀ (G : Type) [AddCommGroup G] [Fintype G] [DecidableEq G]
     (n : ℕ) (_ : n % 2 = 1) (_ : Fintype.card G = 2 ^ n),
-    ∃ (F : APNFunc G → ABFunc TypeTopos), True
+    ∃ (_F : APNFunc G → ABFunc TypeTopos), True
 
 /-! ## §5  Conjecture: Presheaf / Semifield Isomorphism
 
@@ -216,7 +216,7 @@ def presemifieldQuadratic {G : Type*} [AddCommGroup G]
     Formally: there is an equivalence of categories
       `𝐏𝐬𝐟(2ⁿ) ≃ 𝐀𝐏𝐍_quad(GF(2ⁿ))`. -/
 def semifield_apn_equivalence_conjecture : Prop :=
-  ∀ (G : Type) [inst1 : AddCommGroup G] [inst2 : Fintype G] [inst3 : DecidableEq G]
+  ∀ (G : Type) [AddCommGroup G] [Fintype G] [DecidableEq G]
     (n : ℕ) (_ : Fintype.card G = 2 ^ n),
     ∀ (S : PreSemifield G),
       ∃ (A : APNFunc G), A.func = presemifieldQuadratic S
@@ -251,11 +251,11 @@ structure PNFunc (G : Type*) [AddCommGroup G] [Fintype G] [DecidableEq G] where
     This lifts the Bridge Theorem of `PNBooleanRelatives` to a
     functorial statement. -/
 def pn_apn_duality_functor_conjecture : Prop :=
-  ∀ (p : ℕ) (hp : Nat.Prime p) (_ : p ≠ 2) (n : ℕ),
+  ∀ (p : ℕ) (_hp : Nat.Prime p) (_ : p ≠ 2) (n : ℕ),
     ∀ (G₁ G₂ : Type) [AddCommGroup G₁] [Fintype G₁] [DecidableEq G₁]
       [AddCommGroup G₂] [Fintype G₂] [DecidableEq G₂],
       Fintype.card G₁ = p ^ n → Fintype.card G₂ = 2 ^ n →
-        ∀ (f : PNFunc G₁), ∃ (g : APNFunc G₂), True
+        ∀ (_f : PNFunc G₁), ∃ (_g : APNFunc G₂), True
 
 /-! ## §7  Conjecture: APN ↔ Optimal Code Isomorphism
 
@@ -416,7 +416,7 @@ def DUFunc.weaken {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G]
     The filtration is **strict**: for each `k < 2ⁿ`, there exist
     functions in `𝐃𝐔_{k+1}` not in `𝐃𝐔_k`. -/
 def du_filtration_strict_conjecture : Prop :=
-  ∀ (G : Type) [inst1 : AddCommGroup G] [inst2 : Fintype G] [inst3 : DecidableEq G]
+  ∀ (G : Type) [AddCommGroup G] [Fintype G] [DecidableEq G]
     (k : ℕ) (_ : k < Fintype.card G),
     ∃ (f : G → G),
       (∀ a : G, a ≠ 0 → ∀ b, (APNCat.differentialFibre f a b).card ≤ k + 1) ∧
@@ -507,10 +507,10 @@ structure SpectralAPNHom {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G
     A morphism `(φ_dom, φ_cod)` in 𝐀𝐏𝐍 maps to the adjoint morphism
     `(φ̂_cod, φ̂_dom)` in the spectral category, reversing direction. -/
 def time_frequency_duality_conjecture : Prop :=
-  ∀ (G : Type) [inst1 : AddCommGroup G] [inst2 : Fintype G] [inst3 : DecidableEq G],
+  ∀ (G : Type) [AddCommGroup G] [Fintype G] [DecidableEq G],
     ∀ (F₁ F₂ : APNFunc G),
       -- Every APN morphism induces a spectral morphism in the opposite direction
-      ∀ (α : F₁ ⟶ F₂),
+      ∀ (_α : F₁ ⟶ F₂),
         ∃ (S₁ S₂ : SpectralAPNFunc G),
           S₁.apnFunc = F₁ ∧ S₂.apnFunc = F₂ ∧
           Nonempty (SpectralAPNHom S₂ S₁)

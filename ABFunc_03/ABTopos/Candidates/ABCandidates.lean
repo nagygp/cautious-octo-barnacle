@@ -314,8 +314,8 @@ theorem ab_candidates_master_verification (n : ℕ) :
     (∀ p, Nat.Prime p → ∃ cert : RigidityCertificate10, cert.n = n ∧ cert.p = p) ∧
     -- (2) Postnikov discreteness (universal for bent spectra)
     (∀ (F : Type*) [Field F] [Fintype F] [DecidableEq F]
-      (X : SpectralObject F) (c : ℝ) (hc : c > 0)
-      (hBent : X.IsBent c) (hNT : ∃ v, X.spectrum v ≠ 0),
+      (X : SpectralObject F) (c : ℝ), c > 0 →
+      X.IsBent c → (hNT : ∃ v, X.spectrum v ≠ 0) →
       (postnikovConstruction X hNT).IsDiscrete) ∧
     -- (3) Exponent match (Boolean)
     (∀ m, internalMTupleCount booleanSpectralTopos n m =
@@ -326,7 +326,7 @@ theorem ab_candidates_master_verification (n : ℕ) :
     -- (5) All ABFunc data pass dichotomy
     (∀ F : ABFunc TypeTopos, passesDichotomy TypeTopos F) ∧
     -- (6) Bridge Theorem for all primes
-    (∀ p (hp : Nat.Prime p),
+    (∀ p, Nat.Prime p →
       HasPNTypeCounting booleanSpectralTopos n (booleanRelativeSignature n)) := by
   exact ⟨
     fun p hp => rigidity_certificate_exists p hp n,

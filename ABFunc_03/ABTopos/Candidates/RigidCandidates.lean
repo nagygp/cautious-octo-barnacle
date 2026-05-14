@@ -604,7 +604,7 @@ theorem the_others_nonempty :
     ∃ (catalogue : List (ABFunc TypeTopos)),
       catalogue.length = 20 ∧
       (∀ F ∈ catalogue, passesDichotomy TypeTopos F) ∧
-      (∀ (p : ℕ) (hp : Nat.Prime p) (n : ℕ),
+      (∀ (p : ℕ), Nat.Prime p → ∀ (n : ℕ),
         ∃ cert : RigidityCertificate10,
           cert.n = n ∧ cert.p = p) :=
   ⟨candidateCatalogue,

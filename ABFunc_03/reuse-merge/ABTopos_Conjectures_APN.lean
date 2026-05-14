@@ -77,69 +77,56 @@ lemma fibre_sum_eq_card {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G]
   rw [ Finset.sum_fiberwise ] ; aesop
 
 /-
-In characteristic 2 (i.e., when `∀ x, x + x = 0`), `D_a(f)(x + a) = D_a(f)(x)`,
-    so differential fibres always have even cardinality.
+In a char-2 additive group (where x + x = 0 for all x), the involution
+    x ↦ x + a pairs elements with identical differential values, so each
+    fibre of D_a has even cardinality. Combined with APN (≤ 2), this forces
+    every fibre to have size exactly 0 or 2.
 -/
 lemma differentialFibre_even {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G]
-    (f : G → G) (a b : G) (ha : a ≠ 0) (hchar2 : ∀ x : G, x + x = 0) :
-    Even (differentialFibre f a b).card := by
-  -- Since $a$ is non-zero, the map $x \mapsto x + a$ is a fixed-point-free involution on the fibre.
-  have h_inv : ∀ x ∈ differentialFibre f a b, x + a ∈ differentialFibre f a b := by
-    unfold differentialFibre; simp +decide [ differentialMap ] ;
-    simp_all +decide [ sub_eq_iff_eq_add, add_assoc ];
-    exact fun x hx => by rw [ neg_eq_of_add_eq_zero_right ( hchar2 b ) ] ;
-  -- Since $a$ is non-zero, the map $x \mapsto x + a$ is a fixed-point-free involution on the fibre, so the cardinality of the fibre is even.
-  have h_involution : ∃ (g : differentialFibre f a b → differentialFibre f a b), Function.Bijective g ∧ ∀ x, g (g x) = x ∧ g x ≠ x := by
-    refine' ⟨ fun x => ⟨ x + a, h_inv x x.2 ⟩, _, _ ⟩ <;> simp +decide [ Function.Bijective, ha ];
-    · refine' ⟨ fun x y hxy => _, fun x => _ ⟩;
-      · aesop;
-      · refine' ⟨ ⟨ x - a, _ ⟩, _ ⟩ <;> simp_all +decide [ sub_eq_add_neg ];
-        convert h_inv _ x.2 using 1 ; simp +decide [ ← eq_sub_iff_add_eq', hchar2 ];
-        exact neg_eq_of_add_eq_zero_right ( hchar2 a );
-    · simp +decide [ add_assoc, hchar2 ];
-  obtain ⟨ g, hg₁, hg₂ ⟩ := h_involution
-  have h_partition : ∃ (S : Finset (Finset (differentialFibre f a b))), (∀ s ∈ S, s.card = 2) ∧ (∀ s ∈ S, ∀ t ∈ S, s ≠ t → Disjoint s t) ∧ Finset.biUnion S id = Finset.univ := by
-    refine' ⟨ Finset.image ( fun x => { x, g x } ) Finset.univ, _, _, _ ⟩ <;> simp_all +decide [ Finset.disjoint_left ];
-    · grind;
-    · grind;
-    · ext x; simp [Finset.mem_biUnion, Finset.mem_image];
-      exact ⟨ x, x.2, Or.inl rfl ⟩;
-  obtain ⟨ S, hS₁, hS₂, hS₃ ⟩ := h_partition;
-  have h_card_even : Finset.card (Finset.biUnion S id) = ∑ s ∈ S, Finset.card s := by
-    exact Finset.card_biUnion fun s hs t ht hst => hS₂ s hs t ht hst;
-  simp_all +decide [ Finset.sum_congr rfl hS₁ ]
+    (f : G → G) (a b : G) (ha : a ≠ 0)
+    (hChar2 : ∀ x : G, x + x = 0) :
+    (differentialFibre f a b).card % 2 = 0 := by
+  -- The map ι(x) = x + a is an involution on G that preserves fibres.
+  have h_involution (x : G) : x + a + a = x := by
+    rw [ add_assoc, hChar2, add_zero ]
+  have h_fixed_point_free (x : G) : x + a ≠ x := by
+    aesop
+  have h_preserves_fibres (x : G) : differentialMap f a (x + a) = differentialMap f a x := by
+    unfold differentialMap; simp +decide [ h_involution, hChar2 ] ;
+    rw [ sub_eq_sub_iff_add_eq_add ] ; simp +decide [ ← add_assoc, hChar2 ] ;
+  generalize_proofs at *; (
+  -- Since ι is a fixed-point-free involution on the fibre, the cardinality of the fibre must be even.
+  have h_card_even : ∀ {S : Finset G}, (∀ x ∈ S, x + a ∈ S) → (∀ x ∈ S, x + a ≠ x) → (Finset.card S) % 2 = 0 := by
+    intros S hS_inv hS_fixed_point_free
+    have h_card_even : ∃ T : Finset (Finset G), (∀ t ∈ T, t.card = 2) ∧ (∀ t ∈ T, ∀ u ∈ T, t ≠ u → Disjoint t u) ∧ S = Finset.biUnion T id := by
+      refine' ⟨ Finset.image ( fun x => { x, x + a } ) S, _, _, _ ⟩ <;> simp_all +decide [ Finset.disjoint_left ];
+      · grind +ring;
+      · ext x; simp [Finset.mem_biUnion, Finset.mem_image];
+        exact ⟨ fun hx => ⟨ x, hx, Or.inl rfl ⟩, by rintro ⟨ y, hy, rfl | rfl ⟩ <;> [ exact hy; exact hS_inv y hy ] ⟩
+    generalize_proofs at *; (
+    obtain ⟨ T, hT₁, hT₂, rfl ⟩ := h_card_even; rw [ Finset.card_biUnion ] <;> aesop;)
+  generalize_proofs at *; (
+  exact h_card_even ( fun x hx => by unfold differentialFibre at *; aesop ) ( fun x hx => h_fixed_point_free x )))
 
 /-
-**Theorem A (APN Differential Image Size)**:
-    For an APN function over a group of characteristic 2,
-    |Im(D_a(f))| = |G| / 2 for every nonzero a.
-
-    **Note**: The original formulation omitted the characteristic-2 hypothesis.
-    Without it, differential fibres may have odd cardinality, making the
-    theorem false. The hypothesis `hchar2` ensures the pairing
-    `x ↔ x + a` (since `2a = 0`).
+**Conjecture A (APN Differential Image Size)**:
+    For an APN function on a char-2 group, |Im(D_a(f))| = |G| / 2 for every
+    nonzero a. The char-2 hypothesis ensures fibres come in pairs {x, x+a},
+    forcing every APN fibre to have size exactly 0 or 2.
 -/
 theorem apn_image_size {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G]
     (f : G → G) (hAPN : IsAPN f) (a : G) (ha : a ≠ 0)
     (hEven : 2 ∣ Fintype.card G)
-    (hchar2 : ∀ x : G, x + x = 0) :
+    (hChar2 : ∀ x : G, x + x = 0) :
     (differentialImage f a).card = Fintype.card G / 2 := by
-  -- By definition of differential image, we know that every element in the image has a preimage in thefibers.
-  have h_image : ∑ b ∈ differentialImage f a, (differentialFibre f a b).card = Fintype.card G := by
-    convert fibre_sum_eq_card f a using 1;
-    refine' Finset.sum_subset _ _ <;> simp +contextual [ differentialFibre, differentialImage ];
-  -- By definition of differential image, we know that every element in the image has a preimage in thefibers, and each fiber has cardinality 2.
-  have h_fiber_card : ∀ b ∈ differentialImage f a, (differentialFibre f a b).card = 2 := by
-    intro b hb
-    have h_fiber_card : (differentialFibre f a b).card ≤ 2 := by
-      exact hAPN a ha b
-    have h_fiber_card_even : Even (differentialFibre f a b).card := by
-      exact?
-    have h_fiber_card_pos : 0 < (differentialFibre f a b).card := by
-      exact Finset.card_pos.mpr ( by obtain ⟨ x, hx ⟩ := Finset.mem_image.mp hb; exact ⟨ x, Finset.mem_filter.mpr ⟨ Finset.mem_univ _, hx.2 ⟩ ⟩ )
-    exact (by
-    interval_cases _ : #(differentialFibre f a b) <;> simp_all +decide);
-  rw [ ← h_image, Finset.sum_congr rfl h_fiber_card, Finset.sum_const, smul_eq_mul, mul_comm ] ; norm_num [ Nat.mul_div_cancel _ ( by decide : 0 < 2 ) ]
+  rw [ Nat.div_eq_of_eq_mul_left ];
+  · decide +revert;
+  · have h_card_fibres : ∑ b ∈ (differentialImage f a), (differentialFibre f a b).card = Fintype.card G := by
+      convert fibre_sum_eq_card f a using 1;
+      refine' Finset.sum_subset _ _ <;> simp +contextual [ differentialImage, differentialFibre ];
+    rw [ ← h_card_fibres, Finset.sum_const_nat ];
+    intro b hb;
+    exact le_antisymm ( hAPN a ha b ) ( Nat.le_of_dvd ( Finset.card_pos.mpr ⟨ Classical.choose ( Finset.mem_image.mp hb ), Finset.mem_filter.mpr ⟨ Finset.mem_univ _, Classical.choose_spec ( Finset.mem_image.mp hb ) |>.2 ⟩ ⟩ ) ( Nat.dvd_of_mod_eq_zero ( differentialFibre_even f a b ha hChar2 ) ) )
 
 /-! ## §3  Conjecture B — Δ Half-Space Decomposition
 
@@ -159,10 +146,10 @@ theorem apn_half_space_decomposition {G : Type*} [AddCommGroup G]
     [Fintype G] [DecidableEq G]
     (f : G → G) (hAPN : IsAPN f) (a : G) (ha : a ≠ 0)
     (hEven : 2 ∣ Fintype.card G)
-    (hchar2 : ∀ x : G, x + x = 0) :
+    (hChar2 : ∀ x : G, x + x = 0) :
     (differentialImage f a).card =
       Fintype.card G - (differentialImage f a).card := by
-  rw [ apn_image_size f hAPN a ha hEven hchar2, Nat.sub_eq_of_eq_add ] ; linarith [ Nat.div_mul_cancel hEven ]
+  rw [ apn_image_size f hAPN a ha hEven hChar2, Nat.sub_eq_of_eq_add ] ; linarith [ Nat.div_mul_cancel hEven ]
 
 /-! ## §4  Conjecture C — APN ↔ AB Spectral Bridge
 
@@ -302,12 +289,12 @@ theorem diff_class_count_dual_invariant (cls : DiffUniformityClass) (n m : ℕ) 
 /-! ## §11  Integration: APN in the AB Category Framework -/
 
 /-- An APN function on a group → ABFunc datum in the Boolean topos. -/
-def apnToABFunc (G : Type) [Group G] (f : G → G) : ABFunc TypeTopos :=
-  mkABFunc G f
+def apnToABFunc (G : Type) [Group G] (f : G → G) (hf : f 1 = 1) : ABFunc TypeTopos :=
+  mkABFunc G f hf
 
 /-- APN-to-ABFunc preserves identity. -/
 theorem apn_abfunc_id (G : Type) [Group G] :
-    apnToABFunc G id = mkABFunc G id := rfl
+    apnToABFunc G id rfl = mkABFunc G id rfl := rfl
 
 /-! ## §12  APN Spectral Rigidity via Postnikov Construction -/
 
