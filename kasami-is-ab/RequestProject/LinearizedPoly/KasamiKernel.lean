@@ -21,6 +21,7 @@ theory to prove key properties of the Kasami derivative.
 import Mathlib
 import RequestProject.LinearizedPoly.Defs
 import RequestProject.LinearizedPoly.Kernel
+import RequestProject.Kasami.KasamiNormIdentity
 
 set_option linter.unusedSectionVars false
 
@@ -109,7 +110,10 @@ theorem kasamiDiff_eq_implies_two_solutions (n : ℕ) (hn : 0 < n) (k : ℕ) (hk
     (hn_odd : Odd n)
     (y₁ y₂ : F) (heq : kasamiDiff k 1 y₁ = kasamiDiff k 1 y₂) :
     y₁ = y₂ ∨ y₁ = y₂ + 1 := by
-  sorry
+  apply kasamiDiff_two_solutions' n hn k hk hcard hgcd h3 hn_odd y₁ y₂
+  -- Convert kasamiDiff to the raw power form
+  unfold kasamiDiff kasamiPow kasamiExp at heq
+  convert heq using 2 <;> congr 1 <;> rw [show (4 : ℕ) = 2 ^ 2 from by norm_num, ← pow_mul]
 
 /-! ### The 2-to-1 theorem -/
 

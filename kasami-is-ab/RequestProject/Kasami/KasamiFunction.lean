@@ -55,7 +55,16 @@ def kasamiDeltaGen (n k : ℕ) : F2n n → F2n n :=
 /-! ### Almost bent property -/
 
 /-- **The Kasami function is almost bent** when `gcd(k,n) = 1` and `n` is odd.
-    This is the deep result from Kasami (1971) / Canteaut-Charpin-Dobbertin (2000). -/
+    This is the deep result from Kasami (1971) / Canteaut-Charpin-Dobbertin (2000).
+
+    The proof is decomposed in `KasamiWHTSquared.lean` into:
+    - `kasami_wht_sq`: W_d(a)² = 2^n · (1 + χ(a+1))
+    - `kasami_is_ab_direct`: AB follows from the WHT² formula
+
+    The sorry here propagates from the sub-lemmas:
+    - `kasamiDerivAutocorr_vanish`: C_d(z) = 0 for z ∉ {0,1}
+    - `kasami_deriv_one_trace`: trace identity for D₁(x^d)
+    See `KasamiWHTSquared.lean` for the full decomposition. -/
 theorem kasami_is_ab (n k : ℕ) (hk : k ≠ 0) (hn : n ≠ 0) (hn_odd : Odd n)
     (hgcd : Nat.Coprime k n) :
     IsAlmostBent (kasamiF n k) := by

@@ -64,3 +64,6 @@ import RequestProject.Kasami.ABVanishing
 import RequestProject.Kasami.KasamiABProof
 import RequestProject.Kasami.GammaIndicator
 import RequestProject.Kasami.GoldAB
+
+-- Correct decomposition of kasami_is_ab
+import RequestProject.Kasami.KasamiABDecomposition

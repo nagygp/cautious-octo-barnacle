@@ -126,17 +126,31 @@ theorem M3k_zero_iff' (z : F) (k : ℕ) :
 
 /-! ### §7 The deep CCD kernel step (BLACK BOX) -/
 
-/-- **CCD kernel step** (see note below).
+/-- **CCD kernel step** — placeholder for the deep Kasami APN argument.
 
-    When `D ≠ 0`, `c ≠ 0`, and the norm equation holds,
-    with `gcd(k,n) = 1` and `3 ∤ n`, then `z^{2^{3k}} + z = 0`.
+    **WARNING**: This statement is FALSE as a standalone lemma. The norm equation
+    `D^{2^k}c + Dc^{2^k} = z^{2^{3k}} + z` alone does NOT force `z^{2^{3k}} + z = 0`.
+    Counterexample: GF(2^5), k=1: setting D=1, the equation c²+c = z⁸+z has
+    solutions for any z ∉ GF(2) since Tr(z⁸+z) = 0.
 
-    **NOTE**: This statement is too weak as a standalone lemma — the norm
-    equation alone does not force M_{3k}(z)=0. In the CCD paper, D and c
-    come from the Kasami differential (D = G(y₁)+G(y₂), c = D₁G(y₂)),
-    giving additional algebraic constraints. The standalone version needs
-    hypotheses tying D,c to the Kasami function. Used in
-    `kasamiDiff_two_solutions'` where those constraints are present. -/
+    The correct proof of `kasamiDiff_two_solutions'` requires additional structure
+    from the Kasami function (e.g., the Dobbertin q_α permutation polynomial
+    approach from Budaghyan §4.3.1, or a direct quadratic form argument).
+
+    **Decomposition of the correct approach** (Dobbertin 1999):
+    The correct proof that the Kasami function is APN uses:
+    1. `ccd_norm_eq`: (x^d)^{2^k+1} = x^{2^{3k}+1}
+    2. The linearized polynomial L(z) = z^{2^{2k}} + z^{2^k} + z
+    3. For z \notin ker(L), the norm equation has no solution
+    4. ker(L) \cap GF(2^n) = GF(2) when gcd(k,n) = 1 and 3 \nmid n
+    5. Combining gives: D_1 G has at most 2 solutions
+
+    Steps 3-4 require the Dobbertin permutation polynomial argument
+    or the quadratic form rank analysis from CCD (2000), §4.
+
+    This sorry is retained as a placeholder; the downstream theorems
+    (`kasamiDiff_two_solutions'`, `kasami_apn`) are correct statements
+    whose proofs need restructuring to avoid this false intermediate. -/
 theorem ccd_kernel_step' (n k : ℕ) (hn : 0 < n) (hk : 0 < k)
     (hcard : Fintype.card F = 2 ^ n) (hgcd : Nat.Coprime k n) (h3 : ¬ 3 ∣ n)
     (z c D : F)
