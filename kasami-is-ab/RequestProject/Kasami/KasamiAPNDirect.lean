@@ -114,12 +114,34 @@ theorem factor_case1 (hn : n ≠ 0) (k : ℕ) (hgcd : Nat.Coprime k n)
     rwa [add_eq_zero_iff_eq_neg, F2n.neg_eq] at hz
   exact frob_k_fixed_implies_gf2 hn hgcd z this
 
-/-- Case 2: s + t = 0 means z^{2^k} = z^{2^{2k}}, reducing to Case 1
-    via the inverse Frobenius. -/
+/-
+Case 2: s + t = 0 means z^{2^k} = z^{2^{2k}}, reducing to Case 1
+    via the inverse Frobenius.
+-/
 theorem factor_case2 (hn : n ≠ 0) (k : ℕ) (hgcd : Nat.Coprime k n)
     (z : F2n n) (hz : z ^ (2 ^ k) + z ^ (2 ^ (2 * k)) = 0) :
     z = 0 ∨ z = 1 := by
-  sorry
+  have hz_eq : z ^ (2 ^ k) = 0 ∨ z ^ (2 ^ k) = 1 := by
+    apply frob_k_fixed_implies_gf2 hn hgcd;
+    convert eq_neg_of_add_eq_zero_right hz using 1 ; ring;
+    grind +suggestions;
+  cases hz_eq <;> simp_all +decide [ pow_eq_zero_iff ];
+  have h_order : orderOf z ∣ 2 ^ k - 1 ∧ orderOf z ∣ 2 ^ n - 1 := by
+    have h_order : orderOf z ∣ 2 ^ n - 1 := by
+      have h_order : z ^ (2 ^ n - 1) = 1 := by
+        have h_order : z ^ (Fintype.card (F2n n) - 1) = 1 := by
+          rw [ FiniteField.pow_card_sub_one_eq_one ] ; aesop;
+        grind +suggestions;
+      exact orderOf_dvd_iff_pow_eq_one.mpr h_order;
+    have h_order : orderOf z ∣ 2 ^ k := by
+      exact orderOf_dvd_iff_pow_eq_one.mpr ‹_›;
+    have := Nat.dvd_gcd h_order ‹orderOf z ∣ 2 ^ n - 1›; simp_all +decide [ Nat.Coprime, Nat.Coprime.pow ] ;
+    have h_coprime : Nat.gcd (2 ^ k) (2 ^ n - 1) = 1 := by
+      exact Nat.Coprime.pow_left _ ( Nat.prime_two.coprime_iff_not_dvd.mpr <| by simpa [ ← even_iff_two_dvd, Nat.one_le_iff_ne_zero, parity_simps ] using hn );
+    aesop;
+  have h_order_one : orderOf z ∣ Nat.gcd (2 ^ k - 1) (2 ^ n - 1) := by
+    exact Nat.dvd_gcd h_order.left h_order.right;
+  simp_all +decide [ Nat.Coprime, Nat.Coprime.gcd_eq_one ]
 
 /-! ### §5: Constant part of second derivative is nonzero -/
 

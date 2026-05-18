@@ -1,3 +1,40 @@
+# Summary of changes for run 870c6ced-c9c1-4ff9-8827-48024ed190af
+## Summary of Work: Deepest Algebraic Sub-lemmas for Kasami APN/AB Proof
+
+### New file created: `RequestProject/Kasami/KasamiAPNDirect.lean`
+
+This file contains **6 fully proved theorems** (zero sorries, only standard axioms) that decompose the deepest algebraic core of the Kasami APN proof via the Canteaut-Charpin-Dobbertin (2000) factorization approach.
+
+### Proved theorems:
+
+1. **`frob_k_fixed_implies_gf2`** — If z^{2^k} = z in GF(2^n) and gcd(k,n) = 1, then z ∈ {0, 1}. Uses the Mersenne GCD identity: gcd(2^k−1, 2^n−1) = 2^{gcd(k,n)}−1 = 1, so ord(z) | 1, forcing z = 0 or z = 1.
+
+2. **`kasami_pow_as_fraction`** — For z ≠ 0: z^d = z · z^{2^{2k}} · (z^{2^k})⁻¹, where d = 4^k − 2^k + 1 is the Kasami exponent. This fractional representation is essential for the factorization step.
+
+3. **`ccd_factorization`** ⭐ — **The key CCD identity**: s(s+1)(1 + z^d + (z+1)^d) = (s+z)(s+t), where s = z^{2^k}, t = z^{2^{2k}}. This is the central algebraic factorization from Canteaut-Charpin-Dobbertin (2000) that reduces the Kasami derivative analysis to subfield membership.
+
+4. **`factor_case1`** — If z^{2^k} + z = 0 and gcd(k,n) = 1, then z ∈ {0, 1}. Direct application of the Frobenius fixed point theorem.
+
+5. **`factor_case2`** — If z^{2^k} + z^{2^{2k}} = 0 and gcd(k,n) = 1, then z ∈ {0, 1}. Reduces to case 1 by applying the inverse Frobenius automorphism and using the order-theoretic argument.
+
+6. **`kasami_const_part_nonzero`** ⭐ — For z ∉ GF(2) with gcd(k,n) = 1: 1 + z^d + (z+1)^d ≠ 0. This is the **nonvanishing of the constant part** of the second derivative, proved by combining the factorization identity with the two subfield cases.
+
+### How these connect to the proof architecture:
+
+These sub-lemmas establish the core algebraic steps needed for the full Kasami APN proof:
+- The factorization identity shows that the second derivative's constant term factors as (s+z)(s+t)/(s(s+1))
+- The subfield arguments show that both factors are nonzero when z ∉ GF(2)
+- Together, they prove the constant part of the second derivative D_z D_1(x^d) is nonzero for z ∉ GF(2)
+
+### Remaining gap for full APN:
+
+The full APN proof requires one additional step: showing that the *linearized part* of the second derivative D_z D_1(x^d) combined with the nonzero constant part means the affine equation L(x) + c(z) = 0 has no solutions. This "affine no-solution" step requires additional linearized polynomial kernel analysis that goes beyond the factorization.
+
+### Project integration:
+- `Main.lean` updated to import the new file
+- Full project builds successfully (8067 jobs, no errors)
+- All new theorems verified with `#print axioms` — only standard axioms (propext, Classical.choice, Quot.sound)
+
 # Summary of changes for run b8c403b8-b326-474e-a9aa-05c265525e76
 # P3 Implication Chain — Decomposition Summary
 

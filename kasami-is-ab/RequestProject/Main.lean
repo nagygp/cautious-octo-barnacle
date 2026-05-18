@@ -67,3 +67,6 @@ import RequestProject.Kasami.GoldAB
 
 -- Correct decomposition of kasami_is_ab
 import RequestProject.Kasami.KasamiABDecomposition
+
+-- Direct CCD factorization sub-lemmas for APN proof
+import RequestProject.Kasami.KasamiAPNDirect
