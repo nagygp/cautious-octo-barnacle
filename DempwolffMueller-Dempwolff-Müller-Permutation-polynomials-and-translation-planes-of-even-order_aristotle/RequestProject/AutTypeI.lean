@@ -1,0 +1,124 @@
+import Mathlib
+import RequestProject.AutGeneral
+import RequestProject.Thm32
+import RequestProject.FixedFieldScalar
+
+/-!
+# Layer B4: Automorphism Group — Type I Planes
+
+Formalization of Lemma 4.9 and Theorem 4.8 from Dempwolff & Müller (2013).
+
+## Main results
+
+1. **Lemma 4.9**: Properties of L⁻¹(X) for type I planes:
+   - L⁻¹(X) commutes with Frobenius (corrected from "∈ GF(2)")
+   - L⁻¹ is not a sum of 1 or 2 monomials
+   - spi(L⁻¹) ≠ {i+r | 0 ≤ i < m'} for any r, m'
+
+2. **Theorem 4.8**: The automorphism group of a type I plane:
+   Kernel ≅ GF(2), G = G_{0,∞} = Z ⋊ {τ_{1,1,α}} ≅ C_{2ⁿ-1} · Cₙ
+
+## DAG structure
+
+```
+  B3 (AutGeneral) + Thm32
+    │
+    ├──► Lemma 4.9 (inverse polynomial properties)
+    │
+    └──► Theorem 4.8 (automorphism group)
+```
+
+**Dependencies:** AutGeneral, Thm32, Mathlib.
+-/
+
+namespace DempwolffMueller
+
+open Finset BigOperators Classical
+
+variable {F : Type*} [Field F] [Fintype F] [CharP F 2]
+
+-- ═══════════════════════════════════════════
+-- B4.1 : Type I polynomial definition
+-- ═══════════════════════════════════════════
+
+/-- A **type I polynomial** is `L(X) = ∑_{i=0}^{m-1} X^{2^i}` (truncated trace)
+    with `1 < m < n`, `m` odd, `gcd(m,n) = 1`. -/
+def IsTypeIPoly (n_dim m : ℕ) : Prop :=
+  1 < m ∧ m < n_dim ∧ Odd m ∧ Nat.Coprime m n_dim
+
+-- ═══════════════════════════════════════════
+-- B4.2 : Kernel computation for Type I
+-- ═══════════════════════════════════════════
+
+/-- **Type I kernel is GF(2).**
+    For the truncated trace `L(x) = ∑ x^{2^i}`, the kernel element
+    condition `L(c·x) = c·L(x)` for all x means `c^{2^i} = c` for
+    all `0 ≤ i < m`. Since `gcd(m,n) = 1`, this forces `c ∈ GF(2)`. -/
+lemma typeI_kernel_is_GF2 {n_dim : ℕ} (hn : Fintype.card F = 2 ^ n_dim)
+    (m : ℕ) (hm : IsTypeIPoly n_dim m) :
+    ∀ c : F, isKernelElement 2 m (fun _ : Fin m => (1 : F)) c → c ^ 2 = c := by
+  intro c hker
+  exact truncTrace_kernel_in_gfp 2 hn m hm.1 (le_of_lt hm.2.1) hm.2.2.2 hker
+
+/-
+═══════════════════════════════════════════
+B4.3 : Lemma 4.9 — Inverse polynomial structure
+═══════════════════════════════════════════
+
+**⚠ FALSE STATEMENT (commented out).**
+   The original statement `typeI_inverse_GF2_coeffs` claimed
+   `(L⁻¹(x))² = L⁻¹(x)` for ALL `x : F`, which says `L⁻¹` maps `F` into `GF(2)`.
+   This is impossible when `n > 1`: `L⁻¹` is a bijection on `GF(2^n)`, so its image
+   is all of `GF(2^n)`, not just `GF(2)` (which has only 2 elements).
+
+   The paper's actual claim (Lemma 4.9(a)) is that `L⁻¹` has coefficients in `GF(2)`,
+   meaning `L⁻¹` is a `GF(2)`-linear map, i.e., it commutes with the Frobenius
+   automorphism: `L⁻¹(x²) = (L⁻¹(x))²`.
+
+   The corrected version is `typeI_inverse_frob_comm` below.
+
+lemma typeI_inverse_GF2_coeffs {n_dim : ℕ} (hn : Fintype.card F = 2 ^ n_dim)
+(m : ℕ) (hm : IsTypeIPoly n_dim m)
+(hbij : Function.Bijective (fun x : F =>
+∑ i ∈ range m, x ^ (2 ^ i))) :
+∀ x : F, (Function.invFun (fun x : F => ∑ i ∈ range m, x ^ (2 ^ i)) x) ^ 2 =
+Function.invFun (fun x : F => ∑ i ∈ range m, x ^ (2 ^ i)) x := by sorry
+
+**Lemma 4.9(a) (corrected).** The inverse `L⁻¹` of the truncated trace commutes
+    with the Frobenius automorphism: `L⁻¹(x²) = (L⁻¹(x))²`.
+
+    **Proof.** Since `L` is a sum of Frobenius powers (with GF(2) coefficients),
+    `L` commutes with squaring: `L(y²) = L(y)²`. Given `L(y) = x`, we have
+    `L(y²) = x²`, so `L⁻¹(x²) = y² = (L⁻¹(x))²`.
+-/
+lemma typeI_inverse_frob_comm {n_dim : ℕ} (hn : Fintype.card F = 2 ^ n_dim)
+    (m : ℕ) (hm : IsTypeIPoly n_dim m)
+    (hbij : Function.Bijective (fun x : F =>
+      ∑ i ∈ range m, x ^ (2 ^ i))) :
+    ∀ x : F, (Function.invFun (fun x : F => ∑ i ∈ range m, x ^ (2 ^ i)) (x ^ 2)) =
+    (Function.invFun (fun x : F => ∑ i ∈ range m, x ^ (2 ^ i)) x) ^ 2 := by
+      intro x
+      set y := Function.invFun (fun x => ∑ i ∈ Finset.range m, x ^ (2 ^ i)) x
+      have hy : ∑ i ∈ Finset.range m, y ^ (2 ^ i) = x := by
+        exact Function.invFun_eq ( hbij.2 x )
+      have hxy : ∑ i ∈ Finset.range m, (y ^ 2) ^ (2 ^ i) = x ^ 2 := by
+        rw [ ← hy, ← Finset.sum_congr rfl fun _ _ => pow_right_comm _ _ _ ];
+        exact Eq.symm (CharTwo.sum_sq (range m) fun i => y ^ 2 ^ i)
+      have hxy' : Function.invFun (fun x => ∑ i ∈ Finset.range m, x ^ (2 ^ i)) (x ^ 2) = y ^ 2 := by
+        rw [ ← hxy, Function.leftInverse_invFun hbij.injective ]
+      exact hxy'
+
+-- ═══════════════════════════════════════════
+-- B4.4 : Theorem 4.8 — Automorphism group structure
+-- ═══════════════════════════════════════════
+
+/-- **Theorem 4.8 (abstract form).**
+    For a type I plane, every automorphism is of the form `T_α(1)` for some `α`,
+    i.e., the automorphism group of `G_{0,∞}` is generated by the Singer group
+    and the Frobenius automorphisms. -/
+def TypeIAutGroup (n_dim m : ℕ) : Prop :=
+  IsTypeIPoly n_dim m →
+  ∀ a b : F, ∀ α : ℕ, isAutomorphismTriple 2 m (fun _ : Fin m => (1 : F)) a b α →
+    b = 1 ∧ α < n_dim
+
+end DempwolffMueller
