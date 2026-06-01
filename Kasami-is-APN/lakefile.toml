@@ -1,10 +1,46 @@
 name = "RequestProject"
-defaultTargets = ["RequestProject"]
+defaultTargets = ["ToposBridgePattern", "RequestProject"]
 
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"
 rev = "v4.28.0"
+
+[[lean_lib]]
+name = "ToposBridgePattern"
+globs = ["ToposBridgePattern"]
+
+[[lean_lib]]
+name = "KasamiToposBridge"
+globs = ["KasamiToposBridge"]
+
+[[lean_lib]]
+name = "KasamiCaseB"
+globs = ["KasamiCaseB"]
+
+[[lean_lib]]
+name = "KasamiFrobenius"
+globs = ["KasamiFrobenius"]
+
+[[lean_lib]]
+name = "MCMPerm"
+globs = ["MCMPerm"]
+
+[[lean_lib]]
+name = "MCMProof"
+globs = ["MCMProof"]
+
+[[lean_lib]]
+name = "DicksonMCM"
+globs = ["DicksonMCM"]
+
+[[lean_lib]]
+name = "KasamiEvenCase"
+globs = ["KasamiEvenCase"]
+
+[[lean_lib]]
+name = "KasamiDAGLayers"
+globs = ["KasamiDAGLayers"]
 
 [[lean_lib]]
 name = "RequestProject"

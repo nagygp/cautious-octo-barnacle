@@ -36,19 +36,20 @@ lemma frobSum_finset_sum {ι : Type*} (s : Finset ι) (f : ι → F) (m : ℕ) :
 
 lemma frobSum_pow_p {n : ℕ} (hn : Fintype.card F = p ^ n) (x : F) :
     (frobSum p n x) ^ p = frobSum p n x := by
-  -- We can expand the expression $(\sum_{i=0}^{n-1} x^{p^i})^p$.
-  have h_expand : (∑ i ∈ Finset.range n, x ^ (p ^ i)) ^ p = ∑ i ∈ Finset.range n, x ^ (p ^ (i+1)) := by
-    induction' n with n ih;
-    · simp +decide [ hp.1.ne_zero ];
-    · induction' n + 1 with n ih <;> simp_all +decide [ pow_succ, pow_mul, Finset.sum_range_succ ];
-      · exact hp.1.ne_zero;
-      · rw [ add_pow_char, ih ];
-  -- We can reindex � the� sum with $j = i + 1$, then $j$ runs from $1$ to � $�n$. So the sum becomes $\sum_{j=1}^n x^{p^j}$.
-  have h_reindex : ∑ i ∈ Finset.range n, x ^ (p ^ (i + 1)) = ∑ j ∈ Finset.Ico 1 (n + 1), x ^ (p ^ j) := by
-    rw [ Finset.sum_Ico_eq_sum_range ] ; ac_rfl;
-  simp_all +decide [ Finset.sum_Ico_eq_sub _ ];
-  simp_all +decide [ Finset.sum_range_succ, frobSum ];
-  rw [ ← hn, FiniteField.pow_card ] ; ring
+  have h_expand : (∑ i ∈ Finset.range n, x ^ (p ^ i)) ^ p =
+      ∑ i ∈ Finset.range n, x ^ (p ^ (i+1)) := by
+    induction' n with n ih
+    · simp +decide [hp.1.ne_zero]
+    · induction' n + 1 with n ih <;>
+        simp_all +decide [pow_succ, pow_mul, Finset.sum_range_succ]
+      · exact hp.1.ne_zero
+      · rw [add_pow_char, ih]
+  have h_reindex : ∑ i ∈ Finset.range n, x ^ (p ^ (i + 1)) =
+      ∑ j ∈ Finset.Ico 1 (n + 1), x ^ (p ^ j) := by
+    rw [Finset.sum_Ico_eq_sum_range]; ac_rfl
+  simp_all +decide [Finset.sum_Ico_eq_sub _]
+  simp_all +decide [Finset.sum_range_succ, frobSum]
+  rw [← hn, FiniteField.pow_card]; ring
 
 lemma frobSum_frob_stable {n : ℕ} (hn : Fintype.card F = p ^ n) (x : F) (j : ℕ) :
     (frobSum p n x) ^ (p ^ j) = frobSum p n x := by
@@ -58,14 +59,12 @@ lemma frobSum_frob_stable {n : ℕ} (hn : Fintype.card F = p ^ n) (x : F) (j : �
 
 lemma frobSum_frob_invariant {n : ℕ} (hn : Fintype.card F = p ^ n) (x : F) (j : ℕ) :
     frobSum p n (x ^ (p ^ j)) = frobSum p n x := by
-  -- Apply the lemma `finset_sum_frob_eq` to rewrite the sum.
-  have h_sum : (∑ i ∈ Finset.range n, x ^ (p ^ (i + j))) = (∑ i ∈ Finset.range n, x ^ (p ^ i)) ^ (p ^ j) := by
-    exact?;
-  convert h_sum using 1;
-  · exact Finset.sum_congr rfl fun _ _ => by ring;
-  · convert frobSum_frob_stable p hn x j using 1;
-    · exact?;
-    · convert frobSum_frob_stable p hn x j using 1
+  have h_sum : (∑ i ∈ Finset.range n, x ^ (p ^ (i + j))) =
+      (∑ i ∈ Finset.range n, x ^ (p ^ i)) ^ (p ^ j) := by
+    exact (truncTrace_frob_output_general p n x j).symm
+  convert h_sum using 1
+  · exact Finset.sum_congr rfl fun _ _ => by ring
+  · exact (frobSum_frob_stable p hn x j).symm
 
 omit hp [CharP F p] in
 lemma frob_prod_factor {n : ℕ} (hn : Fintype.card F = p ^ n) (x y : F)
@@ -82,26 +81,30 @@ lemma trace_prod_frob {n : ℕ} (hn : Fintype.card F = p ^ n) (x y : F)
 
 lemma frobSum_ne_zero {n : ℕ} (hn : Fintype.card F = p ^ n) (hn1 : 1 ≤ n) :
     ∃ x : F, frobSum p n x ≠ 0 := by
-  contrapose! hn1;
-  -- Consider the polynomial $P(X) = \sum_{i=0}^{n-1} X^{p^i}$.
-  set P : Polynomial F := Finset.sum (Finset.range n) (fun i => Polynomial.X ^ (p ^ i));
-  -- Since $P$ is a polynomial of degree $p^{n-1}$ and has $|F|$ roots, it must be the zero polynomial.
+  contrapose! hn1
+  set P : Polynomial F := Finset.sum (Finset.range n) (fun i => Polynomial.X ^ (p ^ i))
   have hP_zero : P = 0 := by
-    refine' Polynomial.eq_of_degree_sub_lt_of_eval_finset_eq _ _ _;
-    exact Finset.univ;
-    · rcases n with ( _ | n ) <;> simp_all +decide [ Polynomial.degree_lt_iff_coeff_zero ];
-      · exact absurd hn ( Nat.ne_of_gt ( Fintype.one_lt_card ) );
-      · refine' lt_of_le_of_lt ( Polynomial.degree_sum_le _ _ ) _;
-        simp +decide [ Finset.range_add_one ];
-        refine' ⟨ mod_cast pow_lt_pow_right₀ hp.1.one_lt n.lt_succ_self, _ ⟩;
-        exact lt_of_le_of_lt ( Finset.sup_le fun i hi => WithBot.coe_le_coe.mpr ( pow_le_pow_right₀ hp.1.one_lt.le ( Finset.mem_range_le hi ) ) ) ( WithBot.coe_lt_coe.mpr ( pow_lt_pow_right₀ hp.1.one_lt ( Nat.lt_succ_self _ ) ) );
-    · simp +zetaDelta at *;
-      simp_all +decide [ Polynomial.eval_finset_sum, frobSum ];
-  replace hP_zero := congr_arg ( fun q => Polynomial.coeff q ( p ^ 0 ) ) hP_zero ; simp_all +decide [ Polynomial.coeff_X_pow ];
-  rcases n with ( _ | _ | n ) <;> simp_all +decide [ Polynomial.coeff_sum, Polynomial.coeff_X_pow ];
-  · simp +zetaDelta at *;
-  · rw [ Polynomial.finset_sum_coeff, Finset.sum_eq_single 0 ] at hP_zero <;> simp_all +decide [ Polynomial.coeff_X_pow ];
-    exact fun b hb hb' => ne_of_lt ( one_lt_pow₀ hp.1.one_lt hb' )
+    refine' Polynomial.eq_of_degree_sub_lt_of_eval_finset_eq _ _ _
+    exact Finset.univ
+    · rcases n with (_ | n) <;> simp_all +decide [Polynomial.degree_lt_iff_coeff_zero]
+      · exact absurd hn (Nat.ne_of_gt (Fintype.one_lt_card))
+      · refine' lt_of_le_of_lt (Polynomial.degree_sum_le _ _) _
+        simp +decide [Finset.range_add_one]
+        refine' ⟨mod_cast pow_lt_pow_right₀ hp.1.one_lt n.lt_succ_self, _⟩
+        exact lt_of_le_of_lt
+          (Finset.sup_le fun i hi => WithBot.coe_le_coe.mpr
+            (pow_le_pow_right₀ hp.1.one_lt.le (Finset.mem_range_le hi)))
+          (WithBot.coe_lt_coe.mpr (pow_lt_pow_right₀ hp.1.one_lt (Nat.lt_succ_self _)))
+    · simp +zetaDelta at *
+      simp_all +decide [Polynomial.eval_finset_sum, frobSum]
+  replace hP_zero := congr_arg (fun q => Polynomial.coeff q (p ^ 0)) hP_zero
+  simp_all +decide [Polynomial.coeff_X_pow]
+  rcases n with (_ | _ | n) <;>
+    simp_all +decide [Polynomial.coeff_sum, Polynomial.coeff_X_pow]
+  · simp +zetaDelta at *
+  · rw [Polynomial.finset_sum_coeff, Finset.sum_eq_single 0] at hP_zero <;>
+      simp_all +decide [Polynomial.coeff_X_pow]
+    exact fun b hb hb' => ne_of_lt (one_lt_pow₀ hp.1.one_lt hb')
 
 lemma trace_nondegenerate {n : ℕ} (hn : Fintype.card F = p ^ n) (hn1 : 1 ≤ n)
     {x : F} (hx : x ≠ 0) :
@@ -113,10 +116,10 @@ omit [Fintype F] hp [CharP F p] in
 lemma sum_frob_reverse {n m : ℕ} (hm : m ≤ n) (z : F) :
     ∑ i ∈ Finset.range m, z ^ (p ^ (n - i)) =
     ∑ j ∈ Finset.Ico (n - m + 1) (n + 1), z ^ (p ^ j) := by
-  apply Finset.sum_bij (fun i hi => n - i);
-  · grind +qlia;
-  · grind;
-  · exact fun b hb => ⟨ n - b, by norm_num at *; omega, by norm_num at *; omega ⟩;
+  apply Finset.sum_bij (fun i hi => n - i)
+  · grind +qlia
+  · grind
+  · exact fun b hb => ⟨n - b, by norm_num at *; omega, by norm_num at *; omega⟩
   · exact fun _ _ => rfl
 
 lemma frobSum_adj_expand (m : ℕ) (w z : F) :
