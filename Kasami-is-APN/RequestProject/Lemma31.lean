@@ -72,11 +72,13 @@ lemma bijective_iff_adjoint_bijective (T : F →ₗ[K] K)
     Function.Bijective A ↔ Function.Bijective Aadj := by
   constructor;
   · intro h;
+    -- By nondegeneracy of $T$, (� if� $Aadj(v) = Aadj(w)$, then $T(A(u) \cdot v) = T(A(u) \cdot w)$ for all $u$.
     have h_nondeg : ∀ v w : F, (∀ u : F, T (A u * v) = T (A u * w)) → v = w := by
       intro v w hvw
       have h_eq : ∀ u : F, T (A u * (v - w)) = 0 := by
         simp +decide [ mul_sub, hvw ];
       exact sub_eq_zero.mp ( hT _ fun x => by obtain ⟨ u, rfl ⟩ := h.2 x; simpa [ mul_comm ] using h_eq u );
+    -- By nondegeneracy of $T$, if $T(A(uid) \cdot v) = T(A(uid) \cdot w)$ for all $u$, then $v = w$.
     have h_adj_inj : Function.Injective Aadj := by
       exact fun v w hvw => h_nondeg v w fun u => by rw [ hAdj, hAdj, hvw ] ;
     exact ⟨h_adj_inj, by

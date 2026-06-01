@@ -44,6 +44,7 @@ lemma truncTrace_zero {F : Type*} [CommSemiring F] (m : ℕ) :
 
 lemma truncTrace_one_eq_one {F : Type*} [CommSemiring F] [CharP F 2]
     (m : ℕ) (hm : Odd m) : truncTrace m (1 : F) = 1 := by
+  -- Since $m$ is odd, we can write $m = 2k + 1$ for some integer $k$.
   obtain ⟨k, rfl⟩ : ∃ k, m = 2 * k + 1 := hm;
   unfold truncTrace;
   simp_all +decide [ show ( 2 : F ) = 0 by exact CharTwo.two_eq_zero ]
@@ -95,6 +96,7 @@ lemma truncTrace_ker_trivial {F : Type*} [Field F] [Fintype F] [CharP F 2]
     (hcop : Nat.Coprime m n) {x : F} (hLx : truncTrace m x = 0) :
     x = 0 := by
   have h_x_two : x ^ 2 = x := by
+    -- Since $x^{2^m} = x$ and $x^{2^n} = x$, we can use the fact that $m$ and $n$ are coprime to conclude that $x^{2^{\gcd(m,n)}} = x$.
     have h_x_gcd : x ^ (2 ^ Nat.gcd m n) = x := by
       have h_exp : x ^ (2 ^ m) = x ∧ x ^ (2 ^ n) = x := by
         exact ⟨ frob_fixed_of_truncTrace_zero m hLx, by rw [ ← hn, FiniteField.pow_card ] ⟩;
@@ -152,12 +154,14 @@ lemma dicksonF_functional {F : Type*} [Field F] [CharP F 2]
     (m : ℕ) (hm : 0 < m) {z : F} (hz : z ≠ 0) :
     dicksonF m (z + z⁻¹) = z ^ (2 ^ m - 1) + z⁻¹ ^ (2 ^ m - 1) := by
   induction' m with m ih generalizing z <;> simp_all +decide [ pow_succ' ];
+  -- Using the induction hypothesis and the recursion formula, we can simplify the expression.
   have h_simp : (z + z⁻¹) * dicksonF (m + 1) (z + z⁻¹) = (z ^ (2 ^ m - 1) + z⁻¹ ^ (2 ^ m - 1)) ^ 2 + (z + z⁻¹) ^ (2 ^ (m + 1)) := by
     by_cases hm : 0 < m <;> simp_all +decide [ dicksonF_recursion_mul ];
     simp +decide [ dicksonF ];
     grind;
   by_cases h : z + z⁻¹ = 0 <;> simp_all +decide [ pow_succ', pow_mul ];
-  · have hz_one : z = 1 := by
+  · -- Since $z + z⁻¹ = 0$, we have $z^2 = -1$. In characteristic 2, this implies $z^2 = 1$, so $z = 1$ or $z = -1$. But since we're in characteristic 2, $-1 = 1$, so $z = 1$.
+    have hz_one : z = 1 := by
       have hz_sq : z^2 = 1 := by
         grind
       grind +suggestions;
@@ -214,6 +218,7 @@ lemma frob_2n_eq_self_of_quad_root {K : Type*} [Field K] [CharP K 2]
   have hz_pow : (z ^ (2 ^ n)) ^ 2 + a * (z ^ (2 ^ n)) + 1 = 0 := by
     convert congr_arg ( · ^ 2 ^ n ) hz using 1 <;> ring;
     simp +decide [ add_pow_char_pow, mul_pow, ha ] ; ring;
+  -- Since $z$ and $a + z$ are roots of the polynomial $x^2 + ax + 1$ (in characteristic 2), we have $z^{2^n} = z$ or $z^{2^n} = a + z$.
   have hz_cases : z ^ (2 ^ n) = z ∨ z ^ (2 ^ n) = a + z := by
     grind +ring;
   cases' hz_cases with h h <;> simp_all +decide [ pow_mul', pow_two ];
@@ -226,6 +231,7 @@ When m odd and gcd(m,n) = 1, gcd(2^m - 1, 2^{2n} - 1) = 1.
 lemma coprime_mersenne_double' {m n : ℕ}
     (hm_odd : Odd m) (hcop : Nat.Coprime m n) :
     Nat.Coprime (2 ^ m - 1) (2 ^ (2 * n) - 1) := by
+  -- Since $m$ is odd and $\gcd(m, n) = 1$, it follows that $\gcd(m, 2n) = 1$.
   have h_coprime : Nat.gcd m (2 * n) = 1 := by
     exact Nat.Coprime.mul_right ( Nat.Coprime.symm ( Nat.prime_two.coprime_iff_not_dvd.mpr <| by simpa [ ← even_iff_two_dvd ] using hm_odd ) ) hcop;
   simp_all +decide [ Nat.Coprime, Nat.Coprime.symm ]
@@ -241,12 +247,14 @@ lemma dicksonF_injective_on_units {F : Type*} [Field F] [Fintype F] [CharP F 2]
   have := @exists_add_inv_rep F;
   obtain ⟨z, hz₁, hz₂⟩ := this hx
   obtain ⟨w, hw₁, hw₂⟩ := this hy;
+  -- By the functional equation, we have $z^{2^m-1} + z^{-(2^m-1 �)}� = w^{2^m-1} + w^{-(2^m-1)}$.
   have h_fun_eq : z ^ (2 ^ m - 1) + z⁻¹ ^ (2 ^ m - 1) = w ^ (2 ^ m - 1) + w⁻¹ ^ (2 ^ m - 1) := by
     have h_fun_eq : dicksonF m (z + z⁻¹) = z ^ (2 ^ m - 1) + z⁻¹ ^ (2 ^ m - 1) ∧ dicksonF m (w + w⁻¹) = w ^ (2 ^ m - 1) + w⁻¹ ^ (2 ^ m - 1) := by
       grind +suggestions;
     have h_fun_eq : dicksonF m (algebraMap F (AlgebraicClosure F) x) = algebraMap F (AlgebraicClosure F) (dicksonF m x) ∧ dicksonF m (algebraMap F (AlgebraicClosure F) y) = algebraMap F (AlgebraicClosure F) (dicksonF m y) := by
       exact ⟨ dicksonF_map_ringHom _ _ _, dicksonF_map_ringHom _ _ _ ⟩;
     aesop;
+  -- From $z^{2^m-1} = w^{2^m-1}$ or $z^{2^m-1} = w^{-(2^m-1)}$, we get $z = w$ or $z = w^{-1}$.
   have h_eq_or_inv : z ^ (2 ^ m - 1) = w ^ (2 ^ m - 1) ∨ z ^ (2 ^ m - 1) = w⁻¹ ^ (2 ^ m - 1) := by
     have := @eq_or_eq_inv_of_add_inv_eq ( AlgebraicClosure F );
     convert this ( pow_ne_zero ( 2 ^ m - 1 ) hz₁ ) ( pow_ne_zero ( 2 ^ m - 1 ) hw₁ ) _ using 1;
@@ -295,6 +303,7 @@ L(x⁻¹)² · x^{2^m+1} = f_m(x) for x ≠ 0
 lemma truncTrace_sq_mul_inv_eq_dicksonF {F : Type*} [Field F] [CharP F 2]
     (m : ℕ) {x : F} (hx : x ≠ 0) :
     truncTrace m x⁻¹ ^ 2 * x ^ (2 ^ m + 1) = dicksonF m x := by
+  -- Expand the left-hand side using the definition of `truncTrace`.
   have h_expand : (truncTrace m x⁻¹) ^ 2 = ∑ i ∈ Finset.range m, x⁻¹ ^ (2 ^ (i + 1)) := by
     unfold truncTrace; simp +decide [ pow_succ, pow_mul, Finset.sum_mul _ _ _ ] ;
     simp +decide [ ← mul_assoc, ← Finset.mul_sum _ _ _, ← Finset.sum_mul, sq ];
@@ -319,18 +328,21 @@ lemma LxXk_injective_on_units {F : Type*} [Field F] [Fintype F] [CharP F 2]
     (heq : truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1) =
            truncTrace m y * y ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) :
     x = y := by
+  -- By the arithmetic identity $2k + (2^m + 1) = 2^n - 1$, and $x^{2^n - 1} = 1$ for $x \neq 0$, we get $x^{2k} = x^{-(2^m + 1)}$.
   have h_exp : x ^ (2 * (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) * x ^ (2 ^ m + 1) = 1 ∧ y ^ (2 * (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) * y ^ (2 ^ m + 1) = 1 := by
     have h_exp : 2 * (2 ^ (n - 1) - 2 ^ (m - 1) - 1) + (2 ^ m + 1) = 2 ^ n - 1 := by
       rcases n with ( _ | _ | n ) <;> rcases m with ( _ | _ | m ) <;> simp_all +decide [ pow_succ' ];
       exact eq_tsub_of_add_eq ( by linarith [ Nat.sub_add_cancel ( show 2 * 2 ^ n ≥ 2 * 2 ^ m from Nat.mul_le_mul_left 2 ( pow_le_pow_right₀ ( by decide ) hm_lt.le ) ), Nat.sub_add_cancel ( show 2 * 2 ^ n - 2 * 2 ^ m ≥ 1 from Nat.sub_pos_of_lt ( by gcongr ; linarith ) ) ] );
     simp +decide [ ← pow_add, h_exp ];
     exact ⟨ by rw [ ← hn, FiniteField.pow_card_sub_one_eq_one x hx ], by rw [ ← hn, FiniteField.pow_card_sub_one_eq_one y hy ] ⟩;
+  -- By squaring both sides of the equation, we get $(truncTrace m x)^2 * x^{-(2^m + 1)} = (truncTrace m y)^2 * y^{-(2^m + 1)}$.
   have h_sq : (truncTrace m x) ^ 2 * x ^ (-(2 ^ m + 1) :) = (truncTrace m y) ^ 2 * y ^ (-(2 ^ m + 1) :) := by
     have h_sq : (truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) ^ 2 = (truncTrace m y * y ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) ^ 2 := by
       rw [heq];
     convert h_sq using 1 <;> norm_cast <;> simp_all +decide [ mul_pow, pow_mul' ];
     · grind;
     · exact Or.inl ( inv_eq_of_mul_eq_one_left h_exp.2 );
+  -- By truncTrace_sq_mul_inv_eq_dicksonF (with x⁻¹), this gives dicksonF m (x⁻¹) = dicksonF m (y⁻¹).
   have h_dickson : dicksonF m x⁻¹ = dicksonF m y⁻¹ := by
     convert h_sq using 1;
     · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hx ) |> Eq.symm using 1 ; simp +decide [ hx, hy, pow_add, pow_mul ] ; ring;
@@ -352,7 +364,8 @@ lemma LxXk_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
     Function.Bijective (fun x : F =>
       truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) := by
   refine' And.intro _ ( Finite.injective_iff_surjective.mp _ );
-  · intro x y hxy
+  · -- To prove injectivity, we show that if $L(x) \cdot x^k = L(y) \cdot y^k$, then $x = y$.
+    intro x y hxy
     by_cases hx : x = 0;
     · by_cases hy : y = 0 <;> simp_all +decide [ truncTrace_zero ];
       exact Eq.symm ( truncTrace_ker_trivial hn m hm_odd hm_pos hm_lt hcop hxy );
@@ -386,15 +399,18 @@ lemma truncTrace_adj_frob {F : Type*} [Field F] [Fintype F] [CharP F 2]
     truncTrace m x := by
   by_cases hm : m = 0;
   · aesop;
-  · have h_frob : (∑ i ∈ Finset.Ico (n - m + 1) (n + 1), x ^ (2 ^ i)) ^ (2 ^ (m - 1)) = ∑ i ∈ Finset.Ico (n - m + 1) (n + 1), x ^ (2 ^ (i + (m - 1))) := by
+  · -- By the properties of the Frobenius map in characteristic 2, we can rewrite the sum.
+    have h_frob : (∑ i ∈ Finset.Ico (n - m + 1) (n + 1), x ^ (2 ^ i)) ^ (2 ^ (m - 1)) = ∑ i ∈ Finset.Ico (n - m + 1) (n + 1), x ^ (2 ^ (i + (m - 1))) := by
       induction' ( Finset.Ico ( n - m + 1 ) ( n + 1 ) ) using Finset.induction <;> simp_all +decide [ pow_add, pow_mul ];
       rw [ add_pow_char_pow, ‹ ( ∑ i ∈ _, x ^ 2 ^ i ) ^ 2 ^ ( m - 1 ) = _ › ];
+    -- By the properties of the Frobenius map in characteristic 2, we can rewrite the sum as $\sum_{i=0}^{m-1} x^{2^i}$.
     have h_sum : ∑ i ∈ Finset.Ico (n - m + 1) (n + 1), x ^ (2 ^ (i + (m - 1))) = ∑ i ∈ Finset.range m, x ^ (2 ^ ((n - m + 1 + i + (m - 1)) % n)) := by
       have h_sum : ∀ i ∈ Finset.Ico (n - m + 1) (n + 1), x ^ (2 ^ (i + (m - 1))) = x ^ (2 ^ ((i + (m - 1)) % n)) := by
         intro i hi;
         exact?;
       rw [ Finset.sum_congr rfl h_sum, Finset.sum_Ico_eq_sum_range ];
       rw [ show n + 1 - ( n - m + 1 ) = m by omega ];
+    -- Simplify the exponent modulo n.
     have h_exp : ∀ i ∈ Finset.range m, (n - m + 1 + i + (m - 1)) % n = i := by
       intro i hi; rw [ Nat.mod_eq_sub_mod ] ;
       · rw [ Nat.mod_eq_of_lt ] <;> norm_num at * <;> omega;
@@ -411,6 +427,7 @@ lemma LxXk'_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
     (hk' : (2 ^ (n - 1) - 2 ^ (m - 1) - 1) * k' % (2 ^ n - 1) =
             2 ^ (m - 1) % (2 ^ n - 1)) :
     Function.Bijective (fun x : F => truncTrace m x * x ^ k') := by
+  -- Apply the adjoint_swap_bij lemma with the given parameters.
   apply adjoint_swap_bij;
   exact hn;
   grind +suggestions;

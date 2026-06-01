@@ -34,10 +34,12 @@ omit hp [CharP F p] in
 lemma pow_field_bijective {a : ℕ} (ha : Nat.Coprime (Fintype.card F - 1) a)
     (ha_pos : 0 < a) :
     Function.Bijective (fun x : F => x ^ a) := by
+  -- By definition of coprimality �,� there exists an integer $b$ such that $ab \equiv 1 \pmod{|F| - 1}$.
   obtain ⟨b, hb⟩ : ∃ b, a * b ≡ 1 [MOD (Fintype.card F - 1)] := by
     have := Nat.exists_mul_mod_eq_one_of_coprime ha.symm;
     rcases k : Fintype.card F - 1 with ( _ | _ | k ) <;> simp_all +decide [ Nat.ModEq, Nat.mod_one ];
     grind +splitIndPred;
+  -- By definition of coprimality, for any $x \in F^*$, we have $x^{ab} = x$.
   have h_exp : ∀ x : F, x ≠ 0 → x ^ (a * b) = x := by
     intro x hx; rw [ ← Nat.mod_add_div ( a * b ) ( Fintype.card F - 1 ), hb ] ; simp +decide [ pow_add, pow_mul, hx ] ;
     rcases k : Fintype.card F - 1 with ( _ | _ | k ) <;> simp_all +decide [ pow_succ', mul_assoc ];

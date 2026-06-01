@@ -36,12 +36,14 @@ lemma frobSum_finset_sum {ι : Type*} (s : Finset ι) (f : ι → F) (m : ℕ) :
 
 lemma frobSum_pow_p {n : ℕ} (hn : Fintype.card F = p ^ n) (x : F) :
     (frobSum p n x) ^ p = frobSum p n x := by
+  -- We can expand the expression $(\sum_{i=0}^{n-1} x^{p^i})^p$.
   have h_expand : (∑ i ∈ Finset.range n, x ^ (p ^ i)) ^ p = ∑ i ∈ Finset.range n, x ^ (p ^ (i+1)) := by
     induction' n with n ih;
     · simp +decide [ hp.1.ne_zero ];
     · induction' n + 1 with n ih <;> simp_all +decide [ pow_succ, pow_mul, Finset.sum_range_succ ];
       · exact hp.1.ne_zero;
       · rw [ add_pow_char, ih ];
+  -- We can reindex � the� sum with $j = i + 1$, then $j$ runs from $1$ to � $�n$. So the sum becomes $\sum_{j=1}^n x^{p^j}$.
   have h_reindex : ∑ i ∈ Finset.range n, x ^ (p ^ (i + 1)) = ∑ j ∈ Finset.Ico 1 (n + 1), x ^ (p ^ j) := by
     rw [ Finset.sum_Ico_eq_sum_range ] ; ac_rfl;
   simp_all +decide [ Finset.sum_Ico_eq_sub _ ];
@@ -56,6 +58,7 @@ lemma frobSum_frob_stable {n : ℕ} (hn : Fintype.card F = p ^ n) (x : F) (j : �
 
 lemma frobSum_frob_invariant {n : ℕ} (hn : Fintype.card F = p ^ n) (x : F) (j : ℕ) :
     frobSum p n (x ^ (p ^ j)) = frobSum p n x := by
+  -- Apply the lemma `finset_sum_frob_eq` to rewrite the sum.
   have h_sum : (∑ i ∈ Finset.range n, x ^ (p ^ (i + j))) = (∑ i ∈ Finset.range n, x ^ (p ^ i)) ^ (p ^ j) := by
     exact?;
   convert h_sum using 1;
@@ -80,7 +83,9 @@ lemma trace_prod_frob {n : ℕ} (hn : Fintype.card F = p ^ n) (x y : F)
 lemma frobSum_ne_zero {n : ℕ} (hn : Fintype.card F = p ^ n) (hn1 : 1 ≤ n) :
     ∃ x : F, frobSum p n x ≠ 0 := by
   contrapose! hn1;
+  -- Consider the polynomial $P(X) = \sum_{i=0}^{n-1} X^{p^i}$.
   set P : Polynomial F := Finset.sum (Finset.range n) (fun i => Polynomial.X ^ (p ^ i));
+  -- Since $P$ is a polynomial of degree $p^{n-1}$ and has $|F|$ roots, it must be the zero polynomial.
   have hP_zero : P = 0 := by
     refine' Polynomial.eq_of_degree_sub_lt_of_eval_finset_eq _ _ _;
     exact Finset.univ;

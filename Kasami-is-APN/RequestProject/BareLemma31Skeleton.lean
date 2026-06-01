@@ -54,6 +54,7 @@ lemma P_inj_imp_DeltaBare_sub_bij' (L : F → F)
     (hP_inj : Function.Injective (fun x => L x * M x))
     {y₁ y₂ : F} (hy : y₁ ≠ y₂) :
     Function.Bijective (fun x => DeltaBare' L M y₁ x - DeltaBare' L M y₂ x) := by
+  -- To prove injectivity, assume $f(a) = f(b)$ and show $a = b$.
   have h_inj : Function.Injective (fun x => DeltaBare' L M y₁ x - DeltaBare' L M y₂ x) := by
     intro a b hab;
     have := DeltaBare_sub_additive' L hL_add M y₁ y₂ ( b - a ) a; simp_all +decide [ sub_eq_iff_eq_add ] ;

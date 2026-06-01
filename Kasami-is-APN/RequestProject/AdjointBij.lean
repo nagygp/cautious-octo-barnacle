@@ -63,6 +63,7 @@ lemma adjoint_swap_bij {n : ℕ} (hn : Fintype.card F = p ^ n) (hn1 : 1 ≤ n)
   · by_cases hl : l = 0
     · simp [hl] at hel; subst hl; simp only [pow_zero, mul_one]
       exact Finite.injective_iff_bijective.mp (fun a b hab => by
+        -- |F| = 2, use Fintype.truncOfCardPos to enumerate
         haveI : Fact (Fintype.card F = 2) := ⟨hel⟩
         exact (by
         have := @ZMod.intCast_eq_intCast_iff;
