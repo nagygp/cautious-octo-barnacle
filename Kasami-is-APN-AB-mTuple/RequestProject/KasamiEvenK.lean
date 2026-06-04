@@ -1,6 +1,3 @@
--- KasamiEvenK.lean 
-
-
 import Mathlib
 import RequestProject.KasamiAPN
 import RequestProject.ExpArith
@@ -31,19 +28,19 @@ open KasamiAPN DempwolffMueller Finset BigOperators
 
 set_option maxHeartbeats 800000
 
--- ═══════════════════════════════════════════
--- APN preserved under additive bijection
--- ═══════════════════════════════════════════
-
+/-
+═══════════════════════════════════════════
+APN preserved under additive bijection
+═══════════════════════════════════════════
+-/
 lemma apn_comp_additive_bijective {F : Type*} [Field F] [CharP F 2]
     {f : F → F} (hf : IsAPN f)
     {σ : F → F} (hσ_bij : Function.Bijective σ)
     (hσ_add : ∀ x y, σ (x + y) = σ x + σ y) :
     IsAPN (σ ∘ f) := by
-  intro a ha x y hxy
-  have := hσ_add; simp_all +decide [IsAPN]
-  convert hf a ha x y _ using 1
-  exact hσ_bij.injective (by aesop)
+  intro a ha x y hxy;
+  convert hf a ha x y _ using 1;
+  exact hσ_bij.injective ( by aesop )
 
 -- ═══════════════════════════════════════════
 -- Frobenius properties
@@ -77,21 +74,20 @@ lemma apn_frob_twist {F : Type*} [Field F] [Fintype F] [CharP F 2]
   rw [heq]
   exact apn_comp_additive_bijective hd (frob_bijective_field j) (frob_additive j)
 
--- ═══════════════════════════════════════════
--- Kasami exponent congruence
--- ═══════════════════════════════════════════
-
+/-
+═══════════════════════════════════════════
+Kasami exponent congruence
+═══════════════════════════════════════════
+-/
 lemma kasami_exp_congr_mod {k n : ℕ} (hk : 0 < k) (hkn : k < n) :
     kasamiExp k % (2 ^ n - 1) =
     (kasamiExp (n - k) * 2 ^ (2 * k)) % (2 ^ n - 1) := by
-  refine Nat.modEq_of_dvd ?_
-  simp +decide [kasamiExp]
-  rw [Nat.cast_sub, Nat.cast_sub] <;> norm_num [pow_mul', pow_add]
-  · rw [← Nat.sub_add_cancel hkn.le]; ring_nf
-    norm_num [pow_mul]
-    exact ⟨1 + 2 ^ k * 2 ^ (n - k) - 2 ^ k, by ring⟩
-  · exact Nat.le_self_pow (by norm_num) _
-  · exact Nat.le_self_pow (by norm_num) _
+  rw [ Nat.modEq_of_dvd ];
+  unfold kasamiExp;
+  norm_num [ Nat.cast_sub ( show 2 ^ ( 2 * ( n - k ) ) ≥ 2 ^ ( n - k ) by gcongr <;> omega ), Nat.cast_sub ( show 2 ^ ( 2 * k ) ≥ 2 ^ k by gcongr <;> omega ) ] ; ring_nf;
+  rw [ show n = n - k + k by rw [ Nat.sub_add_cancel hkn.le ] ] ; ring_nf ;
+  norm_num [ pow_mul ];
+  exact ⟨ 1 - 2 ^ k + 2 ^ k * 2 ^ ( n - k ), by ring ⟩
 
 -- ═══════════════════════════════════════════
 -- Power function identity on GF(2ⁿ)
@@ -104,8 +100,9 @@ lemma kasami_pow_frob_identity {F : Type*} [Field F] [Fintype F] [CharP F 2]
   by_cases hx : x = 0
   · simp +decide [hx, kasamiExp]
   · rw [← pow_mul]
-    convert pow_eq_pow_of_mod_eq hx _ using 1
-    rw [hn, kasami_exp_congr_mod hk hkn]
+    have h := kasami_exp_congr_mod hk hkn
+    rw [← hn] at h
+    exact pow_eq_pow_of_mod_eq hx h
 
 /-- APN for one parameter implies APN for the complement. -/
 lemma kasami_apn_of_complement {F : Type*} [Field F] [Fintype F] [CharP F 2]
@@ -119,53 +116,57 @@ lemma kasami_apn_of_complement {F : Type*} [Field F] [Fintype F] [CharP F 2]
   rw [heq]
   exact apn_frob_twist hapn (2 * k)
 
--- ═══════════════════════════════════════════
--- Gold APN (for edge case k = n - 1)
--- ═══════════════════════════════════════════
-
+/-
+═══════════════════════════════════════════
+Gold APN (for edge case k = n - 1)
+═══════════════════════════════════════════
+-/
 lemma frob_fixed_implies_GF2 {F : Type*} [Field F] [Fintype F] [CharP F 2]
     {n : ℕ} (hn : Fintype.card F = 2 ^ n)
     {k : ℕ} (hk : 0 < k) (hcop : Nat.Coprime k n)
     {x : F} (hfixed : x ^ (2 ^ k) = x) :
     x = 0 ∨ x = 1 := by
-  by_contra h_contra
-  have h_root : x ^ (2 ^ k - 1) = 1 := by
-    cases h : 2 ^ k <;> simp_all +decide [pow_succ, pow_mul]
-  have h_root_n : x ^ (2 ^ n - 1) = 1 := by
-    rw [← hn, FiniteField.pow_card_sub_one_eq_one]; aesop
-  have h_root_gcd : x ^ Nat.gcd (2 ^ k - 1) (2 ^ n - 1) = 1 := by
-    rw [Nat.gcd_comm, pow_gcd_eq_one]; aesop
-  simp_all +decide [Nat.Coprime, Nat.Coprime.pow]
+  -- If $x \neq 0$, then $x^{2^k - 1} = 1$.
+  by_cases hx0 : x = 0;
+  · exact Or.inl hx0;
+  · have h_order : x ^ (2 ^ n - 1) = 1 := by
+      rw [ ← hn, FiniteField.pow_card_sub_one_eq_one x hx0 ];
+    have h_order : x ^ (Nat.gcd (2 ^ k - 1) (2 ^ n - 1)) = 1 := by
+      cases h : 2 ^ k <;> simp_all +decide [ pow_succ, pow_mul ];
+    simp_all +decide [ Nat.Coprime, Nat.Coprime.pow ]
 
 lemma gold_differential {F : Type*} [Field F] [CharP F 2]
     (k : ℕ) (a x : F) :
     (x + a) ^ (2 ^ k + 1) + x ^ (2 ^ k + 1) =
     a ^ (2 ^ k) * x + a * x ^ (2 ^ k) + a ^ (2 ^ k + 1) := by
-  have := @frob_additive F
+  -- By the properties of exponents in characteristic 2, we have $(x + y)^{2^k} = x^{2^k} + y^{2^k}$.
+  have h_exp : ∀ (x y : F), (x + y) ^ (2 ^ k) = x ^ (2 ^ k) + y ^ (2 ^ k) := by
+    exact?;
   grind
 
 lemma gold_kernel_eq {F : Type*} [Field F] [CharP F 2]
     (k : ℕ) {a : F} (ha : a ≠ 0) (x : F) :
     a ^ (2 ^ k) * x + a * x ^ (2 ^ k) = 0 ↔
     (x * a⁻¹) ^ (2 ^ k) = x * a⁻¹ := by
-  by_cases hx : x = 0 <;>
-    simp +decide [hx, ha, mul_pow, mul_assoc, mul_comm, mul_left_comm]
-  field_simp; grind
+  simp +decide [ ha, mul_pow, add_comm, eq_inv_mul_iff_mul_eq₀];
+  field_simp;
+  grind +ring
 
-/-- **Gold APN Theorem.** x^{2^k+1} is APN on GF(2ⁿ) when gcd(k,n) = 1. -/
+/-
+**Gold APN Theorem.** x^{2^k+1} is APN on GF(2ⁿ) when gcd(k,n) = 1.
+-/
 theorem gold_is_apn {F : Type*} [Field F] [Fintype F] [CharP F 2]
     {n : ℕ} (hn : Fintype.card F = 2 ^ n)
     (k : ℕ) (hk : 0 < k) (hcop : Nat.Coprime k n) :
     IsAPN (fun x : F => x ^ (2 ^ k + 1)) := by
   intro a ha x y hxy
-  have h_kernel : ((x + y) * a⁻¹) ^ (2 ^ k) = (x + y) * a⁻¹ := by
-    convert gold_kernel_eq k ha (x + y) |>.1 _ using 1
-    convert sub_eq_zero.mpr hxy using 1; ring
-    simp +decide [add_pow_char_pow, mul_add, add_mul, mul_assoc,
-      mul_comm, mul_left_comm]; ring
-    grind +ring
-  have := frob_fixed_implies_GF2 hn hk hcop h_kernel
-  grind +splitImp
+  have h_diff : a ^ (2 ^ k) * (x + y) + a * (x + y) ^ (2 ^ k) = 0 := by
+    grind +suggestions;
+  -- By gold_kernel_eq, (x + y) * a⁻¹ ∈ {0, 1}.
+  have h_kernel : (x + y) * a⁻¹ = 0 ∨ (x + y) * a⁻¹ = 1 := by
+    apply frob_fixed_implies_GF2 hn hk hcop;
+    grind +suggestions;
+  grind
 
 lemma kasamiExp_one : kasamiExp 1 = 3 := by simp [kasamiExp]
 
@@ -186,7 +187,7 @@ lemma odd_sub_even {n k : ℕ} (hn : Odd n) (hk : Even k) (hkn : k ≤ n) :
 
 lemma coprime_sub_self {k n : ℕ} (hkn : k ≤ n) (hcop : Nat.Coprime k n) :
     Nat.Coprime (n - k) n := by
-  simpa [hkn] using hcop
+  simpa [ hkn ] using hcop
 
 -- ═══════════════════════════════════════════
 -- Even k theorems
