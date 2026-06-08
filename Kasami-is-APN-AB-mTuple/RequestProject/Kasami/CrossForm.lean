@@ -1,4 +1,4 @@
-import RequestProject.CharTwoBasics
+import RequestProject.Kasami.CharTwoBasics
 
 /-!
 # Cross Form Analysis and Collision Equation

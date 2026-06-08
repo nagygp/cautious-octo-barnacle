@@ -1,5 +1,5 @@
 import Mathlib
-import RequestProject.CharTwo
+import RequestProject.Core.CharTwo
 
 /-!
 # APN Functions and Derivative Image Theory
@@ -19,7 +19,6 @@ characteristic 2 and proves the key structural result:
 - `deriv_image_half`: APN over GF(2ⁿ) ⟹ |Δ| = 2^{n-1}
 -/
 
-set_option linter.unusedSectionVars false
 open Finset Fintype
 
 namespace MTupleCount
@@ -43,13 +42,11 @@ def APN (f : 𝔽 → 𝔽) : Prop :=
 
 /-- `D f a (x + a) = D f a x` — each fiber has a char-2 partner. -/
 lemma deriv_shift (f : 𝔽 → 𝔽) (a x : 𝔽) : D f a (x + a) = D f a x := by
-  simp only [D, shift_cancel, sub_eq_add]; ring
+  simp only [D, CharTwoAPI.sub_eq_add, CharTwoAPI.shift_cancel]; ring
 
 /-- `x ≠ x + a` when `a ≠ 0`. -/
-lemma ne_shift (x a : 𝔽) (ha : a ≠ 0) : x ≠ x + a := by
-  intro h; apply ha
-  have : x + a - x = 0 := by rw [← h]; ring
-  simp [add_sub_cancel_left] at this; exact this
+lemma ne_shift (x a : 𝔽) (ha : a ≠ 0) : x ≠ x + a := fun h => ha (by
+  exact add_left_cancel (a := x) (show x + a = x + 0 by rw [add_zero]; exact h.symm))
 
 -- ── Fiber analysis ───────────────────────────────────────────────
 

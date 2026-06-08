@@ -1,5 +1,5 @@
 import Mathlib
-import RequestProject.FrobAlg
+import RequestProject.DempwolffMueller.FrobAlg
 
 /-!
 # Foundational Layer F3: Exponent Arithmetic Engine

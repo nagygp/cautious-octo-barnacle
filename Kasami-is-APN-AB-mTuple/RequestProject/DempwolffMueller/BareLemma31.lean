@@ -1,8 +1,8 @@
 import Mathlib
-import RequestProject.TraceNorm
-import RequestProject.ExpArith
-import RequestProject.DM_ExpArith
-import RequestProject.FrobAlg
+import RequestProject.DempwolffMueller.TraceNorm
+import RequestProject.Core.ExpArith
+import RequestProject.DempwolffMueller.ExpArith
+import RequestProject.DempwolffMueller.FrobAlg
 
 /-!
 # Bare-Function Lemma 3.1

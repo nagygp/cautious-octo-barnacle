@@ -1,10 +1,10 @@
 import Mathlib
-import RequestProject.TraceNorm
-import RequestProject.ExpArith
-import RequestProject.DM_ExpArith
-import RequestProject.FrobAlg
-import RequestProject.Lemma31
-import RequestProject.BareLemma31Skeleton
+import RequestProject.DempwolffMueller.TraceNorm
+import RequestProject.Core.ExpArith
+import RequestProject.DempwolffMueller.ExpArith
+import RequestProject.DempwolffMueller.FrobAlg
+import RequestProject.DempwolffMueller.Lemma31
+import RequestProject.DempwolffMueller.BareLemma31
 
 /-!
 # Adjoint Bijectivity Transfer

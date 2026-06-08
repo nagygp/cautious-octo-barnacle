@@ -1,3 +1,191 @@
+# Summary of changes for run 9256bb85-36e4-436a-a261-32c1af66d281
+## Refactoring Complete — All 8062 build jobs pass, zero sorry
+
+### What was done
+
+**1. Folder structure created** — files organized into 5 logical directories:
+- `Core/` (7 files) — General theory: char-2 API, APN definitions, character theory, Fourier inversion, exponent arithmetic
+- `Walsh/` (4 files) — Walsh transform: trace/sign character, Parseval/moments, AB deduction, Gauss sum divisibility
+- `DempwolffMueller/` (10 files) — Theorem 3.2 chain: truncated trace, Dickson polynomial, adjoint bijectivity, main theorem
+- `Kasami/` (11 files) — Kasami-specific: unified definitions, cross form, collision analysis, APN/AB theorems, triple count
+- `Tests/` (3 files) — Stress tests, literature consistency, verification/axiom audit
+
+**2. WalshAB.lean (596 lines) split into 3 files:**
+- `Walsh/Transform.lean` — Trace, sign character χ, Walsh definition, character orthogonality
+- `Walsh/Moments.lean` — AB/APN definitions, Parseval, autocorrelation pipeline, fourth moment
+- `Walsh/AB.lean` — Power function symmetries, integer lattice argument, `ab_from_moments`
+
+**3. Thm32.lean (475 lines) split into 3 files:**
+- `DempwolffMueller/TruncTrace.lean` — Truncated trace definition, additivity, telescoping identity, kernel triviality
+- `DempwolffMueller/DicksonPoly.lean` — Dickson polynomial functional equation, coprimality, injectivity on units
+- `DempwolffMueller/Thm32.lean` — Main bijectivity theorem (L·x^k is a permutation polynomial)
+
+**4. Kasami exponent unified** — `Kasami/Defs.lean` now provides a single source of truth for both `CollisionAnalysis.d` and `KasamiAPN.kasamiExp`, along with all supporting definitions (L, Cross, N, sVal).
+
+**5. Non-connecting files removed** — Old root-level files (`CharTwo.lean`, `CharTwoBasics.lean`, `CharTwoAPI.lean`, `APNClass.lean`, `Defs.lean`, etc.) were either moved into the appropriate folder or their content was consolidated. The unified `Core/CharTwo.lean` replaces scattered char-2 lemmas.
+
+**6. No file exceeds ~400 lines** (excluding test files which are inherently large for comprehensive coverage).
+
+### Key metrics
+- **36 source files** organized into 5 folders + 1 root file
+- **6,489 lines** of library code (excluding tests)
+- **All 4 main theorems compile and pass axiom audit**: `kasami_is_apn`, `kasami_is_ab`, `m_tuple_count`, `kasami_triple_count`
+- **Only standard axioms**: `propext`, `Classical.choice`, `Quot.sound`
+
+See `RequestProject/README.md` for the full directory structure and main results table.
+
+# Summary of changes for run 64f08e14-3edd-469a-8872-a3930eb8fdec
+# Literature Consistency & Soundness Tests — Summary
+
+## New File Created
+
+### `RequestProject/LiteratureTests.lean` — 221 test statements across 19 sections
+
+This comprehensive test file verifies the library's mathematical solidity, genuinity, and consistency with classical APN/AB cryptography literature. All 221 tests compile and pass.
+
+## Test Sections
+
+### §1 Kasami Exponent (Kasami 1971)
+- Verifies d_k = 2^{2k} - 2^k + 1 produces correct values for k=1..7
+- Confirms both `KasamiAPN.kasamiExp` and `CollisionAnalysis.d` agree
+- Checks d_k is always odd (cyclotomic Φ₃(2^k) property)
+
+### §2 Gold as Special Case (Gold 1968)
+- Gold exponent 2^k+1 = Kasami at k=1
+- Coprimality of Gold exponent with 2^n-1 when gcd(k,n)=1
+- Counter-examples: gcd(2,4)≠1 makes Gold fail on GF(2⁴)
+
+### §3 Differential Uniformity (Nyberg 1994)
+- Zero function is NOT APN (δ = |F|)
+- Identity on GF(2) IS APN (vacuously)
+- Verifies fiber structure: achieved values have exactly 2 preimages
+
+### §4 Known APN Classification (Carlet–Charpin–Zinoviev 1998)
+- Lists all 6 known infinite APN power function families
+- Verifies Kasami matches Family 2
+- Checks valid k values for n=5, 7, 9 with coprimality
+- Confirms non-coprime parameters are correctly excluded
+
+### §5 Cyclotomic Coset Structure
+- Frobenius equivalence: d_k and d_{n-k}·2^{2k} are in same coset mod 2^n-1
+- Gold and Kasami produce distinct cyclotomic cosets on GF(2⁵)
+- Complete coset orbit verification for d=3 and d=13 on GF(32)
+
+### §6 AB Walsh Spectrum (Nyberg 1994)
+- Walsh magnitude 2^{(n+1)/2} for n=3,5,7,9,11
+- AB nonlinearity N(f) = 2^{n-1} - 2^{(n-1)/2}
+- Parseval sum 2^{2n} and fourth moment 2·|F|³
+
+### §7 Non-APN Detection
+- gcd(k,n)≠1 cases correctly excluded
+- Even n correctly excluded (the "Big APN Problem")
+- k≥n gives degenerate exponents
+- k=0 gives identity (excluded by k>1 requirement)
+
+### §8 Frobenius Twist Consistency
+- Frobenius additivity verified
+- Congruence d_k ≡ d_{n-k}·2^{2k} (mod 2^n-1) for 5 parameter pairs
+- Coprimality preserved under k↔n-k
+
+### §9–10 Derivative Image & m-Tuple Count
+- |Δ| = 2^{n-1} values for n=3,5,7,9
+- Triple count κ₃ = 2^{2n-3} verified numerically
+- Cross-validation: 2^n · κ = (2^{n-1})^m arithmetic identity
+
+### §11 Internal Consistency
+- Two APN definitions agree (apn_iff_collision)
+- Two Kasami exponent definitions agree
+- Derivative definitions consistent across modules
+
+### §12–13 Axiom Purity & Type Signatures
+- All 25+ theorems use only standard axioms (propext, Classical.choice, Quot.sound)
+- No sorryAx anywhere — machine-verified complete proofs
+- Type signatures of main theorems printed and verified
+
+### §14–16 Algebraic Identities & Cyclotomic Connection
+- d_k · (2^k+1) = 2^{3k}+1 verified numerically
+- d_k | 2^{3k}+1 (norm factorization)
+- gcd(d_k, 2^n-1) = 1 verified for 8 parameter pairs
+- 2^{3k} ≡ -1 (mod d_k) verified
+
+### §17–19 Parameter Boundaries & Proof Chain
+- All boundary parameter combinations tested
+- Proof chain independence verified (m-tuple count is Kasami-independent)
+- Final axiom audit confirms sorry-free status of all 4 main results
+
+## Verification Results
+- **Full project build**: ✅ Passes (8059 jobs, 0 errors)
+- **Sorry check**: ✅ No sorry in any code
+- **Axiom audit**: ✅ Only `propext`, `Classical.choice`, `Quot.sound`
+- **Literature consistency**: ✅ All 221 tests pass
+
+# Summary of changes for run 0ed241c7-f596-48b6-9ffd-3f85d72be151
+# Refactoring & Verification Summary
+
+## New Files Created
+
+### 1. `RequestProject/CharTwoAPI.lean` — Unified Char-2 Arithmetic
+Consolidates the scattered char-2 lemmas (previously duplicated across `CharTwo.lean` and `CharTwoBasics.lean`) into a single, well-organized module with:
+- **§1 Ring arithmetic**: `add_self`, `neg_eq`, `sub_eq_add`, `shift_cancel`, `two_eq_zero` — with `@[simp]` tags
+- **§2 Frobenius map**: `frob_add`, `sq_add`, `frob_one`, `frob_mul`, `frob_comp` — with minimal hypotheses (`CommSemiring` where possible)
+- **§3 Frobenius bijectivity**: `frob_bijective`, `frob_period` — finite field specific
+
+All linter warnings resolved with proper `omit` declarations.
+
+### 2. `RequestProject/APNClass.lean` — Unified APN Definition & Theory
+Resolves the two incompatible APN definitions (`MTupleCount.APN` cardinality form vs `KasamiAPN.IsAPN` collision form) by providing both in one file with a proven equivalence:
+- `APNFun` (cardinality form) and `APNCollision` (collision form)
+- **`apn_iff_collision`**: formal proof that the two forms are equivalent
+- Structural lemmas: `apn_comp_additive_bij` (APN preserved under additive bijections), `apn_frob_twist` (Frobenius twist), `deriv_shift`, `ne_shift`
+- Fiber analysis chain: `fiber_card_two` → `card_times_two` → `deriv_image_half`
+
+### 3. `RequestProject/StressTests.lean` — 15-Section Verification Battery
+Comprehensive mathematical stress tests across 15 sections (~545 lines):
+- **§1 Axiom audit**: `#print axioms` for all 20+ major theorems — confirms only `propext`, `Classical.choice`, `Quot.sound` (no `sorryAx`)
+- **§2-3**: Kasami exponent numerics and APN non-triviality (zero function is NOT APN)
+- **§4**: Character `Chi` consistency — concrete instance on `ZMod 2`
+- **§5-6**: m-tuple count spot-checks and exponent arithmetic cross-validation
+- **§7**: Frobenius twist congruence verification for 5 parameter pairs
+- **§8-9**: Hypothesis satisfiability and conclusion non-triviality
+- **§10**: Definition transparency (key defs unfold to expected content via `rfl`)
+- **§11**: Cryptographic significance — Walsh spectrum values, differential uniformity
+- **§12-13**: Structural integrity and APN definition consistency
+- **§14-15**: Edge cases and anti-tautology (each hypothesis is necessary)
+
+### 4. `REFACTORING_GUIDE.md` — Detailed Guide
+Comprehensive document covering:
+- What was done and why
+- How to verify the library is solid (commands to run)
+- Cryptographic significance of each result (APN, AB, m-tuple count, triple count)
+- How to refactor further (6 prioritized steps)
+- Which modules would suit Mathlib contribution vs. external library
+
+## Verification
+
+- **Full project build**: Succeeds with zero errors (8058 jobs)
+- **Zero `sorry`**: Confirmed by grep — only comment mentions
+- **Standard axioms only**: All theorems use only `propext`, `Classical.choice`, `Quot.sound`
+- **Zero linter warnings** on all new files
+
+## Cryptographic Significance (briefly)
+
+The formalized results have genuine cryptographic significance:
+- **APN** (differential uniformity = 2): optimal resistance to differential cryptanalysis
+- **AB** (Walsh ∈ {0, ±2^{(n+1)/2}}): optimal resistance to linear cryptanalysis  
+- **m-tuple count** (κ = 2^{(m-1)n-m}): determines higher-order differential properties relevant to boomerang and algebraic attacks
+- **Triple count** (κ₃ = 2^{2n-3}): intersection multiplicity of three derivative cosets
+
+All these are standard results in the cryptographic literature, now with machine-verified proofs.
+
+## Further Refactoring Roadmap
+
+See `REFACTORING_GUIDE.md` for the detailed plan, but in summary:
+1. **Split large files**: `WalshAB.lean` (596 lines) → 3 files; `Thm32.lean` (475 lines) → 3 files
+2. **Unify Kasami exponent definitions**: `CollisionAnalysis.d` and `KasamiAPN.kasamiExp` should be one
+3. **Use the new modules downstream**: Replace scattered char-2 proofs with `CharTwoAPI` imports
+4. **Factor long proofs**: Extract named lemmas from 50+ line proof blocks
+5. **For Mathlib**: Extract general APN/AB/Fourier theory into Kasami-independent modules
+
 # Summary of changes for run b5d224b6-7727-4b22-91d4-d2b84c863715
 ## Changes Made
 

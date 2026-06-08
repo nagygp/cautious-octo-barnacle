@@ -1,7 +1,7 @@
-import RequestProject.WalshAB
-import RequestProject.CrossPairProof
-import RequestProject.CrossFormAnalysis
-import RequestProject.KasamiWalshDiv
+import RequestProject.Walsh.AB
+import RequestProject.Kasami.CrossPair
+import RequestProject.Kasami.CrossForm
+import RequestProject.Kasami.WalshDiv
 
 /-!
 # Kasami Almost Bent (AB) Theorem

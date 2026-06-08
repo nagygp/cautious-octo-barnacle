@@ -1,5 +1,5 @@
 import Mathlib
-import RequestProject.Character
+import RequestProject.Core.Character
 
 /-!
 # Vanishing Conditions for Character Sum Products

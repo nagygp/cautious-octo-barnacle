@@ -1,6 +1,6 @@
-import RequestProject.APN
-import RequestProject.FourierInversion
-import RequestProject.ExpArith
+import RequestProject.Core.APN
+import RequestProject.Core.FourierInversion
+import RequestProject.Core.ExpArith
 
 /-!
 # m-Tuple Count Theorem — Main Composition

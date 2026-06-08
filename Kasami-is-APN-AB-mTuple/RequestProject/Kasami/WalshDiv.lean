@@ -1,7 +1,7 @@
-import RequestProject.WalshDivisibility
-import RequestProject.Defs
-import RequestProject.AutocorrQuadratic
-import RequestProject.KasamiMCM
+import RequestProject.Walsh.Divisibility
+import RequestProject.Kasami.Defs
+import RequestProject.Kasami.AutocorrQuad
+import RequestProject.Kasami.MCM
 import Mathlib
 
 /-!

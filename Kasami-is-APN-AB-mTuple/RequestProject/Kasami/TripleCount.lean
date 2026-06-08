@@ -1,7 +1,7 @@
 import RequestProject.MTupleCount
-import RequestProject.KasamiAPN
-import RequestProject.KasamiEvenK
-import RequestProject.KasamiAB
+import RequestProject.Kasami.APN
+import RequestProject.Kasami.EvenK
+import RequestProject.Kasami.AB
 
 /-!
 # Kasami Triple Count — Bridge Module

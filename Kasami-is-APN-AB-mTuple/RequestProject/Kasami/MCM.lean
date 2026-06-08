@@ -1,7 +1,7 @@
-import RequestProject.CharTwoBasics
-import RequestProject.CrossFormAnalysis
-import RequestProject.KasamiAPN
-import RequestProject.KasamiEvenK
+import RequestProject.Kasami.CharTwoBasics
+import RequestProject.Kasami.CrossForm
+import RequestProject.Kasami.APN
+import RequestProject.Kasami.EvenK
 import Mathlib
 
 /-!

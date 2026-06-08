@@ -1,6 +1,6 @@
 import Mathlib
-import RequestProject.WalshAB
-import RequestProject.Defs
+import RequestProject.Walsh.AB
+import RequestProject.Kasami.Defs
 
 /-!
 # Quadratic Gauss Sum Divisibility

@@ -1,5 +1,5 @@
-import RequestProject.WalshDivisibility
-import RequestProject.Defs
+import RequestProject.Walsh.Divisibility
+import RequestProject.Kasami.Defs
 import Mathlib
 
 /-!

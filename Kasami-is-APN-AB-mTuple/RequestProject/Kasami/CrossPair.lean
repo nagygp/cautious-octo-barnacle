@@ -1,5 +1,5 @@
-import RequestProject.CrossFormAnalysis
-import RequestProject.KasamiMCM
+import RequestProject.Kasami.CrossForm
+import RequestProject.Kasami.MCM
 
 /-!
 # Cross-Pair Analysis: Kasami APN Proof

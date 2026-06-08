@@ -1,8 +1,9 @@
 import Mathlib
-import RequestProject.Thm32
-import RequestProject.ExpArith
-import RequestProject.DM_ExpArith
-import RequestProject.FrobAlg
+import RequestProject.DempwolffMueller.Thm32
+import RequestProject.Core.ExpArith
+import RequestProject.DempwolffMueller.ExpArith
+import RequestProject.DempwolffMueller.FrobAlg
+import RequestProject.Kasami.Defs
 
 /-!
 # Kasami APN Theorem
@@ -35,8 +36,7 @@ def IsAPN {F : Type*} [Field F] [CharP F 2] (f : F → F) : Prop :=
   ∀ (a : F), a ≠ 0 → ∀ (x y : F),
     f (x + a) + f x = f (y + a) + f y → y = x ∨ y = x + a
 
-/-- The Kasami exponent d = 2^{2k} - 2^k + 1. -/
-def kasamiExp (k : ℕ) : ℕ := 2 ^ (2 * k) - 2 ^ k + 1
+-- kasamiExp is now defined in Kasami.Defs as an alias for CollisionAnalysis.d
 
 /-
 ═══════════════════════════════════════════
@@ -253,7 +253,10 @@ lemma kasami_collision_forces_equal_u {F : Type*} [Field F] [Fintype F] [CharP F
         cases eq_or_ne x 0 <;> simp_all +decide [ sq ];
         · rw [ ← hdiff ] ; norm_num [ kasamiExp ];
           grind +splitImp;
-        · grind +locals;
+        · -- x = 1 case: (1+1)^d + 1^d + 1 = 0 + 1 + 1 = 0 in char 2
+          have h1 : (1 : F) + 1 = 0 := CharTwo.add_self_eq_zero 1
+          rw [← hdiff]
+          simp [h1, kasamiExp, CollisionAnalysis.d]
       have := kasami_key_identity hn k ( by linarith ) ( by linarith ) y; simp_all +decide [ add_eq_zero_iff_eq_neg ] ;
     have h_eq : truncTrace k (y ^ 2 + y) = 0 := by
       rw [ truncTrace_artin_schreier ] ; aesop;

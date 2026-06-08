@@ -1,4 +1,4 @@
-import RequestProject.Defs
+import RequestProject.Kasami.Defs
 
 /-!
 # Characteristic 2 Basics and Linearized Polynomial Lemmas

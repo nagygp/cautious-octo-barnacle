@@ -1,6 +1,6 @@
 import Mathlib
-import RequestProject.KasamiAPN
-import RequestProject.ExpArith
+import RequestProject.Kasami.APN
+import RequestProject.Core.ExpArith
 
 /-!
 # Kasami APN for Even k — Frobenius Twist Extension

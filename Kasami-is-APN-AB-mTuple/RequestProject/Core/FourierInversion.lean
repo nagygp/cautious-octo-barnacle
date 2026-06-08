@@ -1,5 +1,5 @@
 import Mathlib
-import RequestProject.Vanishing
+import RequestProject.Core.Vanishing
 
 /-!
 # Fourier Inversion for m-Tuple Counts
