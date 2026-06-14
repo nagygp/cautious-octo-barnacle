@@ -176,14 +176,69 @@ The conditions
 ensure that the Walsh-spectrum theorem applies in the intended odd-dimensional characteristic-2 setting. The conditions on $k$ are the usual Kasami arithmetic assumptions: $k \ge 1$ and $\gcd(k,n)=1$.
 
 \section{How the proof closes}
-After Step 1 reduces the theorem to the general moment criterion, the remaining three obligations are supplied by previously proved lemmas:
+After Step 1 reduces the theorem to the general criterion \texttt{ab\_from\_moments}, the proof enters the final deduction layer formalized in \texttt{Walsh/AB.lean}. That file isolates the abstract argument showing that three Walsh-spectrum inputs are enough to force the Almost Bent conclusion.
+
+For a function $f : F \to F$, the theorem \texttt{ab\_from\_moments} assumes that for each nonzero $a \in F$ one has:
 \begin{itemize}
-  \item Parseval is obtained from the bijectivity of the Kasami map.
-  \item The fourth moment is obtained from the APN property together with bijectivity.
-  \item Walsh divisibility is obtained from the dedicated Kasami Walsh-divisibility theorem.
+  \item the Parseval identity
+  \[
+    \sum_{b \in F} W_f(a,b)^2 = |F|^2,
+  \]
+  \item the fourth-moment identity
+  \[
+    \sum_{b \in F} W_f(a,b)^4 = 2|F|^3,
+  \]
+  \item the divisibility statement
+  \[
+    2^{(n+1)/2} \mid W_f(a,b)
+    \qquad \text{for all } b \in F.
+  \]
 \end{itemize}
 
-Once those are in place, \texttt{ab\_from\_moments} yields that the Kasami monomial is AB.
+The Kasami proof supplies these three hypotheses by previously established lemmas:
+\begin{itemize}
+  \item Parseval comes from the fact that the Kasami map is a permutation.
+  \item The fourth moment comes from the APN property together with the power-map moment theorem.
+  \item The divisibility input comes from the dedicated Kasami Walsh-divisibility theorem.
+\end{itemize}
+
+At that stage, the remaining reasoning is purely arithmetic. The divisibility hypothesis allows one to write each Walsh coefficient in the form
+\[
+  W_f(a,b) = 2^{(n+1)/2} k_b,
+  \qquad k_b \in \mathbb{Z}.
+\]
+Substituting this into the second-moment identity gives
+\[
+  \sum_{b \in F} k_b^2 = 2^{n-1},
+\]
+while substituting into the fourth-moment identity gives
+\[
+  \sum_{b \in F} k_b^4 = 2^{n-1}.
+\]
+Hence
+\[
+  \sum_{b \in F} \bigl(k_b^4 - k_b^2\bigr) = 0.
+\]
+
+The key integer lemma in \texttt{Walsh/AB.lean} is that for every integer $k$,
+\[
+  k^4 - k^2 = k^2(k^2-1) \ge 0.
+\]
+Therefore each summand $k_b^4-k_b^2$ is nonnegative. Since their total sum is zero, every individual term must vanish, so
+\[
+  k_b^2 \in \{0,1\}
+  \qquad \text{for every } b \in F.
+\]
+Multiplying back by the common factor $2^{n+1}$ yields
+\[
+  W_f(a,b)^2 = 2^{n+1} k_b^2 \in \{0, 2^{n+1}\}.
+\]
+This is exactly the definition of the Almost Bent property.
+
+So the proof closes in a modular way: all Kasami-specific field theory and Walsh analysis are used only to establish the three hypotheses of \texttt{ab\_from\_moments}, and the last step is an abstract integer-lattice argument converting moment identities plus divisibility into the AB magnitude pattern.
+
+\paragraph{Remark.}
+Although it is classically known that in odd dimension the AB property implies APN, that implication is not used in this development. The logical direction here is the reverse one: the Kasami map is first shown to be APN, that APN input is used to obtain the fourth-moment identity, and then \texttt{ab\_from\_moments} combines Parseval, the fourth moment, and the Walsh divisibility theorem to conclude that the map is AB.
 
 \section{One-paragraph summary}
 The theorem \texttt{kasami\_is\_ab} proves that the Kasami power map $x \mapsto x^{2^{2k} - 2^k + 1}$ is Almost Bent over a finite field of size $2^n$ when $n$ is odd and $k$ satisfies the standard Kasami coprimality assumptions. The proof is modular: instead of analyzing the Walsh spectrum directly, it reduces the AB claim to a general moment criterion, then fills in the Parseval identity, the fourth-moment identity, and a divisibility bound using earlier Kasami-specific results.
