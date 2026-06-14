@@ -1,1 +1,6 @@
 .lake
+*.aux
+*.fls
+*.log
+*.toc
+*.fdb_latexmk
