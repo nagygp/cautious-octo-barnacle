@@ -44,7 +44,7 @@ lemma truncTrace_sq_mul_inv_eq_dicksonF {F : Type*} [Field F] [Fintype F] [CharP
 lemma LxXk_injective_on_units {F : Type*} [Field F] [Fintype F] [CharP F 2]
     {n : ℕ} (hn : Fintype.card F = 2 ^ n) (m : ℕ)
     (hm_pos : 1 < m) (hm_odd : Odd m) (hm_lt : m < n)
-    (hn_odd : Odd n) (hcop : Nat.Coprime m n)
+    (hcop : Nat.Coprime m n)
     {x y : F} (hx : x ≠ 0) (hy : y ≠ 0)
     (heq : truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1) =
            truncTrace m y * y ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) :
@@ -76,7 +76,7 @@ lemma LxXk_injective_on_units {F : Type*} [Field F] [Fintype F] [CharP F 2]
 lemma LxXk_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
     {n : ℕ} (hn : Fintype.card F = 2 ^ n) (m : ℕ)
     (hm_pos : 1 < m) (hm_odd : Odd m) (hm_lt : m < n)
-    (hn_odd : Odd n) (hcop : Nat.Coprime m n) :
+    (hcop : Nat.Coprime m n) :
     Function.Bijective (fun x : F =>
       truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) := by
   refine' And.intro _ ( Finite.injective_iff_surjective.mp _ );
@@ -87,7 +87,7 @@ lemma LxXk_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
     · by_cases hy : y = 0 <;> simp_all +decide;
       · simp_all +decide [ truncTrace_zero ];
         exact absurd ( truncTrace_ker_trivial hn m hm_odd hm_pos hm_lt hcop hxy ) hx;
-      · apply LxXk_injective_on_units hn m hm_pos hm_odd hm_lt hn_odd hcop hx hy hxy;
+      · apply LxXk_injective_on_units hn m hm_pos hm_odd hm_lt hcop hx hy hxy;
   · intro x y hxy
     by_cases hx : x = 0
     ·
@@ -98,7 +98,7 @@ lemma LxXk_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
       simp_all +decide [ truncTrace_zero ];
       exact absurd ( truncTrace_ker_trivial hn m hm_odd hm_pos hm_lt hcop hxy ) hx
     have h_eq : x = y := by
-      exact LxXk_injective_on_units hn m hm_pos hm_odd hm_lt hn_odd hcop hx hy hxy
+      exact LxXk_injective_on_units hn m hm_pos hm_odd hm_lt hcop hx hy hxy
     exact h_eq
 
 -- ═══════════════════════════════════════════
@@ -131,7 +131,7 @@ lemma truncTrace_adj_frob {F : Type*} [Field F] [Fintype F] [CharP F 2]
 lemma LxXk'_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
     {n : ℕ} (hn : Fintype.card F = 2 ^ n) (m : ℕ)
     (hm_pos : 1 < m) (hm_odd : Odd m) (hm_lt : m < n)
-    (hn_odd : Odd n) (hcop : Nat.Coprime m n) (k' : ℕ)
+    (hcop : Nat.Coprime m n) (k' : ℕ)
     (hk' : (2 ^ (n - 1) - 2 ^ (m - 1) - 1) * k' % (2 ^ n - 1) =
             2 ^ (m - 1) % (2 ^ n - 1)) :
     Function.Bijective (fun x : F => truncTrace m x * x ^ k') := by
@@ -169,7 +169,7 @@ lemma LxXk'_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
     rw [ ← pow_add, show m - 1 + ( n - m + 1 ) = n by omega ];
     exact Nat.ModEq.symm ( Nat.modEq_of_dvd <| by simpa );
   · have h_bijective : Function.Bijective (fun x : F => truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) := by
-      apply LxXk_bijective hn m hm_pos hm_odd hm_lt hn_odd hcop;
+      apply LxXk_bijective hn m hm_pos hm_odd hm_lt hcop;
     have h_bijective : Function.Bijective (fun x : F => (truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) ^ (2 ^ (n - m + 1))) := by
       convert frob_comp_bijective_right ( p := 2 ) h_bijective ( n - m + 1 ) using 1;
     convert h_bijective using 2;
@@ -188,9 +188,9 @@ lemma LxXk'_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
 theorem theorem_3_2 {F : Type*} [Field F] [Fintype F] [CharP F 2]
     {n : ℕ} (hn : Fintype.card F = 2 ^ n) (m : ℕ)
     (hm_pos : 1 < m) (hm_odd : Odd m) (hm_lt : m < n)
-    (hn_odd : Odd n) (hcop : Nat.Coprime m n) :
+    (hcop : Nat.Coprime m n) :
     Function.Bijective (fun x : F =>
       truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) :=
-  LxXk_bijective hn m hm_pos hm_odd hm_lt hn_odd hcop
+  LxXk_bijective hn m hm_pos hm_odd hm_lt hcop
 
 end DempwolffMueller
