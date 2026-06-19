@@ -63,12 +63,12 @@ lemma LxXk_injective_on_units {F : Type*} [Field F] [Fintype F] [CharP F 2]
     · exact Or.inl ( inv_eq_of_mul_eq_one_left h_exp.2 );
   have h_dickson : dicksonF m x⁻¹ = dicksonF m y⁻¹ := by
     convert h_sq using 1;
-    · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hx ) |> Eq.symm using 1 ; simp +decide [ hx, hy, pow_add, pow_mul ] ; ring;
+    · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hx ) |> Eq.symm using 1 ; simp +decide [ pow_add ] ; ring_nf;
       group;
-      rw [ ← zpow_add₀ hx ] ; ring ; norm_num;
-    · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hy ) using 1 ; simp +decide [ zpow_neg, zpow_ofNat ];
-      · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hy ) |> Eq.symm using 1 ; simp +decide [ zpow_neg, zpow_ofNat ];
-      · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hy ) using 1 ; simp +decide [ zpow_neg, zpow_ofNat ];
+      rw [ ← zpow_add₀ hx ] ; ring_nf ; norm_num;
+    · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hy ) using 1 ; simp +decide [ ];
+      · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hy ) |> Eq.symm using 1 ; simp +decide [ ];
+      · convert truncTrace_sq_mul_inv_eq_dicksonF m ( inv_ne_zero hy ) using 1 ; simp +decide [ ];
         rw [ ← zpow_natCast, ← zpow_neg ] ; group ; norm_num;
   have := dicksonF_injective_on_units hn m ( by linarith ) hm_odd hcop ( inv_ne_zero hx ) ( inv_ne_zero hy ) h_dickson; aesop;
 
@@ -167,7 +167,7 @@ lemma LxXk'_bijective {F : Type*} [Field F] [Fintype F] [CharP F 2]
   · rw [ hn ];
     rw [ mul_right_comm, Nat.ModEq.mul_right _ hk' ];
     rw [ ← pow_add, show m - 1 + ( n - m + 1 ) = n by omega ];
-    exact Nat.ModEq.symm ( Nat.modEq_of_dvd <| by simpa );
+    exact Nat.ModEq.symm ( Nat.modEq_of_dvd <| by simp );
   · have h_bijective : Function.Bijective (fun x : F => truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) := by
       apply LxXk_bijective hn m hm_pos hm_odd hm_lt hcop;
     have h_bijective : Function.Bijective (fun x : F => (truncTrace m x * x ^ (2 ^ (n - 1) - 2 ^ (m - 1) - 1)) ^ (2 ^ (n - m + 1))) := by
