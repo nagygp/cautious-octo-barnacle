@@ -223,7 +223,7 @@ lemma phi_injective_on_units {F : Type*} [Field F] [Fintype F] [CharP F 2]
   have h_eq : truncTrace k u * u ^ e' = truncTrace k v * v ^ e' := by
     have := gold_pow_bijective hn k ( by linarith ) ( by linarith ) hcop hn_odd;
     exact this.injective h_mul;
-  have := LxXk'_bijective hn k hk hk_odd hkn hn_odd hcop e' he'.2; have := this.1; aesop;
+  have := LxXk'_bijective hn k hk hk_odd hkn hcop e' he'.2; have := this.1; aesop;
 
 /-
 ═══════════════════════════════════════════
