@@ -54,7 +54,7 @@ lemma truncTrace_artin_schreier {F : Type*} [CommRing F] [CharP F 2]
   induction' k with k ih generalizing x <;> simp_all +decide [ truncTrace, pow_succ, pow_mul ];
   · rw [ ← two_smul F x, CharTwo.two_eq_zero, zero_smul ];
   · rw [ Finset.sum_range_succ, ih ];
-    rw [ add_pow_char_pow, mul_pow ] ; ring;
+    rw [ add_pow_char_pow, mul_pow ] ; ring_nf;
     simp +decide [ show ( 2 : F ) = 0 by exact CharP.cast_eq_zero F 2 ]
 
 /-
@@ -68,30 +68,30 @@ For d = 2^{2k} - 2^k + 1 and q = 2^k:
   ((x+1)^d + x^d + 1) · (x²+x)^q = (x^q + x)^{q+1}
 -/
 lemma kasami_key_identity {F : Type*} [Field F] [Fintype F] [CharP F 2]
-    {n : ℕ} (hn : Fintype.card F = 2 ^ n)
-    (k : ℕ) (hk : 0 < k) (hkn : k < n)
+  {n : ℕ} (_hn : Fintype.card F = 2 ^ n)
+  (k : ℕ) (hk : 0 < k) (_hkn : k < n)
     (x : F) :
     ((x + 1) ^ (kasamiExp k) + x ^ (kasamiExp k) + 1) *
       (x ^ 2 + x) ^ (2 ^ k) =
     (x ^ (2 ^ k) + x) ^ (2 ^ k + 1) := by
   have h_expand : (x + 1) ^ (2 ^ (2 * k)) = x ^ (2 ^ (2 * k)) + 1 ∧ (x + 1) ^ (2 ^ k) = x ^ (2 ^ k) + 1 := by
     have h_expand : ∀ (a b : F) (n : ℕ), (a + b) ^ (2 ^ n) = a ^ (2 ^ n) + b ^ (2 ^ n) := by
-      exact?;
+      exact fun a b n => add_pow_expChar_pow a b 2 n;
     aesop;
   unfold kasamiExp;
   rw [ show 2 ^ ( 2 * k ) = 2 ^ k * 2 ^ k by ring, show 2 ^ k * 2 ^ k - 2 ^ k = 2 ^ k * ( 2 ^ k - 1 ) by rw [ Nat.mul_sub_left_distrib, Nat.mul_one ] ];
   simp_all +decide [ pow_add, pow_mul ];
   rw [ show ( x ^ 2 ^ k + 1 ) ^ ( 2 ^ k - 1 ) = ( x ^ 2 ^ k + 1 ) ^ ( 2 ^ k ) / ( x ^ 2 ^ k + 1 ) from ?_, show ( x ^ 2 ^ k ) ^ ( 2 ^ k - 1 ) = ( x ^ 2 ^ k ) ^ ( 2 ^ k ) / ( x ^ 2 ^ k ) from ?_ ];
-  · by_cases hx : x = 0 <;> by_cases hx' : x ^ 2 ^ k + 1 = 0 <;> simp_all +decide [ add_mul, mul_assoc, mul_comm, mul_left_comm, pow_succ, pow_mul ];
+  · by_cases hx : x = 0 <;> by_cases hx' : x ^ 2 ^ k + 1 = 0 <;> simp_all +decide [ add_mul, mul_comm, pow_succ ];
     · grind;
-    · simp_all +decide [ add_pow_char_pow, mul_pow, mul_assoc, mul_comm, mul_left_comm, div_eq_mul_inv ];
+    · simp_all +decide [ add_pow_char_pow, mul_pow, div_eq_mul_inv ];
       field_simp [hx, hx']
-      ring;
+      ring_nf;
       simp_all +decide [ show ( 2 : F ) = 0 by exact CharP.cast_eq_zero F 2 ];
-  · by_cases hx : x ^ 2 ^ k = 0 <;> simp_all +decide [ pow_succ, mul_assoc ];
+  · by_cases hx : x ^ 2 ^ k = 0 <;> simp_all +decide;
     · exact ne_of_gt ( Nat.sub_pos_of_lt ( one_lt_pow₀ one_lt_two hk.ne' ) );
     · rw [ eq_div_iff ( pow_ne_zero _ hx ), ← pow_succ, Nat.sub_add_cancel ( Nat.one_le_pow _ _ ( by decide ) ) ];
-  · by_cases h : x ^ 2 ^ k + 1 = 0 <;> simp_all +decide [ pow_succ, mul_assoc, div_eq_mul_inv ];
+  · by_cases h : x ^ 2 ^ k + 1 = 0 <;> simp_all +decide [ div_eq_mul_inv ];
     · exact ne_of_gt ( Nat.sub_pos_of_lt ( one_lt_pow₀ one_lt_two hk.ne' ) );
     · field_simp;
       rw [ ← pow_succ', Nat.sub_add_cancel ( Nat.one_le_pow _ _ ( by decide ) ) ]
@@ -104,12 +104,12 @@ gcd(2^k + 1, 2^n - 1) = 1
 
 When gcd(k,n) = 1 and n is odd, gcd(2^k+1, 2^n-1) = 1.
 -/
-lemma gold_coprime {k n : ℕ} (hk : 0 < k) (hn : 0 < n)
+lemma gold_coprime {k n : ℕ} (_hk : 0 < k) (_hn : 0 < n)
     (hcop : Nat.Coprime k n) (hn_odd : Odd n) :
     Nat.Coprime (2 ^ k + 1) (2 ^ n - 1) := by
   -- Since $2^k + 1$ divides $2^{2k} - 1$, we have $\gcd(2^k + 1, 2^n - 1) \mid \gcd(2^{2k} - 1, 2^n - 1)$.
   have h_divides : Nat.gcd (2 ^ k + 1) (2 ^ n - 1) ∣ Nat.gcd (2 ^ (2 * k) - 1) (2 ^ n - 1) := by
-    exact Nat.dvd_gcd ( dvd_trans ( Nat.gcd_dvd_left _ _ ) ( by use 2 ^ k - 1; rw [ ← Nat.sq_sub_sq ] ; ring ) ) ( Nat.gcd_dvd_right _ _ );
+    exact Nat.dvd_gcd ( dvd_trans ( Nat.gcd_dvd_left _ _ ) ( by use 2 ^ k - 1; rw [ ← Nat.sq_sub_sq ] ; ring_nf ) ) ( Nat.gcd_dvd_right _ _ );
   -- Since $\gcd(k, n) = 1$ and $n$ is odd, we have $\gcd(2k, n) = \gcd(2, n) \cdot \gcd(k, n) = 1$.
   have h_gcd_2k_n : Nat.gcd (2 * k) n = 1 := by
     exact Nat.Coprime.mul_left ( Nat.prime_two.coprime_iff_not_dvd.mpr <| by simpa [ ← even_iff_two_dvd, parity_simps ] using hn_odd ) hcop;
@@ -141,8 +141,8 @@ lemma kasami_arith_identity {k n : ℕ} (hk : 1 < k) (hn : 1 < n) (hkn : k < n) 
     (2 ^ (k - 1) * (2 ^ k + 1)) % (2 ^ n - 1) := by
   zify [ Int.ofNat_sub ( show 2 ^ n ≥ 1 from one_le_pow₀ ( by decide ) ) ];
   rcases n with ( _ | _ | n ) <;> rcases k with ( _ | _ | k ) <;> norm_num [ pow_succ' ] at *;
-  rw [ Nat.cast_sub, Nat.cast_sub ] <;> norm_num <;> ring;
-  · rw [ Nat.sub_sub, Nat.cast_sub ] <;> norm_num ; ring;
+  rw [ Nat.cast_sub, Nat.cast_sub ] <;> norm_num <;> ring_nf;
+  · rw [ Nat.sub_sub, Nat.cast_sub ] <;> norm_num ; ring_nf;
     · rw [ Int.emod_eq_emod_iff_emod_sub_eq_zero ] ; ring_nf ; norm_num;
       exact ⟨ 2 * 2 ^ n - 2 ^ k * 4 - 1, by ring ⟩;
     · linarith [ pow_pos ( by decide : 0 < 2 ) k, pow_lt_pow_right₀ ( by decide : 1 < 2 ) hkn ];
@@ -158,7 +158,7 @@ There exists e' such that L_k(x)·x^{e'} is bijective (via LxXk'_bijective)
 and e'·(2^k+1) ≡ 2^n-1-2^k (mod 2^n-1) (for the Φ decomposition).
 -/
 lemma exists_linking_exp {k n : ℕ} (hk : 1 < k) (hn : 1 < n) (hkn : k < n)
-    (hcop : Nat.Coprime k n) (hn_odd : Odd n) (hk_odd : Odd k) :
+  (hcop : Nat.Coprime k n) (hn_odd : Odd n) (_hk_odd : Odd k) :
     ∃ e' : ℕ,
       (e' * (2 ^ k + 1)) % (2 ^ n - 1) = (2 ^ n - 1 - 2 ^ k) % (2 ^ n - 1) ∧
       ((2 ^ (n - 1) - 2 ^ (k - 1) - 1) * e') % (2 ^ n - 1) =
@@ -169,13 +169,13 @@ lemma exists_linking_exp {k n : ℕ} (hk : 1 < k) (hn : 1 < n) (hkn : k < n)
     have h_euler : (2 ^ k + 1) ^ Nat.totient (2 ^ n - 1) ≡ 1 [MOD (2 ^ n - 1)] := by
       exact Nat.ModEq.pow_totient <| by simpa using gold_coprime ( by linarith ) ( by linarith ) hcop hn_odd;
     use (2 ^ n - 1 - 2 ^ k) * (2 ^ k + 1) ^ (Nat.totient (2 ^ n - 1) - 1);
-    cases h : Nat.totient ( 2 ^ n - 1 ) <;> simp_all +decide [ ← ZMod.natCast_eq_natCast_iff', pow_succ, mul_assoc ];
+    cases h : Nat.totient ( 2 ^ n - 1 ) <;> simp_all +decide [ pow_succ, mul_assoc ];
     rw [ Nat.ModEq.mul_left _ h_euler ];
     rw [ Nat.mul_one, Nat.mod_eq_of_lt ( Nat.sub_lt ( Nat.sub_pos_of_lt ( one_lt_pow₀ one_lt_two hn.ne_bot ) ) ( pow_pos ( by decide ) _ ) ) ];
   -- We need to show the second congruence � for� e'.
   have h2 : ((2 ^ (n - 1) - 2 ^ (k - 1) - 1) * e') * (2 ^ k + 1) ≡ 2 ^ (k - 1) * (2 ^ k + 1) [MOD 2 ^ n - 1] := by
     have h2 : ((2 ^ (n - 1) - 2 ^ (k - 1) - 1) * (2 ^ n - 1 - 2 ^ k)) % (2 ^ n - 1) = (2 ^ (k - 1) * (2 ^ k + 1)) % (2 ^ n - 1) := by
-      exact?;
+      exact kasami_arith_identity hk hn hkn;
     simpa only [ mul_assoc ] using Nat.ModEq.trans ( Nat.ModEq.mul_left _ he' ) h2;
   -- Since $2^k + 1$ � is� coprime to $2^n - 1$, we can divide both sides of the congruence by $2^k + 1$.
   have h3 : Nat.Coprime (2 ^ k + 1) (2 ^ n - 1) := by
@@ -256,7 +256,7 @@ lemma kasami_collision_forces_equal_u {F : Type*} [Field F] [Fintype F] [CharP F
         · -- x = 1 case: (1+1)^d + 1^d + 1 = 0 + 1 + 1 = 0 in char 2
           have h1 : (1 : F) + 1 = 0 := CharTwo.add_self_eq_zero 1
           rw [← hdiff]
-          simp [h1, kasamiExp, CollisionAnalysis.d]
+          simp [h1, kasamiExp]
       have := kasami_key_identity hn k ( by linarith ) ( by linarith ) y; simp_all +decide [ add_eq_zero_iff_eq_neg ] ;
     have h_eq : truncTrace k (y ^ 2 + y) = 0 := by
       rw [ truncTrace_artin_schreier ] ; aesop;
@@ -287,50 +287,20 @@ lemma sq_add_self_eq_zero_char2 {F : Type*} [Field F] [CharP F 2] {u : F} :
     u ^ 2 + u = 0 ↔ u = 0 ∨ u = 1 := by
   grind +suggestions
 
-/-
-The Kasami exponent d is coprime to 2^n-1.
--/
-lemma kasami_exp_coprime {k n : ℕ} (hk : 1 < k) (hkn : k < n)
-    (hcop : Nat.Coprime k n) (hn_odd : Odd n) (hk_odd : Odd k) :
-    Nat.Coprime (kasamiExp k) (2 ^ n - 1) := by
-  -- Since $d$ divides $2^{3k} + 1$, it suffices to show that $\gcd(2^{3k} + 1, 2^n - 1) = 1$.
-  suffices h_gcd : Nat.gcd (2 ^ (3 * k) + 1) (2 ^ n - 1) = 1 by
-    refine' Nat.Coprime.coprime_dvd_left _ h_gcd;
-    zify [ kasamiExp ];
-    rw [ Nat.cast_sub ( by gcongr <;> linarith ) ] ; push_cast ; ring_nf;
-    exact ⟨ 1 + 2 ^ k, by ring ⟩;
-  -- Since $d$ divides $2^{3k} + 1$, it suffices to show that $\gcd(2^{3k} + 1, 2^n - 1) = 1$ by properties of gcd.
-  have h_gcd : Nat.gcd (2 ^ (6 * k) - 1) (2 ^ n - 1) = 2 ^ Nat.gcd (6 * k) n - 1 := by
-    exact?;
-  -- Since $n$ is odd and $\gcd(k, n) = 1$, we have $\gcd(6k, n) = \gcd(6, n)$.
-  have h_gcd_simplified : Nat.gcd (6 * k) n = Nat.gcd 6 n := by
-    exact Nat.Coprime.gcd_mul_right_cancel _ hcop;
-  -- Since $n$ is odd and $\gcd(6, n) = 1$ or $3$, we have $\gcd(2^{3k} + 1, 2 �^n� - 1) = 1$.
-  have h_gcd_final : Nat.gcd (2 ^ (3 * k) + 1) (2 ^ n - 1) ∣ Nat.gcd (2 ^ Nat.gcd 6 n - 1) (2 ^ (3 * k) + 1) := by
-    rw [ ← h_gcd_simplified, ← h_gcd ];
-    refine' Nat.dvd_gcd ( Nat.dvd_gcd _ ( Nat.gcd_dvd_right _ _ ) ) ( Nat.gcd_dvd_left _ _ );
-    exact dvd_trans ( Nat.gcd_dvd_left _ _ ) ( by use 2 ^ ( 3 * k ) - 1; zify ; norm_num ; ring );
-  have := Nat.gcd_dvd_left 6 n; ( have := Nat.le_of_dvd ( by decide ) this; interval_cases _ : Nat.gcd 6 n <;> simp_all +decide ; );
-  · exact absurd ( ‹Nat.gcd 6 n = 2› ▸ Nat.gcd_dvd_right _ _ ) ( by simpa [ ← even_iff_two_dvd, parity_simps ] using hn_odd );
-  · refine' Nat.dvd_one.mp ( h_gcd_final.trans _ );
-    rw [ ← Nat.mod_add_div k 2, Nat.odd_iff.mp hk_odd ] ; norm_num [ Nat.pow_add, Nat.pow_mul, Nat.add_mod, Nat.mul_mod, Nat.pow_mod, Nat.gcd_rec 7 ] ;
-  · have := Nat.gcd_dvd_right 6 n; simp_all +decide [ Nat.dvd_prime ] ;
-    exact absurd ( hn_odd.of_dvd_nat this ) ( by decide )
 
 /-
 WLOG reduction: APN of x^d reduces to the normalized differential.
 -/
 lemma apn_of_normalized {F : Type*} [Field F] [Fintype F] [CharP F 2]
-    {n : ℕ} (hn : Fintype.card F = 2 ^ n) (hn_pos : 1 < n)
-    (d : ℕ) (hd_cop : Nat.Coprime d (2 ^ n - 1))
+    (d : ℕ)
     (h_norm : ∀ (x y : F),
       (x + 1) ^ d + x ^ d = (y + 1) ^ d + y ^ d →
       y = x ∨ y = x + 1) :
     IsAPN (fun (x : F) => x ^ d) := by
   intro a ha x y hxy;
-  convert h_norm ( x / a ) ( y / a ) _ |> Or.imp ( fun h => ?_ ) ( fun h => ?_ ) using 1 <;> simp_all +decide [ add_div, mul_div_cancel₀ ];
+  convert h_norm ( x / a ) ( y / a ) _ |> Or.imp ( fun h => ?_ ) ( fun h => ?_ ) using 1 <;> simp_all +decide;
   · grind;
-  · convert congr_arg ( · / a ^ d ) hxy using 1 <;> simp +decide [ ha, add_div, mul_div_cancel₀, pow_add ];
+  · convert congr_arg ( · / a ^ d ) hxy using 1 <;> simp +decide [ add_div ];
     · rw [ div_add_one ha, div_pow, div_pow ];
     · rw [ ← div_pow, ← div_pow, div_add_one ha ]
 
@@ -350,8 +320,7 @@ theorem kasami_is_apn {F : Type*} [Field F] [Fintype F] [CharP F 2]
     (hk : 1 < k) (hk_odd : Odd k) (hkn : k < n)
     (hn_odd : Odd n) (hcop : Nat.Coprime k n) :
     IsAPN (fun (x : F) => x ^ (kasamiExp k)) := by
-  have hn_pos : 1 < n := lt_trans hk hkn
-  apply apn_of_normalized hn hn_pos _ (kasami_exp_coprime hk hkn hcop hn_odd hk_odd)
+  apply apn_of_normalized
   intro x y hdiff
   have hu : x ^ 2 + x = y ^ 2 + y :=
     kasami_collision_forces_equal_u hn k hk hk_odd hkn hn_odd hcop hdiff
