@@ -1,0 +1,170 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+
+\title{Human-Readable Proof Outline for the Kasami APN Theorem (Odd Dimension)}
+\author{RequestProject / Kasami APN}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{What is proved}
+The Lean theorem \texttt{kasami\_is\_apn} proves that the Kasami power map
+\[
+  f(x) = x^{d(k)}, \qquad d(k)=2^{2k}-2^k+1,
+\]
+is APN on a field $F$ of characteristic $2$ under the assumptions:
+\begin{itemize}
+  \item $|F|=2^n$,
+  \item $n$ odd,
+  \item $1<k<n$,
+  \item $k$ odd,
+  \item $\gcd(k,n)=1$.
+\end{itemize}
+
+Among these assumptions, the odd-dimension condition ($n$ odd) becomes essential at Layer 5,
+where it is used to obtain the coprimality input needed to construct the linking exponent $e'$. 
+
+Also, at Layer 6, the Gold-map bijectivity is used to cancel a $(2^k+1)$-power, which is only valid under the coprimality assumption $\gcd(2^k+1,2^n-1)=1$.
+
+\section{APN meaning and reduction strategy}
+For a function $f:F\to F$, APN means that for every nonzero $a$ and every collision
+\[
+  f(x+a)+f(x)=f(y+a)+f(y),
+\]
+the only possible outputs are $y=x$ or $y=x+a$.
+
+The proof does not attack this directly for all $a$. It first uses the normalization lemma
+\texttt{apn\_of\_normalized}: it is enough to prove the same uniqueness statement for the
+normalized equation with $a=1$:
+\[
+  (x+1)^d+x^d=(y+1)^d+y^d \implies y=x \text{ or } y=x+1.
+\]
+
+So the whole theorem is reduced to controlling collisions of the normalized differential.
+
+\section{Layered proof architecture}
+The Lean file is organized in layers. The theorem-level dependency chain is:
+\[
+\begin{array}{c}
+\texttt{kasami\_is\_apn} \\
+\uparrow \\
+\texttt{apn\_of\_normalized} \\
+\uparrow \\
+\texttt{kasami\_collision\_forces\_equal\_u} \\
+\uparrow \\
+\texttt{phi\_injective\_on\_units} \\
+\uparrow \\
+\texttt{exists\_linking\_exp}
+\end{array}
+\]
+
+Additional inputs are the Artin--Schreier identity, the key Kasami polynomial identity,
+Gold-map bijectivity, and a quadratic-kernel fact in characteristic $2$.
+
+\subsection*{Layer 1: Artin--Schreier trace identity}
+\texttt{truncTrace\_artin\_schreier} proves
+\[
+  L_k(x^2+x)=x^{2^k}+x.
+\]
+This is the basic conversion between truncated trace expressions and explicit powers.
+
+\subsection*{Layer 2: Key Kasami identity}
+\texttt{kasami\_key\_identity} proves
+\[
+\bigl((x+1)^d+x^d+1\bigr)(x^2+x)^{2^k}=(x^{2^k}+x)^{2^k+1}.
+\]
+This is the bridge from differential terms to a form suited for the $\Phi$-map analysis.
+
+\subsection*{Layer 3: Gold coprimality and bijectivity}
+\texttt{gold\_coprime} gives
+\[
+  \gcd(2^k+1,2^n-1)=1,
+\]
+and \texttt{gold\_pow\_bijective} deduces that
+\[
+  y\mapsto y^{2^k+1}
+\]
+is bijective on $F$.
+
+This bijectivity is later used to cancel an outer $(2^k+1)$-power.
+
+\subsection*{Layer 4: Arithmetic transfer identity}
+\texttt{kasami\_arith\_identity} is a modular arithmetic identity tailored to the exponent transfer step.
+It aligns the Kasami exponent arithmetic with the Dempwolff--Mueller bijection hypothesis.
+
+\subsection*{Layer 5: Existence of a linking exponent $e'$}
+\texttt{exists\_linking\_exp} constructs $e'$ with two modular constraints:
+\[
+e'(2^k+1)\equiv 2^n-1-2^k \pmod{2^n-1},
+\]
+\[
+(2^{n-1}-2^{k-1}-1)e'\equiv 2^{k-1} \pmod{2^n-1}.
+\]
+Interpretation: $e'$ is the arithmetic compatibility parameter that lets the map
+\[
+\Phi(u)=\frac{L_k(u)^{2^k+1}}{u^{2^k}}
+\]
+be rewritten as a composition of two bijective-style maps.
+
+This is the first point in the proof where the hypothesis ``$n$ odd'' is genuinely needed:
+it enters through the Gold coprimality step used in constructing $e'$.
+
+\subsection*{Layer 6: Injectivity of $\Phi$ on nonzero elements}
+\texttt{phi\_injective\_on\_units} proves that for $u,v\neq 0$, a collision in the $\Phi$-equation forces $u=v$.
+The proof combines:
+\begin{itemize}
+  \item the exponent link from Layer 5,
+  \item Gold-map bijectivity to cancel $(2^k+1)$ powers,
+  \item Dempwolff--Mueller theorem \texttt{LxXk'\_bijective} to conclude equality of inputs.
+\end{itemize}
+
+The Gold-map bijectivity is only valid under the coprimality assumption $\gcd(2^k+1,2^n-1)=1$.
+
+\subsection*{Layer 7: Differential collision implies equal Artin--Schreier values}
+\texttt{kasami\_collision\_forces\_equal\_u} proves:
+\[
+  (x+1)^d+x^d=(y+1)^d+y^d \implies x^2+x=y^2+y.
+\]
+It applies Layer 2 to rewrite the collision, then:
+\begin{itemize}
+  \item handles zero cases directly,
+  \item uses Layer 6 injectivity in the nonzero case,
+  \item uses Layer 1 for trace-power conversion.
+\end{itemize}
+
+This is the key bridge from normalized differential collisions to a quadratic relation in $x+y$.
+
+\subsection*{Layer 8: Characteristic-2 kernel and normalization lemma}
+There are two lemmas used in the final step:
+\begin{itemize}
+  \item \texttt{sq\_add\_self\_eq\_zero\_char2}:
+  \[
+    u^2+u=0 \iff u\in\{0,1\}.
+  \]
+  \item \texttt{apn\_of\_normalized}: proving the normalized differential uniqueness
+  implies full APN.
+\end{itemize}
+
+\subsection*{Layer 9: Final theorem}
+In \texttt{kasami\_is\_apn}, the final argument is short:
+\begin{enumerate}
+  \item Apply \texttt{apn\_of\_normalized}; reduce to the $a=1$ collision equation.
+  \item Use Layer 7 to get $x^2+x=y^2+y$.
+  \item Rearrange to
+  \[
+    (x+y)^2+(x+y)=0.
+  \]
+  \item Use Layer 8 kernel lemma to conclude $x+y=0$ or $x+y=1$.
+  \item Therefore $y=x$ or $y=x+1$, exactly the APN condition.
+\end{enumerate}
+
+\section{One-paragraph summary}
+The proof is modular. It first reduces APN to a normalized differential equation, then converts that equation into a trace/exponent form via the Kasami identity, proves injectivity of the associated $\Phi$-map on nonzero elements using a specially constructed linking exponent and known bijectivity theorems, and finally translates the resulting equality into the two-point alternative $y\in\{x,x+1\}$ through a characteristic-2 kernel identity. This closes the APN theorem for Kasami exponents in odd dimension under the standard coprimality assumptions.
+
+\end{document}
