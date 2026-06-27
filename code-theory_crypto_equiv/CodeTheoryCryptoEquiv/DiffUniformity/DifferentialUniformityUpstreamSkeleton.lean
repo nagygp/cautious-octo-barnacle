@@ -4,7 +4,7 @@ import Mathlib
 # Differential uniformity and APN / PN functions (skeleton / `sorry` version)
 
 This is a statement-only skeleton twin of
-`RequestProject/DiffUniformity/DifferentialUniformityUpstream.lean`: it contains
+`CodeTheoryCryptoEquiv/DiffUniformity/DifferentialUniformityUpstream.lean`: it contains
 exactly the same generalized definitions and lemma/theorem **statements**, but
 every proof is left as `sorry`.  It is intended as a clean starting point for
 re-deriving the proofs (e.g. when adapting the material for upstreaming).

@@ -6,7 +6,7 @@ import Mathlib
 This file is a generalized, dependency-free reformulation of the abstract
 differential-uniformity foundation, intended as a candidate for upstreaming to
 Mathlib.  Compared to the project-internal version
-(`RequestProject/DiffUniformity/DifferentialUniformity.lean`) the typeclass
+(`CodeTheoryCryptoEquiv/DiffUniformity/DifferentialUniformity.lean`) the typeclass
 assumptions have been weakened to the minimum each declaration needs:
 
 * `derivMap` and `IsAtMostTwoToOne` use only `[Add V]` / `[Sub W]`; there is no
