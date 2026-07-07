@@ -1,9 +1,9 @@
 import Mathlib
-import RequestProject.DempwolffMueller.Thm32
-import RequestProject.Core.ExpArith
-import RequestProject.DempwolffMueller.ExpArith
-import RequestProject.DempwolffMueller.FrobAlg
-import RequestProject.Kasami.Defs
+import RequestProject.FiniteField.Thm32
+import RequestProject.FiniteField.ExpArith
+import RequestProject.FiniteField.ExpArith
+import RequestProject.FiniteField.FrobAlg
+import RequestProject.APN.Defs
 
 /-!
 # Kasami APN Theorem
