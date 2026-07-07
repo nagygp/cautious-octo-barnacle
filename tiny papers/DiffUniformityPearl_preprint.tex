@@ -1,0 +1,260 @@
+\documentclass[11pt]{article}
+
+\input{preprint_preamble.tex}
+
+\title{\textbf{A Verification Pearl:\\[2pt]
+Differential Uniformity, Done Once}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent
+We give one small definition.\\
+We prove one small closure law.\\
+We get the Frobenius twist for free.
+
+\medskip
+\noindent
+Everything is checked in Lean~4 / Mathlib.
+\end{abstract}
+
+\vfill
+
+\noindent\textit{Conference paper call --- short, slow-read submission.}
+
+\newpage
+
+
+\section{The idea}
+
+\bigskip
+
+A map $f$ is \emph{APN} if its derivatives are at most two-to-one.
+
+\bigskip
+
+The literature writes this only in characteristic two.
+
+\bigskip
+
+We write it once, for any additive group.
+
+\bigskip
+
+\note{One number. No field. No characteristic.}
+
+\newpage
+
+
+\section{The primitive}
+
+\bigskip
+
+The discrete derivative:
+\[
+  \mathrm{derivMap}\, f\, a\, x \;=\; f(x+a) - f(x).
+\]
+
+\bigskip
+
+Its fibre size:
+\[
+  \mathrm{fiberCard}\, f\, a\, b \;=\; \#\{\, x : \mathrm{derivMap}\, f\, a\, x = b \,\}.
+\]
+
+\bigskip
+
+The differential uniformity:
+\[
+  \delta(f) \;=\; \max_{a \neq 0,\; b}\; \mathrm{fiberCard}\, f\, a\, b.
+\]
+
+\bigskip
+
+\[
+  \mathrm{IsAPN}\, f \;:\Longleftrightarrow\; \delta(f) = 2.
+\]
+\[
+  \mathrm{IsPN}\, f \;:\Longleftrightarrow\; \delta(f) = 1.
+\]
+
+\newpage
+
+
+\section{The primitive, in Lean}
+
+\bigskip
+
+\begin{lstlisting}
+def derivMap (f : V → W) (a x : V) : W := f (x + a) - f x
+
+def fiberCard (f : V → W) (a : V) (b : W) : ℕ :=
+  (univ.filter fun x => derivMap f a x = b).card
+
+def differentialUniformity (f : V → W) : ℕ :=
+  (univ.filter fun a => a ≠ 0).sup
+    fun a => univ.sup fun b => fiberCard f a b
+
+def IsAPN (f : V → W) : Prop := differentialUniformity f = 2
+\end{lstlisting}
+
+\bigskip
+
+\note{\texttt{V}, \texttt{W} are any finite additive groups.}
+
+\newpage
+
+
+\section{The closure law}
+
+\bigskip
+
+\begin{theorem}
+Let $\sigma$ be an additive bijection.
+\[
+  \delta(\sigma \circ f) \;=\; \delta(f).
+\]
+\end{theorem}
+
+\bigskip
+
+Why: $\sigma$ commutes with the derivative, so it just relabels fibres.
+
+\[
+  \mathrm{derivMap}\,(\sigma \circ f)\, a\, x \;=\; \sigma\big(\mathrm{derivMap}\, f\, a\, x\big).
+\]
+
+\bigskip
+
+So APN is preserved.
+
+\[
+  \mathrm{IsAPN}\, f \;\Longrightarrow\; \mathrm{IsAPN}\,(\sigma \circ f).
+\]
+
+\newpage
+
+
+\section{The closure law, in Lean}
+
+\bigskip
+
+\begin{lstlisting}
+lemma differentialUniformity_comp_addEquiv
+    (f : V → W) (σ : W ≃+ W') :
+    differentialUniformity (σ ∘ f) = differentialUniformity f
+
+theorem IsAPN.comp_addEquiv
+    {f : V → W} (hf : IsAPN f) (σ : W ≃+ W') :
+    IsAPN (σ ∘ f)
+\end{lstlisting}
+
+\bigskip
+
+\note{This moves a whole EA-class at once.}
+
+\newpage
+
+
+\section{Application: the Frobenius twist}
+
+\bigskip
+
+Now take a finite field of characteristic two.
+
+\bigskip
+
+The map
+\[
+  \sigma : x \mapsto x^{2^{\,j}}
+\]
+is an additive bijection.
+
+\bigskip
+
+So it is a special case of the closure law.
+
+\bigskip
+
+\begin{corollary}
+If $f$ is APN, then $x \mapsto f(x)^{2^{\,j}}$ is APN.
+\end{corollary}
+
+\newpage
+
+
+\section{The twist, in Lean}
+
+\bigskip
+
+\begin{lstlisting}
+theorem IsAPN.comp_frobenius
+    {f : F → F} (hf : IsAPN f) (j : ℕ) :
+    IsAPN (fun x => (f x) ^ (2 ^ j))
+\end{lstlisting}
+
+\bigskip
+
+The same move drives the Kasami extension to even~$k$:
+
+\bigskip
+
+\begin{lstlisting}
+lemma apn_frob_twist {d : ℕ}
+    (hd : IsAPN (fun x : F => x ^ d)) (j : ℕ) :
+    IsAPN (fun x : F => x ^ (d * 2 ^ j))
+\end{lstlisting}
+
+\bigskip
+
+\note{Kasami even $k$ $=$ Kasami odd $k$, twisted.}
+
+\newpage
+
+
+\section{The bridge back}
+
+\bigskip
+
+In characteristic two the old form returns as a corollary.
+
+\bigskip
+
+\begin{theorem}
+If $\delta(f) \le 2$ then, for $a \neq 0$,
+\[
+  f(x+a) - f(x) = f(y+a) - f(y)
+  \;\Longrightarrow\;
+  y = x \;\vee\; y = x + a.
+\]
+\end{theorem}
+
+\bigskip
+
+\note{Nothing is lost. The classical statement is derived, not assumed.}
+
+\newpage
+
+
+\section{What we claim}
+
+\bigskip
+
+\begin{itemize}
+  \item One characteristic-free definition.\\[6pt]
+  \item One closure law.\\[6pt]
+  \item Frobenius twist as a one-line corollary.\\[6pt]
+  \item Fully machine-checked.
+\end{itemize}
+
+\vfill
+
+\noindent\textit{Read slowly. There is not much to read.}
+
+\end{document}

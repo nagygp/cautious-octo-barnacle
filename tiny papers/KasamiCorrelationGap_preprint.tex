@@ -1,0 +1,361 @@
+\documentclass[11pt]{article}
+\input{preprint_preamble}
+\usepackage{colortbl}
+
+% ---- a few extra glyphs used only in this note ----
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{ᵢ}{\ensuremath{{}_{i}}}
+\newunicodechar{ₘ}{\ensuremath{{}_{m}}}
+\newunicodechar{ₐ}{\ensuremath{{}_{a}}}
+\newunicodechar{₃}{\textsubscript{3}}
+\newunicodechar{Σ}{\ensuremath{\textstyle\sum}}
+\newunicodechar{∥}{\ensuremath{\Vert}}
+
+\title{\textbf{One sorry, named}\\[4pt]
+\large The single missing node of NSUCRYPTO'2019 Problem~11, read slowly}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+This is a \emph{gap report}, not a proof.\\[4pt]
+The whole derivation of NSUCRYPTO'2019 Problem~11 (and the unconditional
+$m$-tuple count for the Kasami family) has been pushed down to \emph{one}
+self-standing statement.  Every other layer --- the concrete character, the
+two framework bridges, the autocorrelation homogeneity, the assembly into the
+closed-form count --- is machine-checked in Lean~4 with no \texttt{sorry} and
+only the standard axioms.\\[6pt]
+\noindent
+What remains is a single harmonic-analytic fact, the
+\emph{almost-bent sum-zero correlation balance}:
+\[
+  \sum_{v\neq 0}\ \prod_{i} \mathrm{Wcorr}\bigl(\chi,\, x^{d_k},\, 1,\, v\,c_i\bigr)
+  \;=\; 0
+  \qquad\Bigl(\textstyle\sum_i c_i = 0,\ c_i\neq 0\Bigr).
+\]
+\noindent
+We state \emph{exactly} what is proved, \emph{exactly} where the hole is, read
+it as \emph{math} $\leftrightarrow$ \emph{Lean} $\leftrightarrow$ a missing
+piece of \emph{spectral infrastructure}, and explain why the obvious inputs
+(three-valued Walsh spectrum + homogeneity) come up one structural step short.
+\end{abstract}
+
+\bigskip
+
+% =====================================================================
+\section*{The shape of the gap}
+
+\noindent
+Almost everything is a staircase that ends one step below the landing.
+The single open node sits between two fully-proved layers:
+
+\[
+\begin{tikzcd}[row sep=large, column sep=small]
+\boxed{\texttt{kasami\_is\_ab}}
+  \arrow[d, Rightarrow, "\text{(proved: 3-valued spectrum)}"'] &[-2.2em] \\
+\textbf{[KERNEL]}\ \ \texttt{kasami\_correlationBalance\_sumzero}
+  \arrow[d, Rightarrow, "\text{(proved: }\texttt{correlationBalance\_iff\_count}\text{)}"'] \\
+\texttt{kasami\_triple\_count\_unconditional}\ \ (\kappa_3 = 2^{2n-3})
+  \arrow[d, Rightarrow] \\
+\texttt{nsucrypto\_problem11}
+\end{tikzcd}
+\]
+
+\note{The box at the top is a \emph{theorem} (Kasami's Walsh spectrum is
+three-valued, proved with standard axioms only).  The node in \textbf{bold} is
+the \emph{only} \texttt{sorry} in the entire chain.  Everything below it is a
+term that consumes the kernel and produces the closed-form counts.}
+
+\bigskip
+
+% =====================================================================
+\section{What is solid below the gap}
+
+\noindent
+Fix a finite field $\mathbb{F}=\mathrm{GF}(2^n)$.  An \emph{additive character}
+is packaged as a structure \texttt{Chi}; the project supplies a \emph{concrete}
+one, the trace sign character $\chi(x)=(-1)^{\mathrm{Tr}(x)}$:
+
+\begin{lstlisting}
+noncomputable def traceChi : MTupleCount.Chi 𝔽 where
+  app      := WalshAB.χ
+  app_zero := WalshAB.χ_zero
+  app_add  := WalshAB.χ_mul
+  orth     := WalshAB.χ_sum_eq
+\end{lstlisting}
+
+\note{This discharges the \emph{existence} of the abstract character the whole
+spectral machinery was parameterised over.  Proved, no \texttt{sorry}.}
+
+\medskip
+
+\noindent
+The \textbf{derivative autocorrelation} at shift $a$ and mask $w$ is
+\[
+  \mathrm{Wcorr}(\chi, f, a, w)
+  \;=\;
+  \sum_{x\in\mathbb{F}} \chi\!\bigl(w\cdot(f(x+a)+f(x))\bigr)\in\mathbb{Z},
+\]
+and a single proved lemma makes the shift $a$ irrelevant for a power map:
+
+\begin{lstlisting}
+lemma wcorr_pow_homog (χ : MTupleCount.Chi 𝔽) (d : ℕ) (hd : 0 < d) (a w : 𝔽) :
+    MTupleCount.Wcorr χ (fun x => x ^ d) a w
+      = MTupleCount.Wcorr χ (fun x => x ^ d) 1 (w * a ^ d)
+\end{lstlisting}
+
+\note{\emph{Homogeneity.}  Every derivative direction $a$ is a relabelling of
+$a=1$.  This is why the kernel below may fix $a=1$ with no loss.  Proved, no
+\texttt{sorry}.}
+
+\medskip
+
+\noindent
+Two \textbf{framework bridges} identify the two counting worlds used in the
+project (collision counting vs.\ Fourier counting), so the conjecture's
+pure-counting statement can actually be fed to the spectral machinery:
+
+\begin{lstlisting}
+lemma Delta0_eq_Δ   (f : 𝔽 → 𝔽) (a : 𝔽) :
+    M002.derivImage f a = MTupleCount.Δ f a
+lemma tcount_eq_kappa (S : Finset 𝔽) (v₁ v₂ : 𝔽) :
+    tcount S v₁ v₂ = MTupleCount.κ 3 S ![v₁, v₂, v₁ + v₂]
+\end{lstlisting}
+
+\note{Both proved, no \texttt{sorry}.  In characteristic two $-$ and $+$ agree,
+so the raw derivative image is literally $\Delta f\,a$.}
+
+\bigskip
+
+% =====================================================================
+\section{What is solid above the gap}
+
+\noindent
+The bridge from the kernel to the count is a proved \emph{equivalence}, not a
+guess.  Correlation balance is exactly the counting identity:
+
+\[
+  \underbrace{\sum_{v\neq 0}\ \prod_i \mathrm{Wcorr}(\chi,f,a,v\,c_i)=0}
+            _{\textstyle \texttt{CorrelationBalance}}
+  \quad\Longleftrightarrow\quad
+  |\mathbb{F}|\cdot \kappa_m \;=\; |\Delta f\,a|^{\,m}.
+\]
+
+\begin{lstlisting}
+lemma correlationBalance_iff_count (χ : Chi 𝔽) (f : 𝔽 → 𝔽) (hf : APN f)
+    (a : 𝔽) (ha : a ≠ 0) (m : ℕ) (c : Fin m → 𝔽) :
+    CorrelationBalance χ f a m c ↔
+      (card 𝔽 : ℤ) * (κ m (Δ f a) c) = ((Δ f a).card : ℤ) ^ m
+\end{lstlisting}
+
+\note{Proved, no \texttt{sorry}.  Each product is $2^m\,P(v)$ by the APN
+fibre-doubling bridge; summing over $v\neq0$ and peeling the $v=0$ term gives
+$2^m\bigl(|\mathbb{F}|\,\kappa_m - |\Delta|^m\bigr)$, which vanishes iff the
+counting identity holds.}
+
+\medskip
+
+\noindent
+Hence, \emph{given the kernel}, the closed forms are assembled with no further
+hypotheses:
+
+\begin{lstlisting}
+theorem kasami_triple_count_unconditional ... :
+    MTupleCount.κ 3 (MTupleCount.Δ (fun x : 𝔽 => x ^ KasamiAPN.kasamiExp k) 1)
+        ![v₁, v₂, v₁ + v₂] = 2 ^ (2 * n - 3)
+\end{lstlisting}
+
+\note{This term \emph{compiles}.  Its only transitive \texttt{sorry} is the one
+kernel below.  Remove the kernel's \texttt{sorry} and the whole Problem~11
+chain is closed.}
+
+\bigskip
+
+% =====================================================================
+\section{The gap itself, stated exactly}
+
+\noindent
+Here is the one open statement, verbatim from the source.  The Kasami exponent
+is $d_k = 2^{2k}-2^k+1$ (\texttt{kasamiExp k}); the coefficient triple
+$\,[\,v_1,\,v_2,\,v_1{+}v_2\,]\,$ \emph{sums to zero} in characteristic two.
+
+\begin{lstlisting}
+/-- [KERNEL] Almost-bent sum-zero triple balance for the Kasami map. -/
+theorem kasami_correlationBalance_sumzero (n k : ℕ) (hn : 3 ≤ n)
+    (hk1 : 1 ≤ k) (hkn : k < n) (hodd : Odd n)
+    (hcop : Nat.Coprime k n) (hcard : card 𝔽 = 2 ^ n)
+    (v₁ v₂ : 𝔽) (hv₁ : v₁ ≠ 0) (hv₂ : v₂ ≠ 0) (hne : v₁ ≠ v₂) :
+    MTupleCount.CorrelationBalance (traceChi (𝔽 := 𝔽))
+      (fun x : 𝔽 => x ^ KasamiAPN.kasamiExp k) 1 3 ![v₁, v₂, v₁ + v₂] := by
+  sorry          -- ← the entire missing content of Problem 11
+\end{lstlisting}
+
+\medskip
+
+\noindent
+Unfolded, the goal is the single scalar identity
+\[
+  \sum_{v\in\mathbb{F}^{\times}}
+    \mathrm{Wcorr}(v\,v_1)\;
+    \mathrm{Wcorr}(v\,v_2)\;
+    \mathrm{Wcorr}\bigl(v\,(v_1{+}v_2)\bigr)
+  \;=\;0,
+  \qquad
+  \mathrm{Wcorr}(w):=\mathrm{Wcorr}\bigl(\chi,\,x^{d_k},\,1,\,w\bigr).
+\]
+
+\note{It is one number being zero.  Not a quantifier over fibres, not a
+cardinality bound --- a \emph{cancellation}.  That is what makes it the genuine
+harmonic-analytic heart of the problem, and what makes it resist the
+elementary moves that closed every layer around it.}
+
+\bigskip
+
+% =====================================================================
+\section{Why the obvious inputs fall one step short}
+
+\noindent
+The temptation is: ``Kasami is almost bent, so its Walsh spectrum is
+three-valued; substitute and cancel.''  Here is precisely how far that goes,
+and where it stops.
+
+\subsection*{What three-valuedness gives (a single mask)}
+
+\noindent
+\texttt{kasami\_is\_ab} says: for each fixed nonzero output mask $w$,
+\[
+  W(\chi,\,x^{d_k},\,u,\,w)\ \in\ \bigl\{\,0,\ \pm 2^{(n+1)/2}\,\bigr\}
+  \qquad\text{for every input mask }u .
+\]
+By Wiener--Khinchin (proved, \texttt{card\_mul\_corr}) the autocorrelation is the
+\emph{inverse} Fourier transform of the squared spectrum,
+\[
+  |\mathbb{F}|\cdot\mathrm{Wcorr}(\chi,f,a,w)
+  \;=\;
+  \sum_{u} \chi(u\cdot a)\,\bigl(W(\chi,f,u,w)\bigr)^2 ,
+\]
+and the second/third moments of a \emph{single} three-valued column are pinned
+down (\texttt{second\_moment}, \texttt{third\_moment\_ab}).  So for one mask at
+a time the spectral data is completely understood.
+
+\subsection*{What the kernel actually needs (a product of three masks)}
+
+\noindent
+The kernel is not about one column.  Expanding each $\mathrm{Wcorr}$ through
+Wiener--Khinchin and multiplying, the sum-zero balance becomes a statement about
+the \emph{joint} support of the spectrum across the \emph{three different output
+masks} $v\,v_1,\ v\,v_2,\ v\,(v_1{+}v_2)$ simultaneously:
+\[
+  \sum_{v\neq 0}\ \prod_{i=1}^{3}
+     \Bigl(\textstyle\sum_{u_i}\chi(u_i)\,W(u_i,\,v\,c_i)^2\Bigr)
+  \;=\;0 .
+\]
+The cancellation is forced by \emph{how the three nonzero values $\pm
+2^{(n+1)/2}$ are distributed jointly} --- the cross-correlation /
+\emph{joint-support} structure of the Kasami Walsh transform.  Knowing each
+factor is three-valued says nothing about the \emph{correlation between the
+factors}, and the sum-zero condition $c_1+c_2+c_3=0$ is exactly what couples
+them.
+
+\[
+\begin{tikzcd}[row sep=small, column sep=large]
+\text{3-valued, per mask} \arrow[r, Rightarrow, "\text{known}"]
+   & \text{moments of one column} \\
+\text{\textbf{joint support, 3 masks}} \arrow[r, Rightarrow, dashed, "\text{\textbf{missing}}"]
+   & \text{sum-zero cancellation}
+\end{tikzcd}
+\]
+
+\note{The proved layer controls each \emph{factor}; the kernel needs the
+\emph{joint distribution} of the factors.  That is one quantifier deeper than
+\texttt{AlmostBent}, and Mathlib carries no API for the $m$-fold support
+geometry of a three-valued spectrum.}
+
+\bigskip
+
+% =====================================================================
+\section{The same hole, in four equivalent contexts}
+
+\noindent
+Because the surrounding bridges are proved equivalences, the one missing fact
+can be phrased in whichever language one prefers; each phrasing is provably the
+\emph{same} node, and each is open for the \emph{same} reason.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{l l}
+\textbf{context} & \textbf{the missing statement} \\
+\hline
+Walsh correlation & $\displaystyle\sum_{v\neq0}\prod_i \mathrm{Wcorr}(v\,c_i)=0$ \quad (the kernel) \\
+Fourier counting  & $|\mathbb{F}|\cdot\kappa_3(c) = |\Delta|^3$ \\
+spectral correction & $\mathrm{tripleError}(\chi,\Delta,c)=0$ \\
+original collision & $|\mathbb{F}|\cdot\mathrm{tcount}(\Delta_0) = |\Delta_0|^3$ \\
+\end{tabular}
+\end{center}
+
+\note{Bridges: \texttt{correlationBalance\_iff\_count},
+\texttt{kernel\_iff\_constCount}, \texttt{kernel\_iff\_tripleError\_zero},
+\texttt{tcount\_eq\_kappa} --- all proved.  Closing the kernel in \emph{any}
+one column closes \emph{all} of them.}
+
+\bigskip
+
+% =====================================================================
+\section*{What would close it}
+
+\noindent
+The remaining content is the Carlet--Charpin--Zinoviev almost-bent
+$m$-balance.  In Lean terms the missing infrastructure is the
+\emph{joint-support / higher-moment} theory of an almost-bent spectrum:
+the value of
+\[
+  \sum_{w}\ \prod_{i=1}^{m}\bigl(W(u_i,\,w)\bigr)^2
+\]
+over a three-valued spectrum, with the coupling fixed by $\sum_i c_i = 0$.
+This is the one piece not currently in Mathlib, and the one piece this note
+flags as open.
+
+\bigskip
+\subsection*{One-screen summary}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{l l l}
+\textbf{layer} & \textbf{statement} & \textbf{status} \\
+\hline
+character & \texttt{traceChi} : concrete $(-1)^{\mathrm{Tr}}$ & \textbf{proved} \\
+homogeneity & \texttt{wcorr\_pow\_homog} & \textbf{proved} \\
+bridges & \texttt{Delta0\_eq\_Δ}, \texttt{tcount\_eq\_kappa} & \textbf{proved} \\
+equivalence & \texttt{correlationBalance\_iff\_count} & \textbf{proved} \\
+spectrum & \texttt{kasami\_is\_ab} (3-valued) & \textbf{proved} \\
+\rowcolor{leanbg}
+\textbf{kernel} & \texttt{kasami\_correlationBalance\_sumzero} & \textbf{open (1 sorry)} \\
+count & \texttt{kasami\_triple\_count\_unconditional} & proved \emph{modulo kernel} \\
+problem 11 & \texttt{nsucrypto\_problem11} & proved \emph{modulo kernel} \\
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent
+\colorbox{leanbg}{\parbox{\dimexpr\linewidth-2\fboxsep}{\centering
+Everything is closed except one number being zero:\\[2pt]
+$\displaystyle\sum_{v\neq0}\mathrm{Wcorr}(v v_1)\,\mathrm{Wcorr}(v v_2)\,
+\mathrm{Wcorr}\bigl(v(v_1{+}v_2)\bigr)=0.$}}
+
+\bigskip
+
+\section*{Reproducibility}
+
+\noindent
+All ``proved'' rows compile in Lean~4 with Mathlib, no \texttt{sorry}, standard
+axioms only.  The single open node is
+\texttt{kasami\_correlationBalance\_sumzero} (and its general-$m$ companion
+\texttt{kasami\_correlationBalance\_sumzero\_m}) in
+\texttt{RequestProject/EquivalentContexts/NSUCryptoKernel.lean}.
+The assembly and the equivalent-context bridges are in
+\texttt{RequestProject/EquivalentContexts/NSUCryptoFoundationalDAG.lean}.
+
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+\input{preprint_preamble}
+
+\title{\textbf{APN rides along any additive bijection}\\[4pt]
+\large \texttt{apn\_comp\_additive\_bijective}, read slowly}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+One reusable abstraction.\\[2pt]
+$\bullet$\quad \texttt{apn\_comp\_additive\_bijective}:\;\;
+if $f$ is APN and $\sigma$ is an \emph{additive bijection}, then $\sigma\circ f$ is APN.\\[6pt]
+\noindent
+The Frobenius twist is just the most useful instance. Affine pre/post-composition
+(EA-equivalence) preserves APN for free, because affine maps are additive
+bijections.
+\end{abstract}
+
+\bigskip
+
+% =====================================================================
+\section*{What APN means}
+
+\[
+\Gamma=\bigl(F:\mathrm{Type},\;[\mathrm{Field}\;F],\;[\mathrm{CharP}\;F\;2]\bigr)
+\]
+\[
+\mathrm{IsAPN}(f)\;:\;\;
+\forall a\neq 0,\;\forall x,y.\;\;
+f(x{+}a){+}f(x)=f(y{+}a){+}f(y)\;\Rightarrow\; y=x \;\lor\; y=x{+}a .
+\]
+``Every nonzero direction $a$ has at most two collision partners.''
+
+\bigskip
+
+% =====================================================================
+\section{The lemma}
+
+\begin{lstlisting}
+lemma apn_comp_additive_bijective {F : Type*} [Field F] [CharP F 2]
+    {f : F → F} (hf : IsAPN f)
+    {σ : F → F} (hσ_bij : Function.Bijective σ)
+    (hσ_add : ∀ x y, σ (x + y) = σ x + σ y) :
+    IsAPN (σ ∘ f) := by
+  intro a ha x y hxy
+  convert hf a ha x y _ using 1
+  exact hσ_bij.injective (by aesop)
+\end{lstlisting}
+
+\bigskip
+\subsection*{Why it is true (two properties, used once each)}
+
+\noindent
+Look at the collision for $\sigma\circ f$:
+\[
+\sigma(f(x{+}a))+\sigma(f(x)) \;=\; \sigma(f(y{+}a))+\sigma(f(y)).
+\]
+\begin{enumerate}\itemsep6pt
+  \item \textbf{Additivity} pulls $\sigma$ out of each sum:
+  \[
+  \sigma\bigl(f(x{+}a)+f(x)\bigr) \;=\; \sigma\bigl(f(y{+}a)+f(y)\bigr).
+  \]
+  \item \textbf{Injectivity} (half of bijectivity) cancels $\sigma$:
+  \[
+  f(x{+}a)+f(x) \;=\; f(y{+}a)+f(y).
+  \]
+\end{enumerate}
+That is a collision for $f$. Since $f$ is APN, $y=x$ or $y=x+a$. Done.
+
+\[
+\inferrule*[Right=\textsc{apn-transport}]
+{
+  \mathrm{IsAPN}\,f
+  \\
+  \underbrace{\sigma(u{+}v)=\sigma u+\sigma v}_{\text{additive}}
+  \\
+  \underbrace{\mathrm{Injective}\,\sigma}_{\text{from bijective}}
+}
+{\;\mathrm{IsAPN}\,(\sigma\circ f)\;}
+\]
+
+\note{The two side premises are \emph{exactly} the shapes of \texttt{frob\_add}
+(additivity of $x\mapsto x^{2^j}$) and \texttt{frob\_bijective} (its bijectivity).
+The lemma is the abstraction; Frobenius is the instance.}
+
+\bigskip
+
+% =====================================================================
+\section{Instance 1: the Frobenius twist}
+
+\noindent
+Take $\sigma(x)=x^{2^j}$. It is additive (\texttt{frob\_add}) and bijective on a
+finite field (\texttt{frob\_bijective}). So multiplying an APN exponent by $2^j$
+keeps it APN:
+
+\begin{lstlisting}
+lemma apn_frob_twist {F : Type*} [Field F] [Fintype F] [CharP F 2]
+    {d : ℕ} (hd : IsAPN (fun x : F => x ^ d)) (j : ℕ) :
+    IsAPN (fun x : F => x ^ (d * 2 ^ j)) := by
+  have heq : (fun x : F => x ^ (d * 2 ^ j)) =
+      (fun x => x ^ (2 ^ j)) ∘ (fun x => x ^ d) := by
+    ext x; simp [pow_mul]
+  rw [heq]
+  exact apn_comp_additive_bijective hd (frob_bijective_field j) (frob_additive j)
+\end{lstlisting}
+
+\note{The decisive line names the three ingredients in order:
+\texttt{hd} (the APN input), \texttt{frob\_bijective\_field j} (the bijection),
+\texttt{frob\_additive j} (the additivity). This is the engine that removes the
+``$k$ odd'' restriction from Kasami: $x^{d_k}=(x^{d_{n-k}})^{2^{2k}}$.}
+
+\bigskip
+
+% =====================================================================
+\section{Instance 2: EA-equivalence (for free)}
+
+\noindent
+An \textbf{affine} map $\sigma(x)=A(x)+c$ with $A$ additive and bijective is an
+additive bijection up to the constant $c$ --- and in the collision both copies of
+$c$ cancel in char $2$. So pre- and post-composing $f$ with affine bijections
+preserves APN. This is \textbf{EA-equivalence}, and it costs nothing beyond the
+one lemma above.
+
+\[
+\begin{tikzcd}[column sep=large]
+F \arrow[r, "{\text{affine}}", "\sim"'] & F \arrow[r, "f"] & F \arrow[r, "{\text{affine}}", "\sim"'] & F
+\end{tikzcd}
+\]
+\begin{center}\small An APN $f$ flanked by affine bijections is still APN.\end{center}
+
+\bigskip
+
+% =====================================================================
+\section*{One-screen summary}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{l l}
+\textbf{ingredient} & \textbf{role} \\
+\hline
+$\sigma$ additive & pull $\sigma$ out of the difference \\
+$\sigma$ injective & cancel $\sigma$, recover $f$'s collision \\
+$f$ APN & $\le 2$ partners \\
+$\Rightarrow$ & $\sigma\circ f$ APN \\
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent
+\colorbox{leanbg}{\parbox{\dimexpr\linewidth-2\fboxsep}{\centering
+additive $+$ bijective $\;\Rightarrow\;$ APN transported.\;\;
+Frobenius twist and EA-equivalence are two instances of one lemma.}}
+
+\end{document}

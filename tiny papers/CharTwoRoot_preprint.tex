@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\input{preprint_preamble}
+
+\title{\textbf{Two roots, and that is all}\\[4pt]
+\large $x^2+x=0 \iff x\in\{0,1\}$ in characteristic $2$, read slowly}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+One line of algebra.\\[2pt]
+$\bullet$\quad \texttt{sq\_add\_self\_eq\_zero\_char2}:\;\;
+$u^2+u=0 \iff u=0 \lor u=1$.\\[6pt]
+\noindent
+It is the literal \emph{last step} of \texttt{kasami\_is\_apn}: once a collision
+has been squeezed to $(x+y)^2+(x+y)=0$, this lemma delivers ``at most two
+solutions'', i.e.\ APN.
+\end{abstract}
+
+\bigskip
+
+% =====================================================================
+\section*{Setting}
+
+\[
+\Gamma=\bigl(F:\mathrm{Type},\;[\mathrm{Field}\;F],\;[\mathrm{CharP}\;F\;2]\bigr)
+\]
+A field where $1+1=0$, so $-1=1$ and $u+u=0$ for every $u$.
+
+\bigskip
+
+% =====================================================================
+\section{The lemma}
+
+\[
+\forall u:F.\qquad u^2+u=0 \;\longleftrightarrow\; (u=0 \;\lor\; u=1)
+\]
+
+\begin{lstlisting}
+lemma sq_add_self_eq_zero_char2 {F : Type*} [Field F] [CharP F 2] {u : F} :
+    u ^ 2 + u = 0 ↔ u = 0 ∨ u = 1 := by
+  grind +suggestions
+\end{lstlisting}
+
+\note{\texttt{grind} closes it because the statement is a polynomial
+identity over an integral domain: it factors and reads off the roots. We read
+the factoring by hand below.}
+
+\bigskip
+\subsection*{Why it is true (the factoring)}
+
+\noindent
+Factor the left side:
+\[
+u^2+u \;=\; u(u+1).
+\]
+In a \textbf{field} (no zero divisors) a product is zero iff a factor is zero:
+\[
+u(u+1)=0 \;\Longleftrightarrow\; u=0 \;\lor\; u+1=0.
+\]
+In characteristic $2$, $\;u+1=0 \iff u=1\;$ (because $-1=1$). Hence
+$u\in\{0,1\}=\mathbb{F}_2$.
+
+\[
+\begin{tikzcd}[column sep=large]
+u^2+u=0 \arrow[r, leftrightarrow, "{\text{factor}}"]
+& u(u+1)=0 \arrow[r, leftrightarrow, "{\text{domain}}"]
+& u=0 \;\lor\; u=1
+\end{tikzcd}
+\]
+
+\note{It is an Artin--Schreier polynomial $X^2-X = X^2+X$ in char $2$. Its
+roots are exactly the prime subfield $\mathbb{F}_2$. The map $u\mapsto u^2+u$ is
+$\mathbb{F}_2$-linear with kernel $\{0,1\}$ --- this is the additive shadow of
+``$x\mapsto x^2$ is Frobenius''.}
+
+\bigskip
+
+% =====================================================================
+\section{Where it lands: the last line of Kasami}
+
+\noindent
+Inside \texttt{kasami\_is\_apn} a collision between $x$ and $y$ is reduced,
+via the trace identity, to
+\[
+x^2+x \;=\; y^2+y .
+\]
+Add the two sides and use Freshman's Dream $(x+y)^2=x^2+y^2$:
+\[
+(x+y)^2+(x+y) \;=\; (x^2+x)+(y^2+y) \;=\; 0 .
+\]
+Now the lemma fires on $u=x+y$:
+\[
+(x+y)^2+(x+y)=0
+\;\xRightarrow{\;\texttt{sq\_add\_self\_eq\_zero\_char2}\;}\;
+x+y=0 \;\lor\; x+y=1 .
+\]
+That is exactly $y=x$ or $y=x+1$ --- two solutions, which after rescaling by
+$a$ is the APN condition.
+
+\begin{lstlisting}
+  have h_sum_zero : (x + y) ^ 2 + (x + y) = 0 := by
+    have h2 : (x + y) ^ 2 = x ^ 2 + y ^ 2 := add_pow_char (R := F) (p := 2) x y
+    rw [h2]
+    have : x ^ 2 + y ^ 2 + (x + y) = (x ^ 2 + x) + (y ^ 2 + y) := by ring
+    rw [this, hu, CharTwo.add_self_eq_zero]
+  rw [sq_add_self_eq_zero_char2] at h_sum_zero
+\end{lstlisting}
+
+\note{Compare with the Frobenius pair. \texttt{frob\_bijective}+\texttt{frob\_add}
+open the door (transport APN through a twist); this lemma closes it (read off the
+two roots). Both are tiny; both are decisive.}
+
+\bigskip
+
+% =====================================================================
+\section*{One-screen summary}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{l l}
+\textbf{step} & \textbf{content} \\
+\hline
+factor & $u^2+u=u(u+1)$ \\
+domain & product $=0 \Rightarrow$ a factor $=0$ \\
+char $2$ & $u+1=0 \iff u=1$ \\
+land & $(x+y)^2+(x+y)=0 \Rightarrow y\in\{x,\,x+1\}$ \;(APN) \\
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent
+\colorbox{leanbg}{\parbox{\dimexpr\linewidth-2\fboxsep}{\centering
+$u(u+1)=0$ in a field of char $2$ $\;\Rightarrow\;$ Kasami collision has
+$\le 2$ solutions $\;\Rightarrow\;$ APN.}}
+
+\end{document}

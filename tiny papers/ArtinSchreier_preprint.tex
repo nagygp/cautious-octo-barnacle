@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\input{preprint_preamble}
+
+\title{\textbf{A telescope made of squares}\\[4pt]
+\large $L_k(x^2+x)=x^{2^k}+x$, read slowly}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+One short induction.\\[2pt]
+$\bullet$\quad \texttt{truncTrace\_artin\_schreier}:\;\;
+$L_k(x^2+x)=x^{2^k}+x$.\\[6pt]
+\noindent
+Here $L_k(u)=\sum_{i<k}u^{2^i}$ is the \emph{truncated trace}. The identity is the
+bridge that rewrites the Kasami differential as a truncated trace --- the entry
+point to the Dempwolff--M\"uller Theorem~3.2 engine.
+\end{abstract}
+
+\bigskip
+
+% =====================================================================
+\section*{Setting}
+
+\[
+\Gamma=\bigl(F:\mathrm{Type},\;[\mathrm{CommRing}\;F],\;[\mathrm{CharP}\;F\;2]\bigr)
+\]
+No finiteness needed --- only $1+1=0$. The truncated trace is
+\[
+L_k(u)\;=\;\sum_{i=0}^{k-1} u^{2^i}
+\;=\; u + u^2 + u^4 + \dots + u^{2^{k-1}} .
+\]
+
+\bigskip
+
+% =====================================================================
+\section{The lemma}
+
+\[
+\forall k:\mathbb{N},\;\forall x:F.\qquad
+L_k(x^2+x) \;=\; x^{2^k}+x
+\]
+
+\begin{lstlisting}
+lemma truncTrace_artin_schreier {F : Type*} [CommRing F] [CharP F 2]
+    (k : ℕ) (x : F) :
+    truncTrace k (x ^ 2 + x) = x ^ (2 ^ k) + x := by
+  induction' k with k ih generalizing x <;>
+    simp_all +decide [truncTrace, pow_succ, pow_mul]
+  · rw [← two_smul F x, CharTwo.two_eq_zero, zero_smul]
+  · rw [Finset.sum_range_succ, ih]
+    rw [add_pow_char_pow, mul_pow]; ring
+    simp +decide [show (2 : F) = 0 by exact CharP.cast_eq_zero F 2]
+\end{lstlisting}
+
+\bigskip
+\subsection*{Why it telescopes}
+
+\noindent
+Two facts in char $2$:
+\begin{itemize}\itemsep4pt
+  \item \textbf{Additivity} (Freshman's Dream): $L_k$ is additive, since each
+        $u\mapsto u^{2^i}$ is. So $L_k(x^2+x)=L_k(x^2)+L_k(x)$.
+  \item \textbf{Square commutes with $L_k$}: $L_k(x^2)=L_k(x)^2$, because
+        squaring is the Frobenius ring hom.
+\end{itemize}
+Write $T=L_k(x)$. Then
+\[
+L_k(x^2+x)=T^2+T .
+\]
+But $T^2+T$ is itself a telescoping sum:
+\[
+T^2 = \sum_{i=0}^{k-1} x^{2^{i+1}} = \sum_{i=1}^{k} x^{2^i},
+\qquad
+T = \sum_{i=0}^{k-1} x^{2^i},
+\]
+\[
+T^2+T = \Bigl(\sum_{i=1}^{k} x^{2^i}\Bigr)+\Bigl(\sum_{i=0}^{k-1} x^{2^i}\Bigr)
+= x^{2^k}+x,
+\]
+because every middle term $x^{2^i}$ ($1\le i\le k-1$) appears \emph{twice} and
+$u+u=0$. Only the endpoints $x^{2^k}$ and $x^{2^0}=x$ survive.
+
+\[
+\begin{tikzcd}[column sep=tiny, row sep=tiny]
+T^2: & & x^{2} & x^{4} & \cdots & x^{2^{k-1}} & x^{2^k} \\
+T:   & x & x^{2} & x^{4} & \cdots & x^{2^{k-1}} & \\
+\arrow[from=1-3, to=2-3, dash] \arrow[from=1-4, to=2-4, dash]
+\arrow[from=1-6, to=2-6, dash]
+\end{tikzcd}
+\]
+\begin{center}\small Matched pairs cancel (char $2$); only $x^{2^k}$ (top right)
+and $x$ (bottom left) remain.\end{center}
+
+\note{This is the additive shadow of a geometric series. Over $\mathbb{R}$,
+$\sum_{i<k}r^i=(r^k-1)/(r-1)$; here $r=$ ``square'', the denominator $r-1$ is
+``square plus identity'' $=u\mapsto u^2+u$, and the identity says
+$L_k\circ(u^2+u)$ recovers $u^{2^k}+u$, the numerator.}
+
+\bigskip
+
+% =====================================================================
+\section{Where it lands: the Kasami differential as a trace}
+
+\noindent
+The Kasami collision analysis needs to recognise $x^{2^k}+x$ as
+$L_k(\text{something})$. The lemma says that ``something'' is the
+Artin--Schreier input $x^2+x$:
+\[
+x^{2^k}+x \;=\; L_k(x^2+x).
+\]
+This is exactly the rewrite used (twice) to turn a difference of $d$-th powers
+into a truncated trace, feeding the Dempwolff--M\"uller decomposition
+$\Phi(u)=L_k(u)^{q+1}/u^{q}$.
+
+\begin{lstlisting}
+    rw [truncTrace_artin_schreier, truncTrace_artin_schreier]
+\end{lstlisting}
+
+\bigskip
+
+% =====================================================================
+\section*{One-screen summary}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{l l}
+\textbf{step} & \textbf{content} \\
+\hline
+additive & $L_k(x^2+x)=L_k(x^2)+L_k(x)$ \\
+Frobenius & $L_k(x^2)=L_k(x)^2$ \\
+telescope & $T^2+T = x^{2^k}+x$ \;(middle terms cancel, char $2$) \\
+land & rewrite Kasami difference $\to$ truncated trace \\
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent
+\colorbox{leanbg}{\parbox{\dimexpr\linewidth-2\fboxsep}{\centering
+$L_k(x^2+x)=x^{2^k}+x$ $\;\Rightarrow\;$ Kasami differential $=$ truncated trace
+$\;\Rightarrow\;$ Dempwolff--M\"uller engine.}}
+
+\end{document}
