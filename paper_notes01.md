@@ -67,3 +67,31 @@ not verified, non-machine checked, and maybe depends on basic axioms
 .  
 .  
 
+
+
+
+
+					In the PDF 
+						"Dobbertin — Kasami Power Functions...", 
+						
+		look at Section 3
+			 ("Inverse Kasami Permutation Polynomials and Applications"). 
+			 
+			 The 
+				 recursive gadget A_i, B_i 
+					 is defined just before Theorem 6, 
+						 and 
+							 R(z) = ∑{i=1}^{k'} A_i(z) + B{k'}(z)
+								 appears right there. 
+							
+				Theorem 6 states 
+					q⁻¹(1/y)=R(y); 
+					
+				Theorem 8 gives 
+					the trace description B={Tr R=0}.
+				
+.  
+.  
+.  
+.  
+.  
