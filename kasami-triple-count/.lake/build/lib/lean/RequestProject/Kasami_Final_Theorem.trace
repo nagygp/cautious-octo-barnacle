@@ -1,0 +1,31 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["b1ae7f21ae1023d4.olean"],
+  "i": "ba55920519c04777.ilean",
+  "c": "c4da4c94ce1fd5c0.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/RequestProject/Kasami_Final_Theorem.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/lib/lean/RequestProject/Kasami_Final_Theorem.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/lib/lean/RequestProject/Kasami_Final_Theorem.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/ir/RequestProject/Kasami_Final_Theorem.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/ir/RequestProject/Kasami_Final_Theorem.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["RequestProject.Kasami_Final_Theorem:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.KasamiSpectral transitive imports (legacy)",
+         "0c744de8ec105596"],
+        ["RequestProject.KasamiSpectral:importAllArts", "7bcc5da745046820"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/RequestProject/Kasami_Final_Theorem.lean",
+   "1de13a7fd47c5066"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "516433797f28f213"}

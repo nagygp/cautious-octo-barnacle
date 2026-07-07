@@ -1,0 +1,63 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["559db8cd336f2be5.olean"],
+  "i": "ce748a1e068522e4.ilean",
+  "c": "6edbcc93a7446958.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:38:137: This simp argument is unused:\n  Finset.subset_iff\n\nHint: Omit it from the simp argument list.\n  simp +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵b̵s̵e̵t̵_̵i̵f̵f̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:41:63: This simp argument is unused:\n  ha\n\nHint: Omit it from the simp argument list.\n  simp +decide ̵[̵ ̵h̵a̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:56:18: unused variable `hM`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:84:66: This simp argument is unused:\n  ← ZMod.intCast_eq_intCast_iff\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵←̵ ̵Z̵M̵o̵d̵.̵i̵n̵t̵C̵a̵s̵t̵_̵e̵q̵_̵i̵n̵t̵C̵a̵s̵t̵_̵i̵f̵f̵ ̵]̵\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:94:21: This simp argument is unused:\n  Finset.prod_pair\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵p̵r̵o̵d̵_̵p̵a̵i̵r̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:124:67: This simp argument is unused:\n  Nat.coprime_mul_iff_left\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵N̵a̵t̵.̵c̵o̵p̵r̵i̵m̵e̵_̵m̵u̵l̵_̵i̵f̵f̵_̵l̵e̵f̵t̵,̵ ̵N̵a̵t̵.̵c̵o̵p̵r̵i̵m̵e̵_̵m̵u̵l̵_̵i̵f̵f̵_̵r̵i̵g̵h̵t̵ ̵]̵[̲N̲a̲t̲.̲c̲o̲p̲r̲i̲m̲e̲_̲m̲u̲l̲_̲i̲f̲f̲_̲r̲i̲g̲h̲t̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:124:93: This simp argument is unused:\n  Nat.coprime_mul_iff_right\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵N̵a̵t̵.̵c̵o̵p̵r̵i̵m̵e̵_̵m̵u̵l̵_̵i̵f̵f̵_̵l̵e̵f̵t̵,̵ ̵N̵a̵t̵.̵c̵o̵p̵r̵i̵m̵e̵_̵m̵u̵l̵_̵i̵f̵f̵_̵r̵i̵g̵h̵t̵ ̵]̵[̲N̲a̲t̲.̲c̲o̲p̲r̲i̲m̲e̲_̲m̲u̲l̲_̲i̲f̲f̲_̲l̲e̲f̲t̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:184:126: This simp argument is unused:\n  mul_eq_one_iff_inv_eq\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵*̵,̵ ̵m̵u̵l̵_̵e̵q̵_̵o̵n̵e̵_̵i̵f̵f̵_̵i̵n̵v̵_̵e̵q̵ ̵]̵[̲*̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:190:80: This simp argument is unused:\n  Finset.prod_pair\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵p̵r̵o̵d̵_̵p̵a̵i̵r̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲m̲u̲l̲_̲a̲s̲s̲o̲c̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:190:98: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵F̵i̵n̵s̵e̵t̵.̵p̵r̵o̵d̵_̵p̵a̵i̵r̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲F̲i̲n̲s̲e̲t̲.̲p̲r̲o̲d̲_̲p̲a̲i̲r̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean:191:21: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵m̵u̵l̵_̵c̵o̵m̵m̵,̵[̲m̲u̲l̲_̲c̲o̲m̲m̲,̲ mul_left_comm, p̵o̵w̵_̵t̵w̵o̵ ̵]̵p̲o̲w̲_̲t̲w̲o̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Foundations.FirstPrinciples.Decomp.GaussWilson:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/GaussWilson.lean",
+   "6ce7070bc9b2b88e"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "2a99e37f4a2b016c"}

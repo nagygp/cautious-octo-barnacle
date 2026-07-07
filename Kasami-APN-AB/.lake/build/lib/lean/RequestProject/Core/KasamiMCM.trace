@@ -1,0 +1,100 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["9855ce422c2e4c2a.olean"],
+  "i": "0ef41f9b292b3934.ilean",
+  "c": "e3c4a24895bf2536.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/Core/KasamiMCM.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/Core/KasamiMCM.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/Core/KasamiMCM.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/Core/KasamiMCM.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/Core/KasamiMCM.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:21:0: automatically included section variable(s) unused in theorem `CollisionAnalysis.sq_add_eq_iff`:\n  [Fintype F]\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:29:87: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:25:0: automatically included section variable(s) unused in theorem `CollisionAnalysis.mcm_identity`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:36:58: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [add_eq_zero_iff_eq_neg, pow_succ, m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵div_mul_eq_mul_div]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:38:33: This simp argument is unused:\n  pow_right_comm\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [mul_pow,̵ ̵p̵o̵w̵_̵r̵i̵g̵h̵t̵_̵c̵o̵m̵m̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:41:53: This simp argument is unused:\n  pow_succ\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵mul_assoc]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:41:63: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [pow_succ,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:45:57: This simp argument is unused:\n  pow_succ\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵mul_div_cancel_left₀]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:45:67: This simp argument is unused:\n  mul_div_cancel_left₀\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [pow_succ,̵ ̵m̵u̵l̵_̵d̵i̵v̵_̵c̵a̵n̵c̵e̵l̵_̵l̵e̵f̵t̵₀̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:57:4: This simp argument is unused:\n  Nat.Coprime.gcd_mul_right_cancel\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [Nat.Coprime, Nat.Coprime.symm, Nat.Coprime.gcd_mul_left_cancel,̵\n  ̵ ̵ ̵ ̵ ̵N̵a̵t̵.̵C̵o̵p̵r̵i̵m̵e̵.̵g̵c̵d̵_̵m̵u̵l̵_̵r̵i̵g̵h̵t̵_̵c̵a̵n̵c̵e̵l̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:78:4: Try this:\n  [apply] exact Nat.one_le_two_pow",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:65:36: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:82:0: automatically included section variable(s) unused in theorem `CollisionAnalysis.sVal_periodic`:\n  [CharP F 2]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [CharP F 2] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:97:8: automatically included section variable(s) unused in theorem `_private.RequestProject.Core.KasamiMCM.0.CollisionAnalysis.u_eq_of_sVal_eq_apn`:\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:109:8: automatically included section variable(s) unused in theorem `_private.RequestProject.Core.KasamiMCM.0.CollisionAnalysis.u_eq_of_sVal_eq_k1`:\n  [Fintype F]\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:148:5: unused variable `hL1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:148:35: unused variable `hL2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:210:59: This simp argument is unused:\n  CharTwo.add_self_eq_zero\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵C̵h̵a̵r̵T̵w̵o̵.̵a̵d̵d̵_̵s̵e̵l̵f̵_̵e̵q̵_̵z̵e̵r̵o̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiMCM.lean:213:50: This simp argument is unused:\n  CharTwo.add_self_eq_zero\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵C̵h̵a̵r̵T̵w̵o̵.̵a̵d̵d̵_̵s̵e̵l̵f̵_̵e̵q̵_̵z̵e̵r̵o̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Core.KasamiMCM:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.APN.CharTwoBasics transitive imports (legacy)",
+         "976a2945682562d3"],
+        ["RequestProject.APN.CharTwoBasics:importAllArts", "c289e83326eb5e0f"],
+        ["RequestProject.Core.CrossFormAnalysis transitive imports (legacy)",
+         "24e1a0ba6c76e229"],
+        ["RequestProject.Core.CrossFormAnalysis:importAllArts",
+         "fc1bc26cfaee7dc5"],
+        ["RequestProject.Core.KasamiAPN transitive imports (legacy)",
+         "f68db935d7716a5f"],
+        ["RequestProject.Core.KasamiAPN:importAllArts", "a2c35025368ea858"],
+        ["RequestProject.Core.KasamiEvenK transitive imports (legacy)",
+         "de15e07066b03743"],
+        ["RequestProject.Core.KasamiEvenK:importAllArts", "a1e2d0c577c2972a"],
+        ["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/Core/KasamiMCM.lean",
+   "765560800f20bf27"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "9fc0e092ded5a60b"}

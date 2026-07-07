@@ -1,0 +1,53 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["19ae0f890a6dfc2c.olean"],
+  "i": "70684ae01f484df5.ilean",
+  "c": "62be22568c4c3a3d.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Core/CrossFormAnalysis.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Core/CrossFormAnalysis.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Core/CrossFormAnalysis.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Core/CrossFormAnalysis.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean:52:0: automatically included section variable(s) unused in theorem `CollisionAnalysis.d_coprime_card_sub_one`:\n  [Field F]\n  [DecidableEq F]\n  [CharP F 2]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Field F] [DecidableEq F] [CharP F 2] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean:53:13: unused variable `hk`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean:54:5: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean:72:39: This simp argument is unused:\n  Nat.dvd_prime\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵N̵a̵t̵.̵d̵v̵d̵_̵p̵r̵i̵m̵e̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean:74:96: This simp argument is unused:\n  Nat.dvd_prime\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵N̵a̵t̵.̵d̵v̵d̵_̵p̵r̵i̵m̵e̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean:78:54: This simp argument is unused:\n  Nat.dvd_prime\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵N̵a̵t̵.̵d̵v̵d̵_̵p̵r̵i̵m̵e̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean:122:42: This simp argument is unused:\n  add_pow_char_pow\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵a̵d̵d̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵'̵,̵ ̵a̵d̵d̵_̵p̵o̵w̵_̵c̵h̵a̵r̵_̵p̵o̵w̵ ̵]̵[̲p̲o̲w̲_̲a̲d̲d̲,̲ ̲p̲o̲w̲_̲m̲u̲l̲'̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Core.CrossFormAnalysis:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.APN.CharTwoBasics transitive imports (legacy)",
+         "eb983af41a3d3b4b"],
+        ["RequestProject.APN.CharTwoBasics:importAllArts",
+         "c289e83326eb5e0f"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Core/CrossFormAnalysis.lean",
+   "6e9521d77ebe24cc"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "697e67cad5ed90d6"}

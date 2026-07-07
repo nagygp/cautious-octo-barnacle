@@ -1,0 +1,61 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["596b469ea34368a6.olean"],
+  "i": "0ca3eacbe0336578.ilean",
+  "c": "1b4dabb5c87533ad.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/FiniteField/TraceNorm.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/FiniteField/TraceNorm.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/FiniteField/TraceNorm.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/FiniteField/TraceNorm.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:18:0: automatically included section variable(s) unused in theorem `DempwolffMueller.frobSum_add`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:23:0: automatically included section variable(s) unused in theorem `DempwolffMueller.frobSum_zero`:\n  [Fintype F]\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:24:25: unused variable `i`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:26:0: automatically included section variable(s) unused in theorem `DempwolffMueller.frobSum_neg`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:81:0: automatically included section variable(s) unused in theorem `DempwolffMueller.frobSum_ne_zero`:\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:88:53: This simp argument is unused:\n  Polynomial.degree_lt_iff_coeff_zero\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵d̵e̵g̵r̵e̵e̵_̵l̵t̵_̵i̵f̵f̵_̵c̵o̵e̵f̵f̵_̵z̵e̵r̵o̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:96:102: This simp argument is unused:\n  Polynomial.coeff_X_pow\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵X̵_̵p̵o̵w̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:97:53: This simp argument is unused:\n  Polynomial.coeff_sum\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵s̵u̵m̵,̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵X̵_̵p̵o̵w̵ ̵]̵[̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲c̲o̲e̲f̲f̲_̲X̲_̲p̲o̲w̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean:97:75: This simp argument is unused:\n  Polynomial.coeff_X_pow\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵s̵u̵m̵,̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵X̵_̵p̵o̵w̵ ̵]̵[̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲c̲o̲e̲f̲f̲_̲s̲u̲m̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.FiniteField.TraceNorm:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.FiniteField.FrobAlg transitive imports (legacy)",
+         "582ff114f3cc8f4f"],
+        ["RequestProject.FiniteField.FrobAlg:importAllArts",
+         "6e49d5f30af82092"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/FiniteField/TraceNorm.lean",
+   "53a6e0c1229d08ce"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "954f7d55b21226a6"}

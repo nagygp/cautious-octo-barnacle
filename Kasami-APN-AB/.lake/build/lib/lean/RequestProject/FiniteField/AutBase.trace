@@ -1,0 +1,81 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["85472cf6d2237df1.olean"],
+  "i": "6ee225c245def047.ilean",
+  "c": "33810c6c709680fe.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/FiniteField/AutBase.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/FiniteField/AutBase.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/FiniteField/AutBase.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/FiniteField/AutBase.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/FiniteField/AutBase.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:61:0: automatically included section variable(s) unused in theorem `DempwolffMueller.semilinearOp_zero`:\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:65:0: automatically included section variable(s) unused in theorem `DempwolffMueller.semilinearOp_zero_one`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:69:0: automatically included section variable(s) unused in theorem `DempwolffMueller.semilinearOp_zero_eq_mul`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:78:0: automatically included section variable(s) unused in theorem `DempwolffMueller.semilinearOp_mul_coeff`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:84:0: automatically included section variable(s) unused in theorem `DempwolffMueller.semilinearOp_comp`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:119:0: automatically included section variable(s) unused in theorem `DempwolffMueller.additivePolyEval_eq_sum_semilinearOp`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:131:0: automatically included section variable(s) unused in theorem `DempwolffMueller.additivePolyEval_zero`:\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:137:0: automatically included section variable(s) unused in theorem `DempwolffMueller.additivePolyEval_smul`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:162:0: automatically included section variable(s) unused in theorem `DempwolffMueller.additivePolyEval_eq_sum_support`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:186:43: This simp argument is unused:\n  mul_ne_zero_iff\n\nHint: Omit it from the simp argument list.\n  simp [support, Finset.mem_filter, m̵u̵l̵_̵n̵e̵_̵z̵e̵r̵o̵_̵i̵f̵f̵,̵ ̵ha]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:194:0: automatically included section variable(s) unused in theorem `DempwolffMueller.semilinearOp_pow_frobenius`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:201:0: automatically included section variable(s) unused in theorem `DempwolffMueller.semilinearOp_zero_additivePolyEval`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:212:0: automatically included section variable(s) unused in theorem `DempwolffMueller.singer_action_bijective`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:223:0: automatically included section variable(s) unused in theorem `DempwolffMueller.singer_transitive`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:228:0: automatically included section variable(s) unused in theorem `DempwolffMueller.semilinearOp_id_fun`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:239:0: automatically included section variable(s) unused in theorem `DempwolffMueller.conjugation_single_term`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/AutBase.lean:246:0: automatically included section variable(s) unused in theorem `DempwolffMueller.conjugation_coeff_ne_zero`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.FiniteField.AutBase:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/FiniteField/AutBase.lean",
+   "f8c347ffa5e272e5"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "c50902e8353ef0eb"}

@@ -1,0 +1,46 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["4ef31b92ef4ade2c.olean"],
+  "i": "aa8873086de209fd.ilean",
+  "c": "8a12a20ce4257bce.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiTeichmullerLift.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/KasamiTeichmullerLift.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/KasamiTeichmullerLift.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/KasamiTeichmullerLift.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/KasamiTeichmullerLift.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiTeichmullerLift.lean:85:0: automatically included section variable(s) unused in theorem `Vanish.Foundations.exists_teichmuller_lift`:\n  [IsDomain R]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [IsDomain R] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiTeichmullerLift.lean:100:231: This simp argument is unused:\n  zpow_mod_orderOf\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵[̲←̲\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲zpow_natCast,\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Int.toNat_of_nonneg\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲(̵ ̵I̵n̵t̵.̵e̵m̵o̵d̵_̵n̵o̵n̵n̵e̵g̵(̲I̲n̲t̲.̲e̲m̲o̲d̲_̲n̲o̲n̲n̲e̲g̲ _\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲(̵ ̵b̵y̵(̲b̲y̲ linarith [̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵c̵a̵r̵d̵_̵p̵o̵s̵_̵i̵f̵f̵.̵m̵p̵r̵ ̵⟨̵ ̵g̵ ̵⟩̵ ̵]̵[̲F̲i̲n̲t̲y̲p̲e̲.̲c̲a̲r̲d̲_̲p̲o̲s̲_̲i̲f̲f̲.̲m̲p̲r̲ ̲⟨̲g̲⟩̲]̲ : (̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵c̵a̵r̵d̵(̲F̲i̲n̲t̲y̲p̲e̲.̲c̲a̲r̲d̲ Fˣ : ℤ̵ ̵)̵ℤ̲)̲ ≠ 0̵ ̵)̵ ̵)̵,̵ ̵z̵p̵o̵w̵_̵m̵o̵d̵_̵o̵r̵d̵e̵r̵O̵f̵,̵ ̵h̵g̵ ̵]̵0̲)̲)̲,̲\n  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲h̲g̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiTeichmullerLift.lean:100:249: This simp argument is unused:\n  hg\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵[̲←̲\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲zpow_natCast,\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Int.toNat_of_nonneg\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲(̵ ̵I̵n̵t̵.̵e̵m̵o̵d̵_̵n̵o̵n̵n̵e̵g̵(̲I̲n̲t̲.̲e̲m̲o̲d̲_̲n̲o̲n̲n̲e̲g̲ _\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲(̵ ̵b̵y̵(̲b̲y̲ linarith [̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵c̵a̵r̵d̵_̵p̵o̵s̵_̵i̵f̵f̵.̵m̵p̵r̵ ̵⟨̵ ̵g̵ ̵⟩̵ ̵]̵[̲F̲i̲n̲t̲y̲p̲e̲.̲c̲a̲r̲d̲_̲p̲o̲s̲_̲i̲f̲f̲.̲m̲p̲r̲ ̲⟨̲g̲⟩̲]̲ : (̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵c̵a̵r̵d̵(̲F̲i̲n̲t̲y̲p̲e̲.̲c̲a̲r̲d̲ Fˣ : ℤ̵ ̵)̵ℤ̲)̲ ≠ 0̵ ̵)̵ ̵)̵,̵ ̵z̵p̵o̵w̵_̵m̵o̵d̵_̵o̵r̵d̵e̵r̵O̵f̵,̵ ̵h̵g̵ ̵]̵0̲)̲)̲,̲\n  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲z̲p̲o̲w̲_̲m̲o̲d̲_̲o̲r̲d̲e̲r̲O̲f̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiTeichmullerLift.lean:134:0: automatically included section variable(s) unused in theorem `Vanish.Foundations.teichmuller_lift_unique`:\n  [IsDomain R]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [IsDomain R] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Foundations.KasamiTeichmullerLift:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.Foundations.KasamiLegendreValuation transitive imports (legacy)",
+         "cb90a1bdd5287f6a"],
+        ["RequestProject.Foundations.KasamiLegendreValuation:importAllArts",
+         "f347bffaeadd8c81"],
+        ["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiTeichmullerLift.lean",
+   "d47d6be8e6eb4c40"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "4ca957a0b414000d"}

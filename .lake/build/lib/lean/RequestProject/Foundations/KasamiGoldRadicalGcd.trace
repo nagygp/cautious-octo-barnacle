@@ -1,0 +1,62 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["951273684900618e.olean"],
+  "i": "5f3c2d416e164fa9.ilean",
+  "c": "9a1cc28533ace99c.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/KasamiGoldRadicalGcd.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/KasamiGoldRadicalGcd.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/KasamiGoldRadicalGcd.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/KasamiGoldRadicalGcd.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean:107:49: This simp argument is unused:\n  ← zpow_ofNat\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵[̲←̲ zpow_natCast,\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲←̵ ̵z̵p̵o̵w̵_̵o̵f̵N̵a̵t̵,̵ ̵Int.toNat_of_nonneg\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲(̵ ̵I̵n̵t̵.̵e̵m̵o̵d̵_̵n̵o̵n̵n̵e̵g̵(̲I̲n̲t̲.̲e̲m̲o̲d̲_̲n̲o̲n̲n̲e̲g̲ _ (̵ ̵b̵y̵(̲b̲y̲ linarith [̵ ̵o̵r̵d̵e̵r̵O̵f̵_̵p̵o̵s̵ ̵g̵ ̵]̵[̲o̲r̲d̲e̲r̲O̲f̲_̲p̲o̲s̲ ̲g̲]̲ : (̵ ̵o̵r̵d̵e̵r̵O̵f̵(̲o̲r̲d̲e̲r̲O̲f̲ g : ℤ̵ ̵)̵ℤ̲)̲ ≠ 0̵ ̵)̵ ̵)̵,̵ ̵z̵p̵o̵w̵_̵m̵o̵d̵_̵o̵r̵d̵e̵r̵O̵f̵ ̵]̵0̲)̲)̲,̲\n  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲z̲p̲o̲w̲_̲m̲o̲d̲_̲o̲r̲d̲e̲r̲O̲f̲]̲\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean:111:33: This simp argument is unused:\n  pow_mul\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵ ̵h̵g̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵ ̵]̵[̲←̲ ̲h̲g̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean:112:122: This simp argument is unused:\n  pow_orderOf_eq_one\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵m̵u̵l̵,̵ ̵p̵o̵w̵_̵o̵r̵d̵e̵r̵O̵f̵_̵e̵q̵_̵o̵n̵e̵ ̵]̵[̲p̲o̲w̲_̲m̲u̲l̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean:141:58: This simp argument is unused:\n  pow_succ'\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵u̵,̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵'̵ ̵]̵[̲h̲u̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean:143:66: This simp argument is unused:\n  pow_succ'\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵'̵,̵ ̵U̵n̵i̵t̵s̵.̵e̵x̵t̵_̵i̵f̵f̵ ̵]̵[̲U̲n̲i̲t̲s̲.̲e̲x̲t̲_̲i̲f̲f̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean:145:81: This simp argument is unused:\n  hv\n\nHint: Omit it from the simp argument list.\n  simp +decide [ ̵← Units.val_pow_eq_pow_val,̵ ̵h̵v̵ ̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean:146:126: This simp argument is unused:\n  pow_mul\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵m̵u̵l̵,̵ ̵U̵n̵i̵t̵s̵.̵e̵x̵t̵_̵i̵f̵f̵ ̵]̵[̲U̲n̲i̲t̲s̲.̲e̲x̲t̲_̲i̲f̲f̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean:163:50: This simp argument is unused:\n  pow_succ\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Foundations.KasamiGoldRadicalGcd:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.Foundations.RankSpectrum transitive imports (legacy)",
+         "0edd845ae3a1110e"],
+        ["RequestProject.Foundations.RankSpectrum:importAllArts",
+         "3f876287bb4baea8"],
+        ["RequestProject.Foundations.GoldQuadratic transitive imports (legacy)",
+         "68e0779c4021c741"],
+        ["RequestProject.Foundations.GoldQuadratic:importAllArts",
+         "120326b7276511d7"],
+        ["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiGoldRadicalGcd.lean",
+   "a86904456d55475f"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "38ec2997eba6c115"}

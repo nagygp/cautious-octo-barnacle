@@ -1,0 +1,120 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["3bbf5b85ed51014a.olean"],
+  "i": "27dbab038af79788.ilean",
+  "c": "6532fd73d6a7d96a.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/Tests/Verification.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/Tests/Verification.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/Tests/Verification.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/Tests/Verification.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/Tests/Verification.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:53:0: 'MTupleCount.m_tuple_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:54:0: 'MTupleCount.m_tuple_count_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:55:0: 'MTupleCount.triple_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:58:0: 'MTupleCount.deriv_image_half' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:59:0: 'MTupleCount.card_times_two' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:60:0: 'MTupleCount.fiber_card_two' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:63:0: 'MTupleCount.orthogonality_collapse' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:64:0: 'MTupleCount.KR2' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:67:0: 'MTupleCount.vanish_of_flatSpectrum' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:70:0: 'KasamiAPN.kasami_is_apn' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:73:0: 'KasamiEvenK.kasami_is_apn_general' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:74:0: 'KasamiEvenK.gold_is_apn' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:75:0: 'KasamiEvenK.apn_frob_twist' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:76:0: 'KasamiEvenK.apn_comp_additive_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:77:0: 'KasamiEvenK.kasami_apn_of_complement' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:78:0: 'KasamiEvenK.kasami_exp_congr_mod' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:81:0: 'KasamiAB.kasami_is_ab' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:84:0: 'KasamiTripleCount.kasami_triple_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:87:0: 'MTupleCount.exp_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:88:0: 'MTupleCount.exp_identity' depends on axioms: [propext, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:330:0: @KasamiEvenK.apn_comp_additive_bijective : ∀ {F : Type u_1} [inst : Field F] [inst_1 : CharP F 2] {f : F → F},\n  KasamiAPN.IsAPN f →\n    ∀ {σ : F → F}, Function.Bijective σ → (∀ (x y : F), σ (x + y) = σ x + σ y) → KasamiAPN.IsAPN (σ ∘ f)",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:355:0: MTupleCount.exp_cancel : ∀ (n m κ₀ : ℕ), 3 ≤ n → 2 ≤ m → 2 ^ n * κ₀ = (2 ^ (n - 1)) ^ m → κ₀ = 2 ^ ((m - 1) * n - m)",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:360:0: @MTupleCount.KR2 : ∀ {𝔽 : Type u_1} [inst : Field 𝔽] [inst_1 : Fintype 𝔽] [inst_2 : DecidableEq 𝔽]\n  (χ : MTupleCount.Chi 𝔽) (m : ℕ) (T : Finset 𝔽) (c : Fin m → 𝔽),\n  MTupleCount.Vanish χ m T c → ↑(Fintype.card 𝔽) * ↑(MTupleCount.κ m T c) = ↑(#T) ^ m",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:364:0: @MTupleCount.deriv_image_half : ∀ {𝔽 : Type u_1} [inst : Field 𝔽] [inst_1 : Fintype 𝔽] [inst_2 : DecidableEq 𝔽]\n  [CharP 𝔽 2] (f : 𝔽 → 𝔽),\n  MTupleCount.APN f → ∀ (a : 𝔽), a ≠ 0 → ∀ (n : ℕ), Fintype.card 𝔽 = 2 ^ n → #(MTupleCount.Δ f a) = 2 ^ (n - 1)",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/Verification.lean:368:0: @MTupleCount.vanish_of_flatSpectrum : ∀ {𝔽 : Type u_1} [inst : Field 𝔽] [inst_1 : Fintype 𝔽] [inst_2 : DecidableEq 𝔽]\n  (χ : MTupleCount.Chi 𝔽) (m : ℕ) (T : Finset 𝔽) (c : Fin m → 𝔽),\n  MTupleCount.FlatSpectrum χ T → 0 < m → (∀ (i : Fin m), c i ≠ 0) → MTupleCount.Vanish χ m T c",
+   "level": "info"}],
+ "inputs":
+ [["RequestProject.Tests.Verification:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.MTupleCount transitive imports (legacy)",
+         "268d1a2d63e98e4f"],
+        ["RequestProject.MTupleCount:importAllArts", "21e2afeb0a847954"],
+        ["RequestProject.Kasami.TripleCount transitive imports (legacy)",
+         "192f7cf7758ff835"],
+        ["RequestProject.Kasami.TripleCount:importAllArts", "560e28ee3801bdf4"],
+        ["RequestProject.Kasami.APN transitive imports (legacy)",
+         "833600982d98e54c"],
+        ["RequestProject.Kasami.APN:importAllArts", "9fa59e0f6e9cbf7c"],
+        ["RequestProject.Kasami.EvenK transitive imports (legacy)",
+         "b9e9592710d3dbbd"],
+        ["RequestProject.Kasami.EvenK:importAllArts", "05c132295290058b"],
+        ["RequestProject.Kasami.AB transitive imports (legacy)",
+         "ad99337ea7928940"],
+        ["RequestProject.Kasami.AB:importAllArts", "8ae02244b643ad82"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/Tests/Verification.lean",
+   "8a7c259ce78f0b22"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "7a44eaf270962f4d"}
