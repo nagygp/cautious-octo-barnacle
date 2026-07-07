@@ -14,4 +14,4 @@ globs = ["CodeTheoryCryptoEquiv.+"]
 [[lean_lib]]
 name = "ConjecturesMTupleTripleCount"
 srcDir = "conjectures-mtuple-triple_count"
-globs = ["ConjecturesMTupleTripleCount.+"]
+globs = ["RequestProject.+"]

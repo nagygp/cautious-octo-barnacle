@@ -1,0 +1,374 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+
+\title{Human-Readable Proof Outline for the Kasami APN Theorem (Odd Dimension)}
+\author{RequestProject / Kasami APN}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{What is proved}
+The Lean theorem \texttt{kasami\_is\_apn} proves that the Kasami power map
+\[
+  f(x) = x^{d(k)}, \qquad d(k)=2^{2k}-2^k+1,
+\]
+is APN on a field $F$ of characteristic $2$ under the assumptions:
+\begin{itemize}
+  \item $|F|=2^n$,
+  \item $n$ odd,
+  \item $1<k<n$,
+  \item $k$ odd,
+  \item $\gcd(k,n)=1$.
+\end{itemize}
+
+Among these assumptions, the odd-dimension condition ($n$ odd) becomes essential at Layer 5,
+where it is used to obtain the coprimality input needed to construct the linking exponent $e'$. 
+
+Also, at Layer 6, the Gold-map bijectivity is used to cancel a $(2^k+1)$-power, which is only valid under the coprimality assumption $\gcd(2^k+1,2^n-1)=1$.
+
+\section{APN meaning and reduction strategy}
+For a function $f:F\to F$, APN means that for every nonzero $a$ and every collision
+\[
+  f(x+a)+f(x)=f(y+a)+f(y),
+\]
+the only possible outputs are $y=x$ or $y=x+a$.
+
+The proof does not attack this directly for all $a$. It first uses the normalization lemma
+\texttt{apn\_of\_normalized}: it is enough to prove the same uniqueness statement for the
+normalized equation with $a=1$:
+\[
+  (x+1)^d+x^d=(y+1)^d+y^d \implies y=x \text{ or } y=x+1.
+\]
+
+So the whole theorem is reduced to controlling collisions of the normalized differential.
+
+\section{Layered proof architecture}
+The Lean file is organized in layers. The theorem-level dependency chain is:
+\[
+\begin{array}{c}
+\texttt{kasami\_is\_apn} \\
+\uparrow \\
+\texttt{apn\_of\_normalized} \\
+\uparrow \\
+\texttt{kasami\_collision\_forces\_equal\_u} \\
+\uparrow \\
+\texttt{phi\_injective\_on\_units} \\
+\uparrow \\
+\texttt{exists\_linking\_exp}
+\end{array}
+\]
+
+Additional inputs are the Artin--Schreier identity, the key Kasami polynomial identity,
+Gold-map bijectivity, and a quadratic-kernel fact in characteristic $2$.
+
+\subsection*{Layer 1: Artin--Schreier trace identity}
+\texttt{truncTrace\_artin\_schreier} proves
+\[
+  L_k(x^2+x)=x^{2^k}+x.
+\]
+This is the basic conversion between truncated trace expressions and explicit powers.
+
+\subsection*{Layer 2: Key Kasami identity}
+\texttt{kasami\_key\_identity} proves
+\[
+\bigl((x+1)^d+x^d+1\bigr)(x^2+x)^{2^k}=(x^{2^k}+x)^{2^k+1}.
+\]
+This is the bridge from differential terms to a form suited for the $\Phi$-map analysis.
+
+\subsection*{Layer 3: Gold coprimality and bijectivity}
+\texttt{gold\_coprime} gives
+\[
+  \gcd(2^k+1,2^n-1)=1,
+\]
+and \texttt{gold\_pow\_bijective} deduces that
+\[
+  y\mapsto y^{2^k+1}
+\]
+is bijective on $F$.
+
+This bijectivity is later used to cancel an outer $(2^k+1)$-power.
+
+\subsection*{Layer 4: Arithmetic transfer identity}
+\texttt{kasami\_arith\_identity} is a modular arithmetic identity tailored to the exponent transfer step.
+It aligns the Kasami exponent arithmetic with the Dempwolff--Mueller bijection hypothesis.
+
+\subsection*{Layer 5: Existence of a linking exponent $e'$}
+\texttt{exists\_linking\_exp} constructs $e'$ with two modular constraints:
+\[
+e'(2^k+1)\equiv 2^n-1-2^k \pmod{2^n-1},
+\]
+\[
+(2^{n-1}-2^{k-1}-1)e'\equiv 2^{k-1} \pmod{2^n-1}.
+\]
+Interpretation: $e'$ is the arithmetic compatibility parameter that lets the map
+\[
+\Phi(u)=\frac{L_k(u)^{2^k+1}}{u^{2^k}}
+\]
+be rewritten as a composition of two bijective-style maps.
+
+This is the first point in the proof where the hypothesis ``$n$ odd'' is genuinely needed:
+it enters through the Gold coprimality step used in constructing $e'$.
+
+\subsection*{Layer 6: Injectivity of $\Phi$ on nonzero elements}
+\texttt{phi\_injective\_on\_units} proves that for $u,v\neq 0$, a collision in the $\Phi$-equation forces $u=v$.
+The proof combines:
+\begin{itemize}
+  \item the exponent link from Layer 5,
+  \item Gold-map bijectivity to cancel $(2^k+1)$ powers,
+  \item Dempwolff--Mueller theorem \texttt{LxXk'\_bijective} to conclude equality of inputs.
+\end{itemize}
+
+The Gold-map bijectivity is only valid under the coprimality assumption $\gcd(2^k+1,2^n-1)=1$.
+
+\subsection*{Layer 7: Differential collision implies equal Artin--Schreier values}
+\texttt{kasami\_collision\_forces\_equal\_u} proves:
+\[
+  (x+1)^d+x^d=(y+1)^d+y^d \implies x^2+x=y^2+y.
+\]
+It applies Layer 2 to rewrite the collision, then:
+\begin{itemize}
+  \item handles zero cases directly,
+  \item uses Layer 6 injectivity in the nonzero case,
+  \item uses Layer 1 for trace-power conversion.
+\end{itemize}
+
+This is the key bridge from normalized differential collisions to a quadratic relation in $x+y$.
+
+\subsection*{Layer 8: Characteristic-2 kernel and normalization lemma}
+There are two lemmas used in the final step:
+\begin{itemize}
+  \item \texttt{sq\_add\_self\_eq\_zero\_char2}:
+  \[
+    u^2+u=0 \iff u\in\{0,1\}.
+  \]
+  \item \texttt{apn\_of\_normalized}: proving the normalized differential uniqueness
+  implies full APN.
+\end{itemize}
+
+\subsection*{Layer 9: Final theorem}
+In \texttt{kasami\_is\_apn}, the final argument is short:
+\begin{enumerate}
+  \item Apply \texttt{apn\_of\_normalized}; reduce to the $a=1$ collision equation.
+  \item Use Layer 7 to get $x^2+x=y^2+y$.
+  \item Rearrange to
+  \[
+    (x+y)^2+(x+y)=0.
+  \]
+  \item Use Layer 8 kernel lemma to conclude $x+y=0$ or $x+y=1$.
+  \item Therefore $y=x$ or $y=x+1$, exactly the APN condition.
+\end{enumerate}
+
+\section{One-paragraph summary}
+The proof is modular. It first reduces APN to a normalized differential equation, then converts that equation into a trace/exponent form via the Kasami identity, proves injectivity of the associated $\Phi$-map on nonzero elements using a specially constructed linking exponent and known bijectivity theorems, and finally translates the resulting equality into the two-point alternative $y\in\{x,x+1\}$ through a characteristic-2 kernel identity. This closes the APN theorem for Kasami exponents in odd dimension under the standard coprimality assumptions.
+
+\section{Literature review}
+
+\subsection{Origin of the Kasami exponent}
+The exponent $d(k)=2^{2k}-2^k+1$ first appeared in the coding-theoretic work of
+Kasami~\cite{Kasami1971}, who studied weight enumerators of subcodes of the second-order
+binary Reed--Muller codes. Kasami introduced the associated cyclic codes (now called Kasami
+codes) as a family of two-error-correcting codes meeting the Hamming bound for certain
+parameters. At that point the function was studied entirely for its coding properties; the
+connection to nonlinearity and cryptography came later.
+
+\subsection{APN functions: definition and cryptographic motivation}
+The concept of APN (Almost Perfect Nonlinear) function was introduced by
+Nyberg~\cite{Nyberg1994} to characterize S-box components of block ciphers that offer
+optimal resistance to the differential cryptanalysis attack of Biham and
+Shamir~\cite{BihamShamir1991}. A function $f:\mathbb{F}_{2^n}\to\mathbb{F}_{2^n}$ is APN
+if for every nonzero $a$ the equation $f(x+a)+f(x)=b$ has at most 2 solutions in $x$ for
+every $b$. Power maps $x\mapsto x^d$ are the natural first family to study because their
+differential uniformity depends only on the exponent $d$ modulo $2^n-1$.
+
+\subsection{Gold functions: the first infinite APN family}
+The Gold exponent $2^k+1$ had already appeared in Gold~\cite{Gold1968} in the context of
+maximal-length sequences and three-valued cross-correlation. Nyberg~\cite{Nyberg1994}
+reinterpreted this as the statement that $x\mapsto x^{2^k+1}$ is APN on $\mathbb{F}_{2^n}$
+for every $n$ satisfying $\gcd(k,n)=1$. Gold functions are the simplest known APN power
+maps and their bijectivity ($y\mapsto y^{2^k+1}$ is a permutation under $\gcd(k,n)=1$) is a
+key ingredient reused in the Kasami APN proof, where it cancels an outer $(2^k+1)$-power in
+the injectivity argument for $\Phi$.
+
+\subsection{Known infinite families of APN power maps}
+A systematic search for APN power functions produced several infinite families. The currently
+known ones over $\mathbb{F}_{2^n}$ are:
+
+\begin{enumerate}
+  \item \textbf{Gold}~\cite{Gold1968,Nyberg1994}: $d=2^k+1$, $\gcd(k,n)=1$. APN for all $n$.
+  \item \textbf{Kasami}~\cite{Kasami1971,JanwaWilson1993}: $d=2^{2k}-2^k+1$, $\gcd(k,n)=1$.
+        APN for $n$ odd (and more generally when $\gcd(3k,n)\in\{1,3\}$ with appropriate parity conditions).
+  \item \textbf{Welch}: $d=2^t+3$, $n=2t+1$. Conjectured by Welch, proved APN by
+        Dobbertin~\cite{Dobbertin1999a}.
+  \item \textbf{Niho}: $d=2^t+2^{t/2}-1$ (even $t$) or $d=2^t+2^{(3t+1)/2}-1$ (odd $t$),
+        $n=2t+1$. Proved APN by Dobbertin, Helleseth, Kumar, and Martinsen~\cite{DobbertinNiho2001}.
+  \item \textbf{Inverse}~\cite{Nyberg1994}: $d=2^n-2$. APN only for $n$ odd.
+  \item \textbf{Dobbertin}~\cite{Dobbertin1999b}: $d=2^{4t}+2^{3t}+2^{2t}+2^t-1$, $n=5t$.
+\end{enumerate}
+
+No other infinite family of APN power maps is currently known. It is widely believed that
+this list is complete, but the conjecture remains open for $n>26$.
+
+\subsection{Proof of the APN property for the Kasami exponent}
+The APN property of $x^{2^{2k}-2^k+1}$ was first established, implicitly, by Janwa and
+Wilson~\cite{JanwaWilson1993} using a Weil-bound argument on Fermat-variety intersections
+over $\mathbb{F}_2$. Their method counts rational points on certain algebraic curves to
+show that the number of solutions of the differential equation is at most $2$.
+
+An algebraic-combinatorial characterization was given by Carlet, Charpin, and
+Zinoviev~\cite{CarletCharpinZinoviev1998}, who expressed APN in terms of the associated
+cyclic code having minimum distance at least $5$, and verified this for the Kasami exponent
+using cyclotomic coset arguments.
+
+A self-contained elementary proof was given by Carlet, Kim, and
+Mesnager~\cite{CarletKimMesnager}, whose paper \textit{A direct proof of APN-ness
+of the Kasami functions} provides a direct algebraic argument without appeal to the
+algebraic-variety or coding-theory frameworks. This proof works for all $\gcd(k,n)=1$
+and in particular does not require $n$ to be odd.
+
+A third approach, closest to the one formalized in this project, proceeds through linearized
+polynomials and the decomposition of the differential map via the truncated trace $L_k$.
+This is the approach of Dempwolff and M\"{u}ller~\cite{DempwolffMueller2021}, whose
+Theorem~3.2 provides the bijectivity of $x\mapsto L_k(x)\cdot x^{e'}$ that serves as the
+engine of the formal proof (Layer 6).
+
+\subsection{Role of the odd-dimension assumption}
+The APN property of the Kasami monomial $x^{2^{2k}-2^k+1}$ holds for \emph{all}
+$\mathbb{F}_{2^n}$ satisfying $\gcd(k,n)=1$, regardless of the parity of~$n$. This is
+established, for instance, by the algebraic-variety argument of Janwa and
+Wilson~\cite{JanwaWilson1993} and by the cyclic-code criterion of Carlet, Charpin, and
+Zinoviev~\cite{CarletCharpinZinoviev1998}, neither of which requires $n$ to be odd.
+
+The odd-dimension assumption in the present formalization is therefore not an intrinsic
+property of the Kasami APN theorem, but rather a limitation of the particular proof
+method employed here. The Dempwolff--M\"{u}ller approach~\cite{DempwolffMueller2021}
+proceeds by constructing a linking exponent~$e'$ via the Gold coprimality identity
+$\gcd(2^k+1,2^n-1)=1$. That identity holds precisely when $n$ is odd and $\gcd(k,n)=1$;
+for even~$n$ the gcd can equal~$2$ or more, and the modular inverse of~$2^k+1$ modulo
+$2^n-1$ does not exist, making the construction of~$e'$ unavailable. Lifting the
+odd-dimension restriction would therefore require either a different proof strategy or
+an extension of the Dempwolff--M\"{u}ller theorem to the even-dimensional case.
+
+The condition $k$ odd is an additional requirement of the Dempwolff--M\"{u}ller
+bijectivity criterion for the linearized-polynomial component, and likewise does not
+reflect a necessary condition for the APN property itself.
+
+\subsection{Connection to Almost Bent functions}
+Over $\mathbb{F}_{2^n}$ with $n$ odd, there is a strict hierarchy of nonlinearity properties.
+Chabaud and Vaudenay~\cite{ChabaudVaudenay1994} and Carlet, Charpin, and
+Zinoviev~\cite{CarletCharpinZinoviev1998} established that every AB (Almost Bent) function
+is APN, but not conversely. The Kasami monomial is both APN and AB under the standard
+hypotheses. The AB property is characterized spectrally: all Walsh coefficients squared are
+in $\{0,2^{n+1}\}$. The proof that Kasami is AB uses the APN result as an ingredient (via
+the fourth-moment identity) and then applies a general divisibility argument for character sums.
+
+\subsection{Walsh transform and moment identities}
+The Walsh-spectrum approach to APN and AB was systematized by Carlet, Charpin, and
+Zinoviev~\cite{CarletCharpinZinoviev1998}. A function is APN iff its fourth Walsh moment
+\[
+  \sum_{b\in F} W_f(a,b)^4 = 2|F|^3
+\]
+holds for every nonzero $a$. This identity is a consequence of the differential-uniformity
+condition and gives a powerful spectral criterion. The moment approach allows APN and AB to
+be deduced from Parseval, fourth-moment, and divisibility conditions without requiring
+explicit knowledge of individual Walsh coefficients.
+
+\subsection{Computer search and classification results}
+Exhaustive computer searches have verified that no new APN power maps exist for small $n$.
+Berger et al.~\cite{Berger2006} confirmed that the six families in Section~6.3 account for
+all APN exponents up to $n=26$. For general (non-power) APN functions, new sporadic
+examples over $\mathbb{F}_{2^6}$ were found~\cite{Edel2006}, but for power maps the
+classification problem remains open.
+
+\subsection{Formal verification}
+The formalization in this project is, to the best of the authors' knowledge, the first
+complete machine-checked proof of the Kasami APN theorem in a proof assistant. The formal
+proof is structured around the Dempwolff--M\"{u}ller linearized-polynomial
+approach~\cite{DempwolffMueller2021} and makes the role of each hypothesis ($n$ odd,
+$k$ odd, $\gcd(k,n)=1$) visible at the granularity of individual Lean lemmas.
+
+\begin{thebibliography}{99}
+
+\bibitem{Kasami1971}
+T.~Kasami,
+\textit{Weight enumerators for several classes of subcodes of the second order binary Reed--Muller codes},
+Information and Control \textbf{18} (1971), 369--394.
+
+\bibitem{Nyberg1994}
+K.~Nyberg,
+\textit{Differentially uniform mappings for cryptography},
+Advances in Cryptology -- EUROCRYPT '93,
+Lecture Notes in Computer Science \textbf{765}, Springer, 1994, pp.~55--64.
+
+\bibitem{BihamShamir1991}
+E.~Biham and A.~Shamir,
+\textit{Differential cryptanalysis of DES-like cryptosystems},
+Journal of Cryptology \textbf{4} (1991), 3--72.
+
+\bibitem{Gold1968}
+R.~Gold,
+\textit{Maximal recursive sequences with 3-valued recursive cross-correlation functions},
+IEEE Transactions on Information Theory \textbf{14} (1968), 154--156.
+
+\bibitem{JanwaWilson1993}
+H.~Janwa and R.\,M.~Wilson,
+\textit{Hyperplane sections of Fermat varieties in $P^3$ in characteristic~$2$ and some applications to cyclic codes},
+Proceedings of AAECC-10,
+Lecture Notes in Computer Science \textbf{673}, Springer, 1993, pp.~180--194.
+
+\bibitem{CarletCharpinZinoviev1998}
+C.~Carlet, P.~Charpin, and V.~Zinoviev,
+\textit{Codes, bent functions and permutations suitable for DES-like cryptosystems},
+Designs, Codes and Cryptography \textbf{15} (1998), 125--156.
+
+\bibitem{CarletKimMesnager}
+C.~Carlet, S.~Kim, and S.~Mesnager,
+\textit{A direct proof of APN-ness of the Kasami functions},
+preprint / to appear.
+
+\bibitem{ChabaudVaudenay1994}
+F.~Chabaud and S.~Vaudenay,
+\textit{Links between differential and linear cryptanalysis},
+Advances in Cryptology -- EUROCRYPT '94,
+Lecture Notes in Computer Science \textbf{950}, Springer, 1995, pp.~356--365.
+
+\bibitem{Dobbertin1999a}
+H.~Dobbertin,
+\textit{Almost perfect nonlinear power functions on $\mathrm{GF}(2^n)$: the Welch case},
+IEEE Transactions on Information Theory \textbf{45} (1999), 1271--1275.
+
+\bibitem{DobbertinNiho2001}
+H.~Dobbertin, T.~Helleseth, P.\,V.~Kumar, and H.~Martinsen,
+\textit{Niho power functions and their related bent functions and differential uniformity},
+Finite Fields and Applications (Augsburg 1999),
+Lecture Notes in Computer Science \textbf{2948}, Springer, 2004, pp.~130--152.
+
+\bibitem{Dobbertin1999b}
+H.~Dobbertin,
+\textit{Almost perfect nonlinear power functions on $\mathrm{GF}(2^n)$: a new case for $n$ divisible by 5},
+Finite Fields and Applications (Oaxaca 1997),
+Springer, 2001, pp.~113--121.
+
+\bibitem{Berger2006}
+T.\,P.~Berger, A.~Canteaut, P.~Charpin, and Y.~Laigle-Chapuy,
+\textit{On almost perfect nonlinear functions over $\mathbb{F}_2^n$},
+IEEE Transactions on Information Theory \textbf{52} (2006), 4160--4170.
+
+\bibitem{Edel2006}
+Y.~Edel, G.~Kyureghyan, and A.~Pott,
+\textit{A new APN function which is not equivalent to a power mapping},
+Finite Fields and Their Applications \textbf{12} (2006), 30--36.
+
+\bibitem{DempwolffMueller2021}
+U.~Dempwolff and P.~M\"{u}ller,
+\textit{Permutation polynomials and translation planes of even order},
+Advances in Geometry \textbf{21} (2021), 531--546.
+
+\end{thebibliography}
+
+\end{document}

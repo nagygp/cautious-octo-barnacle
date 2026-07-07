@@ -27,6 +27,9 @@ variable {F : Type*} [Field F] [Fintype F] [DecidableEq F] [CharP F 2]
 /-- The Kasami exponent: `d(k) = 2^{2k} − 2^k + 1`. -/
 def d (k : ℕ) : ℕ := 2 ^ (2 * k) - 2 ^ k + 1
 
+/-- Alias for the Kasami exponent. -/
+def kasamiExp (k : ℕ) : ℕ := d k
+
 /-- The linearized polynomial `L(x) = x^{2^k} + x`. -/
 def L (k : ℕ) (x : F) : F := x ^ (2 ^ k) + x
 
