@@ -29,3 +29,41 @@ not verified, non-machine checked, and maybe depends on basic axioms
 						q^(ε) acting on L = F₂ⁿ,
 						
 							 an extension of F = F₂.
+
+
+
+
+
+.  
+.  
+.  
+.  
+.  
+
+
+
+				"gadget" is an informal term for a small, 
+				self-contained construction
+					 (often a reusable auxiliary object,
+					  structure, 
+					  or encoding) 
+				  
+				  built to bridge a gap 
+				  or make a proof/reduction work. 
+				  
+				  In combinatorics and complexity 
+				  it's a local widget wired into a bigger argument;
+				  
+				   in Lean formalization it loosely means 
+				   
+					   a helper definition or lemma packaged 
+					   to plug into a larger proof.
+
+
+
+.  
+.  
+.  
+.  
+.  
+
