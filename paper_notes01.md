@@ -1,3 +1,10 @@
+◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻
+*reference: copy pasted from collaboration with computer agents 
+not verified, non-machine checked, and maybe depends on basic axioms
+◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻◇◻
+>
+
+
 			In Dobbertin's paper, 
 			
 				"L" is fixed once at the start of §3:
