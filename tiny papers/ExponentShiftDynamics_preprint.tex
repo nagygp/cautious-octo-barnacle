@@ -1,0 +1,435 @@
+\documentclass[11pt]{article}
+
+\input{preprint_preamble.tex}
+
+\title{\textbf{The Doubling Shift:\\[2pt]
+Cyclotomic Cosets as Orbits of a Finite-Order Multiplier Map}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent
+Doubling an exponent is a dynamical system.\\
+Its orbits are the cyclotomic cosets.\\
+Its clock is the order of $2$ modulo $2^{\,n}-1$.
+
+\medskip
+\noindent
+We strip the system down to its reusable core ---\\
+multiplication by one finite-order element ---\\
+and read APN-ness off as one of its invariants.
+
+\medskip
+\noindent
+Everything is checked in Lean~4 / Mathlib.
+\end{abstract}
+
+\vfill
+
+\noindent\textit{Conference paper call --- short, slow-read submission.}
+
+\newpage
+
+
+\section{The picture}
+
+\bigskip
+
+Fix $n$. Work modulo $m = 2^{\,n}-1$.
+
+\bigskip
+
+Pick one exponent $e$.
+
+\bigskip
+
+Double it, again and again:
+\[
+  e,\quad 2e,\quad 4e,\quad \dots,\quad 2^{\,n-1}e
+  \pmod{2^{\,n}-1}.
+\]
+
+\bigskip
+
+That is a sequence in $\mathbb{Z}/(2^{\,n}-1)$.
+
+\bigskip
+
+It comes back to $e$.
+
+\bigskip
+
+\note{One exponent. One periodic orbit.}
+
+\newpage
+
+
+\section{The shift}
+
+\bigskip
+
+Doubling once moves the whole orbit one step:
+\[
+  (e,\; 2e,\; 4e,\; \dots)
+  \;\xmapsto{\ e\,\mapsto\, 2e\ }\;
+  (2e,\; 4e,\; 8e,\; \dots).
+\]
+
+\bigskip
+
+That is the \emph{doubling shift} $\sigma$.
+
+\bigskip
+
+Its $k$-th iterate is multiplication by $2^{\,k}$:
+\[
+  \sigma^{k}(e) = 2^{\,k}\, e .
+\]
+
+\bigskip
+
+It is the exponent shadow of Frobenius $x \mapsto x^{2}$:
+\[
+  (x^{e})^{2} = x^{2e}.
+\]
+
+\bigskip
+
+\note{Algebra of exponents on one side. A shift on the other.}
+
+\newpage
+
+
+\section{The encoding, in Lean}
+
+\bigskip
+
+The shift itself:
+
+\begin{lstlisting}
+def shift (m : ℕ) : ZMod m → ZMod m := fun e => 2 * e
+\end{lstlisting}
+
+\bigskip
+
+Its $k$-th iterate is multiply-by-$2^{k}$:
+
+\begin{lstlisting}
+theorem shift_iterate (m : ℕ) (e : ZMod m) (k : ℕ) :
+    (shift m)^[k] e = (2 : ZMod m) ^ k * e
+\end{lstlisting}
+
+\bigskip
+
+\note{The iterate rule \emph{is} the doubling rule.}
+
+\newpage
+
+
+\section{Periodicity}
+
+\bigskip
+
+The whole engine is one identity:
+\[
+  2^{\,n} \equiv 1 \pmod{2^{\,n}-1}.
+\]
+
+\bigskip
+
+So $\sigma^{\,n} = \mathrm{id}$.
+
+\bigskip
+
+Every exponent is periodic, and every orbit length divides $n$.
+
+\begin{lstlisting}
+theorem two_pow_eq_one (n : ℕ) :
+    (2 : ZMod (2 ^ n - 1)) ^ n = 1
+
+theorem shift_periodic (n : ℕ) (e : ZMod (2 ^ n - 1)) :
+    (shift (2 ^ n - 1))^[n] e = e
+
+theorem minimalPeriod_dvd (n : ℕ) (e : ZMod (2 ^ n - 1)) :
+    Function.minimalPeriod (shift (2 ^ n - 1)) e ∣ n
+\end{lstlisting}
+
+\bigskip
+
+\note{Orbits are the $2$-cyclotomic cosets mod $2^{\,n}-1$.}
+
+\newpage
+
+
+\section{The number-theory pearl}
+
+\bigskip
+
+How fast does the clock tick?
+
+\bigskip
+
+The order of $2$ modulo $2^{\,n}-1$ is \textbf{exactly} $n$.
+
+\bigskip
+
+And the same is true for \emph{any} base $b \ge 2$:
+\[
+  \mathrm{ord}_{\,b^{\,n}-1}(b) \;=\; n .
+\]
+
+\bigskip
+
+The reason is one line:
+\[
+  b^{\,k}-1 \;<\; b^{\,n}-1
+  \qquad\text{for } 0 < k < n,
+\]
+so $b^{\,k}\not\equiv 1$ before step $n$.
+
+\begin{lstlisting}
+theorem orderOf_base (b n : ℕ) (hb : 2 ≤ b) (hn : 1 ≤ n) :
+    orderOf (b : ZMod (b ^ n - 1)) = n
+
+theorem orderOf_two (n : ℕ) (hn : 1 ≤ n) :
+    orderOf (2 : ZMod (2 ^ n - 1)) = n
+\end{lstlisting}
+
+\bigskip
+
+\note{A crisp repunit fact: $\mathrm{ord}_{b^{n}-1}(b)=n$, base $b$ general.}
+
+\newpage
+
+
+\section{The principal orbit}
+
+\bigskip
+
+Start at the generator $e = 1$.
+
+\bigskip
+
+Its orbit is
+\[
+  \{\,1,\; 2,\; 4,\; \dots,\; 2^{\,n-1}\,\}.
+\]
+
+\bigskip
+
+The clock pearl says: this orbit has \textbf{full} length $n$.
+
+\begin{lstlisting}
+theorem shift_minimalPeriod_one (n : ℕ) (hn : 1 ≤ n) :
+    Function.minimalPeriod (shift (2 ^ n - 1)) 1 = n
+\end{lstlisting}
+
+\bigskip
+
+It is the principal $2$-cyclotomic coset.
+
+\bigskip
+
+\note{The longest possible orbit, pinned exactly to $n$.}
+
+\newpage
+
+
+\section{The shift is invertible}
+
+\bigskip
+
+Since $\sigma^{\,n} = \mathrm{id}$, the inverse of $\sigma$ is just $\sigma^{\,n-1}$.
+
+\bigskip
+
+So $\sigma$ is a permutation of phase space:
+an automorphism of $\mathbb{Z}/(2^{\,n}-1)$.
+
+\begin{lstlisting}
+theorem shift_bijective (n : ℕ) (hn : 1 ≤ n) :
+    Function.Bijective (shift (2 ^ n - 1))
+\end{lstlisting}
+
+\bigskip
+
+\note{Finite order $\Rightarrow$ invertible. An automorphism of the phase space.}
+
+\newpage
+
+
+\section{Orbits \emph{are} cyclotomic cosets}
+
+\bigskip
+
+Say $e$ and $d$ are on the same orbit if one reaches the other:
+\[
+  \mathrm{SameOrbit}\;:\quad \exists\,k,\ \sigma^{k}(d) = e .
+\]
+
+\bigskip
+
+This is an equivalence relation (reflexive, symmetric via periodicity,
+transitive).
+
+\bigskip
+
+Spelled out on the integers, it is the cyclotomic congruence:
+\[
+  e \equiv d\cdot 2^{\,j} \pmod{2^{\,n}-1}.
+\]
+
+\begin{lstlisting}
+theorem sameOrbit_iff_modEq (n d e : ℕ) :
+    SameOrbit (2 ^ n - 1) (d : ZMod (2 ^ n - 1))
+                          (e : ZMod (2 ^ n - 1)) ↔
+      ∃ j : ℕ, e ≡ d * 2 ^ j [MOD 2 ^ n - 1]
+\end{lstlisting}
+
+\bigskip
+
+\note{Orbits partition exponent space. They are exactly the cosets.}
+
+\newpage
+
+
+\section{The reusable core}
+
+\bigskip
+
+None of this is really about $2$, or about fields.
+
+\bigskip
+
+Take any monoid and any element $c$.
+Let $\sigma_c(x) = c\cdot x$.
+
+\bigskip
+
+Then:
+\begin{itemize}
+  \item $\sigma_c^{\,k}(x) = c^{\,k}\,x$;
+  \item if $c^{\,d}=1$, then $\sigma_c$ is periodic of period $d$
+        and a bijection with inverse $\sigma_c^{\,d-1}$;
+  \item the orbit relation is an equivalence relation.
+\end{itemize}
+
+\begin{lstlisting}
+theorem mulShift_iterate {M} [Monoid M] (c : M) (e : M) (k : ℕ) :
+    (mulShift c)^[k] e = c ^ k * e
+
+theorem mulShift_bijective {M} [Monoid M] {c : M} {d : ℕ}
+    (hd : 1 ≤ d) (hc : c ^ d = 1) :
+    Function.Bijective (mulShift c)
+\end{lstlisting}
+
+\bigskip
+
+\note{Multiplication by a finite-order element is a finite-order permutation.
+The doubling shift is just the case $c = 2$.}
+
+\newpage
+
+
+\section{The Frobenius conjugacy}
+
+\bigskip
+
+Why $2$? Because of Frobenius.
+
+\bigskip
+
+In any commutative monoid:
+\[
+  (x^{e})^{2} = x^{2e}.
+\]
+
+\bigskip
+
+Doubling the exponent is post-composing with $x \mapsto x^{2}$.
+
+\bigskip
+
+So the power map commutes with Frobenius:
+\[
+  (x^{e})^{2} = (x^{2})^{e}.
+\]
+
+\begin{lstlisting}
+theorem frobenius_conjugates_pow {M} [CommMonoid M]
+    (e : ℕ) (x : M) : (x ^ e) ^ 2 = x ^ (2 * e)
+
+theorem pow_comm_frobenius {M} [CommMonoid M] (e : ℕ) :
+    (fun x : M => (x ^ e) ^ 2) = (fun x : M => (x ^ 2) ^ e)
+\end{lstlisting}
+
+\bigskip
+
+\note{The doubling shift is the exponent-space shadow of Frobenius.}
+
+\newpage
+
+
+\section{APN, as a conjugacy invariant}
+
+\bigskip
+
+Here is the payoff slogan.
+
+\bigskip
+
+Any predicate on exponents that is \emph{constant on $\langle 2\rangle$-orbits}
+descends to a predicate on the orbit space.
+
+\bigskip
+
+APN-ness of the power map $x \mapsto x^{d}$ on $\mathbb{F}_{2^{\,n}}$ is such a
+predicate:
+\[
+  d \;\sim\; e
+  \quad(\text{same orbit})
+  \;\Longrightarrow\;
+  \bigl(\, x^{d}\ \text{APN} \iff x^{e}\ \text{APN} \,\bigr).
+\]
+
+\bigskip
+
+So APN-ness is a \textbf{conjugacy invariant of the doubling dynamics}:
+one orbit, one verdict.
+
+\bigskip
+
+\note{``Same orbit, same verdict.'' The dynamical reading of cyclotomic
+invariance. The field-level proof of this step lives in the project's APN
+layer; here we isolate the dynamics it rests on.}
+
+\newpage
+
+
+\section{What we claim}
+
+\bigskip
+
+\begin{itemize}
+  \item One exponent $\;\mapsto\;$ one periodic orbit under $e \mapsto 2e$.\\[6pt]
+  \item $\sigma^{k} = {}$ multiply-by-$2^{k}$; \ $\sigma^{\,n}=\mathrm{id}$.\\[6pt]
+  \item Orbit lengths divide $n$; orbits are the cyclotomic cosets.\\[6pt]
+  \item $\mathrm{ord}_{\,b^{n}-1}(b)=n$ for every base $b\ge 2$.\\[6pt]
+  \item The generator $1$ has full minimal period $n$.\\[6pt]
+  \item $\sigma$ is a bijection (inverse $\sigma^{\,n-1}$).\\[6pt]
+  \item The core is general: $x \mapsto c\,x$ for a finite-order $c$.\\[6pt]
+  \item APN-ness is a conjugacy invariant: same orbit, same verdict.\\[6pt]
+  \item All boxed statements are machine-checked, sorry-free.
+\end{itemize}
+
+\vfill
+
+\noindent\textit{Read slowly. Doubling was a dynamical system all along.}
+
+\end{document}

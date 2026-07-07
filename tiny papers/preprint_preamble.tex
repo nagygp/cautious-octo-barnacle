@@ -1,0 +1,113 @@
+% ===================================================================
+% Shared preamble for the "tiny lemma, read slowly" preprint series.
+% Mirrors the style of FrobeniusLemmas_preprint.tex.
+% ===================================================================
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{mathpartir}
+\usepackage{newunicodechar}
+\usepackage{setspace}
+
+\onehalfspacing
+
+% ---- Unicode glyphs ----
+\newunicodechar{→}{\ensuremath{\to}}
+\newunicodechar{↦}{\ensuremath{\mapsto}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
+\newunicodechar{⟶}{\ensuremath{\longrightarrow}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∃}{\ensuremath{\exists}}
+\newunicodechar{∘}{\ensuremath{\circ}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∉}{\ensuremath{\notin}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{≅}{\ensuremath{\cong}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{∨}{\ensuremath{\vee}}
+\newunicodechar{¬}{\ensuremath{\neg}}
+\newunicodechar{⊢}{\ensuremath{\vdash}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{⇑}{\ensuremath{\mathord{\uparrow}}}
+\newunicodechar{↑}{\ensuremath{\mathord{\uparrow}}}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{∣}{\ensuremath{\mid}}
+\newunicodechar{∤}{\ensuremath{\nmid}}
+\newunicodechar{∑}{\ensuremath{\textstyle\sum}}
+\newunicodechar{∏}{\ensuremath{\textstyle\prod}}
+\newunicodechar{∅}{\ensuremath{\emptyset}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{∩}{\ensuremath{\cap}}
+\newunicodechar{≡}{\ensuremath{\equiv}}
+\newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}
+\newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
+\newunicodechar{𝔽}{\ensuremath{\mathbb{F}}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{χ}{\ensuremath{\chi}}
+\newunicodechar{Φ}{\ensuremath{\Phi}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{₀}{\textsubscript{0}}
+\newunicodechar{₁}{\textsubscript{1}}
+\newunicodechar{₂}{\textsubscript{2}}
+\newunicodechar{ᵏ}{\ensuremath{{}^{k}}}
+\newunicodechar{ⁿ}{\ensuremath{{}^{n}}}
+\newunicodechar{ʲ}{\ensuremath{{}^{j}}}
+\newunicodechar{²}{\ensuremath{{}^{2}}}
+\newunicodechar{³}{\ensuremath{{}^{3}}}
+\newunicodechar{⁴}{\ensuremath{{}^{4}}}
+\newunicodechar{⁻}{\ensuremath{{}^{-}}}
+\newunicodechar{¹}{\ensuremath{{}^{1}}}
+
+% ---- Lean listing style ----
+\definecolor{leanbg}{RGB}{247,247,250}
+\definecolor{leankw}{RGB}{0,90,160}
+\definecolor{leancm}{RGB}{120,120,120}
+\lstdefinestyle{lean}{
+  backgroundcolor=\color{leanbg},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{leankw}\bfseries,
+  commentstyle=\color{leancm}\itshape,
+  morekeywords={theorem,lemma,def,fun,Prop,Type,variable,where,
+    Field,Fintype,Finite,DecidableEq,CommRing,CommSemiring,Ring,CharP,Function,
+    Injective,Surjective,Bijective,by,rfl,have,rw,exact,ext,simp,intro,
+    iterateFrobenius,RingHom,Commute,convert,apply,using,Nat,Coprime,gcd,
+    Odd,Even,IsAPN,IsAB,walsh,Nat,obtain,induction,cases,calc,grind},
+  showstringspaces=false,
+  columns=fullflexible,
+  extendedchars=true,
+  frame=single,
+  framesep=6pt,
+  xleftmargin=4pt,
+  aboveskip=12pt,
+  belowskip=14pt,
+}
+\lstset{style=lean}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+% boxed "what just happened" note
+\newcommand{\note}[1]{%
+  \par\smallskip
+  \noindent\colorbox{leanbg}{\parbox{\dimexpr\linewidth-2\fboxsep}{\small #1}}%
+  \par\smallskip}

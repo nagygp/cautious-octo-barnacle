@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\input{preprint_preamble}
+
+\title{\textbf{The glue exponent}\\[4pt]
+\large $d(k)\cdot(2^k+1)=2^{3k}+1$, read slowly}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+One arithmetic identity.\\[2pt]
+$\bullet$\quad \texttt{d\_mul\_gold}:\;\;
+$d(k)\cdot(2^k+1)=2^{3k}+1$,\quad where $d(k)=2^{2k}-2^k+1$.\\[6pt]
+\noindent
+Two lines of \texttt{zify}/\texttt{ring}, but it is the algebraic glue between the
+\emph{Kasami} exponent $d(k)$ and the \emph{Gold} exponent $2^k+1$, and it underlies
+``decompose $\Phi$ as a composition of two bijections''. The cross-form
+factorization plays the same connective role.
+\end{abstract}
+
+\bigskip
+
+% =====================================================================
+\section*{Two exponents}
+
+\begin{itemize}\itemsep4pt
+  \item \textbf{Gold:}\;\; $2^k+1$.
+  \item \textbf{Kasami:}\;\; $d(k)=2^{2k}-2^k+1$.
+\end{itemize}
+They look unrelated. The identity says they multiply to a clean cube:
+\[
+d(k)\cdot(2^k+1)\;=\;2^{3k}+1 .
+\]
+
+\bigskip
+
+% =====================================================================
+\section{The lemma}
+
+\begin{lstlisting}
+theorem d_mul_gold (k : ℕ) (hk : k ≥ 1) :
+    d k * (2 ^ k + 1) = 2 ^ (3 * k) + 1 := by
+  unfold d
+  zify
+  rw [Nat.cast_sub (by gcongr <;> linarith)]
+  push_cast
+  ring
+\end{lstlisting}
+
+\note{\texttt{d} is defined with \emph{truncated} natural subtraction
+($2^{2k}-2^k$), so the proof first lifts to $\mathbb{Z}$ with \texttt{zify} and
+\texttt{Nat.cast\_sub}, where subtraction behaves, then finishes with \texttt{ring}.}
+
+\bigskip
+\subsection*{Why it is true (the cube identity)}
+
+\noindent
+Over $\mathbb{Z}$, set $q=2^k$. Then $d(k)=q^2-q+1$ and the Gold factor is $q+1$.
+This is the classical sum-of-cubes factoring:
+\[
+(q+1)(q^2-q+1) \;=\; q^3+1 \;=\; 2^{3k}+1 .
+\]
+
+\[
+\begin{tikzcd}[column sep=large]
+\underbrace{2^k+1}_{\text{Gold}} \;\times\; \underbrace{2^{2k}-2^k+1}_{\text{Kasami } d(k)}
+\arrow[r, equal, "{q^3+1}"]
+& 2^{3k}+1
+\end{tikzcd}
+\]
+
+\note{$x^3+1=(x+1)(x^2-x+1)$ is the reason the Gold exponent and the Kasami
+exponent are ``complementary cofactors'' of the cube $2^{3k}+1$.}
+
+\bigskip
+
+% =====================================================================
+\section{Where it lands: composing two bijections}
+
+\noindent
+On $\mathrm{GF}(2^n)$, raising to a power is a bijection iff the exponent is
+coprime to $2^n-1$. The identity factors the Kasami power map through Gold:
+\[
+\bigl(x^{\,d(k)}\bigr)^{\,2^k+1} \;=\; x^{\,d(k)\,(2^k+1)} \;=\; x^{\,2^{3k}+1}.
+\]
+So the cube power $x\mapsto x^{2^{3k}+1}$ \emph{is} Gold-after-Kasami. When both
+right-hand factors are permutations, the identity lets the analysis
+\emph{decompose} the differential as a composition of two bijections --- the
+strategy behind the Dempwolff--M\"uller route to Kasami APN.
+
+\bigskip
+\subsection*{The same role: cross-form factorization}
+
+\noindent
+The companion connective identity is the cross form. With
+$L_k(P)=P^{2^k}+P$ and $N_k(s)=s^{2^k+1}$:
+\[
+\mathrm{Cross}_k(s,P)\;=\;s\,P^{2^k}+s^{2^k}P
+\;=\; N_k(s)\cdot L_k\!\bigl(P/s\bigr).
+\]
+
+\begin{lstlisting}
+def L (k : ℕ) (x : F) : F := x ^ (2 ^ k) + x
+def N (k : ℕ) (x : F) : F := x ^ (2 ^ k + 1)
+def Cross (k : ℕ) (s P : F) : F := s * P ^ (2 ^ k) + s ^ (2 ^ k) * P
+\end{lstlisting}
+
+\noindent
+Just as \texttt{d\_mul\_gold} factors an \emph{exponent} as Gold $\times$ Kasami,
+the cross form factors a \emph{value} as Gold-norm $N_k(s)$ times truncated-trace
+$L_k(P/s)$. Both turn one hard object into a product of two understood ones.
+
+\note{Pattern: a one-line algebraic factoring (of an exponent, or of a value)
+turns ``analyse $\Phi$'' into ``analyse a product of two bijections''. The cube
+identity $x^3+1=(x+1)(x^2-x+1)$ and the cross factorization are the two faces of
+this glue.}
+
+\bigskip
+
+% =====================================================================
+\section*{One-screen summary}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{l l}
+\textbf{object} & \textbf{factoring} \\
+\hline
+exponent & $d(k)\,(2^k+1)=2^{3k}+1$ \;($q^3+1=(q+1)(q^2-q+1)$) \\
+power map & $x^{2^{3k}+1}=(x^{d(k)})^{2^k+1}$ \;(Gold $\circ$ Kasami) \\
+value & $\mathrm{Cross}_k(s,P)=N_k(s)\cdot L_k(P/s)$ \\
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent
+\colorbox{leanbg}{\parbox{\dimexpr\linewidth-2\fboxsep}{\centering
+$d(k)\,(2^k+1)=2^{3k}+1$ $\;\Rightarrow\;$ Kasami power $=$ Gold $\circ$ Kasami
+$\;\Rightarrow\;$ ``compose two bijections''.}}
+
+\end{document}

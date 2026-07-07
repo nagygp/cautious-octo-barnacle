@@ -1,0 +1,238 @@
+\documentclass[11pt]{article}
+\input{preprint_preamble}
+
+\title{\textbf{One gcd, four floors up}\\[4pt]
+\large $\gcd(2^a-1,\,2^b-1)=2^{\gcd(a,b)}-1$, read slowly}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+One fact about integers.\\[2pt]
+$\bullet$\quad \texttt{gcd\_mersenne}:\;\; $\gcd(2^a-1,\,2^b-1)=2^{\gcd(a,b)}-1$.\\[6pt]
+\noindent
+We watch it climb: integers $\to$ \emph{a field has no exotic fixed points} $\to$
+\emph{Gold is APN} $\to$ \emph{Kasami, even $k$, edge case}.\\[2pt]
+Each floor is short. Read each as \emph{math} $\;\leftrightarrow\;$ \emph{Lean} $\;\leftrightarrow\;$
+\emph{a typing judgement}.
+\end{abstract}
+
+\bigskip
+
+% =====================================================================
+\section*{The ground floor: a number}
+
+\noindent
+A \textbf{Mersenne number} is $2^a-1$. The fact:
+\[
+\gcd\bigl(2^a-1,\;2^b-1\bigr)\;=\;2^{\gcd(a,b)}-1 .
+\]
+
+\begin{lstlisting}
+theorem gcd_mersenne (m n : ℕ) :
+    Nat.gcd (2 ^ m - 1) (2 ^ n - 1) = 2 ^ (Nat.gcd m n) - 1 :=
+  pow_sub_one_gcd_pow_sub_one 2 m n
+\end{lstlisting}
+
+\note{It is a \emph{term} proof: the right-hand side \emph{is} the proof.
+Mathlib already carries this under the name \texttt{pow\_sub\_one\_gcd\_pow\_sub\_one}.
+Our file only renames it and reads it slowly.}
+
+\bigskip
+\subsection*{Why it is true (the picture)}
+
+\noindent
+Think of the cyclic group $\mathbb{Z}/(2^a-1)$. The integer $2$ acts by
+multiplication, and its order is exactly $a$ (because $2^a\equiv 1$ and no
+smaller power does). So
+\[
+2^a\equiv 1 \pmod{N}
+\quad\Longleftrightarrow\quad
+(2^a-1)\mid N .
+\]
+Now $d\mid 2^a-1$ and $d\mid 2^b-1$ together say $2^a\equiv 2^b\equiv 1$ in the
+group of units mod $d$; the smallest such exponent is $\gcd(a,b)$. Hence the
+common factors are exactly $2^{\gcd(a,b)}-1$.
+
+\[
+\begin{tikzcd}[column sep=large]
+2^a-1 \arrow[dr, "\gcd"'] & & 2^b-1 \arrow[dl, "\gcd"] \\
+& 2^{\gcd(a,b)}-1 &
+\end{tikzcd}
+\]
+
+\note{The map $a\mapsto 2^a-1$ turns $\gcd$ of \emph{exponents} into $\gcd$ of
+\emph{Mersenne numbers}. It is a tiny ``functor'': it sends the lattice
+$(\mathbb{N},\gcd)$ into the lattice $(\mathbb{N},\gcd)$, monotonically.}
+
+\bigskip
+
+% =====================================================================
+\section{First floor: a field has no exotic fixed points}
+
+\noindent
+Move to $F=\mathrm{GF}(2^n)$, a field of size $2^n$. Ask: which $x$ satisfy
+$x^{2^k}=x$? In char $2$ this is the Frobenius fixed-point equation.
+
+\[
+\Gamma=\bigl(F:\mathrm{Type},\;[\mathrm{Field}\;F],\;[\mathrm{Fintype}\;F],\;[\mathrm{CharP}\;F\;2]\bigr)
+\]
+
+\begin{lstlisting}
+lemma frob_fixed_implies_GF2 {F : Type*} [Field F] [Fintype F] [CharP F 2]
+    {n : ℕ} (hn : Fintype.card F = 2 ^ n)
+    {k : ℕ} (hk : 0 < k) (hcop : Nat.Coprime k n)
+    {x : F} (hfixed : x ^ (2 ^ k) = x) :
+    x = 0 ∨ x = 1
+\end{lstlisting}
+
+\bigskip
+\subsection*{Where the gcd enters}
+
+\noindent
+Suppose $x\neq 0$. Two facts about its multiplicative order:
+\begin{itemize}\itemsep4pt
+  \item from $x^{2^k}=x$ we get $x^{2^k-1}=1$;
+  \item from finiteness (Fermat) we get $x^{2^n-1}=1$.
+\end{itemize}
+So the order of $x$ divides \emph{both} $2^k-1$ and $2^n-1$, hence divides their
+gcd:
+\[
+x^{\gcd(2^k-1,\,2^n-1)} = 1 .
+\]
+Now apply the ground floor:
+\[
+\gcd(2^k-1,\,2^n-1)=2^{\gcd(k,n)}-1 = 2^{1}-1 = 1
+\qquad(\text{since }\gcd(k,n)=1).
+\]
+Therefore $x^{1}=1$, i.e. $x=1$. So $x\in\{0,1\}$.
+
+\note{The hypothesis \texttt{Nat.Coprime k n} ($\gcd(k,n)=1$) is the \emph{only}
+reason the answer is the prime subfield $\{0,1\}=\mathbb{F}_2$ and nothing larger.
+Drop coprimality and the fixed field grows to $\mathrm{GF}(2^{\gcd(k,n)})$.}
+
+\[
+\inferrule*[Right=\textsc{order}]
+{
+  \;x^{2^k-1}=1\;
+  \\
+  \;x^{2^n-1}=1\;
+  \\
+  \gcd(2^k-1,2^n-1)\overset{\text{ground}}{=}2^{\gcd(k,n)}-1=1
+}
+{\; x^{1}=1 \;}
+\]
+
+\bigskip
+
+% =====================================================================
+\section{Second floor: Gold is APN}
+
+\noindent
+The \textbf{Gold} function is $x\mapsto x^{2^k+1}$. \textbf{APN} (almost perfect
+nonlinear) means: for every $a\neq 0$, the equation
+$f(x+a)+f(x)=b$ has at most $2$ solutions.
+
+\begin{lstlisting}
+theorem gold_is_apn {F : Type*} [Field F] [Fintype F] [CharP F 2]
+    {n : ℕ} (hn : Fintype.card F = 2 ^ n)
+    (k : ℕ) (hk : 0 < k) (hcop : Nat.Coprime k n) :
+    IsAPN (fun x : F => x ^ (2 ^ k + 1))
+\end{lstlisting}
+
+\bigskip
+\subsection*{The collision collapses to a fixed point}
+
+\noindent
+Expand the Gold difference (char $2$, Freshman's Dream):
+\[
+(x+a)^{2^k+1}+x^{2^k+1}
+= a^{2^k}x + a\,x^{2^k} + a^{2^k+1}.
+\]
+A collision of $x$ and $y$ forces (after cancelling) the homogeneous equation
+\[
+a^{2^k}(x+y) + a(x+y)^{2^k}=0 .
+\]
+Divide by $a^{2^k+1}$ and set $u=(x+y)/a$:
+\[
+u^{2^k}=u .
+\]
+That is the first-floor equation! By \texttt{frob\_fixed\_implies\_GF2},
+$u\in\{0,1\}$, i.e. $y=x$ or $y=x+a$. At most two solutions. APN. \hfill$\blacksquare$
+
+\note{In Lean this is literally one call:
+\texttt{frob\_fixed\_implies\_GF2 hn hk hcop} closes the kernel step inside
+\texttt{gold\_is\_apn}. The gcd fact is doing the load-bearing work two floors down.}
+
+\[
+\begin{tikzcd}[row sep=small, column sep=large]
+\text{collision} \arrow[r, Rightarrow] & u^{2^k}=u \arrow[r, Rightarrow, "{\texttt{frob\_fixed}}"] & u\in\{0,1\} \arrow[r, Rightarrow] & \text{APN}
+\end{tikzcd}
+\]
+
+\bigskip
+
+% =====================================================================
+\section{Third floor: Kasami, even $k$, at the edge}
+
+\noindent
+The Kasami exponent is $d_k = 2^{2k}-2^k+1$. The main theorem
+\texttt{kasami\_is\_apn} historically needed \textbf{$k$ odd}. The even-$k$ case
+is handled by a Frobenius twist that swaps $k\leftrightarrow n-k$. At the
+\emph{edge} $n-k=1$ the companion exponent is the Gold exponent $d_1=3=2^1+1$:
+
+\begin{lstlisting}
+lemma kasami_one_is_apn {F : Type*} [Field F] [Fintype F] [CharP F 2]
+    {n : ℕ} (hn : Fintype.card F = 2 ^ n)
+    (hcop : Nat.Coprime 1 n) :
+    IsAPN (fun x : F => x ^ kasamiExp 1) := by
+  rw [kasamiExp_one]      -- kasamiExp 1 = 3
+  exact gold_is_apn hn 1 one_pos hcop
+\end{lstlisting}
+
+\note{So the even-$k$ Kasami argument \emph{falls back on Gold} at its boundary,
+and Gold falls back on the fixed-point lemma, which falls back on the Mersenne
+gcd. Four floors, one staircase.}
+
+\bigskip
+
+% =====================================================================
+\section*{The staircase}
+
+\[
+\begin{tikzcd}[row sep=large, column sep=huge]
+\boxed{\gcd(2^a{-}1,2^b{-}1)=2^{\gcd(a,b)}{-}1}
+  \arrow[d, Rightarrow, "{\text{order argument}}"] \\
+\texttt{frob\_fixed\_implies\_GF2}\;:\; x^{2^k}=x \Rightarrow x\in\{0,1\}
+  \arrow[d, Rightarrow, "{\text{collision} \to \text{kernel}}"] \\
+\texttt{gold\_is\_apn}
+  \arrow[d, Rightarrow, "{\text{edge } n-k=1}"] \\
+\texttt{kasami\_is\_apn\_general}\;\;(\text{no parity restriction})
+\end{tikzcd}
+\]
+
+\bigskip
+\subsection*{One-screen summary}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{l l l}
+\textbf{floor} & \textbf{statement} & \textbf{engine} \\
+\hline
+ground & $\gcd(2^a{-}1,2^b{-}1)=2^{\gcd(a,b)}{-}1$ & cyclic order of $2$ \\
+$1$ & $x^{2^k}{=}x \Rightarrow x\in\{0,1\}$ & order $\mid \gcd = 1$ \\
+$2$ & Gold $x^{2^k+1}$ is APN & collision $\to$ fixed point \\
+$3$ & Kasami even-$k$ edge & companion $= $ Gold ($d_1=3$) \\
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent
+\colorbox{leanbg}{\parbox{\dimexpr\linewidth-2\fboxsep}{\centering
+\texttt{gcd\_mersenne} $\;\Rightarrow\;$ \texttt{frob\_fixed\_implies\_GF2}
+$\;\Rightarrow\;$ \texttt{gold\_is\_apn} $\;\Rightarrow\;$ \texttt{kasami\_is\_apn\_general}.}}
+
+\end{document}

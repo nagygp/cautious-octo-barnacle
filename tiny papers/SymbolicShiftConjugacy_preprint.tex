@@ -1,0 +1,463 @@
+\documentclass[11pt]{article}
+
+\input{preprint_preamble.tex}
+
+\title{\textbf{The Shift in Disguise:\\[2pt]
+A Non-Faithful Functor from Fields to Symbolic Dynamics}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent
+One element of a field becomes one sequence.\\
+The Frobenius map becomes the shift.\\
+Coprimality becomes a minimal rotation.
+
+\medskip
+\noindent
+The functor is real, but it forgets.\\
+We say exactly what it keeps, and what it drops.
+
+\medskip
+\noindent
+Everything is checked in Lean~4 / Mathlib.
+\end{abstract}
+
+\vfill
+
+\noindent\textit{Conference paper call --- short, slow-read submission.}
+
+\newpage
+
+
+\section{The picture}
+
+\bigskip
+
+Take a finite field $\mathbb{F}_{2^{\,n}}$.
+
+\bigskip
+
+Pick one element $v$.
+
+\bigskip
+
+Square it, again and again:
+\[
+  v,\quad v^{2},\quad v^{4},\quad \dots,\quad v^{2^{\,n-1}}.
+\]
+
+\bigskip
+
+That is a sequence.
+
+\bigskip
+
+It repeats with period dividing $n$.
+
+\bigskip
+
+\note{One field element. One periodic sequence.}
+
+\newpage
+
+
+\section{The shift}
+
+\bigskip
+
+Squaring once moves the whole sequence one step left:
+\[
+  (v,\; v^{2},\; v^{4},\; \dots)
+  \;\xmapsto{\ x\,\mapsto\, x^{2}\ }\;
+  (v^{2},\; v^{4},\; v^{8},\; \dots).
+\]
+
+\bigskip
+
+That is the \emph{shift} $\sigma$.
+
+\bigskip
+
+So the Frobenius map \textbf{is} the shift.
+\[
+  x \mapsto x^{2} \quad\longleftrightarrow\quad \sigma .
+\]
+
+\bigskip
+
+And the $k$-th power of Frobenius is the $k$-fold shift.
+\[
+  x \mapsto x^{2^{\,k}} \quad\longleftrightarrow\quad \sigma^{k}.
+\]
+
+\bigskip
+
+\note{Algebra on the left. Dynamics on the right.}
+
+\newpage
+
+
+\section{The encoding, in Lean}
+
+\bigskip
+
+The orbit sequence:
+
+\begin{lstlisting}
+def frobeniusOrbitSeq (p : ℕ) (x : F) : ℕ → F :=
+  fun k => x ^ (p ^ k)
+\end{lstlisting}
+
+\bigskip
+
+One step is one Frobenius:
+
+\begin{lstlisting}
+theorem frobeniusOrbitSeq_succ (p : ℕ) (x : F) (k : ℕ) :
+    frobeniusOrbitSeq p x (k + 1)
+      = (frobeniusOrbitSeq p x k) ^ p
+\end{lstlisting}
+
+\bigskip
+
+\note{The recurrence \emph{is} the shift rule.}
+
+\newpage
+
+
+\section{Cool fact 1 --- counting fixed points}
+
+\bigskip
+
+How many sequences does $\sigma^{k}$ fix?
+
+\bigskip
+
+How many $v$ satisfy $v^{2^{\,k}} = v$?
+
+\bigskip
+
+Same question. Same answer.
+\[
+  \#\{\, v : v^{2^{\,k}} = v \,\} \;=\; 2^{\gcd(k,\,n)} .
+\]
+
+\bigskip
+
+The shift side counts \emph{necklaces}:
+\[
+  \#\,\mathrm{Fix}(\sigma^{k}) \;=\; 2^{\gcd(k,\,n)} .
+\]
+
+\bigskip
+
+\note{One formula, read two ways.}
+
+\newpage
+
+
+\section{Cool fact 1, in Lean}
+
+\bigskip
+
+The field side:
+
+\begin{lstlisting}
+theorem frobenius_fixed_card (n k : ℕ) (hn : 0 < n) (hk : 0 < k)
+    (hcard : Fintype.card F = 2 ^ n) :
+    Nat.card {x : F | x ^ (2 ^ k) = x} = 2 ^ Nat.gcd k n
+\end{lstlisting}
+
+\bigskip
+
+The shift side:
+
+\begin{lstlisting}
+theorem necklace_orbit_count (n d : ℕ) [NeZero n] (hn : 0 < n) :
+    Fintype.card {w : ZMod n → ZMod 2 |
+        ∀ i, w i = w (i + (d : ZMod n))}
+      = 2 ^ Nat.gcd d n
+\end{lstlisting}
+
+\bigskip
+
+\note{Same right-hand side. No coincidence.}
+
+\newpage
+
+
+\section{Cool fact 2 --- minimal rotations}
+
+\bigskip
+
+Now ask: when is $\sigma^{k}$ a \emph{minimal} rotation of $\mathbb{Z}/n\mathbb{Z}$?
+
+\bigskip
+
+Exactly when
+\[
+  \gcd(k,\,n) = 1 .
+\]
+
+\bigskip
+
+A minimal rotation sweeps the whole cycle.
+
+\bigskip
+
+So it can fix a sequence \textbf{only if the sequence is constant}.
+
+\bigskip
+
+Constant sequence $\;\Longleftrightarrow\;$ the element lives in $\mathbb{F}_{2} = \{0,1\}$.
+
+\bigskip
+
+\note{No invariant sub-coordinate. Nowhere to hide.}
+
+\newpage
+
+
+\section{Cool fact 2, in Lean}
+
+\bigskip
+
+\begin{theorem}
+If $\gcd(k,n) = 1$, then
+\[
+  v^{2^{\,k}} = v \quad\Longleftrightarrow\quad v \in \{0,1\}.
+\]
+\end{theorem}
+
+\begin{lstlisting}
+lemma frob_fixed_iff_GF2 (hn : Fintype.card F = 2 ^ n)
+    (hcop : Nat.Coprime k n) :
+    v ^ (2 ^ k) = v ↔ (v = 0 ∨ v = 1)
+\end{lstlisting}
+
+\bigskip
+
+\note{Coprimality $=$ minimality. The dynamical reading of a number-theory side
+condition.}
+
+\newpage
+
+
+\section{The big idea}
+
+\bigskip
+
+The field proof of coprimality facts splits by the parity of $n$.
+
+\bigskip
+
+The dynamical reading does not.
+
+\bigskip
+
+\begin{center}
+\emph{``A minimal rotation fixes only constant sequences.''}
+\end{center}
+
+\bigskip
+
+One sentence. Every $n$. No parity.
+
+\bigskip
+
+That uniformity is the payoff of the encoding.
+
+\bigskip
+
+\note{Move the question to where it is easy. Then read the answer back.}
+
+\newpage
+
+
+\section{The functor}
+
+\bigskip
+
+This is not one example. It is a \emph{map of theories}.
+
+\bigskip
+
+\[
+  \mathcal{F} : \;
+  \underbrace{\text{Frobenius orbits on } \mathbb{F}_{2^{\,n}}}_{\text{algebra}}
+  \;\longrightarrow\;
+  \underbrace{\text{shift orbits on } \{0,1\}^{\mathbb{Z}/n\mathbb{Z}}}_{\text{dynamics}}
+\]
+
+\bigskip
+
+At the level of orbit theories the two sides agree.
+
+\bigskip
+
+\begin{lstlisting}
+theorem dynamics_algebra_bridge (n : ℕ) :
+    MoritaEquiv (frobeniusOrbitTheory 2 n) (shiftOrbitTheory n)
+\end{lstlisting}
+
+\bigskip
+
+So invariants cross for free:
+
+\begin{lstlisting}
+theorem bridge_transfer (n : ℕ) (I : MoritaInvariant)
+    (h : I.prop (frobeniusOrbitTheory 2 n)) :
+    I.prop (shiftOrbitTheory n)
+\end{lstlisting}
+
+\newpage
+
+
+\section{But the functor forgets}
+
+\bigskip
+
+The shift sees one operation: the \textbf{multiplicative} Frobenius.
+
+\bigskip
+
+It never sees the field \textbf{addition}.
+
+\bigskip
+
+\[
+  \sigma(x) = x^{2}
+  \quad\text{respects}\quad \times,
+  \qquad
+  \text{but } +\ \text{is invisible to } \sigma .
+\]
+
+\bigskip
+
+So the functor is \textbf{non-faithful}:
+
+\bigskip
+
+different additive phenomena collapse to the \emph{same} shift dynamics.
+
+\bigskip
+
+\note{A conjugacy of the $\times$-structure is not a conjugacy of the field.}
+
+\newpage
+
+
+\section{Why this matters}
+
+\bigskip
+
+APN is an \textbf{additive} property:
+\[
+  f(x+a) - f(x) \quad\text{is at most two-to-one.}
+\]
+
+\bigskip
+
+The shift forgot $+$.
+
+\bigskip
+
+So a \emph{naive} topological conjugacy with the shift
+\textbf{cannot} compute the deep APN facts.
+
+\bigskip
+
+The $+\,/\,\times$ clash breaks the dream of ``just work on the model.''
+
+\bigskip
+
+\note{The bridge is honest about its own limit.}
+
+\newpage
+
+
+\section{What survives: the spectral layer}
+
+\bigskip
+
+Replace the conjugacy by the \emph{transfer operator} --- the character sum.
+
+\bigskip
+
+\[
+  W_f(a,b) \;=\; \sum_{x} (-1)^{\,\mathrm{Tr}(a x + b f(x))} .
+\]
+
+\bigskip
+
+\begin{center}
+\begin{tabular}{ll}
+partition function & Walsh sum $W_f$\\[4pt]
+pressure / moments & $\sum W^{2}$,\ \ $\sum W^{4}$\\[4pt]
+expansion rate & $2$-adic valuation of $W$\\[4pt]
+fundamental domain & Frobenius orbit (cyclotomic coset)\\
+\end{tabular}
+\end{center}
+
+\bigskip
+
+\note{Spectral data crosses the $+\,/\,\times$ clash. A bare conjugacy does not.}
+
+\newpage
+
+
+\section{APN, as a dynamical fibre condition}
+
+\bigskip
+
+Even without conjugacy, APN \emph{is} a statement about fibres of a dynamics.
+
+\bigskip
+
+\[
+  \text{APN}(x \mapsto x^{d})
+  \;\Longleftrightarrow\;
+  \text{every fibre of } x \mapsto (x+a)^{d} + x^{d} \text{ has size} \le 2 .
+\]
+
+\begin{lstlisting}
+theorem apn_small_fibers (d : ℕ) :
+    IsAPN (powerFunction d : F → F) ↔
+    ∀ a : F, a ≠ 0 → ∀ b : F,
+      Fintype.card { x // differenceDynamics d a x = b } ≤ 2
+\end{lstlisting}
+
+\bigskip
+
+\note{The dynamical picture frames the question --- the spectral layer answers it.}
+
+\newpage
+
+
+\section{What we claim}
+
+\bigskip
+
+\begin{itemize}
+  \item One element $\;\mapsto\;$ one periodic sequence.\\[6pt]
+  \item Frobenius $\;=\;$ shift; \ $x^{2^{k}} = \sigma^{k}$.\\[6pt]
+  \item $\#\mathrm{Fix} = 2^{\gcd(k,n)}$, both sides.\\[6pt]
+  \item Coprime $\;=\;$ minimal rotation $\;=\;$ fixes only constants.\\[6pt]
+  \item A genuine functor (Morita bridge of orbit theories).\\[6pt]
+  \item \textbf{Non-faithful}: it keeps $\times$, forgets $+$.\\[6pt]
+  \item So deep APN needs the spectral layer, not a bare conjugacy.\\[6pt]
+  \item All boxed statements are machine-checked.
+\end{itemize}
+
+\vfill
+
+\noindent\textit{Read slowly. The shift was there all along.}
+
+\end{document}
