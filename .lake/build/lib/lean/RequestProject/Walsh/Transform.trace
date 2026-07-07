@@ -1,0 +1,54 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["ed556290dbb9a649.olean"],
+  "i": "f4843425d1cdc26d.ilean",
+  "c": "c27b1cde6b30bff3.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Walsh/Transform.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Walsh/Transform.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Walsh/Transform.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Walsh/Transform.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean:35:0: automatically included section variable(s) unused in theorem `WalshAB.Tr_add`:\n  [Fintype F]\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean:36:0: automatically included section variable(s) unused in theorem `WalshAB.Tr_zero`:\n  [Fintype F]\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean:45:0: automatically included section variable(s) unused in theorem `WalshAB.χ_values`:\n  [Fintype F]\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean:80:60: This simp argument is unused:\n  walsh\n\nHint: Omit it from the simp argument list.\n  simp +decide ̵[̵ ̵w̵a̵l̵s̵h̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean:96:31: This simp argument is unused:\n  hf.injective.eq_iff\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵f̵.̵i̵n̵j̵e̵c̵t̵i̵v̵e̵.̵e̵q̵_̵i̵f̵f̵,̵ ̵h̵b̵ ̵]̵[̲h̲b̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean:96:52: This simp argument is unused:\n  hb\n\nHint: Omit it from the simp argument list.\n  simp +decide [ ̵hf.injective.eq_iff,̵ ̵h̵b̵ ̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean:107:2: Try this:\n  [apply] exact χ_zero",
+   "level": "info"}],
+ "inputs":
+ [["RequestProject.Walsh.Transform:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.APN.Defs transitive imports (legacy)",
+         "12c1ba7185138d42"],
+        ["RequestProject.APN.Defs:importAllArts", "ec6a267bf828dbc0"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Walsh/Transform.lean",
+   "023e8a6422b59ac2"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "2a1e44f2bf40c04a"}

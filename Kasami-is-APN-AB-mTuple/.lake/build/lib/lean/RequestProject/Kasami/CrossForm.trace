@@ -1,0 +1,56 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["9f97ca84dd259731.olean"],
+  "i": "3c1c9100c4a437ab.ilean",
+  "c": "ce017957a027849c.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/Kasami/CrossForm.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/Kasami/CrossForm.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/Kasami/CrossForm.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/Kasami/CrossForm.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/Kasami/CrossForm.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/Kasami/CrossForm.lean:52:0: automatically included section variable(s) unused in theorem `CollisionAnalysis.d_coprime_card_sub_one`:\n  [Field F]\n  [DecidableEq F]\n  [CharP F 2]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Field F] [DecidableEq F] [CharP F 2] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Kasami/CrossForm.lean:53:13: unused variable `hk`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Kasami/CrossForm.lean:54:5: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Kasami/CrossForm.lean:72:39: This simp argument is unused:\n  Nat.dvd_prime\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵N̵a̵t̵.̵d̵v̵d̵_̵p̵r̵i̵m̵e̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Kasami/CrossForm.lean:74:96: This simp argument is unused:\n  Nat.dvd_prime\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵N̵a̵t̵.̵d̵v̵d̵_̵p̵r̵i̵m̵e̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Kasami/CrossForm.lean:78:54: This simp argument is unused:\n  Nat.dvd_prime\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵N̵a̵t̵.̵d̵v̵d̵_̵p̵r̵i̵m̵e̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Kasami/CrossForm.lean:117:0: automatically included section variable(s) unused in theorem `CollisionAnalysis.collision_equation`:\n  [Fintype F]\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Kasami/CrossForm.lean:122:42: This simp argument is unused:\n  add_pow_char_pow\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵a̵d̵d̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵'̵,̵ ̵a̵d̵d̵_̵p̵o̵w̵_̵c̵h̵a̵r̵_̵p̵o̵w̵ ̵]̵[̲p̲o̲w̲_̲a̲d̲d̲,̲ ̲p̲o̲w̲_̲m̲u̲l̲'̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Kasami.CrossForm:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.Kasami.CharTwoBasics transitive imports (legacy)",
+         "c125d5476100c2a6"],
+        ["RequestProject.Kasami.CharTwoBasics:importAllArts",
+         "63f672d4c66afe57"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/Kasami/CrossForm.lean",
+   "02a1ad31042c8145"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "c1614e7fd1786732"}

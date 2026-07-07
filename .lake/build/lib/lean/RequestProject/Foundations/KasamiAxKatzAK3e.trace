@@ -1,0 +1,40 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["040c4a1fac921197.olean"],
+  "i": "390f471832febbd0.ilean",
+  "c": "f47410059a547044.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiAxKatzAK3e.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/KasamiAxKatzAK3e.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/KasamiAxKatzAK3e.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/KasamiAxKatzAK3e.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/KasamiAxKatzAK3e.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiAxKatzAK3e.lean:100:81: This simp argument is unused:\n  Int.toNat_of_nonneg\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵I̵n̵t̵.̵t̵o̵N̵a̵t̵_̵o̵f̵_̵n̵o̵n̵n̵e̵g̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiAxKatzAK3e.lean:101:58: This simp argument is unused:\n  WithZero.coe_le_coe\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵W̵i̵t̵h̵Z̵e̵r̵o̵.̵c̵o̵e̵_̵l̵e̵_̵c̵o̵e̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Foundations.KasamiAxKatzAK3e:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.Foundations.KasamiAxKatzAK3d transitive imports (legacy)",
+         "19aa7a5d32ec393d"],
+        ["RequestProject.Foundations.KasamiAxKatzAK3d:importAllArts",
+         "e539ff837b2b6d33"],
+        ["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/KasamiAxKatzAK3e.lean",
+   "dfef9cf12257414a"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "283dfb15969e3e39"}

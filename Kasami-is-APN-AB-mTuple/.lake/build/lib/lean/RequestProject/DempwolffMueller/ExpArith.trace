@@ -1,0 +1,43 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["ba9f0fed78bf869c.olean"],
+  "i": "db1df3e2e9358773.ilean",
+  "c": "e86874cd78fdccfb.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/DempwolffMueller/ExpArith.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/DempwolffMueller/ExpArith.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/DempwolffMueller/ExpArith.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/DempwolffMueller/ExpArith.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/DempwolffMueller/ExpArith.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/DempwolffMueller/ExpArith.lean:42:113: This simp argument is unused:\n  hx\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵p̵o̵w̵_̵a̵d̵d̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵,̵ ̵h̵x̵ ̵]̵[̲p̲o̲w̲_̲a̲d̲d̲,̲\n  ̲ ̲ ̲ ̲ ̲ ̲ ̲p̲o̲w̲_̲m̲u̲l̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/ExpArith.lean:43:87: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵'̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲p̲o̲w̲_̲s̲u̲c̲c̲'̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/ExpArith.lean:45:83: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵'̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲p̲o̲w̲_̲s̲u̲c̲c̲'̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.DempwolffMueller.ExpArith:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.DempwolffMueller.FrobAlg transitive imports (legacy)",
+         "9df9c94847a2ed3b"],
+        ["RequestProject.DempwolffMueller.FrobAlg:importAllArts",
+         "1191122974759775"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/DempwolffMueller/ExpArith.lean",
+   "82bd7b8d47dd9ff6"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "5682f829edb7c572"}

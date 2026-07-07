@@ -1,0 +1,123 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["f829a476af79e698.olean"],
+  "i": "1e2bf421333771cc.ilean",
+  "c": "0bfbd693d5c9fa66.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/Tests/StressTests.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/Tests/StressTests.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/Tests/StressTests.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/Tests/StressTests.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/Tests/StressTests.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:60:0: 'MTupleCount.m_tuple_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:61:0: 'MTupleCount.m_tuple_count_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:62:0: 'MTupleCount.triple_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:65:0: 'MTupleCount.deriv_image_half' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:66:0: 'MTupleCount.card_times_two' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:67:0: 'MTupleCount.fiber_card_two' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:70:0: 'MTupleCount.orthogonality_collapse' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:71:0: 'MTupleCount.KR2' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:74:0: 'KasamiAPN.kasami_is_apn' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:75:0: 'KasamiEvenK.kasami_is_apn_general' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:76:0: 'KasamiEvenK.gold_is_apn' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:79:0: 'KasamiAB.kasami_is_ab' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:82:0: 'KasamiTripleCount.kasami_triple_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:83:0: 'KasamiTripleCount.kasami_is_mtuple_apn' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:86:0: 'APNClass.apn_iff_collision' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:87:0: 'APNClass.apn_comp_additive_bij' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:88:0: 'APNClass.deriv_image_half' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:91:0: 'MTupleCount.exp_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:92:0: 'MTupleCount.exp_identity' depends on axioms: [propext, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:444:0: MTupleCount.exp_cancel : ∀ (n m κ₀ : ℕ), 3 ≤ n → 2 ≤ m → 2 ^ n * κ₀ = (2 ^ (n - 1)) ^ m → κ₀ = 2 ^ ((m - 1) * n - m)",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:447:0: @MTupleCount.KR2 : ∀ {𝔽 : Type u_1} [inst : Field 𝔽] [inst_1 : Fintype 𝔽] [inst_2 : DecidableEq 𝔽]\n  (χ : MTupleCount.Chi 𝔽) (m : ℕ) (T : Finset 𝔽) (c : Fin m → 𝔽),\n  MTupleCount.Vanish χ m T c → ↑(Fintype.card 𝔽) * ↑(MTupleCount.κ m T c) = ↑(#T) ^ m",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:450:0: @MTupleCount.deriv_image_half : ∀ {𝔽 : Type u_1} [inst : Field 𝔽] [inst_1 : Fintype 𝔽] [inst_2 : DecidableEq 𝔽]\n  [CharP 𝔽 2] (f : 𝔽 → 𝔽),\n  MTupleCount.APN f → ∀ (a : 𝔽), a ≠ 0 → ∀ (n : ℕ), Fintype.card 𝔽 = 2 ^ n → #(MTupleCount.Δ f a) = 2 ^ (n - 1)",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:453:0: @MTupleCount.vanish_of_flatSpectrum : ∀ {𝔽 : Type u_1} [inst : Field 𝔽] [inst_1 : Fintype 𝔽] [inst_2 : DecidableEq 𝔽]\n  (χ : MTupleCount.Chi 𝔽) (m : ℕ) (T : Finset 𝔽) (c : Fin m → 𝔽),\n  MTupleCount.FlatSpectrum χ T → 0 < m → (∀ (i : Fin m), c i ≠ 0) → MTupleCount.Vanish χ m T c",
+   "level": "info"},
+  {"message":
+   "RequestProject/Tests/StressTests.lean:473:0: @APNClass.apn_iff_collision : ∀ {F : Type u_1} [inst : Field F] [inst_1 : Fintype F] [inst_2 : DecidableEq F]\n  [CharP F 2] (f : F → F), APNClass.APNFun f ↔ APNClass.APNCollision f",
+   "level": "info"}],
+ "inputs":
+ [["RequestProject.Tests.StressTests:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.MTupleCount transitive imports (legacy)",
+         "268d1a2d63e98e4f"],
+        ["RequestProject.MTupleCount:importAllArts", "21e2afeb0a847954"],
+        ["RequestProject.Kasami.TripleCount transitive imports (legacy)",
+         "192f7cf7758ff835"],
+        ["RequestProject.Kasami.TripleCount:importAllArts", "560e28ee3801bdf4"],
+        ["RequestProject.Kasami.APN transitive imports (legacy)",
+         "833600982d98e54c"],
+        ["RequestProject.Kasami.APN:importAllArts", "9fa59e0f6e9cbf7c"],
+        ["RequestProject.Kasami.EvenK transitive imports (legacy)",
+         "b9e9592710d3dbbd"],
+        ["RequestProject.Kasami.EvenK:importAllArts", "05c132295290058b"],
+        ["RequestProject.Kasami.AB transitive imports (legacy)",
+         "ad99337ea7928940"],
+        ["RequestProject.Kasami.AB:importAllArts", "8ae02244b643ad82"],
+        ["RequestProject.Core.CharTwo transitive imports (legacy)",
+         "12c1ba7185138d42"],
+        ["RequestProject.Core.CharTwo:importAllArts", "17658cccaa1d8e7b"],
+        ["RequestProject.Core.APNClass transitive imports (legacy)",
+         "0c0cd194cb555da1"],
+        ["RequestProject.Core.APNClass:importAllArts", "a56d579b87772d1e"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/Tests/StressTests.lean",
+   "d7a6b483482f6daa"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "a71f3fc7bb6f3682"}

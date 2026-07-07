@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["e4b57a628ccbbd92.olean"],
+  "i": "25a43b07ec97a44f.ilean",
+  "c": "dee924ed1b270c64.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/Core/Vanishing.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/Core/Vanishing.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/Core/Vanishing.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/Core/Vanishing.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/Core/Vanishing.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["RequestProject.Core.Vanishing:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.Core.Character transitive imports (legacy)",
+         "12c1ba7185138d42"],
+        ["RequestProject.Core.Character:importAllArts", "1eed0d03d8dec907"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/Core/Vanishing.lean",
+   "ed216927a0a40d42"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "7ba82fe3aa9f5eb4"}

@@ -1,0 +1,105 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["a5c0f0a9159e2647.olean"],
+  "i": "6da3ffed20a6c647.ilean",
+  "c": "66dc8cda9e195536.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/FiniteField/BareLemma31Skeleton.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/FiniteField/BareLemma31Skeleton.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/FiniteField/BareLemma31Skeleton.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/FiniteField/BareLemma31Skeleton.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/FiniteField/BareLemma31Skeleton.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:31:0: automatically included section variable(s) unused in theorem `DempwolffMueller.DeltaBare_sub_additive'`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:38:0: automatically included section variable(s) unused in theorem `DempwolffMueller.DeltaBare_sub_zero_imp_zero'`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:41:5: unused variable `hM_inj`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:64:5: unused variable `hL_add`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:65:17: unused variable `hM_mul`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:66:5: unused variable `hM_inj`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:71:44: This simp argument is unused:\n  sub_eq_iff_eq_add\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵s̵u̵b̵_̵e̵q̵_̵i̵f̵f̵_̵e̵q̵_̵a̵d̵d̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:87:57: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:78:0: automatically included section variable(s) unused in theorem `DempwolffMueller.DeltaBare_trace_adjoint'`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:78:40: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:81:22: unused variable `hM_mul`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:90:41: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:90:71: unused variable `hn1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:92:5: unused variable `hA_add`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:105:58: This simp argument is unused:\n  sub_eq_iff_eq_add\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵s̵u̵b̵_̵e̵q̵_̵i̵f̵f̵_̵e̵q̵_̵a̵d̵d̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:120:96: This simp argument is unused:\n  sub_mul\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵s̵u̵b̵_̵m̵u̵l̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:146:63: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:146:42: This simp argument is unused:\n  hL₁_add\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵D̵e̵l̵t̵a̵B̵a̵r̵e̵'̵,̵ ̵h̵L̵₁̵_̵a̵d̵d̵,̵ ̵h̵L̵₂̵_̵a̵d̵d̵ ̵]̵[̲D̲e̲l̲t̲a̲B̲a̲r̲e̲'̲,̲ ̲h̲L̲₂̲_̲a̲d̲d̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:146:51: This simp argument is unused:\n  hL₂_add\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵D̵e̵l̵t̵a̵B̵a̵r̵e̵'̵,̵ ̵h̵L̵₁̵_̵a̵d̵d̵,̵ ̵h̵L̵₂̵_̵a̵d̵d̵ ̵]̵[̲D̲e̲l̲t̲a̲B̲a̲r̲e̲'̲,̲ ̲h̲L̲₁̲_̲a̲d̲d̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:170:154: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/FiniteField/BareLemma31Skeleton.lean:170:104: This simp argument is unused:\n  pow_one\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵p̵o̵w̵_̵a̵d̵d̵,̵[̲p̲o̲w̲_̲a̲d̲d̲,̲\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲pow_mul, p̵o̵w̵_̵o̵n̵e̵,̵ ̵hx_nonzero, p̵o̵w̵_̵c̵a̵r̵d̵_̵s̵u̵b̵_̵o̵n̵e̵_̵e̵q̵_̵o̵n̵e̵'̵ ̵]̵p̲o̲w̲_̲c̲a̲r̲d̲_̲s̲u̲b̲_̲o̲n̲e̲_̲e̲q̲_̲o̲n̲e̲'̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.FiniteField.BareLemma31Skeleton:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.FiniteField.TraceNorm transitive imports (legacy)",
+         "32203a41368dedb9"],
+        ["RequestProject.FiniteField.TraceNorm:importAllArts",
+         "c9e296fc3c4eea78"],
+        ["RequestProject.FiniteField.ExpArith transitive imports (legacy)",
+         "32203a41368dedb9"],
+        ["RequestProject.FiniteField.ExpArith:importAllArts",
+         "9ae85c9e001bcf85"],
+        ["RequestProject.FiniteField.FrobAlg transitive imports (legacy)",
+         "582ff114f3cc8f4f"],
+        ["RequestProject.FiniteField.FrobAlg:importAllArts",
+         "6e49d5f30af82092"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/FiniteField/BareLemma31Skeleton.lean",
+   "988e6b09625f398a"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "d738bcbfde189d72"}

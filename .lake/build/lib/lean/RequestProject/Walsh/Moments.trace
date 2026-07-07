@@ -1,0 +1,92 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["ca77ac56e5633cd9.olean"],
+  "i": "6e7840920ca31df0.ilean",
+  "c": "0dead612cd241ce7.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Walsh/Moments.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Walsh/Moments.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Walsh/Moments.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Walsh/Moments.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:56:157: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:46:13: unused variable `ha`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:54:64: This simp argument is unused:\n  mul_comm\n\nHint: Omit it from the simp argument list.\n  simp +decide only [h_expand, mul_add, Finset.mul_sum _ _ _,̵ ̵m̵u̵l̵_̵c̵o̵m̵m̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:55:32: This simp argument is unused:\n  add_comm\n\nHint: Omit it from the simp argument list.\n  simp +decide only [← χ_mul,̵ ̵a̵d̵d̵_̵c̵o̵m̵m̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:60:43: This simp argument is unused:\n  hf.injective.eq_iff\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵a̵d̵d̵_̵e̵q̵_̵z̵e̵r̵o̵_̵i̵f̵f̵_̵e̵q̵_̵n̵e̵g̵,̵ ̵h̵f̵.̵i̵n̵j̵e̵c̵t̵i̵v̵e̵.̵e̵q̵_̵i̵f̵f̵ ̵]̵[̲a̲d̲d̲_̲e̲q̲_̲z̲e̲r̲o̲_̲i̲f̲f̲_̲e̲q̲_̲n̲e̲g̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:63:25: This simp argument is unused:\n  Finset.sum_ite\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵s̵q̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵i̵t̵e̵ ̵]̵[̲s̲q̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:64:17: This simp argument is unused:\n  ← hcard\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵ ̵h̵c̵a̵r̵d̵,̵ ̵t̵w̵o̵_̵m̵u̵l̵,̵ ̵χ̵ ̵]̵[̲t̲w̲o̲_̲m̲u̲l̲,̲ ̲χ̲]̲\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:64:26: This simp argument is unused:\n  two_mul\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵[̲←̲ hcard, t̵w̵o̵_̵m̵u̵l̵,̵ ̵χ̵ ̵]̵χ̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:71:0: automatically included section variable(s) unused in theorem `WalshAB.diffCount_sum`:\n  [CharP F 2]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [CharP F 2] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:78:38: unused variable `hcard`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:104:95: This simp argument is unused:\n  add_mul\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵m̵u̵l̵_̵a̵d̵d̵,̵ ̵a̵d̵d̵_̵m̵u̵l̵,̵ ̵χ̵_̵m̵u̵l̵ ̵]̵[̲m̲u̲l̲_̲a̲d̲d̲,̲ ̲χ̲_̲m̲u̲l̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:119:4: Try this:\n  [apply] exact fun u v => χ_sum_dual (u + v)",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:124:92: This simp argument is unused:\n  ← Finset.sum_mul\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵←̵[̲←̲ mul_assoc, ← Finset.mul_sum _ _ _̵,̵ ̵←̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵m̵u̵l̵ ̵]̵_̲]̲\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:136:86: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:142:75: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:139:21: This simp argument is unused:\n  add_assoc\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵ ̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵a̵d̵d̵_̵c̵o̵m̵m̵ ̵]̵[̲a̲d̲d̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲,̲ ̲a̲d̲d̲_̲c̲o̲m̲m̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:186:21: 'push_cast' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:194:42: unused variable `hcard`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:205:0: automatically included section variable(s) unused in theorem `WalshAB.walsh_pow_fourth_uniform`:\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean:211:132: This simp argument is unused:\n  mul_left_comm\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵ ̵]̵[̲m̲u̲l̲_̲a̲s̲s̲o̲c̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Walsh.Moments:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.Walsh.Transform transitive imports (legacy)",
+         "4bae8209aae32bfa"],
+        ["RequestProject.Walsh.Transform:importAllArts",
+         "9bb10f196ddda306"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Walsh/Moments.lean",
+   "7535909770da1a33"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "76c6bae528a5fbcb"}

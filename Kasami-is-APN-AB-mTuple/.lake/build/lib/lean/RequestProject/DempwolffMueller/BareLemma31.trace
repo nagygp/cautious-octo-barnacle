@@ -1,0 +1,108 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["da451f93363c2f60.olean"],
+  "i": "2e8fb84d01235b04.ilean",
+  "c": "7bc0ff0dc5101395.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/DempwolffMueller/BareLemma31.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/DempwolffMueller/BareLemma31.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/DempwolffMueller/BareLemma31.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/DempwolffMueller/BareLemma31.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/DempwolffMueller/BareLemma31.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:32:0: automatically included section variable(s) unused in theorem `DempwolffMueller.DeltaBare_sub_additive'`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:39:0: automatically included section variable(s) unused in theorem `DempwolffMueller.DeltaBare_sub_zero_imp_zero'`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:42:5: unused variable `hM_inj`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:65:5: unused variable `hL_add`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:66:17: unused variable `hM_mul`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:67:5: unused variable `hM_inj`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:72:44: This simp argument is unused:\n  sub_eq_iff_eq_add\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵s̵u̵b̵_̵e̵q̵_̵i̵f̵f̵_̵e̵q̵_̵a̵d̵d̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:88:57: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:79:0: automatically included section variable(s) unused in theorem `DempwolffMueller.DeltaBare_trace_adjoint'`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:79:40: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:82:22: unused variable `hM_mul`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:91:41: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:91:71: unused variable `hn1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:93:5: unused variable `hA_add`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:106:58: This simp argument is unused:\n  sub_eq_iff_eq_add\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵s̵u̵b̵_̵e̵q̵_̵i̵f̵f̵_̵e̵q̵_̵a̵d̵d̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:121:96: This simp argument is unused:\n  sub_mul\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵s̵u̵b̵_̵m̵u̵l̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:147:63: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:147:42: This simp argument is unused:\n  hL₁_add\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵D̵e̵l̵t̵a̵B̵a̵r̵e̵'̵,̵ ̵h̵L̵₁̵_̵a̵d̵d̵,̵ ̵h̵L̵₂̵_̵a̵d̵d̵ ̵]̵[̲D̲e̲l̲t̲a̲B̲a̲r̲e̲'̲,̲ ̲h̲L̲₂̲_̲a̲d̲d̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:147:51: This simp argument is unused:\n  hL₂_add\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵D̵e̵l̵t̵a̵B̵a̵r̵e̵'̵,̵ ̵h̵L̵₁̵_̵a̵d̵d̵,̵ ̵h̵L̵₂̵_̵a̵d̵d̵ ̵]̵[̲D̲e̲l̲t̲a̲B̲a̲r̲e̲'̲,̲ ̲h̲L̲₁̲_̲a̲d̲d̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:171:154: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/DempwolffMueller/BareLemma31.lean:171:104: This simp argument is unused:\n  pow_one\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵p̵o̵w̵_̵a̵d̵d̵,̵[̲p̲o̲w̲_̲a̲d̲d̲,̲\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲pow_mul, p̵o̵w̵_̵o̵n̵e̵,̵ ̵hx_nonzero, p̵o̵w̵_̵c̵a̵r̵d̵_̵s̵u̵b̵_̵o̵n̵e̵_̵e̵q̵_̵o̵n̵e̵'̵ ̵]̵p̲o̲w̲_̲c̲a̲r̲d̲_̲s̲u̲b̲_̲o̲n̲e̲_̲e̲q̲_̲o̲n̲e̲'̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.DempwolffMueller.BareLemma31:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.DempwolffMueller.TraceNorm transitive imports (legacy)",
+         "532a4329b81d4550"],
+        ["RequestProject.DempwolffMueller.TraceNorm:importAllArts",
+         "f9dcd36959c4aff6"],
+        ["RequestProject.Core.ExpArith transitive imports (legacy)",
+         "12c1ba7185138d42"],
+        ["RequestProject.Core.ExpArith:importAllArts", "968da5e8be082c12"],
+        ["RequestProject.DempwolffMueller.ExpArith transitive imports (legacy)",
+         "532a4329b81d4550"],
+        ["RequestProject.DempwolffMueller.ExpArith:importAllArts",
+         "4b2fba9b01fcb110"],
+        ["RequestProject.DempwolffMueller.FrobAlg transitive imports (legacy)",
+         "9df9c94847a2ed3b"],
+        ["RequestProject.DempwolffMueller.FrobAlg:importAllArts",
+         "1191122974759775"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/DempwolffMueller/BareLemma31.lean",
+   "87947ca5f858bf32"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "f902dc4933351596"}

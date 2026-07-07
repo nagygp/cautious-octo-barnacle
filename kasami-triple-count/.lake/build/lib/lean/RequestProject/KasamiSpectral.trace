@@ -1,0 +1,66 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["a19d2dae5cdadab0.olean"],
+  "i": "fa9b15b05f3f57fd.ilean",
+  "c": "debceda64fe4fa00.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/RequestProject/KasamiSpectral.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/lib/lean/RequestProject/KasamiSpectral.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/lib/lean/RequestProject/KasamiSpectral.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/ir/RequestProject/KasamiSpectral.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/.lake/build/ir/RequestProject/KasamiSpectral.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:28:0: automatically included section variable(s) unused in theorem `charTwo_add_self`:\n  [Fintype F]\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:43:0: automatically included section variable(s) unused in theorem `charTwo_add_one_add_one`:\n  [Fintype F]\n  [DecidableEq F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:52:0: automatically included section variable(s) unused in theorem `ne_add_one`:\n  [Fintype F]\n  [DecidableEq F]\n  [CharP F 2]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] [DecidableEq F] [CharP F 2] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:68:8: declaration uses `sorry`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:78:8: declaration uses `sorry`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:109:94: This simp argument is unused:\n  add_assoc\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵a̵d̵d̵_̵c̵o̵m̵m̵,̵ ̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲a̲d̲d̲_̲c̲o̲m̲m̲,̲ ̲a̲d̲d̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:149:0: automatically included section variable(s) unused in theorem `kasamiDelta_fiber_sum`:\n  [CharP F 2]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [CharP F 2] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:173:27: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/KasamiSpectral.lean:179:8: declaration uses `sorry`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.KasamiSpectral:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "6d3278f5bc74a2fe"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.KasamiDefs transitive imports (legacy)",
+         "0402fd2b5053d281"],
+        ["RequestProject.KasamiDefs:importAllArts", "fd1a881f1b12758e"],
+        ["RequestProject.KasamiCharacters transitive imports (legacy)",
+         "36fd466238730868"],
+        ["RequestProject.KasamiCharacters:importAllArts", "304e044b66ca129c"],
+        ["RequestProject.KasamiFourier transitive imports (legacy)",
+         "c29db152bd3315e4"],
+        ["RequestProject.KasamiFourier:importAllArts", "097d6753f211cfdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/kasami-triple-count/RequestProject/KasamiSpectral.lean",
+   "8b54e9f835d37db4"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "c20f07899fa8b392"}

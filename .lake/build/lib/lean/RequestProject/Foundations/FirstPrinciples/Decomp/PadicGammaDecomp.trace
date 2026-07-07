@@ -1,0 +1,52 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["4cbb1da0df2ccaa2.olean"],
+  "i": "9241e59360a9f458.ilean",
+  "c": "1f788a8feedae1cf.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.lean:102:64: This simp argument is unused:\n  Nat.ModEq\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵N̵a̵t̵.̵M̵o̵d̵E̵q̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.lean:115:21: This simp argument is unused:\n  ZMod.natCast_eq_natCast_iff'\n\nHint: Omit it from the simp argument list.\n  simp +decide ̵[̵ ̵Z̵M̵o̵d̵.̵n̵a̵t̵C̵a̵s̵t̵_̵e̵q̵_̵n̵a̵t̵C̵a̵s̵t̵_̵i̵f̵f̵'̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.lean:121:77: This simp argument is unused:\n  Nat.coprime_pow_right_iff\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵N̵a̵t̵.̵c̵o̵p̵r̵i̵m̵e̵_̵p̵o̵w̵_̵r̵i̵g̵h̵t̵_̵i̵f̵f̵,̵ ̵h̵p̵.̵1̵.̵c̵o̵p̵r̵i̵m̵e̵_̵i̵f̵f̵_̵n̵o̵t̵_̵d̵v̵d̵ ̵]̵[̲h̲p̲.̲1̲.̲c̲o̲p̲r̲i̲m̲e̲_̲i̲f̲f̲_̲n̲o̲t̲_̲d̲v̲d̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.lean:268:134: This simp argument is unused:\n  PadicInt.zmod_cast_comp_toZModPow\n\nHint: Omit it from the simp argument list.\n  simp +decide ̵[̵ ̵P̵a̵d̵i̵c̵I̵n̵t̵.̵z̵m̵o̵d̵_̵c̵a̵s̵t̵_̵c̵o̵m̵p̵_̵t̵o̵Z̵M̵o̵d̵P̵o̵w̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.lean:447:69: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.lean:456:37: This simp argument is unused:\n  padicGamma_natCast\n\nHint: Omit it from the simp argument list.\n  simp [R, S, padicGamma_zero,̵ ̵p̵a̵d̵i̵c̵G̵a̵m̵m̵a̵_̵n̵a̵t̵C̵a̵s̵t̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Foundations.FirstPrinciples.Decomp.PadicGammaDecomp:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.Foundations.FirstPrinciples.Decomp.GaussWilson transitive imports (legacy)",
+         "12c1ba7185138d42"],
+        ["RequestProject.Foundations.FirstPrinciples.Decomp.GaussWilson:importAllArts",
+         "48d79dc398f53e65"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/Foundations/FirstPrinciples/Decomp/PadicGammaDecomp.lean",
+   "ef1a6f6b17159ee9"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "f6d9f7a65736f7bc"}

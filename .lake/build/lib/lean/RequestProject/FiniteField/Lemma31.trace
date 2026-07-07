@@ -1,0 +1,57 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["286cba3fe75857af.olean"],
+  "i": "15eb2d8586de13a6.ilean",
+  "c": "82685b431c345f0a.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/FiniteField/Lemma31.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/FiniteField/Lemma31.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/FiniteField/Lemma31.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/FiniteField/Lemma31.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:23:8: automatically included section variable(s) unused in theorem `DempwolffMueller.Delta_apply`:\n  [FiniteDimensional K F]\n  [Finite F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [FiniteDimensional K F] [Finite F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:42:0: automatically included section variable(s) unused in theorem `DempwolffMueller.PMap31_mul_eq`:\n  [FiniteDimensional K F]\n  [Finite F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [FiniteDimensional K F] [Finite F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:48:41: unused variable `hMinj`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:98:27: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:98:27: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:92:0: automatically included section variable(s) unused in theorem `DempwolffMueller.Delta_adjoint_spec`:\n  [FiniteDimensional K F]\n  [Finite F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [FiniteDimensional K F] [Finite F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:126:46: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:119:5: unused variable `hMinvR`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean:126:37: This simp argument is unused:\n  hAdj\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵D̵e̵l̵t̵a̵,̵ ̵h̵A̵d̵j̵ ̵]̵[̲D̲e̲l̲t̲a̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.FiniteField.Lemma31:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/FiniteField/Lemma31.lean",
+   "829d8289b751ff78"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "0dc972eb06d9fbdd"}

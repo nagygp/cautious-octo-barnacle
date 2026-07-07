@@ -1,0 +1,48 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["e365fe234d032343.olean"],
+  "i": "3d14caf7d8192d75.ilean",
+  "c": "59b45457918dae74.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/Walsh/WalshDivisibility.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/Walsh/WalshDivisibility.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/Walsh/WalshDivisibility.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/Walsh/WalshDivisibility.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/Walsh/WalshDivisibility.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/Walsh/WalshDivisibility.lean:96:51: unused variable `hodd`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Walsh/WalshDivisibility.lean:119:60: This simp argument is unused:\n  ha\n\nHint: Omit it from the simp argument list.\n  simp +decide [ ̵← Finset.sum_neg_distrib, hg_add, χ_mul,̵ ̵h̵a̵ ̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Walsh/WalshDivisibility.lean:155:112: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Walsh/WalshDivisibility.lean:165:21: This simp argument is unused:\n  Finset.sum_mul _ _ _\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵m̵u̵l̵ ̵_̵ ̵_̵ ̵_̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Walsh.WalshDivisibility:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.Walsh.WalshAB transitive imports (legacy)",
+         "120dbc01a82780b9"],
+        ["RequestProject.Walsh.WalshAB:importAllArts", "d1a547cdd2056b57"],
+        ["RequestProject.APN.Defs transitive imports (legacy)",
+         "12c1ba7185138d42"],
+        ["RequestProject.APN.Defs:importAllArts", "02076c46998cde3e"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/Walsh/WalshDivisibility.lean",
+   "8aae65c00a5aab38"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "e281e33a923b681b"}

@@ -1,0 +1,30 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["2173935557d16926.olean"],
+  "i": "c6d210958b66d716.ilean",
+  "c": "771ce6e111f87ae1.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/DiffUniformity/DifferentialUniformity.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/DiffUniformity/DifferentialUniformity.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/DiffUniformity/DifferentialUniformity.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/DiffUniformity/DifferentialUniformity.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/DiffUniformity/DifferentialUniformity.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["RequestProject.DiffUniformity.DifferentialUniformity:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/DiffUniformity/DifferentialUniformity.lean",
+   "11897f32ea6d8f1d"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "74c232c816f4479f"}

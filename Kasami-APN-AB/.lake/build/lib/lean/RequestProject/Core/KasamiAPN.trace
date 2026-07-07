@@ -1,0 +1,149 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["03d3ed3e24628503.olean"],
+  "i": "08efcdda6a7df6c9.ilean",
+  "c": "8aae3260091944ac.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/Core/KasamiAPN.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/Core/KasamiAPN.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/Core/KasamiAPN.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/Core/KasamiAPN.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/Core/KasamiAPN.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:56:39: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:78:6: Try this:\n  [apply] exact fun a b n => add_pow_expChar_pow a b 2 n",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:88:6: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:70:13: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:71:26: unused variable `hkn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:84:93: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵a̵d̵d̵_̵m̵u̵l̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵[̲a̲d̲d̲_̲m̲u̲l̲,̲\n  ̲  ̲ ̲ ̲mul_comm, mul_left_comm, pow_succ, p̵o̵w̵_̵m̵u̵l̵ ̵]̵p̲o̲w̲_̲m̲u̲l̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:84:114: This simp argument is unused:\n  mul_left_comm\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵a̵d̵d̵_̵m̵u̵l̵,̵[̲a̲d̲d̲_̲m̲u̲l̲,̲\n  ̲  ̲ ̲ ̲mul_assoc, mul_comm, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵pow_succ, p̵o̵w̵_̵m̵u̵l̵ ̵]̵p̲o̲w̲_̲m̲u̲l̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:84:139: This simp argument is unused:\n  pow_mul\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵a̵d̵d̵_̵m̵u̵l̵,̵[̲a̲d̲d̲_̲m̲u̲l̲,̲\n  ̲  ̲ ̲ ̲mul_assoc, mul_comm, mul_left_comm, p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵ ̵]̵p̲o̲w̲_̲s̲u̲c̲c̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:86:52: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [ ̵add_pow_char_pow, mul_pow, mul_a̵s̵s̵o̵c,̵ ̵m̵u̵l̵_̵c̵omm, mul_left_comm, div_eq_mul_inv ̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:86:63: This simp argument is unused:\n  mul_comm\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [ ̵add_pow_char_pow, mul_pow, mul_assoc, mul_c̵o̵m̵m̵,̵ ̵m̵u̵l_̵l̵eft_comm, div_eq_mul_inv ̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:86:73: This simp argument is unused:\n  mul_left_comm\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵a̵d̵d̵_̵p̵o̵w̵_̵c̵h̵a̵r̵_̵p̵o̵w̵,̵[̲a̲d̲d̲_̲p̲o̲w̲_̲c̲h̲a̲r̲_̲p̲o̲w̲,̲ mul_pow, mul_assoc, mul_comm, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵d̵i̵v̵_̵e̵q̵_̵m̵u̵l̵_̵i̵n̵v̵ ̵]̵d̲i̲v̲_̲e̲q̲_̲m̲u̲l̲_̲i̲n̲v̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:90:55: This simp argument is unused:\n  pow_succ\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲m̲u̲l̲_̲a̲s̲s̲o̲c̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:90:65: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲p̲o̲w̲_̲s̲u̲c̲c̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:93:58: This simp argument is unused:\n  pow_succ\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵d̵i̵v̵_̵e̵q̵_̵m̵u̵l̵_̵i̵n̵v̵ ̵]̵[̲m̲u̲l̲_̲a̲s̲s̲o̲c̲,̲ ̲d̲i̲v̲_̲e̲q̲_̲m̲u̲l̲_̲i̲n̲v̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:93:68: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵d̵i̵v̵_̵e̵q̵_̵m̵u̵l̵_̵i̵n̵v̵ ̵]̵[̲p̲o̲w̲_̲s̲u̲c̲c̲,̲ ̲d̲i̲v̲_̲e̲q̲_̲m̲u̲l̲_̲i̲n̲v̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:111:104: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:106:30: unused variable `hk`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:106:43: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:143:53: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:143:53: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:143:53: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:144:52: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:177:6: Try this:\n  [apply] exact kasami_arith_identity hk hn hkn",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:160:47: unused variable `hk_odd`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:171:63: This simp argument is unused:\n  ← ZMod.natCast_eq_natCast_iff'\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵←̵ ̵Z̵M̵o̵d̵.̵n̵a̵t̵C̵a̵s̵t̵_̵e̵q̵_̵n̵a̵t̵C̵a̵s̵t̵_̵i̵f̵f̵'̵,̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵ ̵]̵[̲p̲o̲w̲_̲s̲u̲c̲c̲,̲ ̲m̲u̲l̲_̲a̲s̲s̲o̲c̲]̲\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:300:4: Try this:\n  [apply] exact Nat.pow_sub_one_gcd_pow_sub_one 2 (6 * k) n",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:289:49: unused variable `hkn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:313:54: This simp argument is unused:\n  Nat.dvd_prime\n\nHint: Omit it from the simp argument list.\n  simp_all +decide ̵[̵ ̵N̵a̵t̵.̵d̵v̵d̵_̵p̵r̵i̵m̵e̵ ̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:320:13: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:320:43: unused variable `hn_pos`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:321:13: unused variable `hd_cop`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:327:112: This simp argument is unused:\n  add_div\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵a̵d̵d̵_̵d̵i̵v̵,̵ ̵m̵u̵l̵_̵d̵i̵v̵_̵c̵a̵n̵c̵e̵l̵₀̵ ̵]̵[̲m̲u̲l̲_̲d̲i̲v̲_̲c̲a̲n̲c̲e̲l̲₀̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:327:121: This simp argument is unused:\n  mul_div_cancel₀\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵a̵d̵d̵_̵d̵i̵v̵,̵ ̵m̵u̵l̵_̵d̵i̵v̵_̵c̵a̵n̵c̵e̵l̵₀̵ ̵]̵[̲a̲d̲d̲_̲d̲i̲v̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:329:67: This simp argument is unused:\n  ha\n\nHint: Omit it from the simp argument list.\n  simp +decide [ ̵h̵a,̵ ̵a̵dd_div, mul_div_cancel₀,\n  ̲  ̲ ̲ ̲pow_add ̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:329:80: This simp argument is unused:\n  mul_div_cancel₀\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵a̵,̵[̲h̲a̲,̲ add_div, m̵u̵l̵_̵d̵i̵v̵_̵c̵a̵n̵c̵e̵l̵₀̵,̵ ̵p̵o̵w̵_̵a̵d̵d̵ ̵]̵p̲o̲w̲_̲a̲d̲d̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiAPN.lean:329:97: This simp argument is unused:\n  pow_add\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵a̵,̵[̲h̲a̲,̲ add_div, m̵u̵l̵_̵d̵i̵v̵_̵c̵a̵n̵c̵e̵l̵₀̵,̵ ̵p̵o̵w̵_̵a̵d̵d̵ ̵]̵m̲u̲l̲_̲d̲i̲v̲_̲c̲a̲n̲c̲e̲l̲₀̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Core.KasamiAPN:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.FiniteField.Thm32 transitive imports (legacy)",
+         "c1e2e13a7f6a52c2"],
+        ["RequestProject.FiniteField.Thm32:importAllArts", "f25a366bd677f05c"],
+        ["RequestProject.FiniteField.ExpArith transitive imports (legacy)",
+         "32203a41368dedb9"],
+        ["RequestProject.FiniteField.ExpArith:importAllArts",
+         "9ae85c9e001bcf85"],
+        ["RequestProject.FiniteField.FrobAlg transitive imports (legacy)",
+         "582ff114f3cc8f4f"],
+        ["RequestProject.FiniteField.FrobAlg:importAllArts",
+         "6e49d5f30af82092"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/Core/KasamiAPN.lean",
+   "740828a071340629"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "76a06225481d8741"}

@@ -1,0 +1,62 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["45ecd709216dc713.olean"],
+  "i": "b89844418360eabe.ilean",
+  "c": "64e23a460345877e.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/DempwolffMueller/DicksonPoly.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/DempwolffMueller/DicksonPoly.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/lib/lean/RequestProject/DempwolffMueller/DicksonPoly.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/DempwolffMueller/DicksonPoly.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/.lake/build/ir/RequestProject/DempwolffMueller/DicksonPoly.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:32:30: This simp argument is unused:\n  ← pow_add\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵[̲←̲ pow_succ', ←̵ ̵p̵o̵w̵_̵a̵d̵d̵,̵ ̵Nat.sub_sub, add_comm 1, a̵d̵d̵_̵a̵s̵s̵o̵c̵ ̵]̵a̲d̲d̲_̲a̲s̲s̲o̲c̲]̲\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:32:41: This simp argument is unused:\n  Nat.sub_sub\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵[̲←̲ pow_succ', ← pow_add, N̵a̵t̵.̵s̵u̵b̵_̵s̵u̵b̵,̵ ̵add_comm 1, a̵d̵d̵_̵a̵s̵s̵o̵c̵ ̵]̵a̲d̲d̲_̲a̲s̲s̲o̲c̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:40:94: This simp argument is unused:\n  Finset.sum_range_succ\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵'̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵'̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵r̵a̵n̵g̵e̵_̵s̵u̵c̵c̵ ̵]̵[̲p̲o̲w̲_̲s̲u̲c̲c̲'̲,̲ ̲p̲o̲w̲_̲m̲u̲l̲'̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:62:29: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:63:118: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:64:54: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:65:111: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:65:104: This simp argument is unused:\n  hz\n\nHint: Omit it from the simp argument list.\n  simp +decide [ ̵show 2 ^ m * 2 = ( ̵2 ^ m - 1 ̵) * 2 + 2 by zify ̵; norm_num ̵; ring, pow_add, pow_mul',̵ ̵h̵z̵ ̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:85:13: unused variable `hx`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/DempwolffMueller/DicksonPoly.lean:98:51: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"}],
+ "inputs":
+ [["RequestProject.DempwolffMueller.DicksonPoly:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RequestProject.DempwolffMueller.TruncTrace transitive imports (legacy)",
+         "ae3e75d1d2f95737"],
+        ["RequestProject.DempwolffMueller.TruncTrace:importAllArts",
+         "ab65b7ac9e2b998c"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-is-APN-AB-mTuple/RequestProject/DempwolffMueller/DicksonPoly.lean",
+   "6ea46fdc614281c0"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "10f7f1ef58762a17"}

@@ -1,0 +1,67 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["f990135f2880b12c.olean"],
+  "i": "0852db4551b15ba4.ilean",
+  "c": "31b2a2e893a1dc36.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/FiniteField/FrobAlg.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/FiniteField/FrobAlg.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/FiniteField/FrobAlg.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/FiniteField/FrobAlg.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/FiniteField/FrobAlg.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:24:0: automatically included section variable(s) unused in theorem `DempwolffMueller.frob_periodic`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:28:0: automatically included section variable(s) unused in theorem `DempwolffMueller.frob_mod`:\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:42:0: automatically included section variable(s) unused in theorem `DempwolffMueller.mul_frob_eq`:\n  [Fintype F]\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:45:0: automatically included section variable(s) unused in theorem `DempwolffMueller.add_frob_eq`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:49:0: automatically included section variable(s) unused in theorem `DempwolffMueller.finset_sum_frob_eq`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:55:0: automatically included section variable(s) unused in theorem `DempwolffMueller.neg_frob_eq`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:71:0: automatically included section variable(s) unused in theorem `DempwolffMueller.truncTrace_frob_output_general`:\n  [Fintype F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:84:0: automatically included section variable(s) unused in theorem `DempwolffMueller.linpoly_frob_input`:\n  [Fintype F]\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:116:0: automatically included section variable(s) unused in theorem `DempwolffMueller.linpoly_mul_pow_frob`:\n  [Fintype F]\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:137:0: automatically included section variable(s) unused in theorem `DempwolffMueller.gfp_frob_stable`:\n  [Fintype F]\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/FiniteField/FrobAlg.lean:143:0: automatically included section variable(s) unused in theorem `DempwolffMueller.one_frob_stable`:\n  [Fintype F]\n  hp\n  [CharP F p]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype F] hp [CharP F p] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.FiniteField.FrobAlg:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.FiniteField.AutBase transitive imports (legacy)",
+         "12c1ba7185138d42"],
+        ["RequestProject.FiniteField.AutBase:importAllArts",
+         "1aa740a2434687cc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/FiniteField/FrobAlg.lean",
+   "eee3a168cb8d27b7"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "f9f349be258b8f53"}

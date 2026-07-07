@@ -1,0 +1,58 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["fc0ed17f7f578354.olean"],
+  "i": "d5ac8d1e02b94fe5.ilean",
+  "c": "b4cde978f0a5c4e4.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/Core/KasamiEvenK.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/Core/KasamiEvenK.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/lib/lean/RequestProject/Core/KasamiEvenK.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/Core/KasamiEvenK.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/.lake/build/ir/RequestProject/Core/KasamiEvenK.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RequestProject/Core/KasamiEvenK.lean:126:13: unused variable `hk`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiEvenK.lean:135:55: This simp argument is unused:\n  pow_mul\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵ ̵]̵[̲p̲o̲w̲_̲s̲u̲c̲c̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiEvenK.lean:136:36: This simp argument is unused:\n  Nat.Coprime.pow\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵N̵a̵t̵.̵C̵o̵p̵r̵i̵m̵e̵,̵ ̵N̵a̵t̵.̵C̵o̵p̵r̵i̵m̵e̵.̵p̵o̵w̵ ̵]̵[̲N̲a̲t̲.̲C̲o̲p̲r̲i̲m̲e̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiEvenK.lean:144:4: Try this:\n  [apply] exact fun x y => frob_additive k x y",
+   "level": "info"},
+  {"message":
+   "RequestProject/Core/KasamiEvenK.lean:151:17: This simp argument is unused:\n  ha\n\nHint: Omit it from the simp argument list.\n  simp +decide [ ̵h̵a̵,̵ ̵mul_pow, add_comm, eq_inv_mul_iff_mul_eq₀]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiEvenK.lean:151:30: This simp argument is unused:\n  add_comm\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵a̵,̵[̲h̲a̲,̲ mul_pow, a̵d̵d̵_̵c̵o̵m̵m̵,̵ ̵eq_inv_mul_iff_mul_eq₀]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RequestProject/Core/KasamiEvenK.lean:151:40: This simp argument is unused:\n  eq_inv_mul_iff_mul_eq₀\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵a̵,̵[̲h̲a̲,̲ mul_pow, a̵d̵d̵_̵c̵o̵m̵m̵,̵ ̵e̵q̵_̵i̵n̵v̵_̵m̵u̵l̵_̵i̵f̵f̵_̵m̵u̵l̵_̵e̵q̵₀̵]̵a̲d̲d̲_̲c̲o̲m̲m̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.Core.KasamiEvenK:deps",
+   [["deps",
+     [["RequestProject/RequestProject:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.Core.KasamiAPN transitive imports (legacy)",
+         "f68db935d7716a5f"],
+        ["RequestProject.Core.KasamiAPN:importAllArts", "a2c35025368ea858"],
+        ["RequestProject.FiniteField.ExpArith transitive imports (legacy)",
+         "32203a41368dedb9"],
+        ["RequestProject.FiniteField.ExpArith:importAllArts",
+         "9ae85c9e001bcf85"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/Kasami-APN-AB/RequestProject/Core/KasamiEvenK.lean",
+   "2ec22d24043ef8b7"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "c5677e3427d9a3f2"}

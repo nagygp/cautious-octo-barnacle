@@ -1,0 +1,130 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["017c9bb6a03de4b8.olean"],
+  "i": "1aaca0c1f24dd889.ilean",
+  "c": "655e6edd23b2103e.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Cli/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/batteries/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/Qq/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/aesop/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/proofwidgets/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/importGraph/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/plausible/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/packages/mathlib/.lake/build/lib/lean:/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean /mnt/raid/home/nagyg/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean -o /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/FiniteField/Thm32.olean -i /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/lib/lean/RequestProject/FiniteField/Thm32.ilean -c /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/FiniteField/Thm32.c --setup /mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/.lake/build/ir/RequestProject/FiniteField/Thm32.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:60:92: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:62:53: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:63:23: This simp argument is unused:\n  ← add_assoc\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵←̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵ ̵←̵[̲←̲ two_mul, C̵h̵a̵r̵T̵w̵o̵.̵t̵w̵o̵_̵e̵q̵_̵z̵e̵r̵o̵ ̵]̵C̲h̲a̲r̲T̲w̲o̲.̲t̲w̲o̲_̲e̲q̲_̲z̲e̲r̲o̲]̲\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:63:36: This simp argument is unused:\n  ← two_mul\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵←̵[̲←̲ add_assoc, ←̵ ̵t̵w̵o̵_̵m̵u̵l̵,̵ ̵C̵h̵a̵r̵T̵w̵o̵.̵t̵w̵o̵_̵e̵q̵_̵z̵e̵r̵o̵ ̵]̵C̲h̲a̲r̲T̲w̲o̲.̲t̲w̲o̲_̲e̲q̲_̲z̲e̲r̲o̲]̲\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:87:57: this constant has no effect on the linear combination; it can be dropped from the term",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:97:40: unused variable `hm_lt`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:140:30: This simp argument is unused:\n  ← pow_add\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵[̲←̲ pow_succ', ←̵ ̵p̵o̵w̵_̵a̵d̵d̵,̵ ̵Nat.sub_sub, add_comm 1, a̵d̵d̵_̵a̵s̵s̵o̵c̵ ̵]̵a̲d̲d̲_̲a̲s̲s̲o̲c̲]̲\n\nNote: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:140:41: This simp argument is unused:\n  Nat.sub_sub\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵←̵[̲←̲ pow_succ', ← pow_add, N̵a̵t̵.̵s̵u̵b̵_̵s̵u̵b̵,̵ ̵add_comm 1, a̵d̵d̵_̵a̵s̵s̵o̵c̵ ̵]̵a̲d̲d̲_̲a̲s̲s̲o̲c̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:148:94: This simp argument is unused:\n  Finset.sum_range_succ\n\nHint: Omit it from the simp argument list.\n  simp_all +decide [̵ ̵p̵o̵w̵_̵s̵u̵c̵c̵'̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵'̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵r̵a̵n̵g̵e̵_̵s̵u̵c̵c̵ ̵]̵[̲p̲o̲w̲_̲s̲u̲c̲c̲'̲,̲ ̲p̲o̲w̲_̲m̲u̲l̲'̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:172:29: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:173:118: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:174:54: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:175:111: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:175:104: This simp argument is unused:\n  hz\n\nHint: Omit it from the simp argument list.\n  simp +decide [ ̵show 2 ^ m * 2 = ( ̵2 ^ m - 1 ̵) * 2 + 2 by zify ̵; norm_num ̵; ring, pow_add, pow_mul',̵ ̵h̵z̵ ̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:203:13: unused variable `hx`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:218:51: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:338:134: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:340:30: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
+   "level": "info"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:338:105: This simp argument is unused:\n  hx\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵x̵,̵ ̵h̵y̵,̵[̲h̲y̲,̲\n  ̲  ̲ ̲ ̲ ̲ ̲pow_add, p̵o̵w̵_̵m̵u̵l̵ ̵]̵p̲o̲w̲_̲m̲u̲l̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:338:109: This simp argument is unused:\n  hy\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵x̵,̵ ̵h̵y̵,̵[̲h̲x̲,̲\n  ̲  ̲ ̲ ̲ ̲ ̲pow_add, p̵o̵w̵_̵m̵u̵l̵ ̵]̵p̲o̲w̲_̲m̲u̲l̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:338:122: This simp argument is unused:\n  pow_mul\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵h̵x̵,̵[̲h̲x̲,̲\n  ̲  ̲ ̲ ̲ ̲ ̲hy, p̵o̵w̵_̵a̵d̵d̵,̵ ̵p̵o̵w̵_̵m̵u̵l̵ ̵]̵p̲o̲w̲_̲a̲d̲d̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:341:94: This simp argument is unused:\n  zpow_neg\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵z̵p̵o̵w̵_̵n̵e̵g̵,̵ ̵z̵p̵o̵w̵_̵o̵f̵N̵a̵t̵ ̵]̵[̲z̲p̲o̲w̲_̲o̲f̲N̲a̲t̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:341:104: This simp argument is unused:\n  zpow_ofNat\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵z̵p̵o̵w̵_̵n̵e̵g̵,̵ ̵z̵p̵o̵w̵_̵o̵f̵N̵a̵t̵ ̵]̵[̲z̲p̲o̲w̲_̲n̲e̲g̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:342:107: This simp argument is unused:\n  zpow_neg\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵z̵p̵o̵w̵_̵n̵e̵g̵,̵ ̵z̵p̵o̵w̵_̵o̵f̵N̵a̵t̵ ̵]̵[̲z̲p̲o̲w̲_̲o̲f̲N̲a̲t̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:342:117: This simp argument is unused:\n  zpow_ofNat\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵z̵p̵o̵w̵_̵n̵e̵g̵,̵ ̵z̵p̵o̵w̵_̵o̵f̵N̵a̵t̵ ̵]̵[̲z̲p̲o̲w̲_̲n̲e̲g̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:343:96: This simp argument is unused:\n  zpow_neg\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵z̵p̵o̵w̵_̵n̵e̵g̵,̵ ̵z̵p̵o̵w̵_̵o̵f̵N̵a̵t̵ ̵]̵[̲z̲p̲o̲w̲_̲o̲f̲N̲a̲t̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:343:106: This simp argument is unused:\n  zpow_ofNat\n\nHint: Omit it from the simp argument list.\n  simp +decide [̵ ̵z̵p̵o̵w̵_̵n̵e̵g̵,̵ ̵z̵p̵o̵w̵_̵o̵f̵N̵a̵t̵ ̵]̵[̲z̲p̲o̲w̲_̲n̲e̲g̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean:448:50: try 'simp' instead of 'simpa'\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"}],
+ "inputs":
+ [["RequestProject.FiniteField.Thm32:deps",
+   [["deps",
+     [["RequestProject/ConjecturesMTupleTripleCount:extraDep",
+       [["@RequestProject:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"],
+        ["RequestProject.FiniteField.TraceNorm transitive imports (legacy)",
+         "32203a41368dedb9"],
+        ["RequestProject.FiniteField.TraceNorm:importAllArts",
+         "c9e296fc3c4eea78"],
+        ["RequestProject.FiniteField.ExpArith transitive imports (legacy)",
+         "32203a41368dedb9"],
+        ["RequestProject.FiniteField.ExpArith:importAllArts",
+         "9ae85c9e001bcf85"],
+        ["RequestProject.FiniteField.FrobAlg transitive imports (legacy)",
+         "582ff114f3cc8f4f"],
+        ["RequestProject.FiniteField.FrobAlg:importAllArts",
+         "6e49d5f30af82092"],
+        ["RequestProject.FiniteField.AdjointBij transitive imports (legacy)",
+         "5c3d05ca8355928a"],
+        ["RequestProject.FiniteField.AdjointBij:importAllArts",
+         "9c1fde5c0caf2eee"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/mnt/raid/home/nagyg/MyLEAN/cautious-octo-barnacle/conjectures-mtuple-triple_count/RequestProject/FiniteField/Thm32.lean",
+   "fe567f01833a82ef"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "1b8c7d7ed35d5eb3"}
