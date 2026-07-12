@@ -1,5 +1,5 @@
 import Mathlib
-import KasamiPermutation.InverseRecurrence
+import RequestProject.KasamiPermutation.InverseRecurrence
 
 /-!
 # Theorem 6 (Dobbertin 1999) — the `𝔽_{2ⁿ}` capstone `q⁻¹(1/y) = R(y)`

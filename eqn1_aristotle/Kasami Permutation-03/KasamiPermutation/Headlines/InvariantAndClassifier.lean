@@ -1,4 +1,4 @@
-import KasamiPermutation.Headlines.PermutationCriterionAndAPN
+import RequestProject.KasamiPermutation.Headlines.PermutationCriterionAndAPN
 
 /-!
 # A Caramello-style bridge for the Dobbertin (1999) paper skeleton

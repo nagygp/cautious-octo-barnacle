@@ -1,6 +1,6 @@
 import Mathlib
-import KasamiPermutation.Core.KasamiAPN
-import KasamiPermutation.MCM.Permutation
+import RequestProject.KasamiPermutation.Core.KasamiAPN
+import RequestProject.KasamiPermutation.MCM.Permutation
 
 /-!
 # Dobbertin (1999) — the MCM → APN chain

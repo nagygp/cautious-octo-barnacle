@@ -1,7 +1,7 @@
 import Mathlib
-import KasamiPermutation.TraceFreeCriterion
-import KasamiPermutation.TraceVersionInfra
-import KasamiPermutation.TraceVersionBase
+import RequestProject.KasamiPermutation.TraceFreeCriterion
+import RequestProject.KasamiPermutation.TraceVersionInfra
+import RequestProject.KasamiPermutation.TraceVersionBase
 
 /-!
 # Parity-general trace-version Kasami permutation criterion (`q₁`)

@@ -1,5 +1,5 @@
 import Mathlib
-import KasamiPermutation.Core.KasamiAPN
+import RequestProject.KasamiPermutation.Core.KasamiAPN
 
 /-!
 # A units-functor bridge for power maps, and an alternative proof of the Gold permutation

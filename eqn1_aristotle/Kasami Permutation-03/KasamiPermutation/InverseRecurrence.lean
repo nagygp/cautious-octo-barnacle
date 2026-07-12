@@ -1,5 +1,5 @@
 import Mathlib
-import KasamiPermutation.Casoratian
+import RequestProject.KasamiPermutation.Casoratian
 
 /-!
 # Theorem 6 (Dobbertin 1999) — the concrete cubic collapse

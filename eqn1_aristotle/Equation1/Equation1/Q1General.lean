@@ -1,7 +1,7 @@
 import Mathlib
-import Equation1.Theorem5
-import Equation1.Theorem8Trace
-import Equation1.Theorem8C1
+import Dobbertin1999MVP.Equation1.Theorem5
+import Dobbertin1999MVP.Equation1.Theorem8Trace
+import Dobbertin1999MVP.Equation1.Theorem8C1
 
 /-!
 # Parity-general trace-version Kasami permutation criterion (`q₁`)

@@ -1,5 +1,5 @@
 import Mathlib
-import KasamiPermutation.TraceVersionInfra
+import RequestProject.KasamiPermutation.TraceVersionInfra
 
 /-!
 # Theorem 8 (Dobbertin 1999) — the `c = 1` case (`k'` even, `n` odd)

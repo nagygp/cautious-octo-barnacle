@@ -1,5 +1,5 @@
 import Mathlib
-import KasamiPermutation.FiniteField.FrobAlg
+import RequestProject.KasamiPermutation.FiniteField.FrobAlg
 
 /-!
 # Foundational Layer F2: Trace and Norm Theory

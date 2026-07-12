@@ -1,7 +1,7 @@
 import Mathlib
-import KasamiPermutation.InverseCubicEquation
-import KasamiPermutation.TraceFreeCriterion
-import KasamiPermutation.MCM.ToAPN
+import RequestProject.KasamiPermutation.InverseCubicEquation
+import RequestProject.KasamiPermutation.TraceFreeCriterion
+import RequestProject.KasamiPermutation.MCM.ToAPN
 
 /-!
 # Theorem 8 (Dobbertin 1999) — trace description of the difference set `B`

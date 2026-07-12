@@ -1,11 +1,11 @@
-import Equation1.Defs
-import Equation1.Setup
-import Equation1.FiniteFieldPrereqs
-import Equation1.Theorem5
-import Equation1.Theorem8Trace
-import Equation1.Theorem8C1
-import Equation1.Q1General
-import Equation1.Equation1
+import Dobbertin1999MVP.Equation1.Defs
+import Dobbertin1999MVP.Equation1.Setup
+import Dobbertin1999MVP.Equation1.FiniteFieldPrereqs
+import Dobbertin1999MVP.Equation1.Theorem5
+import Dobbertin1999MVP.Equation1.Theorem8Trace
+import Dobbertin1999MVP.Equation1.Theorem8C1
+import Dobbertin1999MVP.Equation1.Q1General
+import Dobbertin1999MVP.Equation1.Equation1
 
 /-!
 # Equation (1) of Theorem 1's proof — self-contained MVP (entry point)
