@@ -1,13 +1,13 @@
 -- Headline results (Theorem 1 permutation criterion + Corollary 2 APN).
-import KasamiPermutation.Headlines.PermutationCriterionAndAPN
-import KasamiPermutation.Headlines.TraceVersionCriterion
-import KasamiPermutation.Headlines.InvariantAndClassifier
+import RequestProject.KasamiPermutation.Headlines.PermutationCriterionAndAPN
+import RequestProject.KasamiPermutation.Headlines.TraceVersionCriterion
+import RequestProject.KasamiPermutation.Headlines.InvariantAndClassifier
 -- Structural distillation: the general obstruction and the context classifier.
-import KasamiPermutation.Structural.Obstruction
-import KasamiPermutation.Structural.ContextClassifier
+import RequestProject.KasamiPermutation.Structural.Obstruction
+import RequestProject.KasamiPermutation.Structural.ContextClassifier
 -- MCM permutation engine and the field-level structural bridges.
-import KasamiPermutation.MCM.ToAPN
-import KasamiPermutation.Bridge
+import RequestProject.KasamiPermutation.MCM.ToAPN
+import RequestProject.KasamiPermutation.Bridge
 
 /-!
 # Kasami permutation polynomials and APN power functions — theory root

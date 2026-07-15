@@ -1,7 +1,7 @@
 import Mathlib
-import KasamiPermutation.FiniteField.LinearizedBijection
-import KasamiPermutation.FiniteField.ExpArith
-import KasamiPermutation.FiniteField.FrobAlg
+import RequestProject.KasamiPermutation.FiniteField.LinearizedBijection
+import RequestProject.KasamiPermutation.FiniteField.ExpArith
+import RequestProject.KasamiPermutation.FiniteField.FrobAlg
 
 /-!
 # Kasami APN Theorem

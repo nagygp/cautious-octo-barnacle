@@ -1,5 +1,5 @@
 import Mathlib
-import KasamiPermutation.FiniteField.LinearizedBijection
+import RequestProject.KasamiPermutation.FiniteField.LinearizedBijection
 
 /-!
 # Dobbertin (1999) — the MCM permutation polynomials

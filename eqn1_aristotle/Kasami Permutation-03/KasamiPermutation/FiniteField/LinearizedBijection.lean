@@ -1,8 +1,8 @@
 import Mathlib
-import KasamiPermutation.FiniteField.TraceNorm
-import KasamiPermutation.FiniteField.ExpArith
-import KasamiPermutation.FiniteField.FrobAlg
-import KasamiPermutation.FiniteField.AdjointBij
+import RequestProject.KasamiPermutation.FiniteField.TraceNorm
+import RequestProject.KasamiPermutation.FiniteField.ExpArith
+import RequestProject.KasamiPermutation.FiniteField.FrobAlg
+import RequestProject.KasamiPermutation.FiniteField.AdjointBij
 
 /-!
 # Theorem 3.2 — Dempwolff & Müller

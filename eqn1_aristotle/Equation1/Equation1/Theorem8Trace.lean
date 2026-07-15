@@ -1,5 +1,5 @@
 import Mathlib
-import Equation1.FiniteFieldPrereqs
+import Dobbertin1999MVP.Equation1.FiniteFieldPrereqs
 
 /-!
 # Equation (1) MVP — trace lemmas from Theorem 8

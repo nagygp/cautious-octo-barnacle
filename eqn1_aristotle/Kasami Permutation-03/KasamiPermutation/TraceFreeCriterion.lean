@@ -1,5 +1,5 @@
 import Mathlib
-import KasamiPermutation.FiniteField.LinearizedBijection
+import RequestProject.KasamiPermutation.FiniteField.LinearizedBijection
 
 /-!
 # Theorem 5 (Dobbertin 1999) — the trace-free permutation criterion

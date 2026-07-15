@@ -1,5 +1,5 @@
 import Mathlib
-import KasamiPermutation.Core.KasamiAPN
+import RequestProject.KasamiPermutation.Core.KasamiAPN
 
 /-!
 # The Artin–Schreier telescoping invariant, in every characteristic

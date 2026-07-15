@@ -1,6 +1,6 @@
 import Mathlib
-import Equation1.FiniteFieldPrereqs
-import Equation1.Theorem5
+import Dobbertin1999MVP.Equation1.FiniteFieldPrereqs
+import Dobbertin1999MVP.Equation1.Theorem5
 
 /-!
 # Equation (1) MVP — trace facts and the trace-version map `gmap`

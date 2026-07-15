@@ -1,9 +1,9 @@
 import Mathlib
-import Equation1.Defs
-import Equation1.Theorem5
-import Equation1.Theorem8Trace
-import Equation1.Theorem8C1
-import Equation1.Q1General
+import Dobbertin1999MVP.Equation1.Defs
+import Dobbertin1999MVP.Equation1.Theorem5
+import Dobbertin1999MVP.Equation1.Theorem8Trace
+import Dobbertin1999MVP.Equation1.Theorem8C1
+import Dobbertin1999MVP.Equation1.Q1General
 
 /-!
 # Equation (1) of Theorem 1's proof — end to end

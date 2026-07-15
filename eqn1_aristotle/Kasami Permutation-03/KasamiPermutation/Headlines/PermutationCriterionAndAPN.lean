@@ -1,8 +1,8 @@
 import Mathlib
-import KasamiPermutation.TraceFreeCriterion
-import KasamiPermutation.TraceVersionInfra
-import KasamiPermutation.TraceVersionBase
-import KasamiPermutation.Headlines.TraceVersionCriterion
+import RequestProject.KasamiPermutation.TraceFreeCriterion
+import RequestProject.KasamiPermutation.TraceVersionInfra
+import RequestProject.KasamiPermutation.TraceVersionBase
+import RequestProject.KasamiPermutation.Headlines.TraceVersionCriterion
 
 /-!
 # Dobbertin (1999), pp. 133–138 — a faithful skeleton transcription

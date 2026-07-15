@@ -1,6 +1,6 @@
-import KasamiPermutation.Bridge.UnitsPower
-import KasamiPermutation.Bridge.ArtinSchreier
-import KasamiPermutation.Bridge.TwoToOne
+import RequestProject.KasamiPermutation.Bridge.UnitsPower
+import RequestProject.KasamiPermutation.Bridge.ArtinSchreier
+import RequestProject.KasamiPermutation.Bridge.TwoToOne
 
 /-!
 # Structural bridges for the Dobbertin (1999) development

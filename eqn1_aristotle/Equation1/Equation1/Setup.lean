@@ -1,5 +1,5 @@
 import Mathlib
-import Equation1.Defs
+import Dobbertin1999MVP.Equation1.Defs
 
 /-!
 # Equation (1) MVP — the elementary opening of Theorem 1's proof (engine-free)

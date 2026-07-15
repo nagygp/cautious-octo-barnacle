@@ -1,5 +1,5 @@
-import KasamiPermutation.Headlines.InvariantAndClassifier
-import KasamiPermutation.Structural.Obstruction
+import RequestProject.KasamiPermutation.Headlines.InvariantAndClassifier
+import RequestProject.KasamiPermutation.Structural.Obstruction
 
 /-!
 # The Kasami headline as a general obstruction, and the context classifier

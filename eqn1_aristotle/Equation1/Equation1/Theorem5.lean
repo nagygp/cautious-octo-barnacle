@@ -1,5 +1,5 @@
 import Mathlib
-import Equation1.FiniteFieldPrereqs
+import Dobbertin1999MVP.Equation1.FiniteFieldPrereqs
 
 /-!
 # Theorem 5 (Dobbertin 1999) — the trace-free permutation criterion
